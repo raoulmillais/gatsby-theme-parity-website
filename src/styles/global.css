@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "./font-manifold.css";
+@import '~animate.css'; 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    * {
+        @apply leading-normal;
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-white font-body text-base;
+    }
+    
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-title ;
+    }
+
+    h1 {
+    @apply my-3 text-5xl font-normal;
+    }
+
+    h2 {
+    @apply my-4 text-4xl font-normal;
+    }
+
+    h3 {
+    @apply my-5 text-3xl font-normal;
+    }
+
+    h4 {
+    @apply my-6 text-2xl font-semibold;
+    }
+
+    h5 {
+    @apply my-8 text-xl font-medium;
+    }
+
+    h6 {
+    @apply my-10 text-lg font-medium;
+    }
+
+    /* Paragraphs */
+    p {
+    @apply my-3 font-normal;
+    }
+
+    /* Blockquotes */
+    blockquote {
+    @apply my-4 px-8 border-l-4 border-gray-200;
+    }
+
+    /* Horizontal Rules */
+    hr {
+    @apply my-6 border-t;
+    }
+
+    /* Lists */
+    dl, ol, ul {
+    @apply my-4 pl-3 list-inside;
+    }
+
+    /* Definition Lists */
+    dl {
+        dt {
+        @apply font-semibold;
+        }
+
+        dd {
+        @apply ml-6;
+        }
+    }
+
+    /* Ordered Lists */
+    ol {
+    @apply list-decimal;
+    }
+
+    /* Unordered Lists */
+    ul {
+    @apply list-disc;
+    }
+
+    /* Anchors */
+    a {
+    @apply underline cursor-pointer;
+    }
+
+    /* Tables */
+    table {
+    @apply table border-separate border-gray-200 align-middle text-left bg-gray-200 rounded;
+
+        caption {
+        @apply p-3;
+        }
+
+        thead tr th {
+        @apply py-2 px-4;
+        }
+
+        tbody tr td {
+        @apply py-2 px-4;
+        }
+
+        tfoot tr th {
+        @apply py-2 px-4;
+        }
+    }
+
+    /* Forms */
+    input, textarea {
+    @apply block px-3 py-2 border rounded text-sm;
+    }
+
+    input:focus, textarea:focus {
+    @apply outline-none;
+    }
+
+    label {
+    @apply block mb-2 text-sm font-semibold;
+    }
+
+    input[type="submit"], input[type="button"], input[type="reset"] {
+    @apply inline-block px-4 py-2 bg-gray-200 font-semibold;
+    }
+
+    /* Images */
+    figure {
+    @apply inline-block;
+
+        img {
+        @apply block w-full;
+        }
+
+        figcaption {
+        @apply block p-3 text-center text-sm;
+        }
+    }
+
+    .text-xxs {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+}

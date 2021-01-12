@@ -1,0 +1,38 @@
+{
+    "nav-technologies":"Technologies",
+    "nav-solutions": "Solutions",
+    "nav-about": "About",
+    "nav-blog": "Blog",
+    "nav-bug-bounty":"Bug Bounty",
+    "nav-media-kit":"Media Kit",
+    "nav-rust-jobs":"Rust Jobs",
+    "nav-jobs":"Jobs", 
+    "nav-company":"Company",
+    "nav-contact": "Contact",
+    "nav-solutions-startups": "For Startup Teams",
+    "nav-solutions-organizations": "For Organizations",
+    "nav-solutions-custom": "All Custom Solutions",
+    "nav-community": "Community",
+    "nav-events": "Events",
+    "nav-github": "Github",
+    "nav-element": "Element",
+    "nav-gitter": "Gitter",
+    "nav-newsletter": "Newsletter",
+    "nav-newsletter-text": "To be the first to hear about Parity updates and events, subscribe to our newsletter.",
+    "nav-parity-technologies": "Parity Technologies",
+    "nav-rights-reserved": "All Rights Reserved",
+    "nav-kusama-addresses": "Kusama Addresses",
+    "nav-terms-of-use": "Terms of Use",
+    "nav-privacy-policy": "Privacy Policy",
+    "nav-applicant": "Applicant",
+    "nav-notice": "Notice",
+    "nav-cookie-settings": "Cookie Settings",
+
+
+    "substrate": "Substrate",
+    "parity-bitcoin": "Parity Bitcoin", 
+    "polkadot": "Polkadot",
+    "parity-signer": "Parity Signer",
+    "all-technologies": "All Technologies"
+
+}
