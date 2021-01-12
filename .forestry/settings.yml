@@ -3,7 +3,18 @@ new_page_extension: md
 auto_deploy: false
 admin_path: 
 webhook_url: 
-sections: 
+sections:
+- type: directory
+  path: content/react-intl
+  label: Parity Content (i18n)
+  create: documents
+  match: "**/*"
+  new_doc_ext: ".json"
+- type: directory
+  path: blog
+  label: Parity Blog
+  create: all
+  match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
