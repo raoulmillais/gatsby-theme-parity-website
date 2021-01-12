@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { LocalizedLink } from 'gatsby-theme-i18n'
 import { useIntl } from 'react-intl'
 import NewsletterModal from '../NewsletterModal'
@@ -15,7 +15,6 @@ const socialIcons = "w-5 mx-4 h-auto fill-current"
 const Footer = () => {
 
     const intl = useIntl()
-    const [showModal, setShowModal] = useState(false)
     
     return (
         <footer className="flex flex-col justify-center bg-footerDark text-white w-screen m-0">
@@ -114,12 +113,7 @@ const Footer = () => {
                         <p className={`${navItemsFooter} mt-8 opacity-90`} >{
                             intl.formatMessage({ id: "nav-newsletter-text" })}
                         </p>
-                        <button 
-                            className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-widest  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
-                            onClick={() => setShowModal(true)}
-                        >
-                            Subscribe
-                        </button>
+                        <NewsletterModal />
                     </div>
                 </div>
             </div>
@@ -201,9 +195,6 @@ const Footer = () => {
                     </div> 
                 </div>                
             </div>
-            
-            {showModal ? <NewsletterModal /> : null}
-
         </footer>
     )
 }
