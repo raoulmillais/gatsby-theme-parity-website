@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 ///////////////---STYLES---///////////////////
-const modalDiv = "fixed top-0 bottom-0 h-full w-full bg-black text-textDark flex justify-center items-center"
+const modalDiv = "fixed top-0 bottom-0 left-0 right-0 h-full w-full bg-black text-textDark flex justify-center items-center"
 const whiteContainer= "relative w-full mx-4 rounded-md bg-white flex flex-col justify-center items-center"
 const closeX = "absolute top-0 right-0 pt-2 pr-3 opacity-40 hover:opacity-100 hover:cursor-pointer"
 ///////////////---END STYLES---////////////////
@@ -9,8 +9,9 @@ const closeX = "absolute top-0 right-0 pt-2 pr-3 opacity-40 hover:opacity-100 ho
 ///////////////---COMPONENT---////////////////
 const NewsletterModal = () => {
     
+    
+    const [showModal, setShowModal] = useState(false)
     const [formSubmitted, setFormSubmitted] = useState(false)
-    const [isVisible, setIsVisible] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,19 +30,25 @@ const NewsletterModal = () => {
         })
         .catch( error => console.log("Request failed", error))
     }
-
-    const handleClick = (event) => {
-        event.preventDefault()
-        event.stopPropagation() 
-        setFormSubmitted(!formSubmitted)
-    }
+    
 
     return (
+        <> 
+            <button 
+                className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-widest  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
+                onClick={() => setShowModal(!showModal)}
+            >
+                Subscribe
+            </button>
 
-        
-                <div 
-                    className={`${modalDiv} ${isVisible ? 'hidden' : ' '}`}
-                    onClick={ (event) => handleClick(event)}
+            {showModal 
+                ?   <div 
+                    className={modalDiv}
+                    onClick={(event)=>{
+                        event.preventDefault()
+                        event.stopPropagation()
+                        setShowModal(!showModal)
+                    }}
                     >
                         { formSubmitted
                             ?   <div className={whiteContainer}>
@@ -98,7 +105,12 @@ const NewsletterModal = () => {
                                 
                             :   null
                         }
-                </div>
+                    </div>
+                : null
+            }
+
+            
+        </>
         
 
         // <div className="fixed top-0 bottom-0 h-full w-full bg-black text-textDark flex justify-center items-center">
