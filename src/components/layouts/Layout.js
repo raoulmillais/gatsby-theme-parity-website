@@ -1,7 +1,6 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
-import { MdxLink, LocalizedLink } from "gatsby-theme-i18n"
-import { useIntl } from 'react-intl'
+import { MdxLink } from "gatsby-theme-i18n"
 
 import Header from './Header'
 import Footer from './Footer'
