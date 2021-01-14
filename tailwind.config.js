@@ -19,7 +19,10 @@ module.exports = {
       fontFamily: {
         title: ['ManifoldCF','Helvetica', 'Arial', 'sans'],
         body: ['Roboto', 'Helvetica', 'Arial', 'sans']
-      }
+      },
+      backgroundImage: theme => ({
+        'hero-pattern': "url('/static/557b8cb650f0e1d42e36c3f4e835157f/bg-light-1.png')"
+       })
     },
   },
   variants: {

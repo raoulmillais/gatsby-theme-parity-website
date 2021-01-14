@@ -3,7 +3,6 @@ import { LocalizedLink } from 'gatsby-theme-i18n'
 import { useIntl } from 'react-intl'
 import NewsletterModal from '../NewsletterModal'
 import elementLogo from '../../images/logo-element.svg'
-import parityLogo from '../../images/parity_logo_dark.png'
 
 ///////////////---STYLES---///////////////////
 const navItemsFooter = "no-underline text-left text-sm opacity-50 hover:opacity-90 my-1 w-auto"
