@@ -3,7 +3,7 @@ module.exports = {
     title: "Parity Technologies",
     siteUrl: "https://www.parity.io",
     description: "Parity Description",
-    author: "Parity WebDev Team"
+    author: "Parity WebDev Team",
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -54,7 +54,7 @@ module.exports = {
         icon: "./src/images/favicon.png",
       },
     },
-    
+
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {
@@ -65,5 +65,6 @@ module.exports = {
         },
       },
     },
+    "gatsby-plugin-typescript",
   ],
 };
