@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'prettier',
   ],
   settings: {
     react: {
@@ -38,6 +39,5 @@ module.exports = {
     // allow @ts-ignore for testing purposes
     '@typescript-eslint/ban-ts-ignore': 'off',
     // allow space intend
-    indent: [2, 'space'],
   },
 }
