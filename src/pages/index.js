@@ -2,6 +2,9 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { LocalizedLink, LocalesList } from "gatsby-theme-i18n"
 import { useIntl } from "react-intl"
+
+import HeroBlock from '../components/HeroBlock.js'
+
 import Layout from "../components/layouts/Layout"
 import SEO from "../components/layouts/SEO"
 
@@ -9,6 +12,8 @@ const Index = ({ data }) => {
   const intl = useIntl()
   return (
     <Layout>
+
+      <HeroBlock />
 
       
 
