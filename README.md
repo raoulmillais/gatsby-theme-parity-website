@@ -39,7 +39,7 @@ Important Convention Note
 
     ```shell
     cd my-folder/
-    npm run install
+    yarn
     ```
     
 2.  **Fire the engine**
@@ -48,7 +48,7 @@ Important Convention Note
 
     ```shell
     cd my-folder/
-    npm run dev
+    yarn dev
     ```
 
 3.  **Open the code and start customizing!**
