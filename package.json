@@ -7,7 +7,7 @@
   "keywords": [
     "gatsby",
     "parity",
-    "blockhain"
+    "blockchain"
   ],
   "scripts": {
     "dev": "gatsby develop",
@@ -15,7 +15,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "type-check": "tsc --noEmit"
+    "lint": "npm-run-all lint:**",
+    "lint:eslint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit"
   },
   "license": "0BSD",
   "dependencies": {
@@ -45,6 +47,15 @@
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "prettier": "^2.2.1",
     "tailwindcss": "^2.0.2",
     "typescript": "^4.1.3"
   }
