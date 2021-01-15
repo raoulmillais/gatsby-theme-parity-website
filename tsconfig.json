@@ -10,7 +10,6 @@
       "esModuleInterop": true,
       "noUnusedLocals": false
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "decs.d.ts"],
     "exclude": ["node_modules", "public", ".cache"]
   }
-  

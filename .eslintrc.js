@@ -7,6 +7,10 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'prettier',
+    // Those are some additional security-related lints.
+    // There's a chance those will introduce some false positives to our CI,
+    // but the stakes are rather high here, so better safe than sorry
+    'plugin:security/recommended',
   ],
   settings: {
     react: {
@@ -30,6 +34,7 @@ module.exports = {
     // Disable prop-types as we use TypeScript for type checking
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // Enable prettier rules
     'prettier/prettier': 'error',
     // interface start with capital I
@@ -38,6 +43,5 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     // allow @ts-ignore for testing purposes
     '@typescript-eslint/ban-ts-ignore': 'off',
-    // allow space intend
   },
-}
+};

@@ -61,11 +61,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve(`./src/components/layouts/Layout.js`),
+          default: require.resolve(`./src/components/layouts/Layout.tsx`),
         },
       },
     },
-    'gatsby-plugin-typescript',
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
@@ -76,5 +75,6 @@ module.exports = {
         },
       },
     },
+    'gatsby-plugin-typescript',
   ],
-}
+};
