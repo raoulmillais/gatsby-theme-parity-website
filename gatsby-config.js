@@ -1,16 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: "Parity Technologies",
-    siteUrl: "https://www.parity.io",
-    description: "Parity Description",
-    author: "Parity WebDev Team"
+    title: 'Parity Technologies',
+    siteUrl: 'https://www.parity.io',
+    description: 'Parity Description',
+    author: 'Parity WebDev Team',
   },
   plugins: [
-    "gatsby-plugin-postcss",
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-offline",
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,12 +19,12 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: 'images',
+        path: './src/images/',
       },
-      __key: "images",
+      __key: 'images',
     },
     {
       resolve: `gatsby-theme-i18n`,
@@ -35,12 +35,12 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'pages',
+        path: './src/pages/',
       },
-      __key: "pages",
+      __key: 'pages',
     },
     {
       resolve: `gatsby-theme-i18n-react-intl`,
@@ -49,21 +49,32 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: "./src/images/favicon.png",
+        icon: './src/images/favicon.png',
       },
     },
-    
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve(`./src/components/layouts/Layout.js`),
+          default: require.resolve(`./src/components/layouts/Layout.tsx`),
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
+    'gatsby-plugin-typescript',
   ],
 };
