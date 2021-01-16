@@ -4,23 +4,20 @@
   </a>
 </p>
 <h1 align="center">
-  Parity Events Theme
+  Parity Website Theme
 </h1>
 <h3 align="center">
-  Teamplate Designed for Sub0 - Substrate Development Conference
+  Teamplate Designed for Parity Technologies, & related websites. 
 </h3>
 
 Important Convention Note
 > Always create your own branch to work on the site. Use `staging` for testing.  Both Netlify flags towards the bottom display status of `staging` and `main` site.  `main` is production ONLY and deployed by dedicated Dev or Comms team through Forestry.
 
-### Status [Staging](https://sub0-staging.netlify.app/) 
+### Status [Staging](https://parity-staging.netlify.app/) 
 (Password protected; ask in Web Channel on Mattermost)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fe274b09-8ac5-45f6-8383-b79fcf061756/deploy-status)](https://app.netlify.com/sites/gallant-lamarr-7fce67/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1a598998-1c11-4a7d-896e-27b3082edf5c/deploy-status)](https://app.netlify.com/sites/parity-staging/deploys)
 
-### Status [Production](https://sub0-production.netlify.app/)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a0249148-f3c7-400a-9582-f4ed30b789ed/deploy-status)](https://app.netlify.com/sites/sub0-production/deploys)
 
 ## 🚀 Quick start
 
