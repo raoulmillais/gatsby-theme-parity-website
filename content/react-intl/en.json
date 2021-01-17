@@ -28,11 +28,15 @@
     "nav-notice": "Notice",
     "nav-cookie-settings": "Cookie Settings",
 
-
     "substrate": "Substrate",
     "parity-bitcoin": "Parity Bitcoin", 
     "polkadot": "Polkadot",
     "parity-signer": "Parity Signer",
-    "all-technologies": "All Technologies"
+    "all-technologies": "All Technologies",
+
+    "homepage-hero-title":"Blockchain Infrastructure for the Decentralised Web",
+    "homepage-hero-description":"From the Substrate blockchain framework to Polkadot, the sharded protocol enabling blockchains to operate seamlessly together at scale, Parity builds the foundation of Web 3.0.",
+    "homepage-hero-cta":"LEARN MORE ABOUT PARITY"
+
 
 }

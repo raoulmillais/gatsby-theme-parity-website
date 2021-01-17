@@ -21,6 +21,7 @@ const NewsletterModal = () => {
       mode: 'no-cors',
     })
       .then(response => {
+        console.log(response);
         setFormSubmitted(!formSubmitted);
         setTimeout(() => {
           setFormSubmitted(false);
@@ -91,7 +92,7 @@ const NewsletterModal = () => {
 
                   <input
                     className="w-72 mx-auto mt-4 border-textLight"
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="Your Email Address"
                     required

@@ -34,7 +34,7 @@
     }
 
     h4 {
-    @apply my-6 text-2xl font-semibold;
+    @apply my-6 text-2xl font-normal;
     }
 
     h5 {
@@ -47,7 +47,7 @@
 
     /* Paragraphs */
     p {
-    @apply my-3 font-normal;
+    @apply my-3 font-light;
     }
 
     /* Blockquotes */

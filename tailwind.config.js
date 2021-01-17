@@ -19,6 +19,9 @@ module.exports = {
         title: ['ManifoldCF', 'Helvetica', 'Arial', 'sans'],
         body: ['Roboto', 'Helvetica', 'Arial', 'sans'],
       },
+      backgroundImage: theme => ({
+        'hero-pattern': "url('/static/bg-light-1-557b8cb650f0e1d42e36c3f4e835157f.png')",
+      }),
     },
   },
   variants: {
