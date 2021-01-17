@@ -36,7 +36,20 @@
 
     "homepage-hero-title":"Blockchain Infrastructure for the Decentralised Web",
     "homepage-hero-description":"From the Substrate blockchain framework to Polkadot, the sharded protocol enabling blockchains to operate seamlessly together at scale, Parity builds the foundation of Web 3.0.",
-    "homepage-hero-cta":"LEARN MORE ABOUT PARITY"
+    "homepage-hero-cta":"LEARN MORE ABOUT PARITY",
+
+    "homepage-intro-section-one-title":"Laying the foundation for a better web",
+    "homepage-intro-section-one-text-one":"The internet is too important to billions of people for it to be at the mercy of a few powerful companies.",
+    "homepage-intro-section-one-text-two":"We are developing the technology to disrupt centralised online services and enable institutional innovation.",
+    "homepage-intro-section-one-text-three":"What if we no longer had to route our interactions through centralised services? What if data breaches were a remnant of an old flawed infrastructure? Each piece of Parity's technology is a step towards a society run on peer-to-peer networks instead of by a handful of corporations.",
+    "homepage-intro-section-two-title":"Groundbreaking distributed tech.",
+    "homepage-intro-section-two-subtitle":"We are pioneers in:",
+    "homepage-intro-section-two-line-items-1":"On-chain governance protocol upgrades",
+    "homepage-intro-section-two-line-items-2":"Proof-of-Authority consensus",
+    "homepage-intro-section-two-line-items-3":"Private Ethereum transactions",
+    "homepage-intro-section-two-line-items-4":"Warp sync and pruning",
+    "homepage-intro-section-two-line-items-5":"Rust and Wasm in blockchain",
+    "homepage-intro-section-two-text":"Nearly all of our work is provided open source. Community contributors are a crucial part of development. Come build technology for a fairer society with us."
 
 
 }
