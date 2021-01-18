@@ -49,7 +49,10 @@
     "homepage-intro-section-two-line-items-3":"Private Ethereum transactions",
     "homepage-intro-section-two-line-items-4":"Warp sync and pruning",
     "homepage-intro-section-two-line-items-5":"Rust and Wasm in blockchain",
-    "homepage-intro-section-two-text":"Nearly all of our work is provided open source. Community contributors are a crucial part of development. Come build technology for a fairer society with us."
+    "homepage-intro-section-two-text":"Nearly all of our work is provided open source. Community contributors are a crucial part of development. Come build technology for a fairer society with us.",
 
-
+    "homepage-build-on-parity-tech": "Build on Parity Tech", 
+    "homepage-build-on-parity-tech-title": "106,000 refugees aided with Parity blockchain tech", 
+    "homepage-build-on-parity-tech-description": "Parity developed blockchain technology for the UN World Food Programme to make the transfer of cash assistance faster, cheaper, and more secure. By the end of 2018, the technology will help over 106,000 refugees receive assistance.",
+    "homepage=build-on-parity-tech-button": "Read more"
 }
