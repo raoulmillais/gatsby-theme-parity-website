@@ -54,5 +54,16 @@
     "homepage-build-on-parity-tech": "Build on Parity Tech", 
     "homepage-build-on-parity-tech-title": "106,000 refugees aided with Parity blockchain tech", 
     "homepage-build-on-parity-tech-description": "Parity developed blockchain technology for the UN World Food Programme to make the transfer of cash assistance faster, cheaper, and more secure. By the end of 2018, the technology will help over 106,000 refugees receive assistance.",
-    "homepage=build-on-parity-tech-button": "Read more"
+    "homepage=build-on-parity-tech-button": "Read more",
+
+    "homepage-parity-tech-section-title": "Open-source technologies for a society run on peer-to-peer networks",
+    "homepage-parity-tech-section-substrate-title": "Substrate",
+    "homepage-parity-tech-section-substrate-description": "A framework for building blockchains and spawning decentralized innovation.",
+    "homepage-parity-tech-section-polkadot-title": "Polkadot",
+    "homepage-parity-tech-section-polkadot-description": "The next-generation platform for connecting independent blockchains together.",
+    "homepage-parity-tech-section-signer-title": "Parity Signer",
+    "homepage-parity-tech-section-signer-description": "A secure offline wallet for your mobile device",
+    "homepage-parity-tech-section-cta": "See All Technologies",
+    
+    "homepage-companies-using-our-tech-title":"Some of the organizations using our tech"
 }

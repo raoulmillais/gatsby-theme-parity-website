@@ -21,6 +21,7 @@ module.exports = {
       },
       backgroundImage: theme => ({
         'hero-pattern': "url('/static/bg-light-1-557b8cb650f0e1d42e36c3f4e835157f.png')",
+        'hero-pattern-dark': "url('/static/c98ac65387f53c43a8707c6896f83156/bg-dark-1.png')",
       }),
     },
   },

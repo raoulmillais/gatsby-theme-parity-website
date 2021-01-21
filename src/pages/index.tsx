@@ -4,6 +4,8 @@ import Layout from '../components/layouts/Layout';
 import HeroPattern from '../components/sections/HeroPattern'
 import HomeInto from '../components/sections/HomeIntro'
 import BuildOnParity from '../components/sections/BuildOnParity'
+import ParityTech from '../components/sections/ParityTech'
+import CompaniesUsingOurTech from '../components/sections/CompaniesUsingOurTech'
 
 
 export default function Index() {
@@ -12,6 +14,8 @@ export default function Index() {
       <HeroPattern />
       <HomeInto />
       <BuildOnParity />
+      <ParityTech />
+      <CompaniesUsingOurTech />
       <p>This is Homepage</p>
     </Layout>
   );
