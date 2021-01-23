@@ -13,7 +13,7 @@ export default function TechCard(props: TechCardProps) {
   const { title, description, logo, link, extraClass } = props;
 
   return (
-    <div className="bg-white m-6 text-center hover:shadow-2xl cursor-pointer md:w-1/3">
+    <div className="bg-white m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3">
       <LocalizedLink to={link} className="no-underline">
         <div className="px-4 py-6 flex flex-col items-center">
           <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />

@@ -35,7 +35,12 @@ export default function ParityTech() {
         <div className="flex flex-wrap justify-center opacity-50 max-w-screen-md">
           {images.allFile.edges.map((edge: any) => (
             // eslint-disable-next-line react/jsx-key
-            <Img className="w-24 mx-3 my-1 h-auto" fluid={edge.node.childImageSharp.fluid} alt={edge.node.name} />
+            <Img
+              className="w-24 mx-3 my-1 h-auto"
+              key={edge.node.id}
+              fluid={edge.node.childImageSharp.fluid}
+              alt={edge.node.name}
+            />
           ))}
         </div>
       </div>

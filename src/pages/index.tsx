@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layouts/Layout';
-import HeroPattern from '../components/sections/HeroPattern'
-import HomeInto from '../components/sections/HomeIntro'
-import BuildOnParity from '../components/sections/BuildOnParity'
-import ParityTech from '../components/sections/ParityTech'
-import CompaniesUsingOurTech from '../components/sections/CompaniesUsingOurTech'
-
+import HeroPattern from '../components/sections/HeroPattern';
+import HomeInto from '../components/sections/HomeIntro';
+import BuildOnParity from '../components/sections/BuildOnParity';
+import ParityTech from '../components/sections/ParityTech';
+import CompaniesUsingOurTech from '../components/sections/CompaniesUsingOurTech';
+import ParityTeam from '../components/sections/ParityTeam';
+import NewsFeatures from '../components/sections/NewsFeatures';
 
 export default function Index() {
   return (
@@ -16,7 +17,8 @@ export default function Index() {
       <BuildOnParity />
       <ParityTech />
       <CompaniesUsingOurTech />
-      <p>This is Homepage</p>
+      <ParityTeam />
+      <NewsFeatures />
     </Layout>
   );
 }

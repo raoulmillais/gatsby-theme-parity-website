@@ -65,5 +65,16 @@
     "homepage-parity-tech-section-signer-description": "A secure offline wallet for your mobile device",
     "homepage-parity-tech-section-cta": "See All Technologies",
     
-    "homepage-companies-using-our-tech-title":"Some of the organizations using our tech"
+    "homepage-companies-using-our-tech-title":"Some of the organizations using our tech",
+
+    "homepage-team-title": "Technology developed by a team of the world’s top blockchain engineers",
+    "homepage-team-subtitle": "60+ developers across fifteen countries. A no-bullshit culture of getting stuff done.",
+    "homepage-team-join-cta": "Join the team.",
+    "homepage-team-jutta": "Dr. Jutta Steiner",
+    "homepage-team-jutta-title": "CEO & Founder",
+    "homepage-team-gavin": "Dr. Gavin Wood",
+    "homepage-team-gavin-title": "CWO & Founder",
+    "homepage-team-cta": "learn more about the team",
+
+    "homepage-news-title": "Featured on"
 }
