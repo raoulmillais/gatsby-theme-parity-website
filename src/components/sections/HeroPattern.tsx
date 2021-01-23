@@ -13,7 +13,9 @@ export default function HeroPattern() {
           <p className="leading-9 mb-8 text-textDark md:text-2xl md:px-12">
             {intl.formatMessage({ id: 'homepage-hero-description' })}
           </p>
-          <Button link="/#intro">{intl.formatMessage({ id: 'homepage-hero-cta' })}</Button>
+          <Button extraClass=" " link="/#intro">
+            {intl.formatMessage({ id: 'homepage-hero-cta' })}
+          </Button>
         </div>
       </div>
     </section>

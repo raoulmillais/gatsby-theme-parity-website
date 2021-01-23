@@ -74,8 +74,8 @@ export default function NewsFeatures() {
       }
     }
   `);
-  const { wsj, techCrunch, bloomberg, forbes, coindesk, cointelegraph, economist, ethnews } = images;
-  console.log(wsj);
+  const { wsj, techCrunch, bloomberg, forbes, coindesk, cointelegraph, economist } = images;
+
   return (
     <section className="h-full border pb-8 pt-6">
       <div className="container text-center flex flex-col items-center justify-center">

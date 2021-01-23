@@ -8,6 +8,8 @@ import ParityTech from '../components/sections/ParityTech';
 import CompaniesUsingOurTech from '../components/sections/CompaniesUsingOurTech';
 import ParityTeam from '../components/sections/ParityTeam';
 import NewsFeatures from '../components/sections/NewsFeatures';
+import FeaturedBlog from '../components/sections/FeaturedBlogs';
+import Social from '../components/Social'
 
 export default function Index() {
   return (
@@ -19,6 +21,8 @@ export default function Index() {
       <CompaniesUsingOurTech />
       <ParityTeam />
       <NewsFeatures />
+      <FeaturedBlog />
+      <Social />
     </Layout>
   );
 }

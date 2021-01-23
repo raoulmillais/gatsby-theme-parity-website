@@ -76,5 +76,12 @@
     "homepage-team-gavin-title": "CWO & Founder",
     "homepage-team-cta": "learn more about the team",
 
-    "homepage-news-title": "Featured on"
+    "homepage-news-title": "Featured on",
+
+    "homepage-featured-blog-heading":"From the blog",
+    "homepage-featured-blog-title":"How can Parity help your project?",
+    "homepage-featured-blog-cta":"See out Technology",
+    "homepage-featured-blog-subtext":"or check out Parity's",
+    "homepage-featured-blog-subtext-link":"custom solutions",
+    "homepage-social-card-title":"Join the discussion:"
 }
