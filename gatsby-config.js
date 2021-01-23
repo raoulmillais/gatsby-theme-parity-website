@@ -4,6 +4,12 @@ module.exports = {
     siteUrl: 'https://www.parity.io',
     description: 'Parity Description',
     author: 'Parity WebDev Team',
+    twitter: 'https://twitter.com/ParityTech',
+    linkedIn: 'https://www.linkedin.com/company/paritytech',
+    element: 'https://app.element.io/#/room/#watercooler:matrix.parity.io',
+    github: 'https://github.com/paritytech/',
+    telegram: 'https://t.me/parity_technologies',
+    gitter: 'https://gitter.im/paritytech/parity',
   },
   plugins: [
     'gatsby-plugin-postcss',
