@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import Button from '../../Button';
 import { useIntl } from 'react-intl';
 
 export default function HeroPattern() {

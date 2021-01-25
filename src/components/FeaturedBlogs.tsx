@@ -1,9 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Button from '../Button';
+import Button from './Button';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import BlogCard from '../BlogCard';
-import tempImage from '../../images/defi-on-polkadot.png'
+import BlogCard from './BlogCard';
+import tempImage from '../images/defi-on-polkadot.png';
 import { useIntl } from 'react-intl';
 
 export default function FeaturedBlogs() {

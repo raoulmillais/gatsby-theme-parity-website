@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         parityPink: '#FF1864',
+        parityRed: '#CC1350',
         parityGray: '#eff1f0',
         textDark: '#282828',
         textLight: '#757575',
@@ -21,6 +22,7 @@ module.exports = {
       },
       backgroundImage: theme => ({
         'hero-pattern': "url('/static/bg-light-1-557b8cb650f0e1d42e36c3f4e835157f.png')",
+        'hero-pattern-2': "url('/static/09e985c54341462df605eac6e087597a/bg-light-2.png')",
         'hero-pattern-dark': "url('/static/c98ac65387f53c43a8707c6896f83156/bg-dark-1.png')",
       }),
     },

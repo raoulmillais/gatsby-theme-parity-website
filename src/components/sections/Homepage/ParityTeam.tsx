@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import FullScreenYouTube from '../FullScreenYouTube';
-import Button from '../Button';
+import FullScreenYouTube from '../../FullScreenYouTube';
+import Button from '../../Button';
 import { useIntl } from 'react-intl';
 
 export default function ParityTeam() {

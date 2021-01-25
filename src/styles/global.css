@@ -52,7 +52,7 @@
 
     /* Blockquotes */
     blockquote {
-    @apply my-4 px-8 border-l-4 border-gray-200;
+    @apply my-4 px-8 font-title italic text-xl;
     }
 
     /* Horizontal Rules */

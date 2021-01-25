@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Button from '../Button';
-import TechCard from '../TechCard';
+import Button from '../../Button';
+import TechCard from '../../TechCard';
 import { useIntl } from 'react-intl';
 
 export default function ParityTech() {
@@ -37,6 +37,7 @@ export default function ParityTech() {
             logo={images.substrate.publicURL}
             link="/substrate"
             extraClass="pt-10"
+            theme="light"
           />
           <TechCard
             title={intl.formatMessage({ id: 'homepage-parity-tech-section-polkadot-title' })}
@@ -44,6 +45,7 @@ export default function ParityTech() {
             logo={images.polkadot.publicURL}
             link="/polkadot"
             extraClass=" "
+            theme="light"
           />
           <TechCard
             title={intl.formatMessage({ id: 'homepage-parity-tech-section-signer-title' })}
@@ -51,6 +53,7 @@ export default function ParityTech() {
             logo={images.signer.publicURL}
             link="/signer"
             extraClass=" "
+            theme="light"
           />
         </div>
         <div className="mb-24 mt-12">

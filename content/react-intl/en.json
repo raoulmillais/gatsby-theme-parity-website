@@ -83,5 +83,17 @@
     "homepage-featured-blog-cta":"See out Technology",
     "homepage-featured-blog-subtext":"or check out Parity's",
     "homepage-featured-blog-subtext-link":"custom solutions",
-    "homepage-social-card-title":"Join the discussion:"
+    "homepage-social-card-title":"Join the discussion:",
+
+    "technology-page-title":"Open-Source Software for Building the Decentralised Web",
+    "technology-page-sub-title-1":"Parity develops cutting-edge blockchain technologies to foster innovation.",
+    "technology-page-sub-title-2":"Don't know which technology is right for you?",
+    "technology-page-cta":"See our csutom solution",
+    "technology-page-sub-cta-1":"or",
+    "technology-page-sub-cta-2":"get in touch",
+    "technology-page-sub-cta-3":"with us",
+    "technology-page-gavin-quote":"In the future, trusting an institution with our interests will be as archaic a concept as reckoning on an abacus is today.",
+    "technology-page-gavin-title":"Founder — Parity Technologies",
+    "technology-page-github-title":"Go to GitHub",
+    "technology-page-github-text":"See all of our code and technologies on our GitHub repository."
 }

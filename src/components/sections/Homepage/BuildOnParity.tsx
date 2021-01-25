@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import image from '../../images/world-food-programme.jpg';
+import image from '../../../images/world-food-programme.jpg';
 
 export default function BuildOnParity() {
   const intl = useIntl();

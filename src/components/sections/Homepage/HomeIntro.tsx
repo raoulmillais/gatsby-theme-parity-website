@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import imageOne from '../../images/intro-image-1.jpg';
-import imageTwo from '../../images/intro-image-2.jpg';
+import imageOne from '../../../images/intro-image-1.jpg';
+import imageTwo from '../../../images/intro-image-2.jpg';
 
 export default function HeroPattern() {
   const intl = useIntl();

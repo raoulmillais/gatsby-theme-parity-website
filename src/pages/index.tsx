@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layouts/Layout';
-import HeroPattern from '../components/sections/HeroPattern';
-import HomeInto from '../components/sections/HomeIntro';
-import BuildOnParity from '../components/sections/BuildOnParity';
-import ParityTech from '../components/sections/ParityTech';
-import CompaniesUsingOurTech from '../components/sections/CompaniesUsingOurTech';
-import ParityTeam from '../components/sections/ParityTeam';
-import NewsFeatures from '../components/sections/NewsFeatures';
-import FeaturedBlog from '../components/sections/FeaturedBlogs';
+import HeroPattern from '../components/sections/Homepage/HeroPattern';
+import HomeInto from '../components/sections/Homepage/HomeIntro';
+import BuildOnParity from '../components/sections/Homepage/BuildOnParity';
+import ParityTech from '../components/sections/Homepage/ParityTech';
+import CompaniesUsingOurTech from '../components/sections/Homepage/CompaniesUsingOurTech';
+import ParityTeam from '../components/sections/Homepage/ParityTeam';
+import NewsFeatures from '../components/sections/Homepage/NewsFeatures';
+import FeaturedBlog from '../components/FeaturedBlogs';
 import Social from '../components/Social';
 
 export default function Index() {
