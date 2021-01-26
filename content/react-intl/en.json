@@ -95,5 +95,30 @@
     "technology-page-gavin-quote":"In the future, trusting an institution with our interests will be as archaic a concept as reckoning on an abacus is today.",
     "technology-page-gavin-title":"Founder — Parity Technologies",
     "technology-page-github-title":"Go to GitHub",
-    "technology-page-github-text":"See all of our code and technologies on our GitHub repository."
+    "technology-page-github-text":"See all of our code and technologies on our GitHub repository.",
+
+    "solutions-page-hero-title":"Blockchains that evolve with your business",
+    "solutions-page-hero-description":"Whether you’re an open-source team or a large enterprise, iterate faster with industry-leading expertise.",
+    "solutions-page-hero-cta":"Collaborate with us",
+    "solutions-page-custom-title":"Custom solutions from Parity Technologies.",
+    "solutions-page-custom-paragraph-1":"Decentralized technology is advancing at an incredible speed, and Parity is leading this wave of innovation.",
+    "solutions-page-custom-paragraph-2":"Founded by Ethereum cofounder Dr. Gavin Wood, Parity has fundamentally shaped the blockchain industry, from building the highly-adopted Parity Ethereum client and implementations of Bitcoin and Zcash, to developing the next generation with Substrate and Polkadot.",
+    "solutions-page-expert-title":"Expert solutions architecture, development, & support.",
+    "solutions-page-expert-description":"When you build with Parity, you leverage a global team of elite developers, cryptographers, researchers, and solutions architects to ensure you make the right decisions. Our next generation Substrate framework empowers you to deploy your blockchain in a matter of months and optimize it for your custom production needs.",
+    "solutions-page-expert-card-one-title":"Dedicated Support",
+    "solutions-page-expert-card-one-description":"Get production support with the Parity technology stack directly from the team who built it.",
+    "solutions-page-expert-card-two-title":"Advisory Services",
+    "solutions-page-expert-card-two-description":"Gain a distinct advantage by leveraging our extensive expertise with decentralized solutions.",
+    "solutions-page-expert-card-three-title":"Solutions Architecture & Development",
+    "solutions-page-expert-card-three-description":"From design to implementation, we provide custom solutions for projects big and small.",
+    "solutions-page-blockchain-title":"Next generation blockchain technologies.",
+    "solutions-page-blockchain-paragraph-1":"Parity builds next generation blockchain technologies to power the future of decentralized services.",
+    "solutions-page-blockchain-paragraph-2":"With cutting-edge solutions for security, scalability, governance, upgradeability, and interoperability, Parity enables your project to grow and adapt with the pace of technology and ever-changing market needs.",
+    "solutions-page-blockchain-paragraph-3":"We work with open-source teams, NGOs, startups, and enterprises to harness the power of blockchain for a wide range of applications.",
+    "solutions-page-blockchain-paragraph-4":"Whether you’re building an independent consortium blockchain or looking to integrate with Polkadot, our experienced team will deliver the right solutions for you.",
+    "solutions-page-teams-building":"Teams building on Parity tech",
+    "soltuions-page-cta-title": "Interested in working with us?",
+    "solutions-page-cta":"Get in touch"
+
+
 }

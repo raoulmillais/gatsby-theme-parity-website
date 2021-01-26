@@ -1,7 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 export default function GavQoute() {
   const intl = useIntl();

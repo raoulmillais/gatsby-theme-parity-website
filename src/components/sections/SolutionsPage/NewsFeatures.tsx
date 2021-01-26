@@ -8,7 +8,7 @@ export default function NewsFeatures() {
   const logoStyles = 'w-40 mx-3 my-1 h-auto';
   const images = useStaticQuery(graphql`
     {
-      wsj: file(relativePath: { eq: "news-logos/logo-wsj.png" }) {
+      wsj: file(relativePath: { eq: "news-logos/logo-wsj-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -16,7 +16,7 @@ export default function NewsFeatures() {
         }
         name
       }
-      techCrunch: file(relativePath: { eq: "news-logos/logo-techcrunch.png" }) {
+      techCrunch: file(relativePath: { eq: "news-logos/logo-techcrunch-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -24,7 +24,7 @@ export default function NewsFeatures() {
         }
         name
       }
-      bloomberg: file(relativePath: { eq: "news-logos/logo-bloomberg.png" }) {
+      bloomberg: file(relativePath: { eq: "news-logos/logo-bloomberg-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -32,7 +32,7 @@ export default function NewsFeatures() {
         }
         name
       }
-      forbes: file(relativePath: { eq: "news-logos/logo-forbes.png" }) {
+      forbes: file(relativePath: { eq: "news-logos/logo-forbes-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -40,7 +40,7 @@ export default function NewsFeatures() {
         }
         name
       }
-      coindesk: file(relativePath: { eq: "news-logos/logo-coindesk.png" }) {
+      coindesk: file(relativePath: { eq: "news-logos/logo-coindesk-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -48,15 +48,7 @@ export default function NewsFeatures() {
         }
         name
       }
-      cointelegraph: file(relativePath: { eq: "news-logos/logo-cointelegraph.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-        name
-      }
-      economist: file(relativePath: { eq: "news-logos/logo-economist.png" }) {
+      economist: file(relativePath: { eq: "news-logos/logo-economist-light.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -69,10 +61,9 @@ export default function NewsFeatures() {
   const { wsj, techCrunch, bloomberg, forbes, coindesk, cointelegraph, economist } = images;
 
   return (
-    <section className="h-full border pb-8 pt-6">
+    <section className="h-full border-b border-gray-700 pb-6 pt-6 bg-textDark">
       <div className="container text-center flex flex-col items-center justify-center">
-        <h5 className="text-textLight opacity-50 px-2 mb-3">{intl.formatMessage({ id: 'homepage-news-title' })}</h5>
-        <div className="flex flex-wrap justify-center opacity-50 max-w-screen-md">
+        <div className="flex flex-wrap justify-center opacity-50 ">
           <a
             href="https://www.wsj.com/articles/crypto-startup-polkadot-seeking-new-token-sale-above-1-billion-valuation-11548377842"
             target="_blank"
@@ -102,25 +93,18 @@ export default function NewsFeatures() {
             <Img className={logoStyles} fluid={forbes.childImageSharp.fluid} alt={forbes.name} />
           </a>
           <a
-            href="https://www.coindesk.com/internet-blockchains-project-polkadot-launches-first-proof-concept/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Img className={logoStyles} fluid={coindesk.childImageSharp.fluid} alt={coindesk.name} />
-          </a>
-          <a
-            href="https://cointelegraph.com/news/parity-s-jutta-steiner-web-3-0-will-evolve-as-interoperability-and-usability-improve"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Img className={logoStyles} fluid={cointelegraph.childImageSharp.fluid} alt={cointelegraph.name} />
-          </a>
-          <a
             href="https://www.acast.com/theeconomistbabbage/babbage-fixingtheinternet"
             target="_blank"
             rel="noreferrer"
           >
             <Img className={logoStyles} fluid={economist.childImageSharp.fluid} alt={economist.name} />
+          </a>
+          <a
+            href="https://www.coindesk.com/internet-blockchains-project-polkadot-launches-first-proof-concept/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Img className={logoStyles} fluid={coindesk.childImageSharp.fluid} alt={coindesk.name} />
           </a>
         </div>
       </div>
