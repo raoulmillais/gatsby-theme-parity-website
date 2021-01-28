@@ -10,10 +10,15 @@ import ParityTeam from '../components/sections/Homepage/ParityTeam';
 import NewsFeatures from '../components/sections/Homepage/NewsFeatures';
 import FeaturedBlog from '../components/FeaturedBlogs';
 import Social from '../components/Social';
+import SEO from '../components/layouts/SEO';
+import { useIntl } from 'react-intl';
 
 export default function Index() {
+  const intl = useIntl();
+
   return (
-    <Layout>
+    <Layout theme="">
+      <SEO title={intl.formatMessage({ id: 'homepage-hero-title' })} />
       <HeroPattern />
       <HomeInto />
       <BuildOnParity />

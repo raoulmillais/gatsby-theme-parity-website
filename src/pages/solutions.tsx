@@ -8,10 +8,15 @@ import NextBlockChain from '../components/sections/SolutionsPage/NextBlockchain'
 import TeamsBuilding from '../components/sections/SolutionsPage/TeamsBuilding';
 import WorkWithUs from '../components/sections/SolutionsPage/WorkWithUs';
 import Social from '../components/Social';
+import SEO from '../components/layouts/SEO';
+import { useIntl } from 'react-intl';
 
 export default function SolutionsPage() {
+  const intl = useIntl();
+
   return (
-    <Layout>
+    <Layout theme="">
+      <SEO title={intl.formatMessage({ id: 'solutions-page-seo' })} />
       <HeroPattern />
       <NewsFeatures />
       <CustomSolution />

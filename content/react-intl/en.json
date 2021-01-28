@@ -37,7 +37,6 @@
     "homepage-hero-title":"Blockchain Infrastructure for the Decentralised Web",
     "homepage-hero-description":"From the Substrate blockchain framework to Polkadot, the sharded protocol enabling blockchains to operate seamlessly together at scale, Parity builds the foundation of Web 3.0.",
     "homepage-hero-cta":"LEARN MORE ABOUT PARITY",
-
     "homepage-intro-section-one-title":"Laying the foundation for a better web",
     "homepage-intro-section-one-text-one":"The internet is too important to billions of people for it to be at the mercy of a few powerful companies.",
     "homepage-intro-section-one-text-two":"We are developing the technology to disrupt centralised online services and enable institutional innovation.",
@@ -50,12 +49,10 @@
     "homepage-intro-section-two-line-items-4":"Warp sync and pruning",
     "homepage-intro-section-two-line-items-5":"Rust and Wasm in blockchain",
     "homepage-intro-section-two-text":"Nearly all of our work is provided open source. Community contributors are a crucial part of development. Come build technology for a fairer society with us.",
-
     "homepage-build-on-parity-tech": "Build on Parity Tech", 
     "homepage-build-on-parity-tech-title": "106,000 refugees aided with Parity blockchain tech", 
     "homepage-build-on-parity-tech-description": "Parity developed blockchain technology for the UN World Food Programme to make the transfer of cash assistance faster, cheaper, and more secure. By the end of 2018, the technology will help over 106,000 refugees receive assistance.",
     "homepage=build-on-parity-tech-button": "Read more",
-
     "homepage-parity-tech-section-title": "Open-source technologies for a society run on peer-to-peer networks",
     "homepage-parity-tech-section-substrate-title": "Substrate",
     "homepage-parity-tech-section-substrate-description": "A framework for building blockchains and spawning decentralized innovation.",
@@ -64,9 +61,7 @@
     "homepage-parity-tech-section-signer-title": "Parity Signer",
     "homepage-parity-tech-section-signer-description": "A secure offline wallet for your mobile device",
     "homepage-parity-tech-section-cta": "See All Technologies",
-    
     "homepage-companies-using-our-tech-title":"Some of the organizations using our tech",
-
     "homepage-team-title": "Technology developed by a team of the world’s top blockchain engineers",
     "homepage-team-subtitle": "60+ developers across fifteen countries. A no-bullshit culture of getting stuff done.",
     "homepage-team-join-cta": "Join the team.",
@@ -75,9 +70,7 @@
     "homepage-team-gavin": "Dr. Gavin Wood",
     "homepage-team-gavin-title": "CWO & Founder",
     "homepage-team-cta": "learn more about the team",
-
     "homepage-news-title": "Featured on",
-
     "homepage-featured-blog-heading":"From the blog",
     "homepage-featured-blog-title":"How can Parity help your project?",
     "homepage-featured-blog-cta":"See out Technology",
@@ -85,6 +78,7 @@
     "homepage-featured-blog-subtext-link":"custom solutions",
     "homepage-social-card-title":"Join the discussion:",
 
+    "technology-page-seo":"Blockchain Technologies & DLT Products",
     "technology-page-title":"Open-Source Software for Building the Decentralised Web",
     "technology-page-sub-title-1":"Parity develops cutting-edge blockchain technologies to foster innovation.",
     "technology-page-sub-title-2":"Don't know which technology is right for you?",
@@ -97,6 +91,7 @@
     "technology-page-github-title":"Go to GitHub",
     "technology-page-github-text":"See all of our code and technologies on our GitHub repository.",
 
+    "solutions-page-seo":"Custom Enterprise Blockchain Solutions",
     "solutions-page-hero-title":"Blockchains that evolve with your business",
     "solutions-page-hero-description":"Whether you’re an open-source team or a large enterprise, iterate faster with industry-leading expertise.",
     "solutions-page-hero-cta":"Collaborate with us",
@@ -163,6 +158,41 @@
     "about-page-blog-sub-cta-2":"subscribe",
     "about-page-blog-sub-cta-3":"to the newsletter",
 
+    "blog-page-seo":"Blockchain Infrastructure for the Decentralised Web",
     "blog-page-title":"Blog of Parity Technologies",
-    "blog-page-description":"Blockchain infrastructure for the decentralised web."
+    "blog-page-description":"Blockchain infrastructure for the decentralised web.",
+
+    "jutta-steiner":"Jutta Steiner",
+    "jutta-page-title":"Jutta Steiner: CEO & Founder of Parity Technologies",
+    "jutta-page-description-one-1":"Awarded Hottest Blockchain Startup Founder by",
+    "jutta-page-description-one-2":"TechCrunch",
+    "jutta-page-description-one-3":"and Top 40 Under 40 by",
+    "jutta-page-description-one-4":"Fortune Ledger,",
+    "jutta-page-description-one-5":"Jutta holds a Ph.D in Mathematics.",
+    "jutta-page-description-two":"Jutta began her blockchain career as Ethereum Foundation's original Chief of Security, overseeing security audit and integration prior to the launch of the public blockchain in 2015.",
+    "jutta-page-description-three":"At Parity, Jutta works to ensure web 3.0 will be a fair web for all.",
+    "jutta-page-video-caption":"Jutta Steiner at TechCrunch Sessions: Blockchain",
+    "jutta-page-bottom-cta-title":"A team of the world’s top blockchain engineers",
+    "jutta-page-bottom-cta":"Learn more about the team",
+    "jutta-page-bottom-sub-cta-1":"or checkout ",
+    "jutta-page-bottom-sub-cta-2":"Parity's blog",
+
+    "gavin-wood-page-seo":"Gavin Wood: CWO & Founder of Parity Technologies",
+    "gavin-wood-page-title":"Gavin Wood: The Blockchain and Decentralized Web Pioneer",
+    "gavin-wood-page-main-image-caption": "Gavin Wood at Web3 Summit in Berlin",
+    "gavin-wood-page-paragraph-one":"<p>Being an innately curious child, the 9-year old, Gavin could not have been more excited when his mother spontaneously decided to get him their neighbor’s old computer. Little did she know that this old thing would inflame his curiosity and make him a pioneer in laying the foundation for a new era of the internet through his work building <a href='https://ethereum.org/'>Ethereum</a>, <a href='https://en.wikipedia.org/wiki/Solidity'>Solidity</a> and the <a href='https://web3.foundation/'>Web3 Foundation</a>. In 2014, his curiosity took him to Miami where he co-founded the decentralized smart contract platform Ethereum with <a href='https://en.wikipedia.org/wiki/Vitalik_Buterin'>Vitalik Buterin</a> and six others.</p>",
+    "gavin-wood-page-subtitle-one":"Before Ethereum",
+    "gavin-wood-page-paragraph-two":"Dr. Gavin James Wood, despite inheriting his mother’s fear of electricity based accidents grew to love technology and game theory. His love for computer and technology was further fortified by his, Lancashire County, neighbor Sean who taught him to code his first computer program and his school teachers at the Lancaster Royal Grammar School, who inspired him to stay true to his passion. After graduating from Lancaster Royal Grammar School, he pursued software engineering and studied for his masters in engineering at the University of York. For his doctoral degree, he chose music visualization for human-computer interfacing (HCI) as the preferred field of study at his postgraduate alma mater, University of York.",
+    "gavin-wood-page-paragraph-three":"<p>Dr. Wood continued to develop his developer experience in the early 2000s with an extendable, yet scalable architecture of audio-signal refinement and fine-tuning with <a href='https://github.com/gavofyork/Exscalibar'>Exscalibar</a>. After completing his PhD, he worked on a next-generation cross-platform game engine for Frontier Developments. In 2007, he started Quid Pro Code, a software shop where he designed and implemented the first C++ language workbench, Martta, while he consulted Microsoft Research on technical aspects of embedded domain-specific languages. In 2011, as the Technical Director at the Lancaster Logic Response, he used techniques from his PhD to develop a system for creating real-time light-shows for music, which were deployed to one of London's top nightclubs. At LLR, Dr. Wood also worked in the development of Noted, an extensible audio analysis and notation C++ environment.</p>",
+    "gavin-wood-page-video-caption":"Gavin Wood at TEDx Vienna",
+    "gavin-wood-page-subtitle-two":"Ethereum",
+    "gavin-wood-page-paragraph-four":"In 2013, Dr. Wood was building OxLegal, when he met Vitalik Buterin through a mutual friend and started working on a project that was not focused on his doctoral research topic. With Buterin, he began working on a decentralized platform that was quite similar to the cryptocurrency incumbent Bitcoin, at the same time vastly different in terms of vision and pursuit of decentralizing the Internet. Gavin holed up with Buterin, Charles Hoskinson, Anthony Di Iorio, Wendell Davies and others in a beach house in Miami in January, 2014. There, he coded the first functional implementation of Ethereum, known as PoC-1 or the alpha release). The five of them were to present the PoC-1 at the North American Bitcoin Conference in Miami, in January 2014. Dr. Wood became a co-founder and the Chief Technology Officer, wrote the Ethereum Yellow Paper where the Ethereum Virtual Machine would be specified, the first formal specification of a blockchain’s state machine to be written.",
+    "gavin-wood-page-paragraph-five":"Over the next two years, Dr. Wood solely focused on the development of Ethereum, which included general platform architecture, the majority of the C++ Ethereum client and the initial design of Solidity, an object-oriented programming language for writing smart contracts used by Ethereum.",
+    "gavin-wood-page-paragraph-six":"By 2016, Dr. Wood expanded his focus and founded EthCore, promptly raising pre-seed funding. With over sixty developers across fifteen countries, EthCore later became Parity Technologies.",
+    "gavin-wood-page-subtitle-three":"From Ethereum into Parity",
+    "gavin-wood-page-paragraph-seven":"Two years after founding Ethereum, Dr. Wood went on to found Parity Technologies, a blockchain infrastructure firm for the decentralized web with Ethereum alumni Dr. Jutta Steiner (head of security auditing), Dr. Aeron Buchanan (head of finance and operations) and Ken Kappler (head of comms). At Parity, he ideated a host of projects to innovate the current decentralized application landscape that ranged from the fastest and most advanced Ethereum client, Parity Ethereum, to DIY blockchain frameworks like Substrate, a flexible tech stack that enables users to build their own blockchain from scratch.",
+    "gavin-wood-page-paragraph-eight":"Dr. Wood has continued his decentralized internet vision with Ewald Hesse, Dr. Ana Trbovich and three other blockchain pioneers in co-founding Grid Singularity, which is an open Internet-based decentralized energy data exchange platform built on the blockchain technology. He also has been involved in decentralized asset management for multiple blockchains with MelonPort AG, in 2016.",
+    "gavin-wood-page-paragraph-nine":"Dr. Wood founded the Web3 Foundation to nurture technologies and applications in the fields of decentralized web software protocols to stabilize the Web 3 ecosystem through the application of modern cryptographic methods in decentralized networks. Web3 Foundation has supported research into the Whisper protocol - which Dr. Wood conceived in 2014 - which promises to allow private distributed messaging in the future Web 3.0.",
+    "gavin-wood-page-paragraph-ten":"The Web3 Foundation has launched the “canary network” Kusama that allows developers to explore the finer intricacies of Polkadot in a real economic environment before launching their tech on mainnet. Kusama’s launch proved to be a valuable waypoint toward the launch of Polkadot network, the sharded multi-chain interoperability network Dr. Wood co-founded after leaving Ethereum.",
+    "gavin-wood-page-paragraph-eleven":"<p>When he is not obsessively pushing for the success of the blockchain infrastructure, Dr. Gavin Wood carves out time snowboarding and shares his insights on the industry trends on <a href='https://medium.com/@gavofyork'>Medium</a> and <a href='https://twitter.com/gavofyork'>Twitter</a>.</p>"
 }

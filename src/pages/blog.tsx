@@ -1,9 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useIntl } from 'react-intl';
-import { LocalizedLink } from 'gatsby-theme-i18n';
-import TransparentButton from '../components/TransparentButton';
 import Layout from '../components/layouts/Layout';
+import SEO from '../components/layouts/SEO';
 
 export default function BlogPage() {
   const intl = useIntl();
@@ -28,6 +27,7 @@ export default function BlogPage() {
 
   return (
     <Layout theme="light">
+      <SEO title={intl.formatMessage({ id: 'blog-page-seo' })} />
       <section className="bg-fixed -mt-32 md:pb-48" style={bgStyles}>
         <div className="text-white">
           <div className="container text-center pt-40 md:pt-52 md:pb-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:w-3/4">

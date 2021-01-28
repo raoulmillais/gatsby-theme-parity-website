@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Button from '../../Button';
 import FullScreenYouTube from '../../FullScreenYouTube';
-import { LocalizedLink } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
 
 export default function FeaturedVideos() {
@@ -59,7 +58,7 @@ export default function FeaturedVideos() {
       }
     }
   `);
-  console.log(images.video1.childImageSharp.fluid.src)
+
   return (
     <section className="md:bg-hero-pattern-dark-2 bg-cover bg-center bg-parityGray h-full">
       <div className="container">
