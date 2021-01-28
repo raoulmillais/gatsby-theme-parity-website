@@ -161,6 +161,8 @@
     "about-page-blog-cta":"Read the Blog",
     "about-page-blog-sub-cta-1":"or",
     "about-page-blog-sub-cta-2":"subscribe",
-    "about-page-blog-sub-cta-3":"to the newsletter"
+    "about-page-blog-sub-cta-3":"to the newsletter",
 
+    "blog-page-title":"Blog of Parity Technologies",
+    "blog-page-description":"Blockchain infrastructure for the decentralised web."
 }

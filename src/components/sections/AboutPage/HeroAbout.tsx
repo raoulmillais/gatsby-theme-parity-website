@@ -4,8 +4,8 @@ import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import TransparentButton from '../../TransparentButton';
 
-export default function HeroAbout(){
-  const intl = useIntl()
+export default function HeroAbout() {
+  const intl = useIntl();
   const backgroundImg = useStaticQuery(graphql`
     {
       file(relativePath: { eq: "bg-red-1.jpg" }) {
@@ -38,7 +38,9 @@ export default function HeroAbout(){
           </TransparentButton>
           <p className="text-xs">
             {intl.formatMessage({ id: 'about-page-hero-sub-cta-1' })}&nbsp;
-            <LocalizedLink className="font-bold" to="/contact/">{intl.formatMessage({ id: 'about-page-hero-sub-cta-2' })}</LocalizedLink>
+            <LocalizedLink className="font-bold" to="/contact/">
+              {intl.formatMessage({ id: 'about-page-hero-sub-cta-2' })}
+            </LocalizedLink>
             &nbsp;{intl.formatMessage({ id: 'about-page-hero-sub-cta-3' })}
           </p>
         </div>
