@@ -37,7 +37,7 @@ export default function ParityTeam() {
             {intl.formatMessage({ id: 'homepage-team-join-cta' })}
           </LocalizedLink>
         </div>
-        <div className="lg:flex lg:justify-center">
+        <div className="md:flex md:justify-center">
           <FullScreenYouTube
             image={images.jutta.childImageSharp.fluid.src}
             name={intl.formatMessage({ id: 'homepage-team-jutta' })}

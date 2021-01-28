@@ -21,9 +21,11 @@ module.exports = {
         body: ['Roboto', 'Helvetica', 'Arial', 'sans'],
       },
       backgroundImage: theme => ({
-        'hero-pattern': "url('/static/bg-light-1-557b8cb650f0e1d42e36c3f4e835157f.png')",
+        'hero-pattern': "url('/static/557b8cb650f0e1d42e36c3f4e835157f/bg-light-1.png')",
         'hero-pattern-2': "url('/static/09e985c54341462df605eac6e087597a/bg-light-2.png')",
         'hero-pattern-dark': "url('/static/c98ac65387f53c43a8707c6896f83156/bg-dark-1.png')",
+        'hero-pattern-dark-2': "url('/static/b23115c5994bd4e03e92cacbce64596b/bg-dark-2.png')",
+        'hero-about': "url('/static/f69105b970b81cf684de4f6034c0715b/bg-red-1.jpg')",
       }),
     },
   },

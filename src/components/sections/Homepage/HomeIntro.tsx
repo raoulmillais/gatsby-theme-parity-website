@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import imageOne from '../../../images/intro-image-1.jpg';
 import imageTwo from '../../../images/intro-image-2.jpg';
 
-export default function HeroPattern() {
+export default function HeroIntro() {
   const intl = useIntl();
 
   return (
