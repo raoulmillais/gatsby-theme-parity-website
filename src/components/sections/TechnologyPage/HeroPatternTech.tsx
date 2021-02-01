@@ -42,7 +42,7 @@ export default function HeroPattern() {
                 title={intl.formatMessage({ id: 'homepage-parity-tech-section-polkadot-title' })}
                 description={intl.formatMessage({ id: 'homepage-parity-tech-section-polkadot-description' })}
                 logo={images.polkadot.publicURL}
-                link="/polkadot"
+                link="/technologies/polkadot"
                 extraClass=" "
                 theme="dark"
               />
@@ -50,7 +50,7 @@ export default function HeroPattern() {
                 title={intl.formatMessage({ id: 'homepage-parity-tech-section-substrate-title' })}
                 description={intl.formatMessage({ id: 'homepage-parity-tech-section-substrate-description' })}
                 logo={images.substrate.publicURL}
-                link="/substrate"
+                link="/technologies/substrate"
                 extraClass="pt-10"
                 theme="dark"
               />
@@ -60,7 +60,7 @@ export default function HeroPattern() {
                 title={intl.formatMessage({ id: 'homepage-parity-tech-section-signer-title' })}
                 description={intl.formatMessage({ id: 'homepage-parity-tech-section-signer-description' })}
                 logo={images.signer.publicURL}
-                link="/signer"
+                link="/technologies/signer"
                 extraClass=" "
                 theme="dark"
               />

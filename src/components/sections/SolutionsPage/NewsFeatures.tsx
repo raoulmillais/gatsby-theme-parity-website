@@ -1,10 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { useIntl } from 'react-intl';
 
 export default function NewsFeatures() {
-  const intl = useIntl();
   const logoStyles = 'w-40 mx-3 my-1 h-auto';
   const images = useStaticQuery(graphql`
     {
@@ -58,7 +56,7 @@ export default function NewsFeatures() {
       }
     }
   `);
-  const { wsj, techCrunch, bloomberg, forbes, coindesk, cointelegraph, economist } = images;
+  const { wsj, techCrunch, bloomberg, forbes, coindesk, economist } = images;
 
   return (
     <section className="h-full border-b border-gray-700 pb-6 pt-6 bg-textDark">

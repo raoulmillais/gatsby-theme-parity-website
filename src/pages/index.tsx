@@ -9,6 +9,7 @@ import CompaniesUsingOurTech from '../components/sections/Homepage/CompaniesUsin
 import ParityTeam from '../components/sections/Homepage/ParityTeam';
 import NewsFeatures from '../components/sections/Homepage/NewsFeatures';
 import FeaturedBlog from '../components/FeaturedBlogs';
+import FooterCTA from '../components/FooterCTA';
 import Social from '../components/Social';
 import SEO from '../components/layouts/SEO';
 import { useIntl } from 'react-intl';
@@ -27,6 +28,14 @@ export default function Index() {
       <ParityTeam />
       <NewsFeatures />
       <FeaturedBlog />
+      <FooterCTA
+        title={intl.formatMessage({ id: 'homepage-featured-blog-title' })}
+        buttonText={intl.formatMessage({ id: 'homepage-featured-blog-cta' })}
+        buttonLink="/technologies/"
+        subCTATextOne={intl.formatMessage({ id: 'homepage-featured-blog-subtext' })}
+        subCTATextTwo={intl.formatMessage({ id: 'homepage-featured-blog-subtext-link' })}
+        subCTATextLink="/solutions/"
+      />
       <Social />
     </Layout>
   );
