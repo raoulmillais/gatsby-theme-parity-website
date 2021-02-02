@@ -4,7 +4,7 @@ import { LocalizedLink } from 'gatsby-theme-i18n';
 interface CardNoLinkProps {
   title: string;
   description: string;
-  logo: string;
+  logo?: string;
 }
 
 export default function CardNoLink(props: CardNoLinkProps) {

@@ -4,7 +4,7 @@ import { LocalizedLink } from 'gatsby-theme-i18n';
 interface ButtonProps {
   children: React.ReactNode;
   link: string;
-  extraClass: string;
+  extraClass?: string;
 }
 
 const buttonStyles =
