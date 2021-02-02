@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
-  theme: string;
+  theme?: string;
 }
 
 const components = {

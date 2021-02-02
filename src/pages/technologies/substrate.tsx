@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../../components/layouts/Layout';
 import TransparentButton from '../../components/TransparentButton';
-import Button from '../../components/Button';
 import FullScreenYouTube from '../../components/FullScreenYouTube';
 import Img from 'gatsby-image';
 import { useIntl } from 'react-intl';

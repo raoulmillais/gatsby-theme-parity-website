@@ -3,9 +3,9 @@ import { LocalizedLink } from 'gatsby-theme-i18n';
 
 interface FullScreenYouTubeProps {
   image: string;
-  name: string;
-  title: string;
-  link: string;
+  name?: string;
+  title?: string;
+  link?: string;
   videoId: string;
 }
 
