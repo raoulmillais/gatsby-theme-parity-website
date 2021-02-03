@@ -78,6 +78,10 @@
     "homepage-featured-blog-subtext-link":"custom solutions",
     "homepage-social-card-title":"Join the discussion:",
 
+    "404-page-title":"You broke the chain!",
+    "404-page-description":"404 Error",
+    "404-page-cta":"Go back to home page",
+
     "technology-page-seo":"Blockchain Technologies & DLT Products",
     "technology-page-title":"Open-Source Software for Building the Decentralised Web",
     "technology-page-sub-title-1":"Parity develops cutting-edge blockchain technologies to foster innovation.",
@@ -228,6 +232,17 @@
     "bitcoin-page-footer-cta":"See our services",
     "bitcoin-page-footer-sub-cta-one":"or check out all of Parity's",
     "bitcoin-page-footer-sub-cta-two":"technologies",
+
+    "ethereum-page-hero-title":"Parity Ethereum is now OpenEthereum",
+    "ethereum-page-hero-description":"Fast and feature-rich multi-network Ethereum client.",
+    "ethereum-page-hero-cta":"View on Github",
+    "ethereum-page-hero-subcta-one":"or",
+    "ethereum-page-hero-subcta-two":"read more",
+    "ethereum-page-hero-subcta-three":"about the transition",
+    "ethereum-page-footer-title":"Want to learn more about custom solutions?",
+    "ethereum-page-footer-cta":"see our services",
+    "ethereum-page-footer-sub-cta-one":"or check out all of Parity's",
+    "ethereum-page-footer-sub-cta-two":"technologies",
 
     "solutions-page-seo":"Custom Enterprise Blockchain Solutions",
     "solutions-page-hero-title":"Blockchains that evolve with your business",
