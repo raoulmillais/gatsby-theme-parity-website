@@ -4,12 +4,11 @@ import FooterCTA from '../../components/FooterCTA';
 import Button from '../../components/Button';
 import Social from '../../components/Social';
 import { useIntl } from 'react-intl';
-import { LocalizedLink } from 'gatsby-theme-i18n';
 import Layout from '../../components/layouts/Layout';
 import SEO from '../../components/layouts/SEO';
 
-export default function EthereumPage () {
-  const intl = useIntl()
+export default function EthereumPage() {
+  const intl = useIntl();
 
   return (
     <Layout>
