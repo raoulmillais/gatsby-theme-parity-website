@@ -1,32 +1,13 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import TransparentButton from '../../TransparentButton';
 
 export default function HeroAbout() {
   const intl = useIntl();
-  const backgroundImg = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "bg-red-1.jpg" }) {
-        id
-        childImageSharp {
-          fluid(quality: 90, toFormat: PNG) {
-            src
-          }
-        }
-      }
-    }
-  `);
-  const bgStyles = {
-    backgroundImage: `url(${backgroundImg.file.childImageSharp.fluid.src})`,
-    backgroundRepeat: `no-repeat`,
-    backgroundPosition: `center`,
-    backgroundSize: `cover`,
-  };
 
   return (
-    <section className="bg-fixed -mt-32 md:-mb-64" style={bgStyles}>
+    <section className="bg-hero-about bg-cover bg-center bg-fixed -mt-32 md:-mb-64">
       <div className="md:h-screen text-white">
         <div className="container text-center pt-40 md:pt-52 md:pb-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:w-3/4">
           <h3 className="md:text-5xl">{intl.formatMessage({ id: 'about-page-hero-title' })}</h3>

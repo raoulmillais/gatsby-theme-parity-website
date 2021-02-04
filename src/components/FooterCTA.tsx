@@ -7,9 +7,9 @@ interface FooterCTAProps {
   title: string;
   buttonText: string;
   buttonLink: string;
-  subCTATextOne: string;
-  subCTATextTwo: string;
-  subCTATextLink: string;
+  subCTATextOne?: string;
+  subCTATextTwo?: string;
+  subCTATextLink?: string;
 }
 
 export default function FooterCTA(props: FooterCTAProps) {
