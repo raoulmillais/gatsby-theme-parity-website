@@ -16,7 +16,7 @@ Important Convention Note
 ### Status [Staging](https://parity-staging.netlify.app/) 
 (Password protected; ask in Web Channel on Mattermost)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1a598998-1c11-4a7d-896e-27b3082edf5c/deploy-status)](https://app.netlify.com/sites/parity-staging/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a37b450c-3e18-4676-8ec3-e2d370366d43/deploy-status)](https://app.netlify.com/sites/parity-staging/deploys)
 
 
 ## 🚀 Quick start
