@@ -24,9 +24,11 @@
     "nav-kusama-addresses": "Kusama Addresses",
     "nav-terms-of-use": "Terms of Use",
     "nav-privacy-policy": "Privacy Policy",
-    "nav-applicant": "Applicant",
-    "nav-notice": "Notice",
+    "nav-applicant": "Applicant Notice",
     "nav-cookie-settings": "Cookie Settings",
+    "kusama-addresses":"Parity's Kusama technical committee addresses",
+    "kusama-addresses-parity-one":"Parity 1",
+    "kusama-addresses-parity-two":"Parity 2",
 
     "substrate": "Substrate",
     "parity-bitcoin": "Parity Bitcoin", 
@@ -379,5 +381,22 @@
     "rust-jobs-page-developers-three-description":"Parity is an organization where people are valued for their contributions. We focus on development, not on unnecessary meetings.",
     "rust-jobs-page-developers-cta":"View all jobs »",
     "rust-jobs-page-footer-cta-title":"Get paid to do open-source Rust development",
-    "rust-jobs-page-footer-cta":"View all Jobs"
+    "rust-jobs-page-footer-cta":"View all Jobs",
+
+    "contact-page-title":"Get in Touch with Us",
+    "contact-page-gitter-title":"For support",
+    "contact-page-gitter-description":"please use the",
+    "contact-page-gitter-cta":"Gitter channel",
+    "contact-page-element-title":"For general chat",
+    "contact-page-element-description":"join the",
+    "contact-page-element-cta":"Parity Watercooler",
+    "contact-page-press-title":"For press inquiries:",
+    "contact-page-organization-title":"For organizations:",
+    "contact-page-organization-cta":"get in touch",
+    "contact-page-other-inquiries-title":"For all other inquiries:",
+    "contact-page-job-title":"Want to join the team?",
+    "contact-page-job-cta":"See job openings",
+    "contact-page-footer-title":"Want to stay informed of Parity updates and events?",
+    "contact-page-footer-subcta-one":"or read",
+    "contact-page-footer-subcta-two":"our blog"
 }

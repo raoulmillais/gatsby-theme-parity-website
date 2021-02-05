@@ -4,6 +4,8 @@ module.exports = {
     siteUrl: 'https://www.parity.io',
     description: 'Parity Description',
     author: 'Parity WebDev Team',
+    pressEmail: 'press@parity.io',
+    email: 'info@parity.io',
     twitter: 'https://twitter.com/ParityTech',
     linkedIn: 'https://www.linkedin.com/company/paritytech',
     element: 'https://app.element.io/#/room/#watercooler:matrix.parity.io',

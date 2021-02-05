@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 ///////////////---STYLES---///////////////////
 const modalDiv =
@@ -12,7 +12,11 @@ const NewsletterModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = event => {
+  useEffect(() => {
+    showModal ? (document.body.style.overflow = `hidden`) : (document.body.style.overflow = `unset`);
+  }, [showModal]);
+
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.target);
     fetch('https://paritytechnologies.activehosted.com/proc.php', {
@@ -44,7 +48,7 @@ const NewsletterModal = () => {
         <div
           id="modal"
           className={modalDiv}
-          onClick={event => {
+          onClick={(event: any) => {
             if (event.target.id === 'modal') {
               setShowModal(!showModal);
             }

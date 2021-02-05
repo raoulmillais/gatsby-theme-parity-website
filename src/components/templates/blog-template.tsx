@@ -11,8 +11,6 @@ interface BlogTemplateProps {
 }
 
 export default function BlogTemplate(props: BlogTemplateProps) {
-  console.log('Blog Props are: ', props);
-
   return (
     <Layout>
       <SEO title={props.data.mdx.frontmatter.title} />

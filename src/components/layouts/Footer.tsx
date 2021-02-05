@@ -3,10 +3,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
 import NewsletterModal from '../NewsletterModal';
+import KusamaAddresses from '../KusamaAddresses';
 import elementLogo from '../../images/logo-element.svg';
 
 const navItemsFooter = 'no-underline text-left text-sm opacity-50 hover:opacity-90 my-1 w-auto';
-const navItemsSubFooter = 'no-underline text-xs my-1 hover:underline mx-6 xl:ml-0 ';
+const navItemsSubFooter = 'no-underline text-xs my-1 hover:underline mx-6 xl:ml-0 text-textLight';
 const socialIcons = 'w-5 mx-4 h-auto fill-current';
 
 export default function Footer() {
@@ -48,7 +49,7 @@ export default function Footer() {
               <LocalizedLink to="/bug-bounty" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-bug-bounty' })}
               </LocalizedLink>
-              <LocalizedLink to="/assets/parity-media-kit.zip" className={navItemsFooter}>
+              <LocalizedLink to="parity-media-kit.zip" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-media-kit' })}
               </LocalizedLink>
               <LocalizedLink to="/rust-jobs" className={navItemsFooter}>
@@ -144,29 +145,24 @@ export default function Footer() {
 
       <div className="w-full mt-8">
         <div className="container flex flex-wrap justify-center xl:justify-between">
-          <div className="opacity-40 flex flex-wrap justify-center mb-8 xl:justify-start">
+          <div className="flex flex-wrap justify-center mb-8 xl:justify-start">
             <div className={navItemsSubFooter}>
-              © {new Date().getFullYear()}
-              <LocalizedLink to="/" className="no-underline">
+              <span className="text-textLight">© {new Date().getFullYear()}</span>
+              <LocalizedLink to="/" className="no-underline text-textLight">
                 &nbsp;
                 {intl.formatMessage({ id: 'nav-parity-technologies' })}
               </LocalizedLink>
-              &nbsp;-- {intl.formatMessage({ id: 'nav-rights-reserved' })}
+              &nbsp;<span className="text-textLight">-- {intl.formatMessage({ id: 'nav-rights-reserved' })}</span>
             </div>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
-              {intl.formatMessage({ id: 'nav-kusama-addresses' })}
-            </LocalizedLink>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
+            <KusamaAddresses />
+            <LocalizedLink to="/terms" className={navItemsSubFooter}>
               {intl.formatMessage({ id: 'nav-terms-of-use' })}
             </LocalizedLink>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
+            <LocalizedLink to="/privacy" className={navItemsSubFooter}>
               {intl.formatMessage({ id: 'nav-privacy-policy' })}
             </LocalizedLink>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
+            <LocalizedLink to="/applicant-notice" className={navItemsSubFooter}>
               {intl.formatMessage({ id: 'nav-applicant' })}
-            </LocalizedLink>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
-              {intl.formatMessage({ id: 'nav-notice' })}
             </LocalizedLink>
             <LocalizedLink to="/#" className={navItemsSubFooter}>
               {intl.formatMessage({ id: 'nav-cookie-settings' })}

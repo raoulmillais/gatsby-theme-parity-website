@@ -14,7 +14,11 @@ import imageOne from '../../images/image-5.jpg';
 import imageTwo from '../../images/image-6.jpg';
 import imageThree from '../../images/image-7.jpg';
 
-export default function Substrate({ data }) {
+interface SubstratePageProps {
+  data: any;
+}
+
+export default function SubstratePage({ data }: SubstratePageProps) {
   const intl = useIntl();
 
   return (

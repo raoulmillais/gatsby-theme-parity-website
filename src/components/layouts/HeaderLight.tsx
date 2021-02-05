@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
@@ -24,6 +24,10 @@ export default function Header() {
       }
     }
   `);
+  useEffect(() => {
+    isOpen ? (document.body.style.overflow = `hidden`) : (document.body.style.overflow = `unset`);
+  }, [isOpen]);
+
   return (
     <header className="container md:flex md:justify-between md:px-4 md:py-4">
       <div className="flex items-center justify-between px-4 py-3 md:p-0 ">
