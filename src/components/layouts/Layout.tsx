@@ -19,7 +19,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       {props.theme === 'light' ? <HeaderLight /> : <Header />}
-      <main className="min-h-screen">
+      <main className="">
         <MDXProvider components={components}>{props.children}</MDXProvider>
       </main>
       <Footer />

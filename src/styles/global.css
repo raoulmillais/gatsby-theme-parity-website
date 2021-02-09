@@ -62,7 +62,7 @@
 
     /* Lists */
     dl, ol, ul {
-    @apply my-4 pl-3 list-inside;
+    @apply my-0 ml-1 pl-3 list-outside;
     }
 
     /* Definition Lists */
@@ -145,5 +145,9 @@
     .text-xxs {
         font-size: 9px;
         letter-spacing: 0.5px;
+    }
+
+    .bounty-code {
+        color: #e83e8c;
     }
 }

@@ -28,7 +28,7 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="container md:flex md:justify-between md:px-4 md:py-4">
+    <header className="container z-20 md:flex md:justify-between md:px-4 md:py-4">
       <div className="flex items-center justify-between px-4 py-3 md:p-0">
         <div>
           <LocalizedLink to="/">
