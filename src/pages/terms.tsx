@@ -1,19 +1,16 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import Layout from '../components/layouts/Layout';
 import SEO from '../components/layouts/SEO';
 import Social from '../components/Social';
 
-export default function BugBountyPage() {
-  const intl = useIntl();
-
+export default function TermsOfUsePage() {
   return (
     <Layout>
       <SEO title="Website Terms of Use" />
       <section className="md:bg-hero-pattern bg-scroll bg-top bg-no-repeat bg-contain">
         <div className="md:flex md:justify-center">
           <div className="mx-4 md:text-lg xl:text-xl max-w-screen-md">
-            <article>
+            <article className="font-normal">
               <h2 className="text-center py-16 md:text-5xl">Website Terms of Use</h2>
               <p className="italic">
                 Please read these terms and conditions carefully before using this website, any of our other sites and

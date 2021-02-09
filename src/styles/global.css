@@ -49,7 +49,10 @@
     p {
     @apply my-3 font-light leading-relaxed;
     }
-
+    
+    strong {
+    @apply font-medium;
+    }
     /* Blockquotes */
     blockquote {
     @apply my-4 px-8 font-title italic text-xl;
@@ -68,7 +71,7 @@
     li {
     @apply font-light;
     }
-    
+
     /* Definition Lists */
     dl {
         dt {
@@ -96,7 +99,7 @@
     }
 
     /* Tables */
-    table {
+    /* table {
     @apply table border-separate border-gray-200 align-middle text-left bg-gray-200 rounded;
 
         caption {
@@ -114,7 +117,7 @@
         tfoot tr th {
         @apply py-2 px-4;
         }
-    }
+    } */
 
     /* Forms */
     input, textarea {
