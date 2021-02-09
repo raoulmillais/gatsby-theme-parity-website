@@ -3,7 +3,6 @@ import { useIntl } from 'react-intl';
 import Layout from '../components/layouts/Layout';
 import SEO from '../components/layouts/SEO';
 import Social from '../components/Social';
-import bountyWallet from '../images/bug-bounty.png';
 
 export default function BugBountyPage() {
   const intl = useIntl();

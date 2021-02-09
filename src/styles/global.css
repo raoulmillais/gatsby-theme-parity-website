@@ -47,7 +47,7 @@
 
     /* Paragraphs */
     p {
-    @apply my-3 font-light;
+    @apply my-3 font-light leading-relaxed;
     }
 
     /* Blockquotes */
@@ -65,6 +65,10 @@
     @apply my-0 ml-1 pl-3 list-outside;
     }
 
+    li {
+    @apply font-light;
+    }
+    
     /* Definition Lists */
     dl {
         dt {
