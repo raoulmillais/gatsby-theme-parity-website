@@ -4,9 +4,12 @@ auto_deploy: false
 admin_path: ''
 webhook_url: 
 sections:
-- type: document
-  path: content/events/events.json
+- type: directory
+  path: content/events
   label: Events
+  create: documents
+  match: "**/*"
+  new_doc_ext: ".json"
 upload_dir: static/images
 public_path: "/static/images"
 front_matter_path: ''
