@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 
 ///////////////---STYLES---///////////////////
 const modalDiv =
@@ -9,6 +10,7 @@ const closeX = 'absolute top-0 right-0 pt-2 pr-3 opacity-40 hover:opacity-100 cu
 
 ///////////////---COMPONENT---////////////////
 const NewsletterModal = () => {
+  const intl = useIntl();
   const [showModal, setShowModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -41,7 +43,7 @@ const NewsletterModal = () => {
         className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-widest  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
         onClick={() => setShowModal(!showModal)}
       >
-        Subscribe
+        {intl.formatMessage({ id: 'newsletter-cta' })}
       </button>
 
       {showModal ? (
@@ -67,24 +69,26 @@ const NewsletterModal = () => {
 
             {formSubmitted ? (
               <div>
-                <h2 className="text-center font-light">Almost finished...</h2>
+                <h2 className="text-center font-light">{intl.formatMessage({ id: 'newsletter-modal-two-title' })}</h2>
                 <h5 className="text-center font-light mt-6">
-                  To complete the subscription process, please click the link in the email we just sent you.
+                  {intl.formatMessage({ id: 'newsletter-modal-two-text' })}
                 </h5>
                 <hr className="border border-parityPink w-1/12 mx-auto" />
                 <p className="text-center font-light">
-                  For more news, follow{' '}
+                  {intl.formatMessage({ id: 'newsletter-modal-footer-text' })}{' '}
                   <a href="https://twitter.com/ParityTech" className="text-parityPink">
-                    @ParityTech
+                    {intl.formatMessage({ id: 'newsletter-modal-footer-parity-handle' })}
                   </a>{' '}
-                  on Twitter.
+                  {intl.formatMessage({ id: 'newsletter-modal-twitter' })}
                 </p>
               </div>
             ) : null}
 
             {!formSubmitted ? (
               <div>
-                <h4 className="text-center font-light px-4">Subscribe to hear about Parity Updates and events.</h4>
+                <h4 className="text-center font-light px-4">
+                  {intl.formatMessage({ id: 'newsletter-modal-one-title' })}
+                </h4>
                 <form onSubmit={event => handleSubmit(event)}>
                   <input type="hidden" name="u" value="1" />
                   <input type="hidden" name="f" value="1" />
@@ -107,10 +111,11 @@ const NewsletterModal = () => {
                     value="Submit"
                     onSubmit={event => handleSubmit(event)}
                   >
-                    Subscribe
+                    {intl.formatMessage({ id: 'newsletter-cta' })}
                   </button>
                   <p className="text-xs text-textLight text-center mt-6">
-                    To see how we use your information please see our <a href="/privacy-policy">privacy policy</a>
+                    {intl.formatMessage({ id: 'newsletter-modal-one-footer-text' })}{' '}
+                    <a href="/privacy">{intl.formatMessage({ id: 'newsletter-modal-one-footer-privacy' })}</a>
                   </p>
                 </form>
               </div>

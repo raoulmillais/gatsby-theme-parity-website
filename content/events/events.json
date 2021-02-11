@@ -1,0 +1,13 @@
+{
+  "events": [
+      {
+          "dateTime":"Weekly on Tuesday",
+          "location": "ONLINE",
+          "title": "Substrate Seminar",
+          "description": "Join our weekly collaborative call where we learn about Substrate together.",
+          "cta": "Learn More",
+          "link": "https://www.crowdcast.io/e/substrate-seminar",
+          "image": "/images/substrate-seminar.png"
+      }
+  ]
+}
