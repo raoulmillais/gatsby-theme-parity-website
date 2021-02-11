@@ -14,7 +14,7 @@ export default function EventsPage() {
   return (
     <Layout>
       <SEO title={intl.formatMessage({ id: 'events-page-seo' })} />
-      <section className="bg-parityGray -mt-32">
+      <section className="bg-hero-pattern-dark bg-parityGray bg-cover bg-center bg-no-repeat -mt-32 w-screen">
         <div className="h-full md:pt-32">
           <div className="container h-full text-center pt-48 md:pt-24 pb-12 px-2 md:flex md:flex-col md:justify-center md:max-w-screen-md">
             <h3 className="md:text-5xl">{intl.formatMessage({ id: 'events-page-title' })}</h3>
@@ -23,7 +23,7 @@ export default function EventsPage() {
       </section>
       <section className="bg-parityGray pb-20">
         <div className="container">
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-start">
             {events.map((event: any, index) => {
               return (
                 <div key={index}>
