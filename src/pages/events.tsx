@@ -23,7 +23,7 @@ export default function EventsPage() {
       </section>
       <section className="bg-parityGray pb-20">
         <div className="container">
-          <div className="flex flex-wrap justify-start">
+          <div className="flex flex-wrap justify-center md:justify-start">
             {events.map((event: any, index) => {
               return (
                 <div key={index}>
