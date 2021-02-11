@@ -1,15 +1,6 @@
 {
   "events": [
     {
-      "title": "Text Image",
-      "description": "This is a test Event for Parity.io",
-      "dateTime": "July 2nd, 2021- 7:30pm",
-      "location": "Parity Office",
-      "cta": "Register",
-      "link": "https://www.google.com",
-      "image": "/image/bug-bounty.png"
-    },
-    {
       "title": "Substrate Seminar",
       "description": "Join our weekly collaborative call where we learn about Substrate together.",
       "dateTime": "Weekly on Tuesday",
@@ -17,6 +8,15 @@
       "cta": "Learn More",
       "link": "https://www.crowdcast.io/e/substrate-seminar",
       "image": "/images/substrate-seminar.png"
+    },
+    {
+      "title": "Text Image",
+      "description": "This is a test Event for Parity.io",
+      "dateTime": "July 2nd, 2021- 7:30pm",
+      "location": "Parity Office",
+      "cta": "Register",
+      "link": "https://www.google.com",
+      "image": "/image/bug-bounty.png"
     }
   ]
 }
