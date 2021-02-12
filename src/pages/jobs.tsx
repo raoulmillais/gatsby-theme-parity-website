@@ -72,7 +72,7 @@ export default function JobsPage() {
                 {intl.formatMessage({ id: 'rust-jobs-page-developers-three-description' })}
               </p>
               <p className="py-4">
-                <LocalizedLink className="no-underline text-parityPink hover:underline text-sm font-normal" to="/jobs/">
+                <LocalizedLink className="no-underline text-parityPink hover:underline text-sm font-normal" to="/jobs/#jobboard">
                   {intl.formatMessage({ id: 'rust-jobs-page-developers-cta' })}
                 </LocalizedLink>
               </p>
@@ -112,7 +112,7 @@ export default function JobsPage() {
           </div>
         </div>
       </section>
-      <section className="bg-parityGray">
+      <section id="jobboard" className="bg-parityGray">
         <div className="container">
           <div className="text-center py-24">
             <h3 className="md:text-5xl">{intl.formatMessage({ id: 'jobs-page-board-title' })}</h3>

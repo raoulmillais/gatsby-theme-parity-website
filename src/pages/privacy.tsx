@@ -769,7 +769,7 @@ export default function PrivacyPolicyPage() {
               both first and third party cookies. Search for &quot;cookies&quot; under your web browser&apos;s
               &quot;Help menu&quot; for more information on cookie management features available to you. You can enable
               or disable cookies by modifying the settings in your browser. You can also find out how to do this, and
-              find more information on cookies at <a href="http://www.allaboutcookies.org">www.all aboutcookies.org</a>.
+              find more information on cookies at <a href="http://www.allaboutcookies.org">www.allaboutcookies.org</a>.
               However, if you choose to disable cookies in your browser, you may be unable to complete certain
               activities on our Sites or to correctly access certain parts of it. If you would like more information
               about interest-based advertising, including how to opt-out of these cookies, please visit{' '}

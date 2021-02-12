@@ -121,7 +121,7 @@ export default function FeaturedVideos() {
         </div>
         <div className="flex flex-col items-center pt-12 pb-24 text-center">
           <h4 className="md:text-3xl pt-4 pb-4">{intl.formatMessage({ id: 'about-page-learn-about-parity' })}</h4>
-          <Button link="/technologies" extraClass="">
+          <Button link="/blog" extraClass="">
             {intl.formatMessage({ id: 'about-page-blog-cta' })}
           </Button>
         </div>

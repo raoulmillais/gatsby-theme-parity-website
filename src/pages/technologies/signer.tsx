@@ -220,10 +220,7 @@ export default function ParitySigner({ data }: ParitySignerProps) {
             </div>
             <p className="text-xs py-4">
               {intl.formatMessage({ id: 'signer-page-dowbload-section-small-text-one' })}{' '}
-              <LocalizedLink
-                className="text-parityPink no-underline hover:underline"
-                to="https://www.parity.io/signer-eula"
-              >
+              <LocalizedLink className="text-parityPink no-underline hover:underline" to="/signer-eula">
                 {intl.formatMessage({ id: 'signer-page-dowbload-section-small-text-two' })}
               </LocalizedLink>
             </p>

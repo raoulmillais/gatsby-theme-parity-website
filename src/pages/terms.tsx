@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/layouts/Layout';
 import SEO from '../components/layouts/SEO';
 import Social from '../components/Social';
+import { LocalizedLink } from 'gatsby-theme-i18n';
 
 export default function TermsOfUsePage() {
   return (
@@ -46,12 +47,12 @@ export default function TermsOfUsePage() {
               </p>
               <ul>
                 <li>
-                  Our <a href="https://www.parity.io/privacy/">Privacy Policy</a>, which sets out information about how
+                  Our <LocalizedLink to="/privacy/">Privacy Policy</LocalizedLink>, which sets out information about how
                   we use your personal information and the use of cookies and local storage on our Sites.
                 </li>
                 <li>
-                  Our <a href="https://www.parity.io/applicant-notice/">Applicant Notice</a>, which sets out information
-                  about how we use and handle your personal data when you apply to one of our job openings.
+                  Our <LocalizedLink to="/applicant-notice/">Applicant Notice</LocalizedLink>, which sets out
+                  information about how we use and handle your personal data when you apply to one of our job openings.
                 </li>
               </ul>
               <p className="font-semibold">Accessing and using the Sites</p>

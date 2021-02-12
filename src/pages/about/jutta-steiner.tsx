@@ -89,7 +89,7 @@ export default function JuttaSteiner({ data }) {
         <div className="container py-8 md:pt-16 md:pb-20 flex flex-col items-center text-center ">
           <div className="px-4 max-w-3xl md:py-8">
             <h3 className="md:text-4xl md:pb-6 ">{intl.formatMessage({ id: 'jutta-page-bottom-cta-title' })}</h3>
-            <Button extraClass="" link="/collaborate/">
+            <Button extraClass="" link="/about">
               {intl.formatMessage({ id: 'jutta-page-bottom-cta' })}
             </Button>
             <p className="text-sm">

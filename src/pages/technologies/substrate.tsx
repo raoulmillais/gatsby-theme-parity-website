@@ -32,7 +32,7 @@ export default function SubstratePage({ data }: SubstratePageProps) {
               {intl.formatMessage({ id: 'substrate-page-hero-title' })}
             </h3>
             <div className="flex flex-col md:flex-row items-center">
-              <TransparentButton extraClass=" " link="https://polkadot.network/">
+              <TransparentButton extraClass=" " link="https://www.substrate.io/">
                 {intl.formatMessage({ id: 'substrate-page-hero-cta-one' })}
               </TransparentButton>
               <p className="text-white font-base py-6 md:pl-12 transition-transform transform hover:-translate-y-0.5">

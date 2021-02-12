@@ -15,7 +15,7 @@ import imageOne from '../../images/blog-parity-bitcoin.png';
 
 export default function BitcoinPage() {
   const intl = useIntl();
-  const githubSigner = 'https://github.com/paritytech/parity-bitcoin';
+  const githubBitcoin = 'https://github.com/paritytech/parity-bitcoin';
   const gitterSigner = 'https://gitter.im/paritytech/parity-bitcoin';
 
   return (
@@ -43,7 +43,7 @@ export default function BitcoinPage() {
         <div className="container">
           <div className="flex flex-col md:flex-row md:max-w-screen-md md:mx-auto py-4 md:py-7">
             <div className="flex flex-col items-center md:flex-row py-4">
-              <a href={githubSigner} target="_blank" rel="noreferrer">
+              <a href={githubBitcoin} target="_blank" rel="noreferrer">
                 <svg
                   className="w-auto h-12"
                   fill="white"
@@ -56,7 +56,7 @@ export default function BitcoinPage() {
               </a>
               <p className="text-sm text-parityGray text-center md:text-left mx-8">
                 {intl.formatMessage({ id: 'bitcoin-page-github-description' })}{' '}
-                <a href={githubSigner} target="_blank" rel="noreferrer">
+                <a href={githubBitcoin} target="_blank" rel="noreferrer">
                   {intl.formatMessage({ id: 'bitcoin-page-github-cta' })}
                 </a>
               </p>
@@ -191,7 +191,12 @@ export default function BitcoinPage() {
                 <p className="md:text-lg">{intl.formatMessage({ id: 'bitcoin-page-download-block-one-title' })}</p>
                 <p className="text-sm">{intl.formatMessage({ id: 'bitcoin-page-download-block-one-description' })}</p>
               </div>
-              <a className="no-underline" href={githubSigner} target="_blank" rel="noreferrer">
+              <a
+                className="no-underline"
+                href="https://github.com/paritytech/parity-bitcoin/tree/pruning"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <div className="relative hover:opacity-90">
                   <div className="absolute top-2 left-2 opacity-90">
                     <svg
@@ -218,7 +223,7 @@ export default function BitcoinPage() {
                 <p className="md:text-lg">{intl.formatMessage({ id: 'bitcoin-page-download-block-two-title' })}</p>
                 <p className="text-sm">{intl.formatMessage({ id: 'bitcoin-page-download-block-two-description' })}</p>
               </div>
-              <a className="no-underline" href={githubSigner} target="_blank" rel="noreferrer">
+              <a className="no-underline" href={githubBitcoin} target="_blank" rel="noreferrer">
                 <div className="relative hover:opacity-90">
                   <div className="absolute top-2 left-2 opacity-90">
                     <svg
@@ -244,7 +249,7 @@ export default function BitcoinPage() {
         <FooterCTA
           title={intl.formatMessage({ id: 'bitcoin-page-footer-cta-title' })}
           buttonText={intl.formatMessage({ id: 'bitcoin-page-footer-cta' })}
-          buttonLink="/technologies/solutions"
+          buttonLink="/solutions"
           subCTATextOne={intl.formatMessage({ id: 'bitcoin-page-footer-sub-cta-one' })}
           subCTATextTwo={intl.formatMessage({ id: 'bitcoin-page-footer-sub-cta-two' })}
           subCTATextLink="/technologies/"

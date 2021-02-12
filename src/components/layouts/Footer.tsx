@@ -49,7 +49,7 @@ export default function Footer() {
               <LocalizedLink to="/bug-bounty" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-bug-bounty' })}
               </LocalizedLink>
-              <LocalizedLink to="parity-media-kit.zip" className={navItemsFooter}>
+              <LocalizedLink to="/parity-media-kit.zip" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-media-kit' })}
               </LocalizedLink>
               <LocalizedLink to="/rust-jobs" className={navItemsFooter}>
@@ -104,9 +104,9 @@ export default function Footer() {
               {intl.formatMessage({ id: 'nav-community' })}
             </p>
             <div className="flex flex-col mt-8">
-              <a href="/events" target="_blank" rel="noreferrer" className={navItemsFooter}>
+              <LocalizedLink href="/events" rel="noreferrer" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-events' })}
-              </a>
+              </LocalizedLink>
               <a
                 href={socialLinks.site.siteMetadata.github}
                 target="_blank"
