@@ -5,6 +5,10 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: document
+  path: content/react-intl/en.json
+  label: Content
+  match: "**/*"
+- type: document
   path: content/events/events.json
   label: Events
 upload_dir: static/images
