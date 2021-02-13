@@ -7,7 +7,6 @@ sections:
 - type: document
   path: content/react-intl/en.json
   label: Content
-  match: "**/*"
 - type: document
   path: content/events/events.json
   label: Events
