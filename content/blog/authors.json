@@ -1,0 +1,130 @@
+{
+  "authors": [
+    {
+      "name": "Peter Haymond",
+      "title": "Ecosystem Development Manager",
+      "company": "Parity Technologies",
+      "avatar":"/images/peter-haymond.jpeg"
+    },
+    {
+      "name": "Joe Petrowski",
+      "title": "Research Analyst",
+      "company": "Parity Technologies",
+      "avatar":"/images/joe-petrowski.jpg"
+    },
+    {
+      "name": "Phil Lucsok",
+      "title": "Product Communication Manager",
+      "company": "Parity Technologies",
+      "avatar":"/images/phil-locsok.png"
+    },
+    {
+      "name": "Alexandra Heller",
+      "title": "Communications",
+      "company": "Parity Technologies",
+      "avatar":"/images/alexander-heller.png"
+    },
+    {
+      "name": "Parity Technologies",
+      "title": "Powering the decentralized Web",
+      "company": "Parity Technologies",
+      "avatar":"/images/parity-avatar.png"
+    },
+    {
+      "name": "Gautam Dhameja",
+      "title": "Solutions Architect",
+      "company": "Parity Technologies",
+      "avatar":"/images/gautam-dhameja.jpg"
+    },
+    {
+      "name": "Eric Wang",
+      "title": "Ecosystem Development Lead",
+      "company": "Parity Technologies",
+      "avatar":"/images/eric-wang.jpg"
+    },
+    {
+      "name": "Robin Freyler",
+      "title": "Core Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/robin-freyler.jpg"
+    },
+    {
+      "name": "Zach Cavanaugh",
+      "title": "Content Strategist",
+      "company": "Parity Technologies",
+      "avatar":"/images/zach-cavanaugh.jpg"
+    },
+    {
+      "name": "Jutta Steiner",
+      "title": "Co-Founder & CEO",
+      "company": "Parity Technologies",
+      "avatar":"/images/jutta-steiner.jpg"
+    },
+    {
+      "name": "Benjamin Kampmann",
+      "title": "Core Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/benjamin-kampmann.jpg"
+    },
+    {
+      "name": "Shawn Tabrizi",
+      "title": "Developer Experience Engineer",
+      "company": "Parity Technologies",
+      "avatar":"/images/shawn-tabrizi.jpg"
+    },
+    {
+      "name": "Thibaut Sardan",
+      "title": "Front-end Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/thibaut-sardan.jpeg"
+    },
+    {
+      "name": "Kirill Pimenov",
+      "title": "Head of Security",
+      "company": "Parity Technologies",
+      "avatar":"/images/kirill-pimenov.jpeg"
+    },
+    {
+      "name": "Dimitiy Kashitsyn",
+      "title": "Software Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/dimitiy-kashitsyn.jpeg"
+    },
+    {
+      "name": "Jack Fransham",
+      "title": "Software Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/jack-fransham.jpeg"
+    },
+    {
+      "name": "Fredrik Harryson",
+      "title": "Chief Technology Officer",
+      "company": "Parity Technologies",
+      "avatar":"/images/fredrik-harryson.jpeg"
+    },
+    {
+      "name": "Pierre Krieger",
+      "title": "Core Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/pierre-krieger.jpg"
+    },
+    {
+      "name": "Amaury Martiny",
+      "title": "Software Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/amaury-martiny.jpg"
+    },
+    {
+      "name": "Afri Schoedon",
+      "title": "Software Developer",
+      "company": "Parity Technologies",
+      "avatar":"/images/afri-schoedon.png"
+    },
+    {
+      "name": "Gavin Wood",
+      "title": "Founder",
+      "company": "Parity Technologies",
+      "avatar":"/images/gavin-wood..jpg"
+    }
+  ]
+}

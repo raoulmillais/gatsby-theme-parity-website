@@ -38,7 +38,7 @@ module.exports = {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `en`,
-        locales: `en de`,
+        locales: `en`,
         configPath: `${__dirname}/content/config.json`,
       },
     },
