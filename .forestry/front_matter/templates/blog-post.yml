@@ -14,7 +14,7 @@ fields:
   config:
     required: true
   label: Blog Title
-  default: index
+  default: ''
   description: Title of your blog post
 - name: slug
   type: text
