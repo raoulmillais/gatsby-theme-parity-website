@@ -47,9 +47,9 @@ export default function AuthorCard(props: AuthorCardProps) {
           {tagsInfo.map((eachTag: any, index) => {
             return (
               <span key={index}>
-                <a className="text-parityPink no-underline hover:underline" href={eachTag.link}>
+                <LocalizedLink className="text-parityPink no-underline hover:underline" to={eachTag.slug}>
                   {eachTag.name}
-                </a>
+                </LocalizedLink>
                 ,&nbsp;
               </span>
             );
