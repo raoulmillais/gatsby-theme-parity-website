@@ -1,0 +1,33 @@
+---
+title: index
+blogTitle: Announcing Parity 1.1
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+slug: blog/announcing-parity-1-1/
+date_published: 2016-03-02T00:00:00+01:00
+image: ''
+
+---
+A short 6 weeks since Parity 1.0, I'm happy to announce Parity 1.1, codename Alacrity. This is a mid-term release (we're half-way to 1.2 Civility) with mostly "under-the-hood" improvements and optimisations since 1.0.
+
+Our main features for Alacrity are:
+
+* New JSONRPC APIs for tracking, tracing and inspecting all message-calls and balance transfers, including those that happen as "internal transactions";
+* a simple web front-end to inspect how far you've synced, what your mining rate is and play around with the JSON RPC (just head over to [http://localhost:8080/](http://localhost:8080/) once you're running parity -jw);
+* for miners, a gas-price based upon the price of Ether, with automatic fetching from the web;
+* auto option for --pruning, so after the first sync it'll automatically find the right method.
+
+In addition, under-the-hood improvements include:
+
+* Ubuntu 16.04 support;
+* builds for ARM with Ubuntu Snappy packages available through our CI system;
+* substantial refactoring and optimisation of the widely-used JSON codec;
+* optimised mining code that allows acceptance of old nonces and yet keeps up to date with all incoming transactions.
+
+We're very excited to get this out to you; you can find binaries on the [website](http://parity.io/) and GitHub release page. Get support in the [Parity Gitter channel](https://gitter.im/paritytech/parity).
+
+Civility is now in active development and has features including full IPC compatibility for the wallet/Mist, a "bulletproof" actor/hypervisor architecture and an initial Proof-of-Authority consensus method. Look out for it in 6 weeks' time.
+
+The Parity team.
