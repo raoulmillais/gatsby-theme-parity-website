@@ -2,17 +2,19 @@
 label: Blog Post
 hide_body: false
 fields:
-- name: filename
-  type: text
-  config:
-    required: true
-  label: Filename
-  default: index
 - name: title
   type: text
   config:
     required: true
   label: Title
+  default: index
+  description: this is the filename for gatsbyJS.  Please leave it as 'index'
+- name: blogTitle
+  type: text
+  config:
+    required: true
+  label: Blog Title
+  default: index
   description: Title of your blog post
 - name: slug
   type: text
