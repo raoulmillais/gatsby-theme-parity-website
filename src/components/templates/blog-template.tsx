@@ -39,6 +39,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
             <AuthorCard
               image={authorInfo.avatar}
               name={props.data.mdx.frontmatter.author}
+              authorPage={authorInfo.link}
               title={authorInfo.title}
               company={authorInfo.company}
               date={props.data.mdx.frontmatter.date_published}
