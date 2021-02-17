@@ -76,4 +76,5 @@ fields:
   label: 'Image:'
 pages:
 - blog/built-on-substrate-kilt-protocol/index.mdx
+- blog/parity-1-0-is-here/parity-1.0-is-here.mdx
 - blog/performance-analysis/index.mdx
