@@ -70,4 +70,5 @@ fields:
   label: 'Image:'
 pages:
 - blog/built-on-substrate-kilt-protocol/index.mdx
+- blog/defi-on-polkadot-an-ecosystem-overview.mdx
 - blog/performance-analysis/index.mdx

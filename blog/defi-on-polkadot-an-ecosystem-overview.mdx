@@ -1,0 +1,88 @@
+---
+tags:
+- Community
+- " Polkadot "
+- Releases
+- Parity Substrate
+author: Peter Haymond
+title: 'DeFi on Polkadot: An Ecosystem Overview'
+slug: blog/defi-on-polkadot-an-ecosystem-overview/
+date_published: 2020-12-10T00:00:00+01:00
+image_: static/images/defi-on-polkadot.png
+
+---
+Decentralized finance (DeFi) has emerged as one of the most popular use cases in the crypto ecosystem over the past few years. In brief, DeFi can be described as financial software built with blockchain technology, and it has the potential to make financial applications more open and accessible. At Parity, we’re seeing an increasing number of DeFi teams building solutions using [Substrate](https://www.substrate.io/), our blockchain development framework, and many of these teams are building for the Polkadot ecosystem.
+
+### The DeFi stack
+
+The DeFi technology stack allows teams to mix and match projects to build high value applications. In simple terms, it can be considered as having three layers:
+
+1. **The Application Layer** - what users see
+2. **The Protocol Layer** - a set of specific rules
+3. **The Base Layer** - how value and data gets recorded on chain
+
+Substrate enables developers to build at each layer, forming the backbone of Polkadot. Most DeFi teams sit within the protocol layer, creating applications for users to interact with. Additionally, we’re starting to see some of these DeFi projects become vibrant ecosystems in their own right, reflecting one of Polkadot’s defining features as an ecosystem of ecosystems.
+
+### DeFi on Polkadot
+
+Below are several DeFi teams in the Polkadot ecosystem and how they work at each layer.
+
+**Base Layer**
+
+* [**Polkadot**](https://polkadot.network/) - a network protocol that allows arbitrary data to be transferred across blockchains.
+
+**Protocol Layer**
+
+* [**Acala**](https://acala.network/) - a DeFi hub and decentralized stablecoin called aUSD that allows users to send and receive USD across any blockchain connected to Polkadot.
+* [**Stafi**](https://www.stafi.io/) - allows anyone holding staking tokens to stake and obtain an alternative token (rToken) to trade and exchange immediately without waiting for the unbonding period to complete.
+* [**Bifrost**](https://bifrost.finance/) - a parachain that allows users to deposit their staking tokens and mint vTokens to get staking liquidity.
+* [**Equilibrium**](https://equilibrium.io/en) - a cross-chain money market that combines pooled lending with synthetic asset generation and trading.
+* [**Centrifuge**](https://centrifuge.io/) - allows businesses to secure financing against their accounts receivable and other future cash flows, all without needing to trust a middleman. They also provide the Centrifuge chain, which will be the gateway for real world assets into DeFi.
+* [**Zenlink**](https://zenlink.pro/en/) - a cross-chain DEX network.
+* [**HydraDX**](https://hydradx.io/) - enables frictionless liquidity for crypto assets.
+* [**Laminar**](https://laminar.one/) - a decentralized finance platform powering synthetic assets, margin trading and money markets built by Acala.
+* [**Mangata**](https://mangata.finance/) - a DEX that prevents frontrunning with low fixed-fees and no network fees.
+
+**Application Layer**
+
+* [**Polkaswap**](https://polkaswap.io/) - an automated market maker (AMM)/non-custodial exchange built by the Soramitsu team.
+* [**Sushiswap**](https://forum.sushiswapclassic.org/t/moonbeam-sushiswap-proposal/375) - a community run AMM.
+* [**Clover**](https://cointelegraph.com/news/exclusive-bithumb-set-to-launch-defi-platform-as-a-polkadot-parachain) - a DeFi platform powered by Bithumb for the Polkadot ecosystem.
+
+_Note: We are mostly including projects built natively for Polkadot or building with the aim of being a parachain. Some, such as SushiSwap, are built on top of a parachain and are not native to Polkadot._
+
+### Composability
+
+DeFi composability relies on shared security, where all parachains that are connected to the Polkadot Relay Chain benefit from the economic security provided by the Relay Chain validators. With other proof-of-stake systems, teams must find and bootstrap their own set of validators, increasing the barrier to entry and creating the necessity of trust between communicating chains. By contrast, interchain communication on Polkadot is not bound by the trust that the receiving chain has in the sending chain. The trust is equal across all parachains, making it easy for developers and ensuring their users can have a seamless experience.
+
+Polkadot uses cross-chain message passing (XCMP) for asynchronous communication between parachains. With XCMP, chains can send a message with no expectation of response (but with guarantees that the receiving chain will act upon it), or they can send a message with the expectation that some information will be returned (such as the return value of a function called on the receiving chain).
+
+DeFi built on Ethereum and Bitcoin will be able to communicate within the Polkadot ecosystem using bridges. For example, [Chainsafe](https://medium.com/chainsafe-systems/chainsafe-building-chainbridge-49d51ff2e0a2) and [Snowfork](https://snowfork.substack.com/p/a-trustless-general-purpose-polkadot) are working on low-trust Ethereum bridges, while Interlay is [building](https://medium.com/interlay/interlay-receives-w3f-grant-to-build-trustless-btc-polkadot-bridge-c4bdb40173a3) a low-trust Bitcoin bridge. Teams building on Polkadot can leverage XCMP and bridges to create novel, interoperable DeFi products.
+
+### What’s unique on Polkadot
+
+Polkadot has a powerful set of features that DeFi projects can take advantage of. By allowing for independent blockchains to be developed, we can see some truly interesting use cases.
+
+Some teams are choosing to deploy their infrastructure on top of DeFi chains within the Polkadot ecosystem rather than building their own native parachain. For example, [Ren partnered with Acala](https://medium.com/acalanetwork/bringing-btc-to-polkadot-acala-x-ren-e7959855d5aa) by deploying its RenVM bridge module on the Acala Network. Teams can choose to build on top of parachains either through building runtime modules and then integrating with the parachain, or through building on top of a parachain such as Moonbeam, Plasm, or Edgeware that supports smart-contracts (ie. Solidity or Ink! based smart contracts). Going forward, we expect that some teams will continue to choose to build on top of existing platforms.
+
+A unique sub-category in DeFi is liquid staking. It allows anyone with a staking token to get immediate liquidity without a lockup period by obtaining a tradable, synthetic token in the process. This provides a clear benefit to token holders, though it introduces some centralization risk in the process. We already see at least six projects building liquid staking solutions, either natively or through bridges to other chains, making Polkadot likely the most adopted blockchain ecosystem for liquid staking.
+
+DeFi projects in Polkadot are not just copying existing concepts, but creating new concepts altogether. One example is Acala's decentralized sovereign wealth fund (dSWF). The purpose of the dSWF is to make Acala economically sustainable to cover on-going funds for research and development, and to pay for security on the Polkadot network. Acala’s stablecoin platform operates similarly to MakerDAO, in that it requires payment of a stability fee when closing a collateralized debt position (CDP). Once a CDP is closed, the accumulated stability fees will be kept in a system treasury. Then whenever the system profit exceeds a certain threshold, instead of burning native ACA tokens, these tokens will be used to purchase DOT from the market and will be deposited to top up the DOT reserve held by the dSWF. This makes the dSWF a compelling and versatile system. You can read more about [the dSWF here](https://medium.com/acalanetwork/acalas-decentralized-sovereign-wealth-fund-a-next-gen-dao-unforkable-aum-80f8c23d8f27).
+
+### The Future
+
+The teams in the DeFi ecosystem are building or considering a wide variety of products. We currently see the most development activity in products such as stablecoins, non-custodial exchanges, money markets, and oracles. This makes sense, as these types of products are generally considered DeFi primitives and building blocks. Going forward, we expect to see many types of DeFi products in the Polkadot ecosystem powered by Substrate, such as:
+
+1. Insurance platforms
+2. Yield aggregators
+3. DEX aggregators
+4. Derivatives
+5. No-loss lotteries
+6. Decentralized futures
+7. Permissionless options trading
+8. Credit risk protocols for lending and borrowing
+9. Fixed interest rate loans
+
+We're heading into exciting times as more and more teams build DeFi on Polkadot, combining creativity with highly scalable, composable systems. We look forward to seeing the results as talented teams expand the use cases for what’s possible today and create new, novel products for the market.  
+  
+If you’re looking to build DeFi on Polkadot, [get in touch](https://info.polkadot.network/contact) with us. If you’re interested in the Substrate builders program, check out [this link](https://www.substrate.io/builders-program/). Learn more at [polkadot.network](https://polkadot.network/) and join in the conversation[ here](https://wiki.polkadot.network/docs/en/community).v
