@@ -69,4 +69,5 @@ fields:
     maxSize: 64
   label: 'Image:'
 pages:
+- blog/built-on-substrate-kilt-protocol/index.mdx
 - blog/performance-analysis/index.mdx
