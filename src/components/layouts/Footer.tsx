@@ -104,7 +104,7 @@ export default function Footer() {
               {intl.formatMessage({ id: 'nav-community' })}
             </p>
             <div className="flex flex-col mt-8">
-              <LocalizedLink href="/events" rel="noreferrer" className={navItemsFooter}>
+              <LocalizedLink to="/events" className={navItemsFooter}>
                 {intl.formatMessage({ id: 'nav-events' })}
               </LocalizedLink>
               <a
