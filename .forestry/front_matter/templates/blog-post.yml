@@ -63,12 +63,11 @@ fields:
       file: content/blog/authors.json
       path: 
   label: Author
-- name: image_
+- name: image
   type: file
   config:
     maxSize: 64
   label: 'Image:'
 pages:
 - blog/built-on-substrate-kilt-protocol/index.mdx
-- blog/defi-on-polkadot-an-ecosystem-overview.mdx
 - blog/performance-analysis/index.mdx
