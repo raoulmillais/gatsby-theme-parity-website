@@ -1,10 +1,19 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { useIntl } from 'react-intl';
 import Layout from '../components/layouts/Layout';
+import BlogExcerpt from '../components/BlogExcerpt';
 import SEO from '../components/layouts/SEO';
+import Social from '../components/Social';
 
-export default function BlogPage() {
+interface BlogPageProps {
+  data: any;
+  pageContext: any;
+}
+
+export default function BlogPage(props: BlogPageProps) {
   const intl = useIntl();
+  const { data } = props;
 
   return (
     <Layout theme="light">
@@ -19,6 +28,44 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      <section className="mx-4">
+        {data.allMdx.edges.map((edge: any, index: any) => {
+          return (
+            <article key={index}>
+              <BlogExcerpt
+                title={edge.node.frontmatter.blogTitle}
+                link={edge.node.frontmatter.slug}
+                date={edge.node.frontmatter.date_published}
+                mdTags={edge.node.frontmatter.tags}
+                image={edge.node.frontmatter.image}
+                excerpt={edge.node.excerpt}
+                timeToRead={edge.node.timeToRead}
+              />
+            </article>
+          )
+        })}
+      </section>
+      <Social />
     </Layout>
   );
 }
+
+export const query = graphql`
+  {
+    allMdx(sort: { fields: frontmatter___date_published, order: DESC }) {
+      edges {
+        node {
+          frontmatter {
+            blogTitle
+            date_published(formatString: "MMMM DD, YYYY")
+            tags
+            image
+            slug
+          }
+          excerpt(pruneLength: 220)
+          timeToRead
+        }
+      }
+    }
+  }
+`;
