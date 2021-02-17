@@ -1,4 +1,50 @@
 ---
 label: Blog Post
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Title of your blog post
+- name: slug
+  type: text
+  config:
+    required: false
+  label: Slug
+  description: e.g. "blog/name-of-my-post'
+- name: date_published
+  type: datetime
+  label: Date
+  description: Select publishing date &amp; time
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: tags
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: documents
+      section: blog-settings
+      file: content/blog/tags.json
+      path: 
+  label: Tags
+  description: Enter all the tags and categories that your blog belongs to
+- name: author
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: documents
+      section: blog-settings
+      file: content/blog/authors.json
+      path: 
+  label: Author
