@@ -5,13 +5,13 @@ fields:
 - name: title
   type: text
   config:
-    required: false
+    required: true
   label: Title
   description: Title of your blog post
 - name: slug
   type: text
   config:
-    required: false
+    required: true
   label: Slug
   description: e.g. "blog/name-of-my-post'
 - name: date_published
@@ -19,18 +19,37 @@ fields:
   label: Date
   description: Select publishing date &amp; time
   config:
-    required: false
+    required: true
     date_format: 
     time_format: 
     display_utc: false
 - name: tags
   type: select
-  default: []
+  default: Community
   config:
-    required: false
-    options: []
+    required: true
+    options:
+    - Community
+    - Polkadot
+    - Releases
+    - Parity Substrate
+    - People of Parity
+    - Rust
+    - Wasm
+    - Partnerships
+    - Custom Solutions
+    - Security
+    - Ink!
+    - Parity Ethereum
+    - Parity Fether
+    - Light.js
+    - Company and Culture
+    - Parity Signer
+    - Zcash
+    - PICOPS
+    - Parity Bridge
     source:
-      type: documents
+      type: simple
       section: blog-settings
       file: content/blog/tags.json
       path: 
@@ -38,13 +57,39 @@ fields:
   description: Enter all the tags and categories that your blog belongs to
 - name: author
   type: select
-  default: []
+  default: Parity Technologies
   config:
-    required: false
-    options: []
+    required: true
+    options:
+    - Peter Haymond
+    - Joe Petrowski
+    - Phil Lucsok
+    - Alexandra Heller
+    - Parity Technologies
+    - Gautam Dhameja
+    - Eric Wang
+    - Robin Freyler
+    - Zach Cavanaugh
+    - Jutta Steiner
+    - Benjamin Kampmann
+    - Shawn Tabrizi
+    - Thibaut Sardan
+    - Kirill Pimenov
+    - Dimitiy Kashitsyn
+    - Jack Fransham
+    - Fredrik Harryson
+    - Pierre Krieger
+    - Amaury Martiny
+    - Afri Schoedon
+    - Gavin Wood
     source:
-      type: documents
+      type: simple
       section: blog-settings
       file: content/blog/authors.json
       path: 
   label: Author
+- name: image_
+  type: file
+  config:
+    maxSize: 64
+  label: 'Image:'
