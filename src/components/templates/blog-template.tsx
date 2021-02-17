@@ -33,7 +33,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
           <article className="mx-4 font-normal md:text-lg xl:text-xl max-w-screen-md">
             <div className="">
               <div className="container h-full text-center pt-6 md:pt-12 pb-6 px-2 md:flex md:flex-col md:justify-center md:max-w-screen-md">
-                <h3 className="md:text-4xl">{props.data.mdx.frontmatter.title}</h3>{' '}
+                <h3 className="md:text-4xl">{props.data.mdx.frontmatter.blogTitle}</h3>{' '}
               </div>
             </div>
             <AuthorCard
@@ -90,7 +90,7 @@ export const query = graphql`
         image
         slug
         tags
-        title
+        blogTitle
       }
       body
       timeToRead
