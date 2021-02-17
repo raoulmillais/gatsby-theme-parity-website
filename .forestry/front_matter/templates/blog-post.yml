@@ -2,6 +2,12 @@
 label: Blog Post
 hide_body: false
 fields:
+- name: filename
+  type: text
+  config:
+    required: true
+  label: Filename
+  default: index
 - name: title
   type: text
   config:
@@ -69,6 +75,5 @@ fields:
     maxSize: 64
   label: 'Image:'
 pages:
-- blog/building-a-hot-wallet-with-substrate-primitives/building-a-hot-wallet-with-substrate-primitives.mdx
 - blog/built-on-substrate-kilt-protocol/index.mdx
 - blog/performance-analysis/index.mdx
