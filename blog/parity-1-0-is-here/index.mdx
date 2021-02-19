@@ -1,0 +1,47 @@
+---
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Parity 1.0 is here!
+slug: blog/parity-1-0-is-here/
+date_published: 2016-03-24T00:00:00+01:00
+image: ''
+---
+So it has been around 7 weeks since the 0.9 prerelease of Parity, which demonstrated the fastest and lightest fully compliant Ethereum block processing engine available. Now, about a week after expected, I'm happy to announce the immediate availability of Parity 1.0 (perhaps a little surprising given the quality of the snow here on the current Parity team retreat).
+
+As the name suggests, this release is mainly about matching the common features of existing clients. As such it brings all requisite functionality to run a functional Ethereum Homestead node, in particular:
+
+* Fully-compliant [Ethereum JSONRPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) implementation;
+* zero-configuration compatibility with [ethminer](https://ethereum.gitbooks.io/frontier-guide/content/gpu.html) for easy solo mining;
+* full compatibility with geth over key files and CLI options.
+
+In addition, we've added a few important features:
+
+* State-trie pruning support, reducing the overall burden on your disk by an order of magnitude;
+* Ethereum [chain-specification file](https://github.com/ethereum/wiki/wiki/Ethereum-Chain-Spec-Format) support, so you can quickly and easily configure and deploy private chains;
+* hierarchical mip-mapped log-blooming, for near-instantaneous log querying (\~100ms for querying 106 blocks).
+
+It's completely open source (under the GPL licence), so you can build and hack on it with ease and needs no dependencies outside of Rust's Cargo; simply clone [the repository](https://github.com/ethcore/parity), cargo build and you're good to go.
+
+There are binaries for Ubuntu and Docker, as well as Homebrew support for Mac. If there's enough desire out there for a Windows build, we'll get to it.
+
+**Status**
+
+Though the release version is 1.0, this is only to mark that we have achieved our feature goals for the milestone: we still consider this to be beta quality.
+
+For those who care, this follows the Rust compiler release convention, which pipelines releases from master (the unstable development branch) first into beta and then, after a whole additional release cycle, into stable. In this way, we'll be calling our 1.0.x release "stable" in 6-7 weeks' time, when we next shunt everything along one.
+
+**Civility**
+
+With 1.0 out, we're already busy getting on with Civility, the next release in the Parity series, planned for 6-7 weeks from now. This will be mostly back-end improvements rather than being feature-heavy, so we'll be putting in substantial efforts for further CPU optimisation and control over memory usage. In addition, it will include:
+
+* A move to a hypervisor-style architecture, with fully process-isolated modules;
+* additional API bindings for interacting with the block chain, including for Rust and JSONRPC-over-IPC;
+* a revamped chain synchronisation engine.
+
+Additionally, we hope to get it building on both Windows and ARM, unleashing the magic of a low-footprint Ethereum client on the Raspberry Pi.
+
+We also have a few other stretch-goals in case we manage to get all that done sooner than expected, so hopefully there will be one or two Easter eggs in there by the time of release :)
+
+Enjoy!

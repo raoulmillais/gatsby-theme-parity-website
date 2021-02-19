@@ -13,10 +13,10 @@
 Important Convention Note
 > Always create your own branch to work on the site. Use `staging` for testing.  Both Netlify flags towards the bottom display status of `staging` and `main` site.  `main` is production ONLY and deployed by dedicated Dev or Comms team through Forestry.
 
-### Status [Staging](https://parity-staging.netlify.app/) 
+### Status [Staging](https://staging.parity.io/) 
 (Password protected; ask in Web Channel on Mattermost)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1a598998-1c11-4a7d-896e-27b3082edf5c/deploy-status)](https://app.netlify.com/sites/parity-staging/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a37b450c-3e18-4676-8ec3-e2d370366d43/deploy-status)](https://app.netlify.com/sites/parity-staging/deploys)
 
 
 ## 🚀 Quick start
@@ -36,7 +36,7 @@ Important Convention Note
 
     ```shell
     cd my-folder/
-    npm run install
+    yarn
     ```
     
 2.  **Fire the engine**
@@ -45,7 +45,7 @@ Important Convention Note
 
     ```shell
     cd my-folder/
-    npm run dev
+    yarn dev
     ```
 
 3.  **Open the code and start customizing!**

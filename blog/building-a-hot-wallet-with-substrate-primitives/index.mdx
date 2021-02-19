@@ -1,0 +1,94 @@
+---
+tags:
+- Parity Substrate
+author: Joe Petrowski
+blogTitle: Building a Hot Wallet With Substrate Primitives
+slug: blog/building-a-hot-wallet-with-substrate-primitives/
+date_published: 2020-11-18T00:00:00+01:00
+image: "/images/substrate-low-level-runtime-primitives-06-1.png"
+
+---
+Substrate and the FRAME system for runtime development define a powerful set of primitive functions for building blockchain infrastructure. Used in concert, they create novel approaches to existing problems. This article will describe a real-world application where Substrate’s functions are used to implement a multi-address hot wallet.
+
+A hot wallet usually means that the spending keys are kept on an online device so that it can create and broadcast transactions with convenience, but typically at higher risk. This article will explore some of Substrate’s account abstractions — multi-signature accounts, proxy accounts, and derivative accounts — that allow us to construct a hot wallet that could securely support millions of addresses.
+
+Such a wallet would be useful if you needed to hold tokens for several user accounts, but wanted to give each customer their own deposit address. The trivial solution would be to generate a new deposit address for each customer by generating a new key pair. But handling all those keys quickly becomes non-trivial. What if you have tens or hundreds of thousands of users? Using Substrate’s account abstractions, we can build a solution that is both more scalable and more secure.
+
+## Origins and Account IDs
+
+Before starting to build the hot wallet, we need to lay the foundations it will use. When a user interacts with a blockchain, they are calling some function; the set of these “dispatchable” functions make up the blockchain’s interface.
+
+Since dispatchable functions are invoked from the outside world, the first thing the blockchain might care about is who actually called the function. For one, a function needs to check if the caller has the authority to execute this function. Second, the chain might need to know exactly who called the function to update some information about the caller. If the caller is an account, the chain may need to update the account’s balance, e.g. to deduct a transaction fee.
+
+You might be thinking, “What do you mean _if_ the caller is an account?” Functions in Substrate don’t come from accounts per se, they come from _origins_. The governance system of Polkadot, for example, has a suite of special origins that have privileges such as allocating Treasury funds or cancelling slashes. If you design your own blockchain with Substrate, you can create your own custom origins. But the thing to keep in mind for this article is that an account is simply one variant of a Substrate origin. You can think of this as Substrate telling the dispatchable function, “The origin of this dispatch is an account.”
+
+Now that we’ve made the first leap of abstraction, we need a way to tell the function which account the origin refers to. If you’ve used any blockchain, you might be accustomed to an account ID being the public key that corresponds to a private key. That’s fine, that works in Substrate too. In this sense, an account is _identified_ by the public key and _authorized_ by the corresponding private key.
+
+Substrate supports more abstraction, though. An account ID can be any 32 byte number.[\[1\]](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fn1) It could be the public key that corresponds to a private key, but it doesn’t have to be. It just needs some method of authorization. As in, there must be some unique way to generate this account-identifying number so that Substrate can complete the sentence started above: “The origin of this dispatch is an account _identified by this number_.”[\[2\]](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fn2)
+
+## Hash Functions
+
+Hash functions come up all the time in blockchain. The blocks are literally linked together via their hashes. But we’re going to use the properties of hash functions for two more purposes: generating account IDs and identifying function calls.
+
+A hash function takes some input of any size and maps it onto a fixed size output, let’s say 32 bytes. But it doesn’t just map data to any 32 byte number, it should deterministically map unique data to a unique number. It just so happens that 32 bytes can capture an astronomically large number of items.[\[3\]](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fn3)
+
+For example, we could take some information about a chain, like “polkadot-treasury”, and turn that into an account ID (32 bytes) by using a hash function. Or, we could take the information about some transaction, e.g. “transfer 10 units to account 123…” and trust that the hash is a unique image of that information.
+
+## Multisig Accounts
+
+With that out of the way, we can start building the first part of our hot wallet: a multisig account. Multisig accounts may not seem like part of a hot wallet because of general clunkiness, but this account will serve as a secure base for the rest of the components and said clunkiness will not impede day-to-day usage.
+
+Some blockchains use cryptographic multisig, where multiple key holders sign a single transaction off-chain prior to submitting the transaction on-chain. The multisig system that comes with Substrate’s FRAME works another way: it generates an account ID based on the individual accounts that make up the multisig and the requisite threshold needed to dispatch from the generated account. Substrate adds a special multisig prefix to all of this information and hashes it to get a single 32 byte output that it will use as the multisig account ID. Notice that this account ID does not have a private key associated with it.
+
+To authorize a transaction from that new account ID, the members of the multisig each submits a transaction on-chain with the function call that they want the multisig account to make. But it’s not efficient for everyone to submit the function call; it could be large and block space is scarce (and therefore, expensive). Hash functions come in handy again: only one of the individual accounts needs to submit the actual function call; the others only submit the hash. They are saying, “we agree to call the function with this hash from the multisig account,” and don’t need to resubmit the function.
+
+This multisig on its own is too clunky for use as a hot wallet because it requires multiple key holders to submit transactions in order to make it work. But it is highly secure and will serve as a base account that we can turn into a hot wallet without sacrificing its security.
+
+## Proxy Accounts
+
+Proxy accounts allow the multisig address to delegate spending authority to another account, which will serve as the hot wallet while still keeping the multisig secure. We will set one time delay proxy to manage spending and another (or many) instant proxies to manage security for this multisig account.
+
+A proxy account gives some privileges from one account to another to make function calls on its behalf. These privileges can be specific, for example, “only transactions related to staking”, or broad, for example, “all transactions that do not transfer funds”, or even full privileges, “any transaction”.
+
+Creating a proxy just requires one transaction from the to-be-proxied account stating which other account is its proxy and its privileges. Once the proxy relationship is in place, the proxy account can make transactions for the proxied account, essentially telling the chain, “I am a proxy for this account, I have these privileges, and I want to dispatch this function call on behalf of the proxied account.” The chain’s logic will verify that the proxy does have the correct privileges, and dispatch that function _with the origin of the proxied account_.
+
+Adding a time delay adds an extra layer of security. Imagine a time delay of 600 blocks (one hour in Polkadot). The proxy account would still submit a transaction saying that it is a proxy with some privileges, but would only announce the hash of the function call it wants to make. The proxied account’s owner can request the actual function call and review it. If the owner does not approve, they can reject the function call by submitting another transaction before the time delay expires. After the time delay, the proxy can submit the actual function call that corresponds to the announcement, and Substrate will dispatch it.[\[4\]](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fn4)
+
+For our use case, the multisig key holders will make a transaction to set another account as a time delay proxy with full privileges, as in including balance transfers. Maybe this proxy account will live on an online server that makes transactions autonomously. Whenever it makes a transaction, it will have to announce the hash first and then send the actual function call to some other account holder (for simplicity, let’s consider this other account holder a member of the multisig) who can verify that the function call is not malicious. If it is, the multisig can make a transaction in time to reject the call, and out of caution decide that the proxy account has been compromised and remove it.
+
+This setup actually works, but we can still make it more convenient to use. Using only a single proxy, we might require a long time delay because coordinating enough multisig key holders to make a rejection transaction can be difficult on short notice. But one account can have multiple proxy accounts with varying privileges. To solve this problem, set each multisig key holder as a proxy with non-transfer privileges, notably with the privilege to reject announcements from the time delay proxy.
+
+Let’s recapitulate this configuration. At the center, we have a multisig account. This account does not have a private key, but it has two ways to control it: by using a time delay proxy account or by gathering enough signatories of the member accounts. Each member of the multisig also has the ability to _reject_ transactions from the fully privileged proxy, but cannot make balance transfers without other members joining to make a multisig transaction.
+
+On its own, this is a fully functional hot wallet that can change the hot key (the fully privileged proxy account) without changing its address (the multisig account) by simply removing the proxy and setting a new one. But our original problem statement required unique deposit addresses for tens of thousands of users, and so far we only have one.
+
+## Derivative Accounts
+
+So far we have used multiple ways to access one multisig account; now we will use one account to access many.
+
+Each account in Substrate has a tree of derivative accounts that it can access. To derive the account IDs, and this should be no surprise at this point, Substrate uses a hash algorithm. By hashing the account ID of the calling account with the desired index and a derivative prefix, Substrate creates a new account ID. For example, the sender provides a function call and an index, saying, “I want to dispatch this function from my derivative account with this index.”
+
+You probably see where this is going. The wallet owner can assign an index to each of their users, and provide the derivative account ID as the deposit address for that user. To access the funds, the proxy address would issue a transaction to transfer funds from the derivative address of the multisig account.
+
+Practically speaking, the index is limited to 16 bits, or 65,536 derivative accounts, but nesting works too. That is, each derivative account can have its own set of 65,536 derivative accounts, and so on. The second tier of this tree would have over four billion accounts.
+
+## The Full Picture
+
+Let’s finally use this. Imagine that the user with index 11 pays you and you have some “savings account” that you want to deposit the funds into. The full transaction would look like: “I am a proxy for the multisig account, and I want to transfer funds from the multisig’s derivative account with index 11 to the savings account.”
+
+Assuming that everything looks OK to the supervisors, the time delay would expire and the proxy can broadcast the full transaction. If the multisig members ever think that the hot key needs changing, they can simply generate a new one and remove the old one as a proxy, without affecting the multisig or any of its derivative addresses.
+
+![substrate-low-level-runtime-primitives-07-1-](/images/substrate-low-level-runtime-primitives-07-1.png)
+
+The above image shows a diagram of the wallet we've set up: a multisig (MS) is controlled by a set of n keys (noted k) and sets a time delay proxy (H) to be a hotkey. From the multisig, it can derive virtually unlimited addresses (the set of d).
+
+We can even optimize this workflow more. Substrate also provides a function to send a batch of function calls. If users deposit to and withdraw from their derivative accounts on a regular basis, you can send them all in a single batch of transfers.
+
+Substrate’s on-chain account abstractions provide powerful ways to manage accounts. By reducing the number of actual keys needed and accessing accounts based on formal rules rather than private keys, you can operate hundreds of thousands of accounts without dealing with the limitations of storing an equivalent number of signing keys. This article just focused on one example, building a hot wallet, but all of the abstractions are isolated and can be composed into more advanced applications.
+
+***
+
+1. It doesn’t have to be 32 bytes. You can build your runtime with whatever you like, but I don’t want this article to digress into runtime development any more than it must. [↩︎](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fnref1)
+2. A quick interruption on the word “unique”, which I mean in a more rigorous sense than your average dictionary definition. A function is unique not if there exists only one representation of it, but rather if all representations (or series of representations) are provably equivalent. There could exist an infinite number of methods to generate one particular number (account), but as long as all of those methods do generate that same account, then that account can be considered unique. Going down this path any further will lead to the kind of mathematics that keeps you up at night, but we’re going to be generating account IDs and passing them around between functions, and the key takeaway here is that no matter how many functions we string together (put in series) to reach some account ID, it behaves as the same account ID in its capacity as a dispatch origin. [↩︎](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fnref2)
+3. If you’re interested, 32 bytes can hold up to the number 1.15x10^77. The distance to the edge of the observable universe is 45.7 billion light years, which is 4.32x10^23 kilometers, or 4.32x10^29 millimeters. If we consider that a flat disc, it has an area of 5.87x10^59 square millimeters. We’re still off by a factor of 10^18, or a billion squared. So the chances of two different hash inputs having the same output is like both items landing on the same square millimeter in the observable universe, then breaking that down into a 1 billion by 1 billion grid and again both landing in the same square. Those squares are 1 picometer wide. For reference, a helium atom has a diameter of 62 picometers. [↩︎](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fnref3)
+4. Actually, any account can submit the call, as long as the proxy made the announcement, but for the sake of pragmatism, assume that our hot wallet just uses the same account to announce and submit. [↩︎](https://www.parity.io/building-a-hot-wallet-with-substrate-primitives/#fnref4)

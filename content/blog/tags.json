@@ -1,0 +1,99 @@
+{
+  "tags": [
+    {
+      "name": "Community",
+      "slug": "/blog/tag/community",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Polkadot",
+      "slug": "/blog/tag/polkadot",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Releases",
+      "slug": "/blog/tag/releases",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Parity Substrate",
+      "slug": "/blog/tag/parity-substrate",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "People of Parity",
+      "slug": "/blog/tag/people-of-parity",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Rust",
+      "slug": "/blog/tag/rust",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Wasm",
+      "slug": "/blog/tag/wasm",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Partnerships",
+      "slug": "/blog/tag/partnerships",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Custom Solutions",
+      "slug": "/blog/tag/custom-solutions",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Security",
+      "slug": "/blog/tag/security",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Ink!",
+      "slug": "/blog/tag/ink",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Parity Ethereum",
+      "slug": "/blog/tag/parity-ethereum",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Parity Fether",
+      "slug": "/blog/tag/parity-fether",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Light.js",
+      "slug": "/blog/tag/light-js",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Company and Culture",
+      "slug": "/blog/tag/company-and-culture",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Parity Signer",
+      "slug": "/blog/tag/parity-signer",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Zcash",
+      "slug": "/blog/tag/zcash",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "PICOPS",
+      "slug": "/blog/tag/picops",
+      "image": "/images/blog-hero-image.jpg"
+    },
+    {
+      "name": "Parity Bridge",
+      "slug": "/blog/tag/parity-bridge",
+      "image": "/images/blog-hero-image.jpg"
+    }
+  ]
+}

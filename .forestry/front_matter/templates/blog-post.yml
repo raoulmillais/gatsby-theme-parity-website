@@ -1,0 +1,82 @@
+---
+label: Blog Post
+hide_body: false
+fields:
+- name: title
+  type: text
+  config:
+    required: true
+  label: Title
+  default: index
+  description: this is the filename for gatsbyJS.  Please leave it as 'index'
+- name: blogTitle
+  type: text
+  config:
+    required: true
+  label: Blog Title
+  default: ''
+  description: Title of your blog post
+- name: slug
+  type: text
+  config:
+    required: true
+  label: Slug
+  description: e.g. "blog/name-of-my-post'
+- name: date_published
+  type: datetime
+  label: Date
+  description: Select publishing date &amp; time
+  config:
+    required: true
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+  description: Community, Polkadot, Releases, Parity Substrate, People of Parity,
+    Rust, Wasm, Partnerships, Custom Solutions, Security, Ink!, Parity Ethereum, Parity
+    Fether, Light.js, Company and Culture, Parity Signer, Zcash, PICOPS, Parity Bridge
+- name: author
+  type: select
+  default: Parity Technologies
+  config:
+    required: true
+    options:
+    - Peter Haymond
+    - Joe Petrowski
+    - Phil Lucsok
+    - Alexandra Heller
+    - Parity Technologies
+    - Gautam Dhameja
+    - Eric Wang
+    - Robin Freyler
+    - Zach Cavanaugh
+    - Jutta Steiner
+    - Benjamin Kampmann
+    - Shawn Tabrizi
+    - Thibaut Sardan
+    - Kirill Pimenov
+    - Dimitiy Kashitsyn
+    - Jack Fransham
+    - Fredrik Harryson
+    - Pierre Krieger
+    - Amaury Martiny
+    - Afri Schoedon
+    - Gavin Wood
+    source:
+      type: simple
+      section: blog-settings
+      file: content/blog/authors.json
+      path: 
+  label: Author
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: 'Image:'
+pages:
+- blog/announcing-parity-1-1/index.mdx
+- blog/built-on-substrate-kilt-protocol/index.mdx
+- blog/performance-analysis/index.mdx

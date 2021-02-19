@@ -1,0 +1,49 @@
+---
+blogTitle: Performance Analysis
+slug: blog/performance-analysis
+date_published: 2016-02-02
+tags:
+- Parity Ethereum
+author: Parity Technologies
+image: ''
+
+---
+So with the latest benchmarks (available to see at parity.io), it's clear Parity has head and shoulders the fastest and lightest Ethereum block processing engine amongst the available clients. But aside from the big numbers, it's nice to understand a bit deeper about what's going on underneath.
+
+This is a quick dive into the differences between Parity and the currently most popular client on the Ethereum network, Geth. I haven't yet done similar stuff for EthereumJ or Eth, though I expect that might be fun, too.
+
+Note that throughout I'm talking about block-processing. In particular, each client processed the same ~1,000,000 blocks in the current "Frontier" Ethereum mainnet. Block processing means checking the proof-of-work and all the transaction signatures, executing EVM code, building and updating tries, managing the death row (in the state-pruning clients) and various verifications.
+
+I measured block processing through making the clients do a "full" sync (as opposed to Geth's --fast sync which doesn't do block processing, instead just duplicating the state trie from a remote host) from a pre-synced node running locally.
+
+It used to be that block-processing speed was the same as sync speed. With the advent of state-trie-duplicating (aka fast-syncing), this is no longer strictly true: nodes can sync without actually needing to process all those transactions that happened prior (ish - they still tend to process the last 1000 or so).
+
+Here we measure block-processing speed - though it's not an especially great proxy for understanding how fast a node can sync, it's still useful for understanding a few other aspects about how fast a node will go. Block processing speed governs how fast a miner will be able to confirm an incoming block and get back to mining on the right chain, rather than spinning out additional uncle blocks that may or may not be rewarded; it also governs how low-power a processor can be in a client before it croaks completely under the strain of playing catch up. For private chains where consensus is no longer the network bottleneck, it governs the effective transaction throughput of the network.
+
+# Block Processing Profile
+
+First thing to check is how the speed of block processing changes based upon which block it is that we're processing, and in this case, where in the Frontier chain it was found. Here's a graph of Parity and Geth processing the Frontier chain and how far through it they get over time.
+
+![chart1](/images/chart1.png)
+
+As you can see, there's little difference between the clients except for Parity being around three times faster. In both cases, they spent around half of the total time taken processing the first 700k blocks, before slowing down substantially for the final 300k. In both cases there's a slight slowdown around block 400k (it's there - get a ruler is you don't believe me :-)). So what happened (and stayed happening) at block 700k? To be honest I'm not sure, but we can dive a little deeper to find out. First off, let's check the mean block processing speed over the ~1000k blocks we're processing.
+
+![Chart2](/images/Chart2.png)
+
+Ok, so this graph shows up a few things. The first is the pronounced speed with which Parity processes the first 100k blocks in the chain, clocking up > 1000 blocks/second for most of the time during that period. Notably, these were the blocks while the thawing was going on, was a gas limit (and thus transaction volume) substantially below today's 3M - many of these contain no transactions in them at all. The fact that Geth's speedup isn't nearly so pronounced over this period rather suggests Geth has a bottleneck over and above proof-of-work verification.
+
+Both clients continue for a while after the 100k at a relatively consistent pace. At around the 450k mark Parity and to a lesser degree, Geth, take a bit of dive. It seems some aspect of transactions changed in some way; perhaps this is the first time people are really starting to play around with the EVM. Parity in particular is inconsistent during this period with occasional troughs spiking down by an order of magnitude.
+
+And then 690k happens. Both clients take a dive down in processing rate that continues indefinitely. Parity goes from a median rate of about 500 blocks/sec down to something more like 250, Geth from around 200 to 100. Some change in the composition of the mainnet transactions - either the density of them has changed or the nature of the transactions themselves have changed, perhaps with more EVM code in them or even with particular EVM code being used.
+
+Let's take a look at transaction rate over time to narrow it down a little.
+
+![chart3](/images/chart3.png)
+
+Here we can most easily see the thawing period with that initial spike at block 50k where the thawing finally happened and a deluge of initial transactions went through, throwing up the transaction rate.
+
+One of the most striking things about this graph is how consistent Geth is with its transaction processing compared to parity which is somewhat more dependent on the block. While the difference is liable to be somewhat overplayed since the values of transaction throughput for Parity are generally higher (and so we'd expect accordingly higher volatility over that value), it's nonetheless there. This is suggestive of bottlenecks outside of the paths strictly required for transaction processing.
+
+Now, Parity (and less noticeably, Geth) takes a big hit between block 690k and 850k before rising in transaction-processing speed on its way to 950k and beyond. Given block processing speed stayed more or less constant around that period, we might expect that the complexity or other nature of the transactions actually changed at that time. My guess is that it marked the start of a service on the mainnet that made substantial use of the EVM, thereby causing a substantial drop in transaction throughput.
+
+That's about all I can say from these graphs. I'll be taking a closer look into some of the analytics produced by Parity an the next article in this series to try to characterise what's happening in terms of gas usage and comparing that to physical resources utilised.

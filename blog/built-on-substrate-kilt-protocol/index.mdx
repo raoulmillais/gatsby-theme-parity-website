@@ -1,0 +1,55 @@
+---
+blogTitle: 'Built on Substrate: KILT Protocol'
+slug: blog/built-on-substrate-kilt-protocol
+date_published: 2020-02-12
+tags:
+- Parity Substrate
+- Polkadot
+- Community
+author: Zach Cavanaugh
+image: "/images/kilt-blog-01-1.png"
+
+---
+In recent years, several high-profile data scandals have helped spread awareness of privacy and data rights issues among the general public. From Facebook to Equifax, an ever-growing number of companies have demonstrated their inability to keep our sensitive private data safe. Still, most everyday internet users probably don’t think twice about what happens behind the scenes when they log into their favorite web services.
+
+In reality, the usernames and passwords we use to unlock our most sensitive data and assets are being held by each service provider we interact with, often under less-than-ideal security conditions. These centralized data silos become honey pots for hackers, leaving our information vulnerable to theft and misuse. The widespread use of poor password-management strategies, i.e. using the same password and username for multiple services, means that once (not if) a hack happens, hackers can use those logins to access our data everywhere that we reused them. Fraud, identity theft, extortion—the consequences of managing authentication in this way can often be catastrophic.
+
+Clearly we can't trust today's web infrastructure to protect our data, but that doesn't mean the need for trust disappears entirely. Every time we want to access a service, some source of authority needs to verify the information we provide. Facebook and Google can provide that service today, saving us the trouble of having to log into every website with separate credentials. But if we can't trust companies like these with our data, there's currently no good solution. What we need is a web 3.0 alternative that protects our interests while providing the same user experience we're accustomed to today.
+
+### Enter KILT Protocol
+
+The KILT Protocol team, one of the first to build on the Substrate blockchain framework, is working to solve this issue by creating a decentralized trust marketplace that protects privacy and data rights. KILT reduces or eliminates the need to blindly trust centralized services by providing a new way to manage credentials, giving users control over their own data, a key attribute of web 3.0.
+
+KILT Protocol is a permissionless common standard for managing credentials in a decentralized way. The system consists of three primary roles: Claimers, Attesters, and Verifiers. In this system, Claimers are the individual end users (or even objects/items—we'll get into this later) who want to present verifiable information about themselves to a third party or log into a particular service. Attesters are the sources of authority that confirm the truth of the claims being presented by the Claimers. Lastly, Verifiers are the third parties who want to verify that the claim is indeed true. Together, these roles create a comprehensive credentialing system that facilitates data accuracy without the singular point of failure of traditional web 2.0 systems.
+
+### An example: residency verification
+
+Imagine you’re signing up for an app that needs to verify your local jurisdiction. Under the current regime, you'd need to prove your residency by handing over your passport or other official documents. This would give the service provider access not only to your place of residence, but to any other information contained in those documents, like your address or date of birth. Depending on the data privacy laws in your country, they may then be able to store that information indefinitely on their own vulnerable servers, multiplying the risk of a data breach.
+
+With a system built on KILT Protocol, by contrast, users would be able to prove their place of residence without offering any additional information about themselves. Instead of sharing an entire passport, Claimers would just share what's called a credential, which could represent any verifiable information or attribute about the claimer. In this case, the credential certifying the Claimer's place of residence would be provided directly to the Claimer by the Attester (i.e. the relevant agency). The credential then lives on the Claimer's device, who can then share it at will with the verifying app, providing only the necessary information (such as place of residence but not address).
+
+### KILT's value proposition
+
+In this system, users maintain full control over their data. Because KILT also decouples the verification process from the attestation process, privacy is also maintained with respect to the attesting authorities, who will never know with whom or for what purpose the user shared their credentials.
+
+KILT’s major innovation is replacing unintended participation in data markets with intentional participation in trust markets. Today our data is siphoned away into centralized databases effectively without our consent, where it's sold to the highest bidder and used to create picture perfect avatars of our identity for use by advertisers, political groups, and governments.
+
+With KILT, users are in control of how, with whom, and for what purpose they share specific data points. In the market of trust, only the most trusted Attesters will rise to the top, and Claimers can choose who they interact with. This technology could also be used to build systems where users can choose to be financially compensated for sharing their data, flipping the current paradigm and empowering the individual.
+
+### KILT's use cases
+
+The main use case for KILT is the one discussed above—providing a self-sovereign system for data and identity verification, but this is far from the only potential application. Claims and attestations built into the protocol level can also be used for services like provenance and certification, or any use case where specific attributes need to be verified. Indeed, as mentioned above, Claimers in this system don't even necessarily have to be people. They can be organizations or even objects.
+
+A good example of this would be a fair trade certification, where the Claimer could be a business wishing to prove their fair trade practices, or even an object. A bar of chocolate, for example, could be packaged with a credential that users can then verify with an app that confirms the credential on the blockchain. Under this scenario, the Attester would be a trusted authority in the sector like Fairtrade International.
+
+Ultimately the number of use cases is as varied as the decentralized applications that will make use of KILT protocol in their services. With KILT’s planned integration with Polkadot, parachains specialized for a variety of use cases could leverage the protocol for things like user authentication and certifications, potentially creating shared, cross-chain trust marketplaces that enable interoperable services across multiple networks.
+
+<iframe className="w-full h-56 sm:h-80 md:h-96" src="https://www.youtube.com/embed/fCHsbs96lvE" allowFullScreen></iframe>
+
+Building on Substrate gives KILT the freedom to design this system in precisely the best way for the desired functionality while speeding up development by taking more general blockchain components from Substate’s ready-made modules. Substrate’s runtime upgrades allow KILT to not only maintain independence over their own blockchain logic but continue to adapt it into the future. Other networks would require design compromises, such as the need to factor in gas costs on Ethereum. Substrate also gives KILT the possibility of connecting to Polkadot and interoperating with other chains for completely new services that would otherwise be impossible in previous networks.
+
+***
+
+For more info on KILT Protocol, visit [kilt.io](https://kilt.io). You can also watch their presentation at the Sub0.1 Substrate developer conference on [Youtube](https://youtu.be/d0zF3ghAdVI), and hear [an in-depth discussion on the Relay Chain podcast](https://relaychain.fm/9-on-chain-trust-with-kilt-protocol).
+
+Learn more about Substrate at [substrate.dev](https://substrate.dev/).
