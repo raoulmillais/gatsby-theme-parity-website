@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      blog: allFile(filter: { sourceInstanceName: { eq: "blog" }, extension: {eq: "mdx"} }) {
+      blog: allFile(filter: { sourceInstanceName: { eq: "blog" }, extension: { eq: "mdx" } }) {
         nodes {
           childMdx {
             frontmatter {
