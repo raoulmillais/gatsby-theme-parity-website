@@ -21,6 +21,10 @@ sections:
 - type: document
   path: content/events/events.json
   label: Events
+- type: document
+  path: package.json
+  label: Scripts
+  read_only: true
 upload_dir: static/images
 public_path: "/images"
 front_matter_path: ''
