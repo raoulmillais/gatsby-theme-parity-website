@@ -377,7 +377,7 @@
     "rust-jobs-page-developers-one-title":"Work on what interests you",
     "rust-jobs-page-developers-one-description":"We believe people do their best work when they’re driven by their own curiosity and interest. We align people with the projects they’re passionate about.",
     "rust-jobs-page-developers-two-title":"Work on your own terms",
-    "rust-jobs-page-developers-two-descriptoin":"Flexible schedule and location. Work from home or bring your dog to the office. Most communication is done asynchronously through GitHub and chat.",
+    "rust-jobs-page-developers-two-description":"Flexible schedule and location. Work from home or bring your dog to the office. Most communication is done asynchronously through GitHub and chat.",
     "rust-jobs-page-developers-three-title":"Do meaningful work",
     "rust-jobs-page-developers-three-description":"Parity is an organization where people are valued for their contributions. We focus on development, not on unnecessary meetings.",
     "rust-jobs-page-developers-cta":"View all jobs »",
@@ -469,6 +469,7 @@
     "newsletter-modal-footer-parity-handle":"@ParityTech",
     "newsletter-modal-footer-twitter":"on Twitter.",
 
+    "jobs-page-seo":"We're Hiring",
     "jobs-page-hero-title":"Want to Build the Future of the Web?",
     "jobs-page-hero-sub-title":"We are seeking out the world's best developers to build the future of blockchain and Web 3.0.",
     "jobs-page-hero-cta":"view our curent openings",

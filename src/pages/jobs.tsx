@@ -7,6 +7,7 @@ import Social from '../components/Social';
 import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import TransparentButton from '../components/TransparentButton';
+import JobBoard from '../components/JobBoard';
 
 export default function JobsPage() {
   const intl = useIntl();
@@ -31,7 +32,7 @@ export default function JobsPage() {
 
   return (
     <Layout theme="light">
-      <SEO title={intl.formatMessage({ id: 'rust-jobs-page-seo' })} />
+      <SEO title={intl.formatMessage({ id: 'jobs-page-seo' })} />
       <section className="bg-hero-rustJobs bg-cover bg-center bg-fixed -mt-32 md:-mb-64">
         <div className="md:h-screen text-white">
           <div className="container text-center pt-40 md:pt-52 md:pb-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:w-3/4">
@@ -112,11 +113,12 @@ export default function JobsPage() {
           </div>
         </div>
       </section>
-      <section id="jobboard" className="bg-parityGray">
+      <section id="jobboard" className="bg-parityGray pb-8">
         <div className="container">
-          <div className="text-center py-24">
+          <div className="text-center py-16">
             <h3 className="md:text-5xl">{intl.formatMessage({ id: 'jobs-page-board-title' })}</h3>
           </div>
+          <JobBoard />
         </div>
       </section>
       <FooterCTA
