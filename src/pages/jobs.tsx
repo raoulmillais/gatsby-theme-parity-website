@@ -118,6 +118,7 @@ export default function JobsPage() {
           <div className="text-center py-16">
             <h3 className="md:text-5xl">{intl.formatMessage({ id: 'jobs-page-board-title' })}</h3>
           </div>
+          <p className="text-gray-400 mx-4">* We are based in Berlin but remote work is possible</p>
           <JobBoard />
         </div>
       </section>
