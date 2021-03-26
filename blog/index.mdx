@@ -1,0 +1,36 @@
+---
+title: index
+tags:
+- Security
+- Parity Ethereum
+author: Kirill Pimenov
+blogTitle: Parity Ethereum Client Issue Report
+slug: blog/parity-ethereum-client-issue-report/
+date_published: 2018-06-06T06:00:00+02:00
+image: ''
+
+---
+**Summary:** A consensus issue on the public test network Ropsten has revealed a consensus vulnerability that can be triggered by a malformed transaction.
+
+**Severity:** Critical
+
+**Product affected:** Parity Ethereum client
+
+**Affected versions:**
+
+* stable track up to 1.10.5-stable
+* beta track: up to 1.11.2-beta
+
+**Mitigation:** Please upgrade to fixed versions [1.10.6-stable](https://github.com/paritytech/parity/releases/tag/v1.10.6) and [1.11.3-beta](https://github.com/paritytech/parity/releases/tag/v1.11.3) asap, and then double-check that you are running version 1.10.6-stable or 1.11.3-beta.
+
+Examining the issues with our nodes on Ropsten, we have found out that there is a potential consensus-related issue between Parity Ethereum (up to versions 1.10.4-stable and 1.11.1-beta) and all other Ethereum clients.
+
+In the worst case, submitting a certain malformed transaction (coming from a 0xfff...fff address) to a mining Parity Ethereum node could have caused that node to produce a malformed block, which would still be treated as valid by other affected Parity Ethereum nodes.
+
+In case of such affected nodes providing a majority of hash-power on the net, this could have led to chain split. (If the majority of the hash-power wouldn’t be controlled by the affected nodes, the “correct” chain would still be longer at all times, and the bad block would just be discarded.)
+
+As soon as we became aware of the issue, we prepared a fix and released a fixed binaries (versions 1.10.6-stable and 1.11.3-beta).
+
+The response to this situation was proactive, meaning we were able to prepare a fix before anyone was actually able to exploit the bug.
+
+Have questions about updating the client? Please reach out to us in our [Parity support channel on Gitter](https://gitter.im/paritytech/parity). For general questions, [please reach out to us on Riot.](https://riot.im/app/#/room/%23watercooler:matrix.parity.io)
