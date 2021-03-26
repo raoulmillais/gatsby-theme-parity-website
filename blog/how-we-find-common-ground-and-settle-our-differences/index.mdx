@@ -1,0 +1,46 @@
+---
+title: index
+tags:
+- Community
+author: Parity Technologies
+blogTitle: How we find common ground and settle our differences.
+slug: blog/how-we-find-common-ground-and-settle-our-differences/
+date_published: 2016-06-26T06:00:00+02:00
+image: ''
+
+---
+To look at Ethereum social media today you might think that we had somehow been invaded by some obscure political subreddit. Words like ‘principles’, ‘ideologies’, and ‘zealotry’ are being thrown around. It has been somewhat different from the collegial atmosphere that we have enjoyed in the past six months; but it is an inevitable result of the situation we find ourselves in.
+
+There is a debate going on and it is an important one.
+
+Unlike other posts you will read today this post is not to argue the case for one side or another but rather to re-assure everyone involved that **this will be resolved** and that **the process for resolving this is happening right now**. Here I will talk about how the Ethereum developers will build the tools for the community to resolve a situation like this - and how this process should unfold.
+
+Let us distill the issues at hand:
+
+\*** There are a large number of Ethereum users who would like to change the social consensus that currently exists on the state of the Ethereum blockchain.
+
+* In particular they wish to ‘transfer’ Ether from one location into the hands of another group of individuals.
+* It is mooted that the only way to achieve this outcome effectively is for a new version of the client software to be built and adopted by users of the network.**
+
+Note that I am only concerned here with these three very generic sounding items; this is not about the arguments for and against - only the way it has played out so far and the way we see it continue to play out over the coming weeks.
+
+What has happened so far:
+
+* Signalling a problem: On Friday morning it was discovered that someone had found an exploit in theDAO’s code which allowed them to drain Ether that did not belong to them. The immediate response was visceral - Ether and DAO Tokens dropped in value dramatically and social media was inundated with anxious requests for news on what was going on. Users started spamming the network with transactions to stop the attacker from drawing any more Ether out. Exchanges and other endpoints requested advice on how they should proceed. **This was the first signal that a normally immutable change had been made to the blockchain which was considered undesirable/unacceptable to a (potential) majority of the people who use the network.**
+* Response: The core developers who maintain the clients used on the public chain looked at the code that was being exploited and determined quite quickly that the attacker would not be able to seize full control of the ether for another 27 days. This meant that there was sufficient time to properly analyse the problem and see how it could be addressed. In order to buy further time to examine the issue a modification of the Parity and Geth clients was quickly coded up. This soft fork would stop Ether from leaving the attacking DAO indefinitely **if the change is adopted by sufficient number of miners.** This is a decision made by the network (not the developers).
+* Discussion begins: It becomes clear that there are options to change the state of consensus in the manner that a large faction might feel would be desirable. Positions were put forward and arguments made. Pro or anti-groups debated the merits and pitfalls. A soft fork proposal and implementation were created and debated for both Parity and Geth. A ‘Hard Fork’ proposal is made, then discussed and debated. (A group of “vigilante” DAO curators, unilaterally, launched a white hat attack, apparently in an attempt to secure the remaining funds and cripple the attacker DAO.)
+
+What will happen next:
+
+* The first decision: With clients incorporating the soft fork amendments having been made available, the miners are in a position to make a decision on whether or not to adopt this fork. Their economic incentive is to act in the interests of the community in order to maintain the value of their mining rewards, and to herd with the largest group of miners since they are only incentivised to mine on the longest chain. **It is possible that if insufficient miners choose to implement the soft fork, the stolen Ether will not be frozen. In this case the Ether will go to the attacker 27 days after his attack.**
+* Debate continues: The parties involved will make their arguments to one another during this period. The parties and their incentives are diverse - a miner might have completely different view of the situation to, say, an exchange owner; likewise a ‘holder’ will see things very differently from, say, a dapp developer. Those who are not members of the Ethereum or DAO community per se, but perhaps fans of other crypto projects introduce additional entropy. Individuals will make decisions on what they will want to see happen.
+* Second signal: This debate will give the developers a clear idea of where the boundaries of the issues lie and what options users of the network would like to have available to them. Once they know the options that need to be available, they will code up a modification of Parity and Geth to give those options to users. This will likely necessitate a ‘deadline’ for the network for either changing the blockchain state or keeping it as it is. Forking or not forking.
+* Countdown: All types of users will be faced with a choice - no one group of users can dictate to another that the alteration should happen or not. Miners, users, exchanges and developers can ‘vote with their feet’ if necessary. A hard fork’s success is measured in the level of acceptance it garners with users.
+* Resolution: Exchanges, Miners and Users all pick their choice of software. A majority is formed on one side of the hard fork or the other. Users who stay on the minority version of Parity or Geth will find themselves out of consensus with the majority.
+* Social consensus is reached: At this point either the fork will have gone ahead or not and the network will be on one state or the other - dependent on the decisions made by the users. **The network continues.**
+
+It is important to note that throughout this process the developers are not expected to remain agnostic or indifferent. They are important players in the ecosystem and will likely voice their opinions on how best to evolve the network. However, assuming they wish to protect their own existence and relevance, they will inevitably provide support to as much of the userbase as possible, even those who do not share their opinion. They will create clients that are capable of switching to a new fork if the users desire it - pretty much the greatest contribution to the common good they can make.
+
+You can expect them to be vocal in their recommendations and professional in the work they do for you, as a member of the Ethereum community. And once this decision is made, to continue to build the best technology for you to use - regardless of the outcome.
+
+This will be up to you and we are listening.
