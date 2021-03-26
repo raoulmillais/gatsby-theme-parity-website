@@ -77,6 +77,7 @@ fields:
     maxSize: 64
   label: 'Image:'
 pages:
+- 'blog/Attack on The DAO: What will be your response?/index.mdx'
 - blog/announcing-parity-1-1/index.mdx
 - blog/built-on-substrate-kilt-protocol/index.mdx
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
