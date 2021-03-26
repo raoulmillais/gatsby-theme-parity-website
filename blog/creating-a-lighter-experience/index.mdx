@@ -1,0 +1,46 @@
+---
+title: index
+tags:
+- 'Parity Ethereum '
+- Parity Fether
+author: Parity Technologies
+blogTitle: Creating a lighter experience
+slug: blog/creating-a-lighter-experience/
+date_published: 2018-04-23T06:00:00+02:00
+image: ''
+
+---
+## Decoupling Parity Wallet UI from Parity Blockchain client
+
+With the release of [Parity 1.10 Beta](http://paritytech.io/parity-1-10-opportunity-released/), we began the process of splitting our UI from the blockchain client.
+
+It’s easy to think of Parity Wallet UI and Parity Blockchain client as the same thing, but the wallet UI is really a DApp like any other. Many users run their node on its own or with other DApps. Since the UI and the node are two distinct units, we will soon start shipping them as such.
+
+A primary motivation for the split is we believe the UI deserves to be a project of its own. By having the UI in a repository on its own, we hope to attract more contributors that just want to help build a great frontend. If you're a Javascript developer and want to improve something in the UI, you may not want to dig into the Parity client repository and deal with Rust code.
+
+The UI will find a new home under its own repo and organization at [Parity-JS/shell](https://github.com/Parity-JS/shell/releases) on GitHub.
+
+## New modular Wallet UI framework, moving forward with community development
+
+In UI-2, we rewrote the underlying framework for the UI. Now there’s a completely modular framework in which you can use any DApp from within the UI—kind of like using apps in an app store.
+
+But we can't build everything ourselves, and our vision for the UI has come to completion. To take it further we need you, the community, to implement what you want to see.
+
+## Why light clients matter and what we’re building
+
+As it becomes harder and harder to sync and maintain a full node on heavy chains, light clients and full node incentivization become more and more important. Over the past few months, we've spent a lot of effort trying to stabilize our light client mode (`parity --light`). It should now sync reliably and quickly, using a similar trick to Geth to [hardcode root hashes](https://github.com/paritytech/parity/pull/8075) into the client.
+
+But the light client isn't complete without a user experience designed around it. Currently, the UI works with light clients, but it's heavy and wasn't built for it. When you're running light clients, because you’re going out over the network to fetch the information, you have to be cautious about what data you read from the blockchain and how you read it. If you do it wrong, your app will become slow and costly to run, but if done right it can be as good a user experience as running on a full-node.
+
+To provide that quick-and-easy experience to Parity users, we are building two things:
+
+* A Javascript library, tentatively named `eth-light.js.` This library tries to make it easy to write performant apps for light clients and hard to write non-performant apps.
+* A "light wallet." This is a wallet UI that will be significantly simpler than the existing one and tailored specifically for those that just want to boot up a light client to check their balances or send simple transfers. This light wallet will also be an opportunity for us to dogfood our own products, as it will be using `eth-light.js`.
+
+## The road ahead
+
+In our next release (1.11) that’s scheduled for April 30th, there will no longer be any UI shipping with the Parity Blockchain client. To orient users to the new process, we will be including a web page with instructions on how to get and run the separately-bundled UI.
+
+Work on `eth-light.js` and the light wallet has already begun. While we can't give any concrete timelines on when it ships, expect to see some updates on this blog within a month or two.
+
+We will continue to support the current UI at [Parity-JS/shell](https://github.com/Parity-JS/shell/releases) until we deem the new UI "stable," but we will be investing less time into building new features for it. Essentially we hope that the community as a whole will bring it forward, but we will try to do our best to make sure that active users of the UI can continue to be so in the future.
