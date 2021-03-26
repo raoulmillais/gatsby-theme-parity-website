@@ -1,0 +1,34 @@
+---
+title: index
+tags:
+- Community
+author: Parity Technologies
+blogTitle: In support of a hard fork
+slug: blog/in-support-of-a-hard-fork
+date_published: 2016-07-12T06:00:00+02:00
+image: ''
+
+---
+## AN OPINION OF ETHCORE
+
+A shared experience of disbelief flooded through the Ethereum community a few weeks ago - not because hacks are unheard of - but because the sheer scale of this theft seemed to be mind-boggling. Slock.it’s DAO was being drained at around a million dollars a minute and it seemed like the entire contents of the DAO would soon be in the hands of a single malicious individual or group.
+
+Our first response was [this article](https://paritytech.io/blog/attack-on-thedao-what-will-be-your-response/) - it was for all intents and purposes a public service announcement. We sought to analyse events as they unfolded and articulate what action could be taken as we understood it in those early hours.
+
+Our [next post](https://paritytech.io/blog/how-we-find-common-ground-and-settle-our-differences/) gave what we hoped was a formal/informal guide of what had happened / what was about to happen in regards to the DAO attack. An attempt to give the community a cheat sheet that would allow them to see the bigger picture beyond the somewhat complex actions of players in what is, after all, a decentralized ecosystem. It proved prescient in some cases - but failed to predict the eventual dismissal of the “soft fork”.
+
+By now we hope that it has been established in the minds of Ethereum users that a consensus algorithm alteration is a valid option that does not violate some fundamental principle of the system nor damage it in some irreparable manner. Such alterations have their place in the system as explained by Vlad Zamfir [here](https://medium.com/@Vlad_Zamfir/dear-ethereum-community-acfa99a037c4#.stqpazq7s). We do not know to what extent a protocol alteration (specifically designed to change the state in favour of one group) can be executed without adversely affecting general confidence in the network. But as with any governance system, it is surely correlated with the number of users satisfied with the outcome when the dust has settled.
+
+We here at Ethcore have made an entirely subjective assessment of the signals coming from the community: be they the information impounded into the pricing of DAO tokens, blog posts, social media or coin votes. It is clear to us that there is overwhelming desire within the Ethereum community for action to be taken at the Ethereum protocol level. So much so, that the development of a Parity client supporting such action is justified.
+
+Ethcore is an organisation that is above all else concerned with the health of the network and the confidence that users have in it. We are a commercial entity and the Ethereum network is our bread and butter. Ethcore as a team concurs that, though far from perfect, on balance the best outcome would be for a deviation from the established consensus in order to repair the situation. A hard fork.
+
+There is a simple reason why such drastic action is warranted for what is ultimately an attack on an individual contract. This is the sheer volume of ether held - and indefinitely trapped - inside this complex and defective code. Ether has a special role in the network that is not (yet) mirrored in the other tokens which exist on Ethereum. It is the fundamental antecedent on which the network runs and its ownership and distribution materially affects how the network can operate. It is the fundamental token of security and it is primed to become the staking token for a later consensus algorithm upgrade.
+
+Allowing a malicious actor to obtain a large amount of this fundamental antecedent of the system without incurring the correlated fair economic cost would likely mean ongoing uncertainty over the security of the network, perhaps indefinitely. We believe this, in particular, is a sufficient reason to consider a network-level response.
+
+As such we support a “reparatory” hard fork of minimal complexity that would allow DAO Token Holders to reclaim an equivalent portion of the ether that was held in the DAO before the attack. We have built and will release a version of our Parity client that, by default, supports the hard fork. Parity will also support those who disagree with this course of action: until there is an irreversible consensus, there will be a CLI option to use Parity without support for the hard fork. The decision rests, as always, with the users.
+
+It is our hope that we can all learn from this experience on how to build a better network and better applications. Onwards toward Metropolis!
+
+The Ethcore team
