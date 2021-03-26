@@ -1,0 +1,61 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Announcing Parity 1.4
+slug: blog/announcing-parity-1-4/
+date_published: 2016-11-07T06:00:00+01:00
+image: ''
+
+---
+I'm pleased to announce the release of the latest in the series of Parity. As the 1.3 series becomes our stable release with 1.3.10, 1.4 is elevated to beta status.
+
+We've been working on 1.4 for around 10 weeks now, a far longer release cycle than we usually make, but forced upon us due to the uncovered protocol exploits and the attacks based upon them. To make up for this, 1.5 will be a much shorter cycle of around 4 weeks.
+
+## Core Strength
+
+Parity 1.4 (codenamed Civility) brings with it several key pieces of functionality. Our biggest single core improvement is the introduction of **Warp Sync**. This is a highly optimized chain synchronization mode that uses various methods of compression to distribute the state of Ethereum. Cryptographic manifests ensure you are downloading the right data and because it progressively downloads the blocks and receipts in the background, you will end up with a node exactly as if you had done a full sync. You should be able to synchronize—from nothing—**in around 10 minutes**, assuming your internet connection is decent. Warp-sync can be enabled with --warp; this feature is currently experimental; think twice about using it when doing anything important.
+
+Various optimizations have been made in order to minimize block import time and memory footprint; we've seen speeds upwards of 6,000 transactions per second and are still aiming for a typical footprint of well under 1GB of memory.
+
+We've also instituted a few enhancements lest further exploits remain in the Ethereum protocol. Parity includes new auto-throttling functionality; it has a basic machine intelligence capability to recognize transactions which are degrading the network. When recognized, these transactions become throttled and others are allowed through in their place. This should help keep the network healthy, even in the face of another resource-intensive attack.
+
+## Parity Wallet
+
+The biggest change you'll see is to our user-interface. Parity now supports an in-built wallet. It comes with all the functionality you expect; multi-account support with identicons, tagging and sorting, multi-token support, password hinting, Geth & pre-sale wallet import, brain-wallets, mnemonic phrases and an address book.
+
+Even better though, there are some nice additions we've put in which you may not be familiar with, like our account identigram selection tool which lets you find yourself a distinctive and pleasing identigram.
+
+There's a full contract management tool which allows you to deploy and interact with contracts. It supports the ABI nicely, rendering the fields properly depending on type and providing smart input tools.
+
+## Secure Signer
+
+The new release of Parity includes the next iteration of our Trusted Signer framework. Parity maintains a multi-privilege system through web origin controls and cryptographic tokens. This powers our secure end-to-end transaction signing architecture. This architecture ensures the safety of your secrets through giving you a single, trustworthy, clearly-identifiable place in order to type your password and providing you with solid information about what transaction you are signing right there. You can now be sure that anything asking for your password outside of this place is malicious.
+
+You'll notice a fun background to Parity Wallet: this is an algorithmically-generated background. Its parameters are available to only Parity Wallet and thus it is only Parity Wallet which will have this background: any valid password request will come with this background. (We're not barbarians though—we'll let you choose the background yourself.)
+
+When displaying a third-party application (such as GavCoin), you will see a small piece of Parity Wallet remaining in the bottom right corner—you can recognize it because it's the same background that you choose for Parity Wallet. It does two things. Firstly it acts as a home button to get you back to Parity Wallet. Secondly, it will pop up a dialog to confirm that you want to send a transaction and ask you for your password whenever the third-party application in question (e.g. GavCoin) decides you've said you want to.
+
+Just remember: If it ain't got that background, it don't deserve yo' password.
+
+**Installers**
+
+Windows and Mac users can also try out our experimental installers now. Trying to make Parity as accessible as possible, these installers help you avoid using the command line entirely. They will install Parity so that it runs in the background, synchronizing with Warp-Sync.
+
+When you are not using Parity Wallet, it will hibernate and use no system resources. When you use Parity Wallet, it will wake up and get itself synchronized so you get the latest craic. (It can optionally wake up once an hour and get itself up to date which will reduce the time it takes to synchronize when you do want to use it.) A link is installed in your Applications folder (Mac) or Start menu (Windows) to ensure you can quickly access Parity Wallet when you need.
+
+**Javascript API**
+
+We're also pleased to announce the initial beta release of parity.js, a full replacement for web3.js. Parity Wallet is built on this, along with several of our in-house decentralized applications. It is highly modular, supports modern Javascript idioms such as the Promise framework and the full range of Parity's advanced RPCs.
+
+It has been placed on NPM under @parity/parity.js, so you can get to grips with it. It will be maintained by us going forward but as with all of our software is released under an open source license so you can get hacking on it if you desire.
+
+**And finally...**
+
+Parity 1.4.0 includes the set of changes for the next hard-fork, known as EIP-155 (replay-attack prevention), EIP-160 (EXP cost fixes) and EIP-161 (empty account cleanup). The tentative hard fork date is in around two weeks' time. Make sure you get upgraded to 1.3.10-stable or 1.4.0-beta by then!
+
+I hope you'll agree it is a fairly full bag of treats this time. For 1.5 we are aiming to have some initial light-client functionality, a more fully-featured proof-of-authority consensus method for private and consortium network support, further optimized warp-sync and various interesting improvements in the wallet, particular with regards to Ðapp hosting. Watch this space!
+
+[Get Parity 1.3.10 and 1.4.0](https://github.com/paritytech/parity/releases)!
