@@ -125,5 +125,6 @@ pages:
 - blog/the-multi-sig-hack-a-postmortem/index.mdx
 - blog/velocity-the-fastest-parity-released/index.mdx
 - blog/wasm-smart-contract-development/index.mdx
+- blog/what-is-a-light-client/index.mdx
 - blog/what-is-substrate/index.mdx
 - blog/why-rust/index.mdx
