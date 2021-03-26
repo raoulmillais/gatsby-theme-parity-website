@@ -1,0 +1,47 @@
+---
+title: index
+tags:
+- Security
+- Rust
+- Wasm
+author: Alexandra Heller
+blogTitle: Why we believe in Wasm as the base layer of decentralized application development
+slug: blog/wasm-smart-contract-development/
+date_published: 2018-06-20T06:00:00+02:00
+image: "/images/why-wasm-smart-contracts.png"
+
+---
+Recently there’s been a lot of discussion around using Wasm for blockchain development. Here's what the buzz is about:
+
+## The issues with current tech
+
+Ethereum pioneered the field of decentralized application platforms with the introduction of EVM, Ethereum’s runtime environment for smart contracts. While at the time there was good reason to build a custom EVM easily integratable into a blockchain, there are serious issues with that approach: For example, the EVM is inefficient in that it doesn’t support integers smaller than 256-bit; any 256-bit operation has to be performed by the CPU with multiple 64 or 32-bit operations. There are also few people capable and available to expand on EVM and the needed tooling.
+
+## WebAssembly: a widely supported, high-performance standard
+
+We believe WebAssembly (Wasm), and the multitude of languages that compile to Wasm, are an ideal alternative to EVM. Wasm is a standard for web browsers developed by W3C workgroup that includes Google, Mozilla, and others. It was developed so that code can be deployed in any browser with the same result. Wasm is high performance—it’s built to be as close to native machine code as possible while still being platform independent. It facilitates small binaries to ship over the internet to devices with potentially slow internet connection. There’s been many years of work put into Wasm, both by compiler and standardization teams.
+
+## What language would you like to write your smart contract in?
+
+Perhaps most importantly, Wasm expands the family of languages available to smart contract developers to include Rust, C/C++, C#, Typescript, Haxe, and Kotlin. This means you can write smart contracts in whichever language you’re familiar with, though we’re partial to [Rust](https://www.rust-lang.org/) due to its lack of runtime overhead and inherent security properties. Additional benefits to WebAssembly:
+
+* Memory-safe, sandboxed, and platform-independent.
+* 64 and 32-bit integer operation support that maps one-to-one with CPU instructions.
+* Easily made deterministic by removing floating point operations, which is necessary for consensus algorithms.
+* Supported by the LLVM compiler infrastructure project, meaning that Wasm benefits from over a decade of LLVM’s compiler optimization.
+* Continually developed by major companies such as Google, Apple, Microsoft, Mozilla, and Facebook.
+
+## The road to Wasm support
+
+While Wasm itself benefits from wide support and integration, unlike EVM it is not built with the purpose of interacting with the blockchain. The Parity Ethereum Client runs the Wasm bytecode in the [Wasmi](https://github.com/paritytech/wasmi) interpreter, which enables the Wasm code to access and interact with the blockchain. Right now we’re testing Wasm on the [Kovan testnet](https://kovan-testnet.github.io/website/) on which EVM and Wasm smart contracts can co-exist and even interact. The Ethereum Foundation is also working on implementing Wasm support into geth, the Go client implementation, and researching the use of Wasm in sharding.
+
+Because we believe in Wasm to be the foundation of decentralised systems development, [Polkadot](https://polkadot.network/), a next-generation blockchain interoperability protocol, is being built with Wasm support from the ground up. Polkadot smart contracts will be able to be developed in any language that compiles to Wasm.
+
+We look forward to a future where secure smart contract development is easier and where developers can develop smart contracts with the languages they already know.
+
+## Further resources on Wasm smart contracts
+
+* [Wiki: Wasm repositories and contract examples](https://wiki.parity.io/WebAssembly-Links.html)
+* [Blog: Towards a Brighter Future for Smart Contracts](http://troubles.md/posts/rust-smart-contracts/)
+* [Tutorial: Writing smart contracts in Wasm for Kovan](https://github.com/paritytech/pwasm-tutorial)
+* [Video: Demo of running a Rust smart contract with Wasm](https://www.youtube.com/watch?v=Adcn-L59LRs)
