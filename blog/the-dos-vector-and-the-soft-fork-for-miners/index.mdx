@@ -1,0 +1,28 @@
+---
+title: index
+tags:
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: The DOS vector and the Soft Fork for Miners
+slug: blog/the-dos-vector-and-the-soft-fork-for-miners
+date_published: 2016-06-29T06:00:00+02:00
+image: ''
+
+---
+## GRIEFING THE NETWORK
+
+Recent [blog posts](http://hackingdistributed.com/2016/06/28/ethereum-soft-fork-dos-vector/) have highlighted a previously noted issue with the type of transaction-blocking that the soft fork uses to freeze access to the DAO's funds. Namely that any transaction which results in a call being made to the DAO shouldn’t be included in a block.
+
+This relaxes one of the very important rules within the Ethereum protocol that only a minimal amount of work should need to be done by a node before it has a guarantee that it will be paid for including it in a block.
+
+So, put simply: the soft-fork would allow an attacker to send many transactions to a mining node which the node would have to execute in order to detect that a call is being made to the contract. This would cost the attacker nothing and would slow down and potentially stop transaction mining while the soft fork is in place. A well-organised, well-financed attacker could probably cause substantial disruption to the network and reduce the fees you receive using this attack.
+
+This vector was previously understood by the dev teams building the soft fork, and its effects on the network are similar to the effect of an attacker 'buying' up the gas limit of every block - with two caveats: 1. The attacker would need to pay substantially less in transaction fees & 2. the attack will expire when the soft fork is switched off by a majority of miners.
+
+There are mitigating strategies that were highlighted in the blog post that can be taken by the miners - latest Parity already has ability to allow nodes to repel attacks by increasing gas price, setting a gas limit for transactions and ensuring all relayed transactions execute well on the latest block...but, it may be that you as miners feel that these extra steps make maintaining the soft-fork not worth the trouble.
+
+To do some scenario analysis, without a soft-fork in place on the 15th of July there will start to be withdrawals from DAO splits that would make a “refunding” hard-fork an increasingly complicated, and quite possibly unworkable, proposition. As such, a lack of hard-fork decision by that date is very likely to be a decision against any protocol-level remedial action - there are already potential [hard-fork prototypes on the table such as Vitalik’s in PyEthereum](https://github.com/ethereum/pyethereum/commit/611252b630981a93bd348cc3ed155a75ad71158b) and an equivalent change in Parity.
+
+You should see fully hard-fork optional clients appearing in the next week or so and the next build of Parity (1.2.1) has rearranged options for fork-settings, and now defaults against the soft-fork (though the option is still available should the community back that action). We would recommend that you continue to keep your client(s) updated and monitor the situation.
+
+The Ethcore team
