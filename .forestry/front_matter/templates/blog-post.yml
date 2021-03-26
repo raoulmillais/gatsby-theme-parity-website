@@ -86,6 +86,7 @@ pages:
 - blog/condition-oriented-programming/index.mdx
 - blog/how-we-find-common-ground-and-settle-our-differences/index.mdx
 - blog/in-support-of-a-hard-fork/index.mdx
+- blog/onwards/index.mdx
 - blog/parity-1-2-2-released-hard-fork-enabled/index.mdx
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'

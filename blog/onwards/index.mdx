@@ -1,0 +1,24 @@
+---
+title: index
+tags:
+- Community
+author: Parity Technologies
+blogTitle: Onwards
+slug: blog/onwards/
+date_published: 2016-10-06T06:00:00+02:00
+image: ''
+
+---
+It's been a hectic few weeks for Ethereum and for Parity’s dev team. Some rather irresponsible individual found a flaw in the Ethereum protocol; notably several of the EVM’s operations were underpriced by around 100x. This meant they were able to construct transactions which cost relatively little to place on the blockchain but which ate up an awful lot of resources. The outcome of this was to cause most implementations to crash on block number [2,283,416](https://www.etherchain.org/block/2283416). Just two months ago this would have been a cataclysmic event that would have stopped the network in its tracks - however thanks to some quite dramatic uptake of Parity amongst miners, exchanges, block explorers and wallets, the network kept on trucking. Score one for the implementation-neutral Yellow Paper and client-diversity on the network!
+
+So why did Parity keep on going? Basically due to great optimization and profiling efforts, a clean codebase written for efficiency and robustness from the ground up and the use of the extremely lean Rust language (named since nothing is “closer to the metal”).
+
+In our internal testing we can see that a Parity-only network would (attack blocks notwithstanding) be able to handle a far higher gas limit than the Ethereum network will allow right now. My laptop is routinely able to cope with 3,000 transactions/second when synchronizing, 200 times faster than the network presently supports. Being so much faster than the network actually needs gave Parity the advantage it needed to cope with these "100x slower" exploits.
+
+Nonetheless, the protocol is fundamentally flawed and will need to be fixed in a reparatory hard-fork, the sooner the deployment of which the better. In principle, once the protocol is fixed, this suggests that we can probably eek out a substantial performance gain from the World Computer (perhaps 10x) simply by refining the gas metering system and optimizing the faster clients to get into the same comfort range that Parity enjoys.
+
+This all got me thinking about the work I did on scalability in 2014 called Chain Fibres - some of the ideas from which Vitalik mentioned in his recent Mauve Paper. Chain Fibres and the later [Redux](https://github.com/ethereum/wiki/wiki/Chain-Fibers-Redux) were based on ideas I came up with after a conversation with Janislav Malahov (self-styled “godfather of Ethereum”) about how one might tackle scalability. This was obviously way before Ethereum launched; the experience of the last two years has somewhat altered my thoughts about what the most sensible path into the future might be. I’m presently putting these into words and hope to be able to share them with you soon.
+
+Our next release was inevitably put back a little with some of the (now necessary) optimization work, but it is nevertheless progressing nicely with a new user interface (including improvements to our trusted signer framework) and 'Warp-Sync', our first piece of work towards an Ethereum light client. Watch this space for news of the release!
+
+Gav
