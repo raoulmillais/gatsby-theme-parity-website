@@ -1,0 +1,55 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Parity 1.2.2 released - Hard fork enabled
+slug: blog/parity-1-2-2-released-hard-fork-enabled
+date_published: 2016-07-19T06:00:00+02:00
+image: ''
+
+---
+[Get the latest Parity here.](http://parity.io/)
+
+The latest version of Parity has just been released - this build includes modification for the hard fork, improved performance when syncing and other bug fixes.
+
+If you wish to run Parity without the hard fork you must use the flag: --chain=homestead-dogmatic until after the hard fork has been resolved.
+
+## HOW TO USE PARITY WITH THE ETHEREUM WALLET
+
+[Click here for a video tutorial for running parity on windows](https://www.youtube.com/watch?v=sta-p5d1blQ&feature=youtu.be)
+
+Parity is a rust implementation of the ethereum yellow paper that has been redesigned from the ground up to offer improved performance in day to day syncing and a lower resource footprint on your machine while running. It is fully backwards compatible with the Ethereum Wallet and can be used as the back end much like eth or geth. If you’d like to try parity as a back end to the ethereum wallet you should follow the instructions below:
+
+First download the latest version of Parity by going to: [https://parity.io](https://parity.io "https://parity.io")
+
+There you will find links to install methods for all major operating systems including ubuntu, OSX and Windows. I’ll link to them here for convenience:
+
+**Windows**
+
+Download the installer and run - this will by default install to Program Files ->Ethcore -> Parity. Open up this folder and right click on parity.exe. Select ‘send to Desktop (create shortcut)’ Go to your desktop and right click on the parity shortcut and select ‘properties’ In the properties window you will want to add --geth to the Target path eg: “C:\\Program Files\\Ethcore\\Parity\\parity.exe” --geth This shortcut will now run parity in ‘geth mode’ - double click it to start.
+
+**OSX**
+
+You will need to use homebrew, a package manager. If you don’t have it already go to their website and grab it.
+
+Then go to your terminal and enter:
+
+brew tap ethcore/ethcore
+
+Then type in:
+
+brew install parity
+
+To run parity type in:
+
+parity --geth
+
+When the software starts running it will need to sync again from scratch if you have used geth previously - as it uses a different database format. Parity doesn’t yet have a fast sync but it does have state trie pruning which will mean it will take up far less space than a normally synced geth node and will grow more slowly as well.
+
+Syncing on a fast machine takes around 2 hours - you can watch the progress by opening your web browser and heading to: [http://localhost:8080/parity/#/status](http://localhost:8080/parity/#/status)
+
+While its syncing head to the ethereum github repo and download the latest version of ‘mist’ or ethereum wallet: [https://github.com/ethereum/mist/releases/tag/0.8.0](https://github.com/ethereum/mist/releases/tag/0.8.0 "https://github.com/ethereum/mist/releases/tag/0.8.0")
+
+Open up the Ethereum wallet and voila! You will now have the awesome Ethereum Wallet with Parity humming along in the background!
