@@ -82,6 +82,7 @@ pages:
 - blog/Our DAO Response/index.mdx
 - blog/announcing-parity-1-1/index.mdx
 - blog/built-on-substrate-kilt-protocol/index.mdx
+- blog/condition-oriented-programming/index.mdx
 - blog/how-we-find-common-ground-and-settle-our-differences/index.mdx
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'
