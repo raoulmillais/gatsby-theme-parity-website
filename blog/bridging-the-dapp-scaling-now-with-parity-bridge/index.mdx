@@ -1,0 +1,41 @@
+---
+title: index
+tags:
+- Releases
+- Parity Bridge
+author: Parity Technologies
+blogTitle: Bridging the ÐApp – Scaling now with Parity Bridge
+slug: blog/bridging-the-dapp-scaling-now-with-parity-bridge
+date_published: 2018-03-09T06:00:00+01:00
+image: ''
+
+---
+Transaction fees on the Ethereum main network have risen to rates that are far too expensive for ÐApps to run efficiently. Decentralised initiatives such as [Giveth](https://giveth.io/) and [Swarm.City](https://swarm.city/) have seen their projects hampered by high gas costs, forcing them to look for alternative ways to securely run their ÐApps.
+
+#### **Introducing Parity Bridge**
+
+We realised at Parity Technologies that we can already mitigate scaling issues using one of the core components of [Polkadot](https://polkadot.network/). This is why we are excited to announce the initial test deployment of [Parity Bridge](https://github.com/paritytech/parity-bridge), a solution for connecting fast and cheap [Proof of Authority (PoA)](https://wiki.parity.io/Proof-of-Authority-Chains.html) chains with the Ethereum public network and any other Ethereum-like Proof-of-Work chain. This way, developers can start testing this short-term scaling solution to reduce the cost of running ÐApps on blockchains.
+
+The first phase of Parity Bridge uses the Ropsten testnet to act as the main network, or “Home” bridge, until community developers have tested it enough to ensure a secure and efficient link between two EVM-based chains.
+
+### **How does it work?**
+
+First, a user **deposits** Ether from the mainnet to the Home bridge contract, then the ÐApp **runs** on Kovan for as long as required, then finally, the user **withdraws** their Ether back on the mainnet. Rather than paying for gas on every transaction on the mainnet, users pay only the gas for two transactions – the deposit and the withdrawal.
+
+To illustrate let’s give an example of how the bridge could save Swarm.City and its users gas costs.
+
+Swarm.City has tokens on mainnet and a ÐApp they want to deploy soon. By design, the tokens will be in constant use in the ÐApp, which now makes deploying to mainnet too expensive. By deploying their ÐApp to another chain such as Kovan, Swarm.City users could more freely use the network since gas prices are near-zero on Kovan.
+
+The tokens are used in the ÐApp, and therefore copying them over to a sidechain would introduce a substantial element of centralization. With Swarm.City using Parity Bridge, they enable users to move their mainnet tokens to the sidechain and use them in the ÐApp.
+
+Max from Parity Technologies demonstrates this process in the video below:
+
+<iframe src="[https://player.vimeo.com/video/259295952](https://player.vimeo.com/video/259295952 "https://player.vimeo.com/video/259295952")" width="640" height="400" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+#### **Next steps**
+
+Once the bridge has been reviewed by the community and close partners, we will migrate the home bridge to the Ethereum mainnet so that the bridged ÐApps can scale right away. In the next months, arbitrary message passing between chains will allow projects such as Giveth and Swarm.City to automate much more and command the foreign chain from the mainnet.
+
+[Melonport](https://melonport.com/) and [Colony](https://colony.io/) are already working on implementing and testing Parity Bridge, with [Swarm.City](https://swarm.city/) and [Giveth](https://giveth.io/) helping us test arbitrary message passing.
+
+We are looking for contributors to play around, test, deploy their own bridges and give us feedback, pull requests and reviews of our smart contracts. Go to the [Github page](https://github.com/paritytech/parity-bridge) to find our [user guide](https://github.com/paritytech/parity-bridge/blob/snd-user-guide/user_guide.md) and start testing how you can begin revving up your ÐApps now or start asking us questions in the Parity Bridge [Riot Channel](https://riot.im/app/#/room/#parity-bridge-public:matrix.parity.io) or [Gitter](https://gitter.im/paritytech/parity-bridge).
