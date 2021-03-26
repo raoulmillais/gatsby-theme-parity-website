@@ -1,0 +1,38 @@
+---
+title: index
+tags:
+- Security
+author: Parity Technologies
+blogTitle: Security Alert
+slug: blog/security-alert-2/
+date_published: 2017-11-08T06:00:00+01:00
+image: ''
+
+---
+**Severity:** Critical
+
+**Product affected:** Parity Wallet (multi-sig wallets)
+
+**Summary:** A vulnerability in the Parity Wallet library contract of the standard multi-sig contract has been found.
+
+**Affected users:** Users with assets in a multi-sig wallet created in Parity Wallet that was deployed after 20th July.
+
+**UPDATE:** We very much regret that yesterday’s incident has caused a great deal of stress and confusion amongst our users and the community as a whole, especially with all the speculation surrounding the issue. We continue to investigate the situation and are exploring all possible implications and solutions. Blockchain and related technologies are a vanguard area of computer science. Our mission remains to build software to power the decentralized web.
+
+If you are concerned about whether your wallet has been affected please visit [this website](https://affected.parity.io/) that we created to provide a list of affected accounts. We are in touch with users affected by the issue – in case you are affected and want to reach out, please contact us under [community@parity.io](mailto:community@parity.io).
+
+Following the fix for the [original multi-sig vulnerability](https://paritytech.io/blog/security-alert-high-2.html) that had been exploited on 19th of July (function visibility), a new version of the Parity Wallet library contract was deployed on 20th of July. Unfortunately, that code contained another vulnerability which was undiscovered at the time - it was possible to turn the Parity Wallet library contract into a regular multi-sig wallet and become an owner of it by calling the initWallet function. It is our current understanding that this vulnerability [was triggered](https://github.com/paritytech/parity/issues/6995) accidentally on 6th Nov 2017 02:33:47 PM +UTC and subsequently a user deleted the [library-turned-into-wallet](https://etherscan.io/address/0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4), wiping out the library code which in turn rendered all multi-sig contracts unusable and funds frozen since their logic (any state-modifying function) was inside the library.
+
+All dependent multi-sig wallets that were deployed after 20th July functionally now look as follows:
+
+    contract Wallet {
+    	function () payable {
+        	Deposit(...)
+    	}
+     }
+
+This means that currently no funds can be moved out of the multi-sig wallets.
+
+**We are analyzing the situation and will release an update with further details shortly.**
+
+For any press inquiries, please write to [press@parity.io](mailto:press@parity.io).

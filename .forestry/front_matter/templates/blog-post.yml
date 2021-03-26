@@ -100,6 +100,7 @@ pages:
   signing/index.mdx'
 - blog/performance-analysis/index.mdx
 - blog/restoring-blank-seed-phrase/index.mdx
+- blog/security-alert-2/index.mdx
 - blog/security-alert/index.mdx
 - blog/security-update/index.mdx
 - blog/the-dos-vector-and-the-soft-fork-for-miners/index.mdx
