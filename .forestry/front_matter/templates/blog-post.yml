@@ -110,6 +110,7 @@ pages:
   signing/index.mdx'
 - blog/parity_1_11_beta_private_transactions/index.mdx
 - blog/performance-analysis/index.mdx
+- blog/picops-discontinued-may-24th-2018/index.mdx
 - blog/private-transactions-webassembly-and-permissioning-new-features-energy-web-foundation-blockchain-for-energy/index.mdx
 - blog/restoring-blank-seed-phrase/index.mdx
 - blog/security-alert-2/index.mdx
