@@ -1,0 +1,25 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Afri Schoedon
+blogTitle: Parity 1.10 "Opportunity" released
+slug: blog/parity-1-10-opportunity-released/
+date_published: 2018-03-22T05:00:00+01:00
+image: ''
+
+---
+Parity Technologies is continuing its mission to develop trailblazing, next-generation technology for the decentralised web. Today, we announce the first beta release of the [Parity Ethereum client version 1.10 "Opportunity"](https://github.com/paritytech/parity/releases/tag/v1.10.0)!
+
+**Wasm Smart Contracts**
+
+With this release, we are excited to announce support for Wasm Smart Contracts on the Kovan testnet. This technology allows developers to write smart contracts in any programming language that compiles to Wasm, such as [Rust, C++, and Brainfuck](https://github.com/appcypher/awesome-wasm-langs). The hard-fork to activate the Wasm VM on Kovan will take place on block 6600000 around March 27, 2018. To hack your first Wasm contracts in Rust, have a look at the [Parity Wasm Tutorials](https://github.com/paritytech/pwasm-tutorial).
+
+**Aura improvements**
+
+To reduce blockchain bloat in Proof-of-Authority networks, users can now enable empty step messages which replace empty blocks. Each step message will be signed and broadcasted by the issuing authority and included in the next non-empty block. Check out the [Aura Empty Steps Demo recordings](https://asciinema.org/a/tyZSXmDSuZtL4hPTt4OmZoKOf).
+
+**Parity Wallet**
+
+One more fundamental change is that Parity Wallet will be split from the Parity Ethereum client soon. Parity Wallet (also known as the "Parity UI") is now disabled in the node by default. To reactivate Parity Wallet, you have to either force the UI by command-line instructions or, if you feel super fancy and want to test our pre-release of the stand-alone electron wallet, head over to the [Parity-JS repositories](https://github.com/Parity-JS/shell/releases).
