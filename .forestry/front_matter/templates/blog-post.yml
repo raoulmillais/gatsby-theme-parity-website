@@ -108,6 +108,7 @@ pages:
 - blog/parity-technologies-multi-sig-wallet-issue-update/index.mdx
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'
+- blog/parity_1_11_beta_private_transactions/index.mdx
 - blog/performance-analysis/index.mdx
 - blog/private-transactions-webassembly-and-permissioning-new-features-energy-web-foundation-blockchain-for-energy/index.mdx
 - blog/restoring-blank-seed-phrase/index.mdx
