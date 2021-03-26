@@ -1,0 +1,62 @@
+---
+title: index
+tags:
+- Security
+author: Parity Technologies
+blogTitle: A Postmortem on the Parity Multi-Sig Library Self-Destruct
+slug: blog/a-postmortem-on-the-parity-multi-sig-library-self-destruct/
+date_published: 2017-11-15T06:00:00+01:00
+image: ''
+
+---
+On Monday November 6th 2017 02:33:47 PM UTC, a vulnerability in the “library” smart contract code, deployed as a shared component of all Parity multi-sig wallets deployed after July 20th 2017, was found by an anonymous user. The user decided to exploit this vulnerability and made himself the “owner” of the library contract. Subsequently, the user destructed this component. Since Parity multi-signature wallets depend on this component, this action blocked funds in 587 wallets holding a total amount of 513,774.16 Ether as well as additional tokens. Subsequent to destroying the library component, someone (purportedly this same user) posted under the username of “devops199” issue [#6995](https://github.com/paritytech/parity/issues/6995) that prompted our investigation into this matter.
+
+All other functionality of the Parity Wallet (UI) continues to have no known vulnerabilities. This includes all standard, non-multi-sig accounts.
+
+We have reached out to affected users and are encouraging all those that we have not yet been able to reach to contact us [community@parity.io](mailto:community@parity.io). We recognize that the issue has, among other things, caused distress and anxiety about the future of projects and funds in our community and we are working hard to explore all feasible solutions.
+
+We’ve had a lot of discussions and analyses across the team since the exploit happened. In this post, we would like to shed some light on factors relevant to the issue and provide responses to questions and complaints raised in the aftermath of the exploit.
+
+### Was the wallet library unaudited?
+
+The original "Foundation" multi-sig wallet code was created and audited by the Ethereum Foundation's DEV team, Parity Technologies and others in the community. Many users rely on it, and it underwent extensive peer review. This body of code continues to have no known security issues. It was restructured by the Parity team into a lightweight "stub" smart contract which is deployed to the network every time a wallet is created, together with a much heavier "library" smart contract, containing the majority of the wallet's logic and which is deployed only once. While there was no formal audit, the contract had received many reviews [internally](https://github.com/paritytech/contracts/pull/48) and externally in the context of analyses of the July 19th exploit and the returning of the funds by the White Hat Group both before and after deployment in July.
+
+### What happened before the incident?
+
+In an attempt to stay as close as possible to the original audited smart contract, as few changes as possible were made to derive the library contract. This, however, meant that the library contract had the same functionality as a regular wallet and required initialization. It therefore also still contained the original self-destruct function that is designed for retiring the wallet.
+
+In the aftermath of the attack on July 19th 2017, we fixed and re-deployed the library contract on July 20th 2017.
+
+In August, a Github contributor called “3esmit” recommended a code change that initWallet should be called when being deployed which at the time was considered a convenience enhancement. Thus, we committed this proposed enhancement to the library contract that would automatically initialize it by calling initWallet on construction. Interpreting the recommendation as enhancement, the changed code was to be deployed in a regular update at a future point in time.
+
+On November 6th 03:25:21 PM +UTC, ‘devops199’ identified the uninitialized owner in the contract deployed in July and chose to initialize it, thereby setting themselves as the owner. Subsequently, devops199 chose to kill the library contract.
+
+### How could this exploit have been prevented?
+
+There are essentially two main ways this exploit could have been avoided. If the contract code had not included the functionality to suicide or kill, even if someone had taken ownership, they would not have been able to do anything. The kill functionality was a remainder of the original audited contract. The other way would have been for the wallet initialization to have been done as proposed by 3esmit, either automatically through the code change and re-deployment or manually on the contract deployed in July.
+
+Parity Technologies regularly employs external auditors for formal audits of smart contracts that we write. For example, our KYC service PICOPS as well as sale contracts for ICOs that we assist with, have stringent audit requirements.
+
+However, rather than just having more audits, we strongly believe that more extensive and formal procedures and tooling around the deployment, monitoring and testing of contracts will be needed to achieve security. We believe that the entire ecosytem as a whole is in urgent need of such procedures and tooling to prevent similar issues from happening again, in particular if and when the number and complexity of live contracts grows.
+
+### What is Parity Technologies doing to unfreeze the affected funds?
+
+We deeply regret the situation and we are working hard on several Ethereum improvement proposals(EIPs), both contributing to previously existing ones and suggesting new ones that have the potential to unblock funds. These improvement proposals will also address general cases of blocked funds.
+
+There is no timeline for when such an improvement proposal could be implemented; we will follow the will of the community and go through the regular EIP process like any other protocol improvement. Parity Technologies will handle much of the development work around these proposals and work constructively with the Ethereum Foundation team and the community towards further protocol layer development. We are committed to the continued development of Ethereum.
+
+### What other steps is Parity Technologies taking?
+
+* As a first step, we are removing the ability to deploy multi-sig wallets until we feel we have the correct security and operations procedures in place so that we can be confident this will not happen again. The Parity Wallet UI will continue to support Gnosis, WHG or other multi-sig wallets that are deemed secure. You will be able to watch and use pre-deployed multi-signature wallets through the Parity Wallet. Like any other contract, you will be able to deploy multi-sig contracts manually, but there won’t be a multi-sig-specific integrated way of doing so.
+* We will be focusing our wallet efforts on mid-level infrastructure - not wallets but rather the chrome in which wallets sit. In this sense, wallets will become “user-level” software by which Parity can be extended.
+* We are commissioning another full-stack external security audit of all existing sensitive code including secret management, key generation and password management, signing and auto-updating.
+* We will be putting significant efforts and resources into reviewing our processes and procedures internally and have a team specifically dedicated to operational security. This team will be expanded as necessary and we will have resources at its disposal. The team will be tasked with reviewing and maintaining critical parts of Parity Technologies’ offering.
+* We will ensure that all necessary contract deployments are adequately linked to the code alteration and review process in the [https://github.com/paritytech/contracts](https://github.com/paritytech/contracts "https://github.com/paritytech/contracts") repository, and we will support efforts to create tooling for this, e.g.
+  * Similarly to aerospace or these days in medicine, for each contract, there should be a checklist for deployment.
+  * There should be constant monitoring of any deployed contracts comparing it to the most recent reviewed version in the repository.
+* We will expend significant effort inside the company as well as attempt to find external help and resources, for:
+  * Support for research and development of other smart contract languages and tooling, such as formal verification and proof assistance;
+  * Develop relationships with research teams focused on tooling, language research, and testing; Help set up independent teams to create a next-generation set of asset control management: vault-safe contracts for multi-sig, time locks, deadman switches to provide the tooling for secure storage and recovery;
+  * Extend our bug bounty program and initiate feature bounties for mission-critical components provided sufficient funding – in the end, we have been providing all our software free of charge as an open-source software contribution to the community.
+
+Parity Technologies remains committed to being at the vanguard of Ethereum technology development and we will work diligently to develop secure and useful technology for the community.
