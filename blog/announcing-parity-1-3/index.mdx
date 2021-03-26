@@ -1,0 +1,33 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Announcing Parity 1.3
+slug: blog/announcing-parity-1-3/
+date_published: 2016-08-17T06:00:00+02:00
+image: ''
+
+---
+Another 7 weeks pass and I'm happy to announce a shiny new release of Parity! It has been a busy time for us (and the community as a whole!) with various events happening and vying for our time. Aside from ad-hoc protocol alterations, we've been working hard on a number of features and the 1.3 "Acuity" release includes some of the first tasters of these, not to mention some of the incremental improvements and fixes some of which have already been released in the (now stable!) 1.2 series.
+
+We have been sharpening our focus on **optimisation**. The core is now by far the fastest it has ever been: on my laptop, I can process the first 200,000 blocks of the Frontier chain (in the so-called "clients' drag race") in 94 seconds. Various parts of the client have been painstakingly profiled and optimised to make this happen; internal caching, database schemas, SHA3 batching and parallelisation, VM gas accounting and data compression all contribute to this score. There are still avenues we will be exploring to give even greater gains though and I hope to be able to report back a further reduced time in another couple of months :-)
+
+Aside from optimisations, we've also been looking at our **disk footprint**. We now have domain-specific RLP compression implemented, making our database substantially leaner. In fact, our state database has been reduced by around 30% alone.
+
+We've also been continuing at our **hypervisor architecture**; the network synchronisation module of Parity can now run entirely in its own process protecting it from compromising the rest of the core. Further modules are to follow, not least the secret store.
+
+The biggest single feature added though is **state snapshotting**. Using our state snapshots, a heavily compressed "just-what-you-need" chain archive, you can have a fully synchronised chain from scratch in as little as 1 minute. Basically, we took all the important stuff in the database, used specially optimised compression and zipped it up into single archive file. By downloading this file (which stands at around 140MB), you can "unzip" it through Parity's special secure restore feature and have a working client in a jiffy. For more information on how that works, see the [wiki](https://github.com/paritytech/parity).
+
+There are also a whole load of more incremental improvements, including:
+
+Additional RPCs for transaction tracing, state diffing, VM tracing, asynchronous transaction posting, accounts metadata and message signing.  
+Improved logging, including for chain reorganisations.  
+Key naming, which now includes a creation timestamp.  
+Various improvements to networking robustness and performance.  
+Solidity compilation supported through RPC if solc is available.  
+HTTP push work notification for miners.  
+Grab the 1.3.0 beta from [the usual place](https://github.com/paritytech/parity/releases) and let us know on Gitter if you have any problems! Work on 1.4.0 "Civility" has already begun and we're aiming to have a number of interesting new things in there, particularly an extension of our state snapshotting and additional UI work. Watch this space for more!
+
+The Parity team.
