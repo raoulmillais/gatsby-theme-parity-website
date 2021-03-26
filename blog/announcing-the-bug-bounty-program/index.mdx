@@ -1,0 +1,29 @@
+---
+title: index
+tags:
+- Security
+- Community
+author: Jutta Steiner
+blogTitle: Announcing the Bug Bounty Program
+slug: blog/announcing-the-bug-bounty-program/
+date_published: 2017-07-24T06:00:00+02:00
+image: ''
+
+---
+As recent events have shown us, it's not always enough to have good programmers, open-source software and peer reviews in order to ensure no critical bugs make it through to release. While users of all Free software should always do ones own auditing of software to a level reflecting the amount it is relied upon, there is inevitably some degree of duplication that this regrettably implies across any given software's user base.
+
+With this in mind, and after getting some promising feedback from our previous blog article, Parity is starting a bug-bounty program. While Parity has initially seed this, our resources are mostly deployed on writing open-source software, so we appeal to the community to help itself and fund this as much as possible.
+
+To minimize any potential (technical) security issues the bounty funds will be initially collected into a cold-wallet account managed by Parity. This will be transitioned into a multi-sig once we have finalized who the trustees/"owners" of the multi-sig will be that will judge and administer any payments to be made from the fund.
+
+For anyone who would like to contribute to the Bug Bounty Program, please send funds to **0x00f1C77935AC482fC075B55b5990E86ea40851Bb**, or if you're using Parity Wallet, the name bug-bounty. For additional security, this same address will be tweeted from our official twitter account. Here's a picture of it (the identicon is like a green teddybear on an orange background).
+
+![](/images/bugbounty-announcement.png)
+
+The program will initially cover the Parity Ethereum client for the latest released versions of beta and stable branches, together with staging branches during the QA period prior to a release. It will be a narrow-focussed fund covering specifically security issues, rather than more general setup, crashing or consensus issues. Depending on feedback from donors, this may be extended in scope at a later time, to cover areas of consensus and other clients and infrastructure that do not currently have a bug-bounty program.
+
+The initial targets of this will be Parity's key management (to ensure secrets cannot be compromised or misused), Parity's auto-update Operations contract and Parity's multi-signature Wallet, the base of which can be found in the contracts repository.
+
+### Next up
+
+This is a beginning, but certainly not the end. We will be reaching out to a number of well-respected security professionals and teams to create a club of bounty-hunters. This club could then be called upon by Parity and others in the community to do targeted and incentivized reviews of new code. More news when we get it.
