@@ -94,4 +94,5 @@ pages:
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'
 - blog/performance-analysis/index.mdx
+- blog/restoring-blank-seed-phrase/index.mdx
 - blog/the-dos-vector-and-the-soft-fork-for-miners/index.mdx
