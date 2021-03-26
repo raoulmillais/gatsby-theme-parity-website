@@ -1,0 +1,65 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Afri Schoedon
+blogTitle: Announcing Parity 1.7
+slug: blog/announcing-parity-1-7/
+date_published: 2017-07-28T06:00:00+02:00
+image: ''
+
+---
+It has been all too long since our last release. Some four months have passed since the 1.6 series and over that time we've seen the rise of ETH and BTC, ICO fever hit the streets of Ethereum and an increased presence of Ethereum in the mainstream press.
+
+I can finally announce the 1.7 series. Much has gone on behind the scenes to bring you this release and I very much hope you'll enjoy it.
+
+![](/images/parityoneseven.png)
+
+### Light Client
+
+Yes, you read right; as if Warp-sync ain't good enough for you, you can now use Parity without syncing to the network at all.
+
+As a caveat, Parity 1.7.0's light-client support is **experimental**. Kick the tyres by all means but as always, don't expect it to be perfect for a few releases yet. It's currently a technology preview for fairly custom use-cases particularly around IoT and mobile, rather than being aimed specifically at the desktop wallet.
+
+Our flavour of light-client builds upon the Foundation team's work with the LES protocol but adds some clever optimisations to reduce line-chatter; our light-client protocol is named PIP (Parity lIght Protocol).
+
+### PoA Authority Contracts & Kovan Warp Sync
+
+We are very happy to be able to deliver not one but two major upgrades to the proof-of-authority system: Warp Sync compatibility and authority contracts.
+
+The Warp Sync support means that folk who use the PoA functionality (particularly Aura, but Tendermint support is coming) can sync fast. This is particularly important for Kovan as it gets increasingly large.
+
+Authority contracts are a major improvement in how PoA chains work. Rather than configuring a fixed set of authorities, authorities can be defined through a contract. This contract can define the authorities in an entirely arbitrary way and change them according to its logic (which can naturally depend on the receipt of transactions).
+
+This opens the door to derivative consensus systems like PoS, something we'll be doing in the upcoming releases.
+
+### Public Node Support
+
+Parity can now be run with a special flag designed for allowing use of Parity Wallet as a public service. Keys are all stored in the browser's local storage, making multiple, even public, users possible.
+
+### WebAssembly Contract Execution
+
+As an alternative to the venerable EVM, we can now offer WebAssembly as an alternative runtime for which contracts may be implemented. While this has little relevance for the Ethereum public chain, it makes a potentially large difference for private and test chains such as Kovan.
+
+This support is still in the early stages and much work has yet to be done on tooling. Our next steps will be looking into fleshing out the APIs available that expose Ethereum-specific externalities and into getting languages, such as C, Rust and Solidity, compiling to our flavor of WebAssembly.
+
+### JSONRPC Upgrades
+
+There have been several tweaks, upgrades and fixes to our JSONRPC API, the most important of which was to ensure it compatible with the latest version of the Bonds based oo7-parity Javascript Dapp library.
+
+### Cancel Propagated Transactions
+
+For those who have suffered from the annoyance of transactions getting stuck (particularly on Kovan), due to an earlier transaction from the same account having too low a gas price or too high a gas limit, we have introduced cancelation functionality.
+
+You how get a "Cancel" and "Edit" buttons in the signer tab of Parity Wallet allowing you to remove or change the transaction and free up your queue. Stuck accounts be gone!
+
+### Export accounts from the wallet
+
+Parity Wallet can now export the (password protected) JSON wallet file for each of your accounts in order to quickly backup or transfer your accounts elsewhere. Find it along the toolbar.
+
+### Up Next...
+
+For the next release, we'll be bringing forward the Whisper protocol (shh!), which is already in our master branch for the very brave to try. We'll also be fleshing out forward the Wasm contract layer and working on externalities and languages for it. We hope to have a brand-new, highly modular Bonds-based UI for you too along with perhaps some more paranoid-secure means of holding and controlling assets.
+
+Until next time!
