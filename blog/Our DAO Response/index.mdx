@@ -1,0 +1,36 @@
+---
+title: index
+tags:
+- Community
+author: Parity Technologies
+blogTitle: Our DAO Response
+slug: blog/our-dao-response/
+date_published: 2016-06-17T06:00:00+02:00
+image: ''
+
+---
+**What can be done?**
+
+Ideally, the DAO developers will find a way to extract the stolen funds without any protocol alterations (aka "hard fork"). However, such a plan, if feasible, will take time to design, test and deploy. If not feasible, an alternative approach will have to be found, quite possibly a minor hard-fork of the core protocol. Either way we have to limit the damage being done - the fastest, most effective way of doing this is through a temporary soft-fork.
+
+A soft-fork is a minor, temporary alteration to the protocol all remnants of which can eventually be removed from the protocol with no recourse for syncing the blocks that were introduced during the period that it was in effect. Basically, it requires only the acquiescence of implementors and miners and need have no long-term repercussions, neither in terms of the code-bases nor in terms of the protocol spec.
+
+Parity already has such a soft-fork waiting which would lock the stolen funds, preventing them from being removed, exchanged or sold.
+
+If Christoph et al can find a way of remedying the situation through their own "attack" (DAO wars), then all is well, but what about if that is impossible or impractical? Since the DAO has no internal governance mechanism to reverse the alterations that have already happened, any kind of intervention to recover the stolen funds would take the form of a hard-fork: an alteration of the core Ethereum protocol.
+
+**Hard-fork?**  
+A hard-fork could facilitate the return of all of the funds, dispersing them proportionately to the DAO tokens held. A remedial hard-fork could take many a form. Here's one such form: we would name a block (#1,818,181, perhaps) which would have an additional state transition, over and above transaction processing and minor reward. This state transition would have two parts:
+
+* To return any funds illicitly transferred away from the DAO through this attack. After a soft fork halts all transactions to DAO-like contracts, a list of such attacker-DAOs can be compiled and the hard fork would simply delete those accounts, transferring their balances back to the original DAO's account.
+* To alter the code of the broken DAO contract to something that purely allowed an equitable withdraw for the (non-attacking) DAO holders. I[ have already authored such a contract](https://github.com/paritytech/withdraw-dao).
+
+We could rely on miners to help out DAO holders by switching to implementations, like Parity, which include this "vigilante" fork combination. However, to help DAO holders show appreciation to the miners for helping them, I developed a [DAO Rescue Bounty contract](https://github.com/paritytech/hardforkbounty/blob/master/hardforkbounty.sol) so that such interested parties can further incentivise miners to do their part in remedying the situation.
+
+People who care could offer up their own ether as reward to miners who switch their implementations to support the hard-fork. This contract would pay out this reward to any miner on an exponentially-reducing schedule following a successful hard fork.
+
+If this contract were adopted, Parity (and perhaps Geth?) would be altered to automatically claim the bounty on behalf of the miner - mining may become extremely profitable for a period of time immediately following the hard-fork point. The miner who mines the hard-fork would collect some proportion of the total bounty; the miner who mines the block following would get some the same proportion of the remaining bounty &c. This feature, which we know miners are clamouring for, would also allow contract writers to incentivise miners to automatically call functions in their contracts instead of relying on Daemons.
+
+If the hard-fork were not to happen, no miner would get anything and the deposited funds would be refundable to the parties who put them in.
+
+The code is available for review. Fortunately, unlike the DAO, it's very, very simple.
