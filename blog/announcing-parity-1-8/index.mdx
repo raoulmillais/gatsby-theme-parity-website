@@ -1,0 +1,41 @@
+---
+title: index
+tags:
+- Releasee
+- Parity Ethereum
+author: Afri Schoedon
+blogTitle: Announcing Parity 1.8
+slug: blog/announcing-parity-1-8/
+date_published: 2017-10-15T06:00:00+02:00
+image: ''
+
+---
+Winter may be coming but the moment you’ve all been waiting for has finally arrived: Parity Tech is excited to announce the release of the BIGGER and BETTER 1.8.0. This release will see light client improvements: Proof-of-Authority chain compatibility, even with dynamic authority sets, and also feature compatibility with the Whisper v6 wire protocol.
+
+We're thrilled to say that we now officially support the Trezor hardware wallet. When plugging in your Trezor device you are presented with a Pin Matrix to unlock your device. Once unlocked, the hardware wallet will be added as an account in the Parity Wallet.
+
+Furthermore, we recently [announced the launch of the Parity ICO Passport Service (PICOPS)](https://paritytech.io/blog/parity-technologies-launches-picops.html). PICOPS is a new Know Your Customer (KYC) service that enables users to certify a single Ethereum address with their identity. In order to get an address certified one needs to pay a small fee and upload a picture of one’s passport (optionally national ID or driver's license in some countries). The document is checked against digital tampering, databases of stolen documents and sanction watchlists. Owners of certified addresses can then participate in ICOs that partner with PICOPS.
+
+Lastly, we’ve undertaken a major refactor of Parity’s internals designed to completely decouple consensus logic from transaction and block verification logic. This allows us to reason not only about pluggable consensus, but also pluggable state transition systems. Moving onwards, this flexibility will enable us to unite the implementations of many different kinds of chains under a common interface.
+
+New Parity features also include:
+
+* Full Whisper v6 integration.
+* Light-client compatibility for PoA networks under dynamic authority sets.
+* Secure Dapp certification & reputation system with sybil-resistance through PICOPS. You can use the new vouching mechanism to vouch for Dapps in the Parity wallet.
+* Secure human-readable document signer, built right into the trusted signing module.
+
+Parity Offline Transaction Scheduling Service, which can be used when a transaction absolutely must be sent at a particular time. No need to leave Parity running.  
+Further improvements to support for WebAssembly smart-contracts.  
+Similar to our 1.7.6 series, this new release comes with Byzantium compatibility so it will be supporting the planned Byzantium Hard Fork at block number 4.37 million in the Ethereum Network on Monday, October 16th. It also supports the Musicoin MCIP-3 UBI-fork.
+
+### Parity Mobile Signer for iOS and Android
+
+We are also excited to announce our Parity Mobile Signer for iOS and Android. The application allows you to introduce an air gap between the node and your private keys. Your keys are stored securely on a mobile device and transactions are sent to the Parity Wallet Signer with QR code scanning - no wired or wireless connection is needed. Used properly (e.g. with a smart-phone whose antenna has been removed), this is the most secure way of signing transactions. Make sure to check out our Parity Mobile Signer on the App Store and Google Play Store:
+
+[https://itunes.apple.com/us/app/parity-signer/id1218174838](https://itunes.apple.com/us/app/parity-signer/id1218174838 "https://itunes.apple.com/us/app/parity-signer/id1218174838")  
+[https://play.google.com/store/apps/details?id=com.nativesigner](https://play.google.com/store/apps/details?id=com.nativesigner "https://play.google.com/store/apps/details?id=com.nativesigner")
+
+If you are upgrading from 1.7.x, please see the [release notes](https://github.com/paritytech/parity/releases) to ensure you know about the breaking changes.
+
+Stay tuned for more updates on our ongoing work on the new release on Parity Tech’s Github, or join the conversation on all things Parity Tech in our Riot Channel: # parity-watercooler:matrix.org
