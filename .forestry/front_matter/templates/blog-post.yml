@@ -79,4 +79,6 @@ fields:
 pages:
 - blog/announcing-parity-1-1/index.mdx
 - blog/built-on-substrate-kilt-protocol/index.mdx
+- 'blog/parity: stepping up the security model 1: a modular approach to transaction
+  signing/index.mdx'
 - blog/performance-analysis/index.mdx
