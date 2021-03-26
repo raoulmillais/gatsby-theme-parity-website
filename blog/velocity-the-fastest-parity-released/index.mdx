@@ -1,0 +1,54 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: 'Velocity: The fastest Parity released.'
+slug: blog/velocity-the-fastest-parity-released/
+date_published: 2018-01-26T06:00:00+01:00
+image: ''
+
+---
+Dear Ethereum communities, dear blockchain developers, dear decentralization enthusiasts: Parity Technologies is thrilled to announce the latest release: Parity 1.9 or Velocity. We’ve knuckled down and implemented a bunch of optimization and polish to help ensure everyone gets a stellar performance. Here’s a few of the things we’ve been working at:
+
+**Performance**
+
+Our underlying database, RocksDB has been upgraded, making it more stable. Moreover, we have spent a lot of time fine tuning the database configuration for top-performance. It now works sufficiently fast that even users with slower, older hard-disks are able to synchronize the chain. Warp-sync performance has been significantly improved with typical sync times over public wifi to be around an hour.
+
+We are happy to introduce the devp2p protocol upgrade to use Snappy compression, which now means your Parity node uses approximately 50% less network traffic.
+
+Finally, we have improved our database’s reliability with corruption issues now being automatically detected and, where possible, repaired.  
+Parity 1.9 is the fastest and most reliable Ethereum client we have ever released.
+
+**Reliability**
+
+The performance and stability of Aura (“Proof-of-Authority”) networks has been substantially improved; several protocol upgrades enabling reliability and features have been introduced on to the Kovan test network, which now has Byzantium-features enabled from block 5.067.000.
+
+New Aura networks created in Parity will automatically benefits from the stability improvements; those running pre-existing Aura networks are advised to set the maximum uncle count to zero in a future "maximumUncleCountTransition" in order to benefit. See the full Release Notes for more information.
+
+Parity continues to support several chains aside from the Ethereum Foundation’s chain: The recent “Monetary Policy Rounding Specification” protocol upgrade for Ethereum Classic is supported. Morden Classic now supports ECIP-1017 and Expanse hard-forked to Byzantium at block 800.000. Last, but not least, Parity now supports the Ellaism chain.
+
+**Tools**
+
+In addition to Parity, we provide tools such as ethstore, ethkey, parity-evm. Each of these tools has been improved in various ways. ethstore now supports the brute forcing of pre-sale wallets given a password list for recovery. ethkey helps find a correct phrase if you know the address you want to get yet you made a typo backing up the twelve words, or you forgot a word.
+
+**Comings and goings**
+
+After all of our experiments and directions with the “legacy” Parity Wallet, we have learnt a lot and gathered a lot of ideas on how things can be improved. As such it’s with great excitement that we are drawing a line under these experiments and beginning a new chapter in our “end-user” product offering.
+
+As a first step towards the new and improved product line, we are excited to include with Parity a sneak-preview of Parity Platform (internally known as UI-2). This features a simplified, streamlined design and wholly new groundwork laid behind the scenes, including a secure Dapp access privileges system. Future releases will build upon this ground work and you can expect plenty more shake-ups to come this year. In the meantime, the legacy Parity Wallet is still accessible as a Dapp within this Parity Platform. You can access it in much the same way as Parity Wallet.
+
+**Get Parity 1.9 Velocity Now!**
+
+Parity 1.9.0 is available from our Github repository: [https://github.com/paritytech/parity/releases/tag/v1.9.0](https://github.com/paritytech/parity/releases/tag/v1.9.0 "https://github.com/paritytech/parity/releases/tag/v1.9.0")
+
+Parity 1.8.7 is now to be considered stable, and users with previous versions should upgrade to 1.8.7-stable or 1.9.0: [https://github.com/paritytech/parity/releases/tag/v1.8.7](https://github.com/paritytech/parity/releases/tag/v1.8.7 "https://github.com/paritytech/parity/releases/tag/v1.8.7")
+
+To fix issues with Proof-of-Authority networks, we additionally released an "old-stable" version 1.7.13 for developers or projects depending on the old stable branch: [https://github.com/paritytech/parity/releases/tag/v1.7.13](https://github.com/paritytech/parity/releases/tag/v1.7.13 "https://github.com/paritytech/parity/releases/tag/v1.7.13")
+
+However, official support for 1.7.13 ends as of today, and where possible 1.9.0 or 1.8.7 should be used, especially on value-bearing networks.
+
+Important notice for users upgrading from versions before 1.8.5: The new RocksDB layer automatically re-compacts the database. This can temporarily lead to reduced node performance, e.g., slow RPC responses, slow block imports, or dropping peer count. On Archive nodes, this process can take several days. Services relying on maximum performance and availability are encouraged to start a fresh database before upgrading their node if possible.
+
+For a full list of changes and details, please check our change-logs: [https://github.com/paritytech/parity/blob/master/CHANGELOG.md](https://github.com/paritytech/parity/blob/master/CHANGELOG.md "https://github.com/paritytech/parity/blob/master/CHANGELOG.md")
