@@ -96,6 +96,7 @@ pages:
 - blog/parity-1-2-2-released-hard-fork-enabled/index.mdx
 - blog/parity-bitcoin-is-now-supporting-segwit-segwit2x-and-bitcoin-cash/index.mdx
 - blog/parity-technologies-launches-picops/index.mdx
+- blog/parity-technologies-multi-sig-wallet-issue-update/index.mdx
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'
 - blog/performance-analysis/index.mdx
