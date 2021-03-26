@@ -111,6 +111,7 @@ pages:
 - blog/security-alert-2/index.mdx
 - blog/security-alert/index.mdx
 - blog/security-update/index.mdx
+- blog/send-transactions-with-mycrypto-beta-and-parity-signer/index.mdx
 - blog/the-dos-vector-and-the-soft-fork-for-miners/index.mdx
 - blog/the-multi-sig-hack-a-postmortem/index.mdx
 - blog/velocity-the-fastest-parity-released/index.mdx
