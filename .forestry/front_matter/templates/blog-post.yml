@@ -125,6 +125,7 @@ pages:
 - blog/security-update/index.mdx
 - blog/send-transactions-with-mycrypto-beta-and-parity-signer/index.mdx
 - blog/substrate-in-a-nutshell/index.mdx
+- blog/substrate-testnet-launched/index.mdx
 - blog/the-dos-vector-and-the-soft-fork-for-miners/index.mdx
 - blog/the-multi-sig-hack-a-postmortem/index.mdx
 - blog/velocity-the-fastest-parity-released/index.mdx
