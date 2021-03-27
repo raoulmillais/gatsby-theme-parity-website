@@ -1,0 +1,55 @@
+---
+title: index
+tags:
+- Company and Culture
+- Rust
+author: Fredrik Harryson
+blogTitle: 'Engineering at Parity: What it''s like'
+slug: blog/engineering-at-parity-what-its-like/
+date_published: 2018-08-21T06:00:00+02:00
+image: "/images/engineering-at-parity-1.jpeg"
+
+---
+## What's it like to work at Parity?
+
+Here at Parity we pride ourselves on being an open source company. We build open source software and operate in the open with all code and issue management. Many people have asked us, “What is it like to work at Parity?”, and in this post I want to talk about our engineering culture and how we do things. We haven’t invented anything new or discovered some revolutionary productivity enhancer. We’re operating on the open source model as so many other projects do, but the devil is in the details, and we’re continually refining and improving the way we work. If I had to put a label on it, I’d say we loosely follow the [Programmer Anarchy](https://www.youtube.com/watch?v=uk-CF7klLdA) methodology as defined by Fred George.
+
+![what-do-we-do](/images/what-do-we-do.jpeg "what-do-we-do")
+
+## What do we do?
+
+Parity Technologies as a company is working on a relatively wide range of products. We have the [Parity Ethereum client](https://parity.io/) obviously, but along with just an implementation of the base Ethereum protocol, we’ve added a lot of features on top, like [warp sync](https://wiki.parity.io/Warp-Sync.html), [secret store](https://wiki.parity.io/Secret-Store-Tutorial-overview), [private transactions](https://medium.com/paritytech/private-transactions-webassembly-and-permissioning-new-features-supported-by-energy-web-150178bb9612), [WebAssembly VM](https://medium.com/paritytech/why-we-believe-in-wasm-as-the-base-layer-of-decentralised-application-development-6196b8e3977e) and more. The Ethereum node is also built in a modular, or “pluggable,” way so that we can include non-Ethereum specific things like a [Proof of Authority](https://wiki.parity.io/Aura) consensus algorithm. Being able to offer many modes of operation, ways to set up private networks, development networks etc., is really important to us because it gives developers the best freedom in how they want to use the node and develop on Ethereum.
+
+We also have an implementation of a [Bitcoin client](https://github.com/paritytech/parity-bitcoin), [Javascript libraries](https://github.com/paritytech/js-libs) for DApp development, [Whisper protocol implementation](https://wiki.parity.io/Whisper), [Rust libp2p implementation](https://github.com/libp2p/rust-libp2p), mobile app [transaction signer](https://wiki.parity.io/Parity-Signer-Mobile-App) and much more. This doesn’t touch on what we do on Polkadot development, which already has [two proof-of-concepts and a public testnet](https://medium.com/polkadot-network/polkadot-poc-2-is-here-parachains-runtime-upgrades-and-libp2p-networking-7035bb141c25), but has really just started. We expect to produce a lot of open source code for that ecosystem as well.
+
+Parity Technologies is an infrastructure company, we want to provide rock solid high quality protocol implementations and core infrastructure to support Web3 ecosystems and drive blockchain technology forward as a whole, whether for private consortium use or public chain use. Our next mission in enabling blockchain innovation is [Parity Substrate](https://medium.com/paritytech/what-is-substrate-29af4231d7e0), a framework for building custom blockchains without having to worry about the networking and consensus implementations.
+
+![engineering-at-parity-tech](/images/engineering-at-parity-final6.jpeg "engineering-at-parity-tech")
+
+## How do we get it done?
+
+Parity has over 60 employees at the time of writing this post. This is quite a lot, but we’re still a very lean operation and try to get by with as few people as we think we can. **Core to our culture and philosophy of operation is autonomy**, people should be free to choose to work on what they want to work on. There are obviously boundaries—if someone wants to open a banana stand they’re likely to get a conversation from [Gavin](https://twitter.com/gavofyork) or myself saying they can’t do that and need to focus on something that forwards the mission of the company. So far no one has requested to open a banana stand.
+
+In essence, we self-organise through Github issues and chat. Being an open-source initiative, all issues are managed in the open Github Issue repository. We have no other task management or issue tracking solution, everything we work off exists in Github Issues. If someone has an idea for a feature request or something they want to work on, we’ll talk about it in chat. If we decide it’s something we should do, it’s put into a Github Issue and self-assigned.
+
+There’s some amount of work by various people like myself, the release manager, the support lead and many others to tag and prioritise issues, so that if people don’t want to dig through all the issues to find what they’re most excited about right now, they’ll have some idea of a shortlist to go on. At the end of the day, it’s really just all about communication.
+
+![engineering-at-parity-technologies](/images/engineering-at-parity-fnl.jpeg "engineering-at-parity-technologies")
+
+## How do we ensure quality?
+
+Programmer Anarchy doesn’t mean there isn’t process, but that the processes are developed by the people who will be following them. One might ask how this works in practice and if it doesn’t make it easy to have things fall between the cracks. The answer is roughly that the product owner is responsible for ensuring that this doesn’t happen. In a normal "Product Manager” role you might say that that manager is “in charge” of the developers in a team. We don’t have any managers like that, but instead have product owners at different levels that are responsible for the end-product, these product owners are almost entirely made up of the developers who will be implementing said product, the only “power” they have is to lay out what needs to be done, not how or by whom.
+
+It is the responsibility of this product owner that their product sees the right attention and that they have a good overview of everything that is going on and what needs to happen to not have anything fall between the cracks. They in turn communicate back what needs to be done through creating Github Issues or talking on chat.
+
+Beyond this, we also follow regular best-practices, no pull request gets merged without a code review, things that are deemed critical such as code that touches anything consensus-related requires multiple reviews and from the people who have best insight into the code in question. We run Gitlab CI with CI runners on multiple platforms for all PRs to make sure our entire test-suite is always passing and master should always be in a releasable state. On top of this, [we do third-party audits](https://paritytech.io/parity-technologies-appoints-trail-of-bits-to-lead-security-review/) for particularly sensitive code.
+
+![engineering-at-parity-technologies](/images/engineering-at-parity-fnl2-1.jpeg "engineering-at-parity-technologies")
+
+## Ethos
+
+The general spirit of the culture at Parity Technologies is this: We hire the best people in the world and let them work on whatever they want to work on.
+
+Sometimes we have to make compromises on this culture because we don’t have the resources or the communication structures or the managerial experience to make it 100% true (I don’t think anyone does). It is however always the goal and something we strive towards, while trying to make zero compromise on quality, oversight or productivity.
+
+At the end of the day, Parity Technologies is all about shipping good software. We believe happy people that are passionate about what they’re working on ship more and higher quality software.
