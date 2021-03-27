@@ -144,4 +144,5 @@ pages:
 - blog/wasm-smart-contract-development/index.mdx
 - blog/what-is-a-light-client/index.mdx
 - blog/what-is-substrate/index.mdx
+- blog/why-libp2p/index.mdx
 - blog/why-rust/index.mdx
