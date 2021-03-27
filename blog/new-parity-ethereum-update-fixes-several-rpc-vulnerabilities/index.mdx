@@ -1,0 +1,28 @@
+---
+title: index
+tags:
+- Parity Erthereum
+- Releases
+- Security
+author: Parity Technologies
+blogTitle: New Parity Ethereum update fixes several vulnerabilities
+slug: blog/new-parity-ethereum-update-fixes-several-rpc-vulnerabilities
+date_published: 2019-02-13T06:00:00+01:00
+image: ''
+
+---
+**Update 15/2/2019:** It has come to our attention that the scope of the fixed Parity Ethereum vulnerability is wider than we originally thought, and it could be exploited from a regular node-to-node connection without RPC access. While the previously released 2.2.10-stable and 2.3.3-beta protect against this wider scope, the wider scope means that _everyone_ who runs Parity Ethereum, not just those who serve JSON-RPC publicly, should update as soon as possible. [Download the update here.](https://github.com/paritytech/parity-ethereum/releases)
+
+The 2.2.10-stable and 2.3.3-beta releases protect Parity Ethereum nodes from potentially being able to be crashed by a targeted attack. Thanks everyone for updating and keeping the network protected.
+
+Thanks to the security researchers from [SRLabs](https://srlabs.de/) for their vigilance.
+
+_Original post:_
+
+Last week we [released a Parity Ethereum update](https://www.parity.io/security-alert-parity-ethereum-03-02/) that protects nodes from being crashed by a specially-crafted RPC request. Since then we, in collaboration with external researchers, have been carefully exploring any potential for similar issues.
+
+Today we released a new update that is the result of that research, 2.2.10-stable and 2.3.3-beta, which fixes many similar RPC attack vectors. [Download the update here.](https://github.com/paritytech/parity-ethereum/releases)
+
+As with the previous update, only Parity Ethereum nodes that serve JSON-RPC as a public service should be affected. The default setting for Parity Ethereum nodes is to not serve JSON-RPC, but nonetheless we encourage everyone running Parity Ethereum nodes to update.
+
+If you’re a security researcher and want to contribute to the safety and security of the Parity codebase, please see our [Bug Bounty program](https://www.parity.io/bug-bounty/).
