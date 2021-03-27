@@ -1,0 +1,52 @@
+---
+title: index
+tags:
+- Parity Fether
+- Parity Ethereum
+- Releases
+author: Thibaut Sardan
+blogTitle: Fether Beta is out, check it out and tell us what you think!
+slug: blog/fether-beta-is-out-check-it-out-and-tell-us-what-you-think/
+date_published: 2019-01-18T06:00:00+01:00
+image: "/images/parity-fether-beta-release.png"
+
+---
+[Parity Fether v0.2-beta](https://github.com/paritytech/fether/releases), the latest iteration of our light client-based wallet, has just been released.
+
+This release has many improvements while staying true to our product goals: decentralized, open and simple.
+
+Parity Fether connects to Ethereum in a decentralized manner, fetching data from Ethereum nodes rather than forcing users to trust a centralized node or service. This makes Fether a simple way of transferring Ether and ERC20 tokens on Ethereum.
+
+## Built with React and light.js
+
+Fether’s simple user interface is built with React and uses [light.js](https://github.com/paritytech/js-libs/tree/master/packages/light.js) to interact with the underlying Parity Ethereum light client. React provides the flexibility to easily implement a UI using the great community support and tooling that’s readily available, while Parity’s own light.js provides the back-end connectivity to Parity Ethereum nodes for broadcasting transactions and fetching data, all in a decentralized way.
+
+![Parity Fether](/images/0_lp-gltqndgqxpw91.png "Parity Fether")
+
+## From Alpha to Beta: new features
+
+#### BIP39 Support
+
+Among the most important improvements that v0.2-beta brings is support for BIP39 recovery phrase. What is BIP39, you may ask? It’s a standard way of creating an account from a list of words. Sadly, not all wallets are using the same standard and an account created in one wallet may not be recoverable in another wallet. That said, from now on any new account created in Fether is BIP39 compatible, so that you can recover this same account on other platforms. This includes MyCrypto, MEW, MetaMask, Walleth, Jaxx, and many others. Legacy accounts created with Parity UI, Parity Signer, or older versions of Fether will still be recoverable as well.
+
+#### Parity Signer integration
+
+Speaking of [Parity Signer](https://github.com/paritytech/parity-signer), Fether now supports it! This lets you add another level of security to your funds. You can keep your private keys on an offline phone that is dedicated to Parity Signer and let Fether broadcast signed transactions. Not only will your private key never be exposed to the dark side of the internet, but the transaction that it signed will be sent in a decentralized manner using a light client! [Here is a tutorial](http://wiki.parity.io/Parity-Signer-Mobile-App-Fether-tutorial) to get you started. We think we’ve made this process easy, but if you encounter bumps on the way, please let us know.
+
+#### Open-source explorer integration, improved recovery options
+
+Because we really care about privacy, we’re now linking transactions to Blockscout since this block explorer from POA Network embeds [fewer trackers](https://github.com/poanetwork/blockscout/issues/1274#issuecomment-451861976) than Etherscan, and it’s open source. Another new feature, Fether v0.2-beta now allows you to import and export accounts using JSON keystore files.
+
+Read the entire list of new features in the Fether v0.2-beta in the [release notes](https://github.com/paritytech/fether/releases)!
+
+## Feedback and contributions welcome
+
+All the code used in the application is [open source](https://github.com/paritytech/fether) — contributions are very welcome. Fether does not embed any tracker whatsoever, so the only way for us to know how you use the application, what you like, and what you’d like improved is if you tell us directly.
+
+We also welcome feedback on non-technical issues: do you find the font too hard to read? Spotted a weird behavior? Let us know on [Gitter](https://gitter.im/paritytech/fether), [Riot](https://riot.im/app/#/group/+parity:matrix.parity.io), or [Twitter](https://twitter.com/paritytech). You can now quickly open an issue on [GitHub](https://github.com/paritytech/fether/issues/new) by clicking the “feedback” button at the bottom of the account list directly in the Fether app.
+
+## What’s next for Fether
+
+Fether is in beta and synchronises Kovan testnet per default. Because it’s a beta version, we expect you to find little quirks here and there and we count on your feedback to make Fether even better. The launch on Mainnet is expected to happen in the next months while the work progresses in parallel on the Parity Ethereum light client.
+
+Happy testing!
