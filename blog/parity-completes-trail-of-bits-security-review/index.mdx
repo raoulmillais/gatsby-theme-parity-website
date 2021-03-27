@@ -1,0 +1,34 @@
+---
+title: index
+tags:
+- Security
+- Parity Ethereum
+- Parity Substrate
+- Rust
+- Parity Signer
+author: Phil Lucsok
+blogTitle: Parity completes Trail of Bits’ security review
+slug: blog/parity-completes-trail-of-bits-security-review/
+date_published: 2018-08-31T06:00:00+02:00
+image: "/images/trail-of-bits-parity-security.png"
+
+---
+As [announced earlier this year](https://paritytech.io/parity-technologies-appoints-trail-of-bits-to-lead-security-review/), Parity Technologies enlisted [Trail of Bits](https://www.trailofbits.com/), a top-tier security auditing firm specializing in smart contract security, Rust, and Solidity, to review our codebase.
+
+The scope of the audit included the most critical components of Parity’s codebase for [Parity Ethereum](https://paritytech.io/parity-ethereum-2-0/), which is shared with many core components of other technologies, including [Parity Signer](https://paritytech.io/send-transactions-with-mycrypto-beta-and-parity-signer/) and the upcoming [Substrate](https://paritytech.io/what-is-substrate/) and [Polkadot](https://polkadot.network/) releases. Most of the thoroughly reviewed components are used for private key generation and storage, JSON RPC, and remaining deployed smart contracts for our Rust and Javascript end-user applications. The [full report](https://www.trailofbits.com/reports/parity.pdf) is already available for the community to review on Trail of Bits’ website.
+
+Parity has worked closely with Trail of Bits since the start of the audit to ensure proper implementation of not only the fixes to the code, but also to improve our [coding and review practices](https://paritytech.io/new-smart-contract-development-processes/).
+
+## The report and fixes
+
+All findings from the report have been addressed. The full report is online and [can be read here](https://www.trailofbits.com/reports/parity.pdf).
+
+The Solidity parts of our code have also been fixed in full, and the code can be viewed in our new [contracts Github repo](https://github.com/parity-contracts). Parity Technologies is a core infrastructure company, and therefore many of our application-level Solidity components have been deprecated. We are focusing on writing and maintaining a minimum number of secure contracts, using them only where absolutely necessary. We haven’t deployed all the contract improvements to the main networks yet, as no actual live contracts were found to have exploitable vulnerabilities in them. As for all other improvements, it takes time and careful planning to deploy those to the live networks (involving, say, the governing authority set for our Kovan network), and we’re taking time to properly test and incorporate the updates in the next releases of our Parity Ethereum client.
+
+In the report, Trail of Bits noted that our Rust code is of very high quality. We quickly made all of Trail of Bits’ recommended fixes to the Rust codebase over the last few months, and we fully incorporated the fixes in our most recent stable and beta releases. We’ve followed the recommendations by Trail of Bits to change the code where needed, and also moved to using more robust Rust cryptographic libraries that have been better audited.
+
+## Moving forward
+
+Completing an audit is just one part of our focus on security. From our work with Ethereum to Polkadot and Substrate, security is a crucial step in building the infrastructure for a successful decentralized web. Every pull request and its reviews are made knowing the critical importance of secure code.
+
+We now have very strict procedures on how we change smart contract code. To support the smart contract community in continuously improving best security practices, Kirill will explain our strict procedures in an upcoming post. Additionally, our [Bug Bounty program](https://paritytech.io/bug-bounty/) is an important part of keeping our codebase secure, and we encourage smart contract and Rust specialists to learn more about the program and start digging into our code.
