@@ -117,6 +117,7 @@ pages:
 - blog/new-cto/index.mdx
 - blog/new-gpg-key-for-security-parity-email/index.mdx
 - blog/new-parity-ethereum-update-fixes-several-rpc-vulnerabilities/index.mdx
+- blog/new-parity-ethereum-update-protects-against-possible-attack/index.mdx
 - blog/new-smart-contract-development-processes/index.mdx
 - blog/on-classes-of-stuck-ether-and-potential-solutions/index.mdx
 - blog/onwards/index.mdx
