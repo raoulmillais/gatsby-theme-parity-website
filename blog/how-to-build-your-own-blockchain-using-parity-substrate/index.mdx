@@ -11,6 +11,8 @@ image: "/images/how-to-build-blockchain-parity-substrate.png"
 ---
 [Parity Substrate](https://www.parity.io/substrate/) is a blockchain development framework with many cool features like upgradable blockchains, modular architecture, customizable block execution logic, and hot-swappable consensus. For an overview of the Substrate framework, watch [this talk from Dr. Gavin Wood](https://www.youtube.com/watch?v=0IoUZdDi5Is) (Web3 Summit, October 2018).
 
+<iframe className="w-full h-56 my-8 sm:h-80 md:h-96" src="https://www.youtube.com/embed/0IoUZdDi5Is" allowFullScreen></iframe>
+
 This article is about how you can get started with the Substrate framework to build your own blockchain. Let’s jump right in.
 
 ### Installation
@@ -19,13 +21,13 @@ The first step towards getting started with Substrate is setting up your develop
 
 Run the following command in your terminal, and it will set up your machine ready to hack on Substrate.
 
-`curl `[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")` -sSf | bash`
+`curl`[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")`-sSf | bash`
 
 The command takes a few minutes to complete (depending on your hardware) as it also compiles all the Rust packages needed for the Substrate framework.
 
 There is a faster option also available, but it installs only the dependencies and does not compile the Substrate packages. To use this option, run the following command.
 
-`curl `[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")` -sSf | bash `**`-s -- --fast`**
+`curl`[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")`-sSf | bash`**`-s -- --fast`**
 
 **Note:** In the faster option you will not have the Substrate CLI installed globally in your system.
 
@@ -43,7 +45,7 @@ The first parameter is a name for your blockchain project and the second (option
 
 For example:
 
-`substrate-node-new `**`substrate-demo`**` `**`demoauthor`**
+`substrate-node-new`**`substrate-demodemoauthor`**
 
 Once this command completes, it will create the following directory structure inside the _substrate-demo_ (or the project name you used) directory. It will also initialize a git repository in this directory.
 
@@ -63,7 +65,6 @@ To start the Substrate node, run the following command, in the context of the no
 
     cd substrate-demo // in case you haven't done this already
     ./target/release/substrate-demo --dev
-    
 
 The command will produce output similar to the following.
 
@@ -83,7 +84,6 @@ The command will produce output similar to the following.
     2019-04-08 17:28:40 Prepared block for proposing at 1 [hash: 0xdc6de1c9b04607fe51bf4abed8cfdbd6313a74e9eeda78e3db4f6d2b60e69903; parent_hash: 0x0353…30ef; extrinsics: [0x0421…0149]]
     2019-04-08 17:28:40 Pre-sealed block for proposal at 1. Hash now 0x1e5375649660d9e8b8e41fde74c861185a1e55153285e4332111dd0aa240684a, previously 0xdc6de1c9b04607fe51bf4abed8cfdbd6313a74e9eeda78e3db4f6d2b60e69903.
     2019-04-08 17:28:40 Imported #1 (0x1e53…684a)
-    
 
 As you can see, the node has started producing blocks.
 
@@ -125,7 +125,6 @@ Firstly, let’s declare the storage items needed for the token functionality. I
 
     TotalSupply get(total_supply): u64 = 21000000;
     BalanceOf get(balance_of): map T::AccountId => u64;
-    
 
 In the first line, we are adding a storage item `TotalSupply` to save the total number of the tokens. We are also setting a value to this storage item (21000000).
 
@@ -141,7 +140,6 @@ The full storage declaration code for this module looks like the following. (Not
         BalanceOf get(balance_of): map T::AccountId => u64;
       }
     }
-    
 
 ### Implementing the Runtime Logic
 
@@ -182,7 +180,6 @@ In the following snippet, these two dispatchable functions — `init` and `trans
           }
       }
     }
-    
 
 Note how we are accessing the module’s storage with`Self::total_supply()` and `<BalanceOf<T>>` to get and set values of these storage items.
 
