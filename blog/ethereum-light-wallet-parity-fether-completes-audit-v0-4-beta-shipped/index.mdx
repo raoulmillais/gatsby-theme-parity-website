@@ -1,0 +1,38 @@
+---
+title: index
+tags:
+- Parithy Ethereum
+- Parity Fetherr
+- 'Custom Solutions '
+author: Thibaut Sardan
+blogTitle: Ethereum Light Wallet Parity Fether Completes Audit, v0.4-beta Shipped
+slug: blog/ethereum-light-wallet-parity-fether-completes-audit-v0-4-beta-shipped/
+date_published: 2019-11-11T01:00:00+01:00
+image: "/images/parity-fether-beta-release-four.png"
+
+---
+We are thrilled to announce that Parity Fether has been audited by Trails of Bits and all the recommended fixes have been completed. As a result, Fether v0.4 has been released.
+
+Parity Fether is an Ethereum wallet available as a desktop application for Windows, Mac, and Linux. It is written in ReactJS and uses the Electron framework to wrap this web application in an environment that can be run on any desktop.
+
+What sets Fether apart as a crypto wallet is the fact that it uses its own embedded node, a light node (aka light client), to access Ethereum. In fact, to our knowledge, it is the only Ethereum wallet available that does not rely on a third-party service to access the blockchain. Check out Fether contributor Thibaut Sardan’s [Devcon V presentation](https://slideslive.com/38920073/lessons-learned-to-build-a-dapp-on-a-light-client) to learn more about the building blocks of Fether.
+
+### From the audit report (by Trail of Bits):
+
+> The Fether-specific code, excluding the library dependencies were reviewed for Electron best practices, sensitive system operation correctness, common web security issues, and potential issues with communications with the light node endpoint. The Parity-implemented libraries used by Fether were also reviewed, with a focus on correctness of use by Fether and implementation correctness. Issues related to data validation and sanitation, injection attacks, and parser vulnerabilities were also reviewed throughout the system as a whole.
+
+> The review of the Fether codebase covered multiple components of the system and the related libraries it uses, including the Electron, React, and Parity API wrappers. Manual, static, and automatic analysis methods were used and implemented in an attempt to expand both breadth and depth of coverage. Static analysis and dependency checks using systems such as yarn audit and Retire.js were used to identify low-hanging fruit and easy ways to improve the security posture of the overall system. Dynamic analysis through property testing and fuzzing were attempted and implemented respectively.
+
+> User interaction with the application interfaces were also reviewed for interfaces which could be dangerous for users of Fether, such as timeouts on sensitive interfaces and strong password policy enforcement when creating a new wallet. These types of controls are similar to those found in more traditional banking and financial applications. While the Parity node was not directly assessed, the interactions between Fether and the Parity node it spawned were in scope. As such, command line interactions possible with the underlying Parity node were reviewed for problems such as command injection. Furthermore, research into issues potentially affecting the integrity of the underlying Parity node such as DNS rebinding attacks were reviewed.
+
+The full report is available [here](https://www.parity.io/assets/docs/Parity-Fether-Final-Report.pdf).
+
+### How we addressed the most critical issues
+
+Several points were raised and subsequently addressed by the development team. Below are the most important issues raised and how we addressed them.
+
+When started, Fether launches a Parity Ethereum light node in the background and connects to it. Since this connection is performed locally between 2 applications running on the same computer (Fether Electron and Parity Ethereum node), we chose to do it over WebSockets. According to the [current W3C draft](https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy) (case 4. in the section “Is origin trustworthy”), connections originating from localhost should be treated as “potentially trustworthy”, and do not require SSL encryption in most cases — as a result, the connection to the node wasn’t encrypted in our original design. However, Trail of Bits persuaded us that, for our particular use case, this is not secure enough, since, for example, it opens up our Fether setup to accidental data leaks if this connection were to be intercepted by, say, an antivirus solution (something that people in 99% of non-mission-critical contexts shouldn’t probably bother with). To address this issue, the main communication protocol was switched from WebSockets to [Inter-process communication (IPC)](https://en.wikipedia.org/wiki/Inter-process_communication), allowing the Fether application to communicate with the Parity Ethereum node without the ability for external applications to intercept this communication. As a bonus, this protocol change also removes the need for a secure token exchange between the 2 local applications, which was also pointed out by the Trail of Bits audit.
+
+As a wallet supporting ERC20 tokens, Fether also shows icons for these tokens to make the interface visually appealing. We chose to fetch these images from the well-known [atomiclabs/cryptocurrency-icons](https://github.com/atomiclabs/cryptocurrency-icons) Github repository that is not directly maintained by Parity. The risk in fetching external information is the potential for very large logo images to result in a denial of service. Loading the whole image library directly into the application is a naive way to mitigate this issue. However, this would needlessly bloat the Fether application. The approach that was chosen is to pin a specific version of the image repository, allowing us to review each new token addition and prevent the addition of malicious images.
+
+During its beta phase, Parity Fether had kept the developer tools available to anyone in order to help the troubleshooting of errors. However, the latest version of Fether was shipped with these developer tools disabled.
