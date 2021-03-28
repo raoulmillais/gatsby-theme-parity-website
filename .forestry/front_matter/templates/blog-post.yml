@@ -103,6 +103,7 @@ pages:
 - blog/in-support-of-a-hard-fork/index.mdx
 - blog/launch-a-blockchain-in-minutes-substrate/index.mdx
 - blog/light-js-how-to-build-your-dapp-on-a-light-client/index.mdx
+- blog/lightbeam-webassembly-compiler/index.mdx
 - blog/new-cto/index.mdx
 - blog/new-parity-ethereum-update-fixes-several-rpc-vulnerabilities/index.mdx
 - blog/new-smart-contract-development-processes/index.mdx
