@@ -151,6 +151,7 @@ pages:
 - blog/the-dos-vector-and-the-soft-fork-for-miners/index.mdx
 - blog/the-multi-sig-hack-a-postmortem/index.mdx
 - blog/un-world-food-programme-uses-parity-ethereum-to-aid-100-000-refugees/index.mdx
+- blog/utxo-on-substrate/index.mdx
 - blog/velocity-the-fastest-parity-released/index.mdx
 - blog/wasm-smart-contract-development/index.mdx
 - blog/what-is-a-light-client/index.mdx
