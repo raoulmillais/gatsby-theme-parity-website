@@ -1,0 +1,69 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Wasm
+- Polkadot
+- Releases
+author: Phil Lucsok
+blogTitle: Substrate 2.0 is here
+slug: blog/substrate-2-0-is-here/
+date_published: 2020-09-23T00:00:00+02:00
+image: "/images/substrate2-0.png"
+
+---
+Substrate has reached the major milestone of version 2.0. The blockchain framework now comes with off-chain workers, over 70 composable modules, and represents a stable foundation for building optimized, Polkadot compatible, production-ready blockchains. Dozens of live blockchains are already running Substrate 2.0, including [Polkadot](https://polkadot.network/) and [Kusama](https://kusama.network/), and a range of other specialized blockchains in the Polkadot ecosystem.
+
+## Why use Substrate?
+
+With Substrate, the _runtime_ is your blockchain canvas, giving you maximum freedom to create and customize your blockchain precisely for your application or business logic. Within the runtime, you can compose any state transition function while utilizing built-in database management, libp2p networking, and the fast and safe consensus protocol [GRANDPA](https://polkadot.network/polkadot-consensus-part-1-introduction/).
+
+Focus on your strengths by harnessing Substrate's modular design to use battle-tested libraries while building the custom components that matter most.
+
+![Substrate 2.0 Gavin Wood](/images/substrate-2-gavin.png "Substrate 2.0 Gavin Wood")
+
+In late 2018, Polkadot co-founder Gavin Wood [demonstrated](https://www.youtube.com/watch?v=0IoUZdDi5Is) that pluggable consensus and forkless runtime upgrades are possible with Substrate 1.0, and now with Substrate 2.0, builders can use a battle-tested framework to deploy the blockchains they’ve always wanted to.
+
+### FRAME, the framework for blockchain composability
+
+Substrate’s modularity is part of its core design principles—you can replace many major components, from the network stack over the consensus and finality engines (Substrate comes with AURA, [BABE](https://wiki.polkadot.network/docs/en/learn-consensus#what-is-grandpababe), [GRANDPA](https://wiki.polkadot.network/docs/en/learn-consensus#what-is-grandpababe) and a configurable PoW engine already built-in) all the way to the runtime development.
+
+Runtime modules, known as **pallets**, are the pre-built components you can use to compose Substrate runtimes. Each pallet has its own discrete logic which can modify the features and functionality of your blockchain’s state-transition function, making it easy to add basic and extended functionality. [FRAME](https://substrate.dev/docs/en/knowledgebase/runtime/frame) is the framework for developing with Substrate pallets. FRAME makes it easier to find, select, and implement the right pallets for your custom blockchain, making it the default modular, customizable runtime development framework for Substrate. Substrate 2.0 comes with many new pallets that will help you quickly and easily build and deploy your blockchain runtime with the right properties for you and your network.
+
+### Compose your blockchain with Pallets
+
+The number of pallets will continue to grow over time as they are developed and released, both by Parity and by independent teams building their own Substrate-based blockchains.
+
+Substrate 2.0 comes with over 70 pallets to help you build your blockchain. Now published on crates.io, this allows for easier package management via cargo, the Rust package managers. A few examples of pallets include:
+
+* The [**Contracts**](https://crates.io/crates/pallet-contracts) pallet allows smart contracts to be deployed to a WebAssembly virtual machine, enabling contracts to be written in any language that compiles to Wasm, such as Rust, C++, and Go.
+* [**BABE**](https://crates.io/crates/pallet-babe) and [**GRANDPA**](https://crates.io/crates/pallet-grandpa) are companion pallets for proof-of-stake networks that want fast and reliable block production and finalization. Other methods of reaching consensus that are compatible with Substrate include Aura (Authority round and Instant seal). Learn more about BABE and GRANDPA consensus [here](https://medium.com/polkadot-network/polkadot-consensus-part-1-introduction-3e3cd6237243).
+* [**Democracy**](https://crates.io/crates/pallet-democracy) is a pallet for enabling on-chain voting mechanisms for swift, binding, and transparent governance by stakeholders.
+* [**EVM**](https://crates.io/crates/pallet-evm) is a pallet that replicates the functionality of the Ethereum Virtual Machine, allowing EVM applications to be quickly ported to a Substrate chain. Many existing chains are utilizing this pallet for their integration of solidity-based contracts, such as [Moonbeam](https://moonbeam.network/) and [Plasm](https://www.plasmnet.io/).
+* The [**Treasury**](https://crates.io/crates/pallet-treasury) pallet provides a way to add funds to a pot that can be used for funding activities however the network likes. This pallet is currently active on Polkadot, Kusama and other live blockchains built on Substrate.
+* The [**Identity**](https://crates.io/crates/pallet-identity) pallet allows for users to publicly declare who owns certain accounts by giving accounts names and contact information. This is especially useful for validators on proof-of-stake networks.
+* Account and key security is extremely important for handling large amounts of funds. This is one major reason for the creation of the [**Multisig**](https://crates.io/crates/pallet-multisig) pallet, which allows different keys/devices to be in control of a single account.
+* The [**Recovery**](https://crates.io/crates/pallet-recovery) pallet introduces a recovery mechanism for on-chain assets, especially useful for a user-friendly way to recover lost keys. Learn more about the social recovery mechanism [here](https://www.parity.io/social-recovery-on-substrate/).
+* The Kusama network is currently utilizing the [**Society**](https://crates.io/crates/pallet-society) pallet for Kappa Sigma Mu, the Human Blockchain Project in which [members get tattoos](https://decrypt.co/20457/this-crypto-fraternity-will-pay-you-3000-to-get-a-tattoo) to join and help create initiatives to bridge the gap between humans and machines.
+
+### Off-chain computation with on-chain agreement
+
+[**Off-chain workers**](https://www.parity.io/substrate-off-chain-workers-secure-and-efficient-computing-intensive-tasks/) is a new feature in Substrate 2.0 that allows you to integrate data safely and securely onto your blockchain, ideal for Internet-of-Things (IoT) devices or real-world data inputs via oracles.
+
+![Substrate Node](/images/substrate-node-v2.png "Substrate Node")
+
+To make off-chain data integration secure and more efficient, Substrate provides off-chain workers. The off-chain worker subsystem allows execution of longer running and possibly non-deterministic tasks (e.g. web requests, encryption/decryption and signing of data, random number generation, CPU-intensive computations, enumeration/aggregation of on-chain data, etc.) leveraging on-chain-data and access. One example is the “I’m online” pallet, which takes advantage of off-chain workers. This allows validators in a proof-of-stake network that haven’t authored a block to automatically send a transaction to the chain signaling that they are still available. This makes sure the validator is available and therefore should not be kicked out or slashed for being offline.
+
+The code for off-chain workers is stored on-chain, and has access to the on-chain environment, but is never executed as part of block-processing. Off-chain workers make it easy to run the correct code and allow longer running tasks to be performed without holding up the blockchain. However, the on-chain code allows verification mechanisms, such as voting, averaging, and challenging to be implemented in the state-transition function of the blockchain it is running on. It is up to the blockchain/oracle network designer and those running nodes on the network to agree on exactly who should be doing what, when, and the rewards and punishments for participants.
+
+Substrate 2.0 comes with a suite of pallets to make data integration much more efficient for blockchains that depend on existing and/or real-world data.
+
+## Substrate 2.0 is for builders
+
+Substrate 2.0 makes it easier than ever to build custom, scalable blockchains that are interoperable with the Polkadot ecosystem, all containing the business logic necessary to reach your team’s design goals. Substrate’s ecosystem of developers have also put things in place to help make your blockchain production ready, with an ever-growing suite of the developer tools and benchmarking and monitoring solutions that you would expect from a best-in-class, commercial-grade software framework.
+
+The [Substrate Developer Hub](https://substrate.dev/docs/en/) is where you can dive deep into all the technical documentation, tutorials and resources to get you started. For instantaneous feedback, chat directly with our developers in the [Substrate Technical](https://matrix.to/#/!HzySYSaIhtyWrwiwEV:matrix.org?via=matrix.parity.io&via=matrix.org&via=web3.foundation) Element room.
+
+![Sub0 - Substrate](/images/sub0-substrate-v2.png "Sub0 - Substrate")
+
+Dive deeper into Substrate’s powerful features and use cases and connect with the Substrate community on October 15th at [Sub0 Online](https://sub0.parity.io/?utm_source=parityio&utm_medium=referral&utm_campaign=sub0&utm_term=parity), the Substrate developer community conference. The free multi-track online conference will feature talks and workshops for Substrate developers and learners of all proficiency levels, as well as those new to Substrate who want to learn more about how the blockchain framework is being used to build the future of Web3. Speakers will include Parity founders Gavin Wood and Jutta Steiner, along with Parity developers building Substrate and Polkadot, and ecosystem builders from a range of use cases and industry verticals. Learn more and register [here](https://sub0.parity.io/?utm_source=parityio&utm_medium=referral&utm_campaign=sub0&utm_term=parity).
