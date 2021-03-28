@@ -1,0 +1,44 @@
+---
+title: index
+tags:
+- Polkadot
+author: Joe Petrowski
+blogTitle: "“Statemint” Generic Assets Chain: Proposing a Common Good Parachain to
+  Polkadot Governance"
+slug: blog/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/
+date_published: 2021-03-09T00:00:00+01:00
+image: "/images/generic_assets_chain_blog-04.png"
+
+---
+Polkadot’s and Kusama’s on-chain governance can grant parachain slots by public referendum, instead of determining the slot winner via its auction mechanism. The parachains that are granted slots via governance, known as [_common-good_ parachains](https://polkadot.network/common-good-parachains-an-introduction-to-governance-allocated-parachain-slots/), provide core functionality that would be susceptible to the free rider problem if left to the auction market dynamics.
+
+## Introducing Statemint
+
+Parity Technologies plans to develop and propose a generic assets parachain called Statemint as one of the first common-good chains. This parachain would provide functionality for deploying assets — from tokenized artwork to stablecoins and Central Bank Digital Currencies — in the Polkadot and Kusama networks and give their users a better experience with lower fees than existing solutions.[\[1\]](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fn1)
+
+A basic functionality of blockchains is their ability to track ownership of a base layer asset, the native protocol token. But blockchains can track more than just their native protocol token, so it also makes sense to track other assets without launching a new network for each one.
+
+Assets outside of a core protocol token can represent a broad spectrum of goods and services, but tend to fall under three groups: those backed by an on-chain protocol’s utility, those backed by off-chain reserves, and those with no backing. Assets backed by an on-chain protocol’s utility would grant their owners rights to some utility or functionality in another protocol, e.g. voting rights or “vending machine” type applications that require a user to own some token in order to use it. Assets with off-chain backing can track a wide variety of goods, like artwork, shares in a company, real estate, assets from other consensus systems,[\[2\]](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fn2) or fiat reserves. These require some trust that the promised backing actually exists and is authentic, but there usually exists some means of mitigating or validating that trust, such as third-party audits. Finally, assets without backing are fully trust based.
+
+All of these assets derive their value from the owner’s belief that the issuer is able and willing to deliver on the promise the asset provides. This parachain would not provide the verification tools, as they are unique to each asset deployed on-chain, but it would provide the core functionality to issue such assets where each issuer would defend the authenticity of their promises. Each issuer would need its own methods to defend authenticity. For example, a gold issuer could provide the certificates of authenticity and its vault records. Owners of the on-chain asset should consider the strength of these verification techniques.
+
+## Performance and Functionality
+
+On other blockchains, on-chain assets are usually issued as smart contracts with common interfaces. Using smart contracts for standardized functionality is destined for inefficiency and high fees, as smart contract platforms must meter every step of execution. Metering the same logic repeatedly wastes system resources because the execution complexity and resource usage is well known; there’s no need to meter it every time it executes. Parachains can encode the interface for assets directly into the chain, allowing cheap and fast execution of common functionality. By encoding asset functionality directly on-chain, the system does not need to meter standard function calls because it already registered the logic and knows what fee to charge.
+
+The generic assets chain would allow anyone to deploy an asset as long as they put down a deposit in DOT (or KSM for the Kusama parachain). If there is an approval from the Relay Chain’s governance, then the asset may also be registered without a deposit. Assets have some data associated with them such as the _minimum balance_, the balance below which an account is automatically deleted (to avoid the build-up of low-value "dust" accounts). Assets may also have metadata, like the number of decimals and an asset symbol, registered to it.
+
+Polkadot normally requires accounts to have a minimum balance, known as the _Existential Deposit_ (ED), in order to exist. Accounts whose balance falls below the ED are automatically deleted to avoid the buildup of low-value "dust" accounts. However, for a user who wishes to deal only with a particular asset, acquiring DOT/KSM adds an extra hurdle. Since assets also require a minimum balance, it is possible for an asset to be registered as "self-sufficient" if the governance of the Relay-chain agrees. A self-sufficient asset's minimum balance represents a sufficient amount of value that the account may exist without there being an additional DOT/KSM balance.
+
+Once the asset is deployed, the creator can set a maintenance team, which consists of an issuer who can mint new tokens, an administrator who can freeze or burn tokens on any account, and a freezer who can freeze any or all tokens of the asset. These team members could be individuals or multisig accounts for groups (e.g. a company’s board of directors) to manage these privileges. Of course, if the issuer did not want anyone to have access to such privileged logic, they could set the admin team to provably inaccessible accounts.[\[3\]](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fn3)
+
+As a common-good parachain, Statemint will stay fully aligned with the Relay Chain’s token holders. As such, the Relay Chain’s governance bodies will have control over the direction of the chain and make decisions such as registering an asset without requiring a deposit, changing parameters like the deposit amount, and proposing upgrades to the chain’s logic and functionality.[\[4\]](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fn4) The Relay Chain’s Council may also provide funding for maintenance and infrastructure costs, such as running full nodes and collators.
+
+Statemint will allow diverse entities, ranging from artists issuing tokens for their work to central banks issuing Central Bank Digital Currencies, to deploy their assets to the Polkadot network. By encoding these standards as first-class logic into the chain and allowing non-DOT-holding accounts to use the assets, users will face lower fees and friction when using their assets in the network. Deploying and maintaining this parachain with on-chain governance will show the power of the Polkadot community to organize and provide a utility to all applications and users in the network.
+
+***
+
+1. This chain would be deployed as two parachains with the same logic, one within Polkadot and one within Kusama. The article references Polkadot, but applies equally to Kusama. [↩︎](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fnref1)
+2. You may be wondering why this is “off-chain”, since another consensus system could in fact be another blockchain. For example, a custodian could hold Bitcoin and issue a BTC asset on this parachain. Although the asset is backed on a chain (namely, Bitcoin) it is under the control of the custodian and outside of Polkadot’s consensus. [↩︎](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fnref2)
+3. If you’re interested, one way to do this would be to use an “anonymous proxy”. The creator could spawn a new account for which nobody knows the private key and is only accessible via proxy, set each team member as this new account, and then kill all proxy relationships to it. [↩︎](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fnref3)
+4. At launch, Statemint will have the logic for fungible assets. However, a future upgrade could include support for non-fungible assets as well. [↩︎](https://www.parity.io/statemint-generic-assets-chain-proposing-a-common-good-parachain-to-polkadot-governance/#fnref4)
