@@ -77,6 +77,7 @@ fields:
     maxSize: 64
   label: 'Image:'
 pages:
+- blog/06-03-2020-alert-impersonated-emails/index.mdx
 - blog/2018-year-in-review/index.mdx
 - blog/Announcing Parity 1.2/index.mdx
 - 'blog/Attack on The DAO: What will be your response?/index.mdx'
