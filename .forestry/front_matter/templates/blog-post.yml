@@ -159,6 +159,7 @@ pages:
 - blog/security-alert/index.mdx
 - blog/security-update/index.mdx
 - blog/send-transactions-with-mycrypto-beta-and-parity-signer/index.mdx
+- blog/substrate-evm/index.mdx
 - blog/substrate-has-arrived/index.mdx
 - blog/substrate-in-a-nutshell/index.mdx
 - blog/substrate-off-chain-workers-secure-and-efficient-computing-intensive-tasks/index.mdx
