@@ -1,0 +1,60 @@
+---
+title: index
+tags:
+- People of Parity
+- Parity Ethereum
+author: Alexandra Heller
+blogTitle: 'People of Parity: Wei Tang'
+slug: blog/people-of-parity-wei-tang/
+date_published: 2019-06-27T01:00:00+02:00
+image: "/images/people-of-parity-wei-tang-2.jpeg"
+
+---
+Wei Tang ([GitHub](https://github.com/sorpaas/),[ Twitter](https://twitter.com/sorpaas/)) is most commonly identified online by his handle @sorpaas, a Lojban compound word roughly meaning “many hopes.” His handle is accompanied by a serene avatar of an island with a house and a tree, which turns out to be a scene from Miyazaki’s celebrated anime film, _Spirited Away_.
+
+Wei began his work at Parity in 2018 when he implemented Constantinople changes for Parity Ethereum and participated in the hard fork process. He also worked on the original Casper proposal (EIP-1011) for Parity Ethereum, which aimed to make Ethereum 1.x a hybrid PoW/PoS blockchain. Later he began building the Ethereum 2.0 beacon chain implementation on top of the [Substrate blockchain framework](https://parity.io/substrate), resulting in the current [Parity Shasper](https://github.com/paritytech/shasper) client.
+
+Wei’s colleagues often speak highly of him, especially lauding his productivity. While Wei claims to have no productivity secrets, I was happy to glean more info on his perspective of ConstantiNOple, the Ethereum 2.0 development process, and his hopes for blockchain technology:
+
+**You were part of the Ethereum Classic team. How did you get involved and what was your experience like?**  
+During my last year of university, I spent some time writing [Rux](https://github.com/sorpaas/rux), a microkernel in Rust programming language. I love working for open source communities, and from Rux, I was fascinated by Rust. So when I saw a job opportunity from my friends for writing an open source EVM implementation in Rust, I immediately applied. I worked on writing the Rust EVM implementation (called SputnikVM) from scratch for several months, carrying out testing, and integrating it into Geth. I had a pretty positive experience there although the community is smaller compared with Ethereum.
+
+Later I joined Parity for the same reason—that I can work on open source projects written in [Rust](https://www.parity.io/why-rust/)!
+
+**You were the author of** [**EIP-1283**](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1283.md) **and were implementing Constantinople hard fork changes in Parity Ethereum. What was your experience when the fork was delayed?**  
+I think the re-entry bug is a hard lesson for everyone involved in the Constantinople work. The issue was discovered only 36 hours before the hard fork, required quick reactions from all core devs, and certainly gave many of us several sleepless nights.
+
+One important lesson I learned is that only reviewing EIPs for their own soundness is not enough. The integration process—how the specification interacts with client implementations and with end-users (contract developers) is equally important. In the future, we also must give more emphasis on reviewing potential backward compatibility issues for an EIP -- this is something I see we still occasionally forget when discussing the Istanbul hard fork.
+
+Besides all this, in software engineering, an important way to avoid bugs is to design a framework where certain types of bugs just cannot happen, such as writing in safe Rust, which prevents memory-safety issues. For Ethereum specifications, this means we may want to give more thought on changes such as account versioning, which completely eliminates many kinds of backward compatibility issues.
+
+**What’s it been like following the Ethereum 2.0 spec changes?**  
+Something I certainly have deep feelings about, and which I hear quite often from other Ethereum development teams, is that the Ethereum 2.0 specs have changed a lot. Yes, they have indeed changed quite a lot!
+
+The first version of “Ethereum 2.0” we had was a Casper finality gadget directly on top of Ethereum 1.0. For Parity, I remember we were one of the first teams to implement it, and we even had a testnet. Unfortunately, the design complexity of adding a Proof-of-Stake consensus on top of an existing one, and issues in EVM performance, made us abandon the efforts completely, and instead pursue building Ethereum 2.0 on a completely new chain.
+
+The next version we implemented at Parity was a “Casper 2.0” spec, which required a complete rewrite. This was where we started to build things on the [Substrate](https://parity.io/substrate) blockchain framework. Things started to become more formal and the next version was “Serenity 0.1”, another version which required a nearly complete rewrite. We didn’t catch up on that version, and when we finished all changes, we were on “Serenity 0.4”. From this point on, the specification was finally starting to become more stable, and the next three versions (till “Serenity 0.7”) we implemented became much easier.
+
+I would certainly not recommend requiring everyone to rewrite the spec three times! However, this is not to blame anyone or say something went wrong. For the blockchain industry, we all just did not have the experience—we have a lot of independent teams working on Ethereum 2.0 simultaneously on many different implementations and on many different programming languages. This is something I think probably no other blockchains have faced before—Bitcoin uses an “implementation-centric” specification. Ethereum at launch had only two or three different implementations. Most other blockchains only have one implementation.
+
+I would say this is a learning experience for everyone, and I think we all have learned some important lessons from the specification development process that can be applied elsewhere.
+
+1. **Make sure to have a specification in the beginning for reviews!** Allowing all involved teams to review what a rough specification looks like is the best way to ensure that the data structure and particular operations inside are all relatively easy to implement in all involved programming languages.
+2. **Make the specification executable!** This proves to be useful not only in making sure that you’ve always been having valid changes, but also it greatly helps in generating tests.
+3. **Generate tests from an executable spec, and generate them early!** Tests are one of the best ways to ensure different implementations have the same results. The earlier we have tests, the earlier implementation teams can spot problems.
+4. **Don’t refactor the spec. When you do want to refactor the spec, dedicate a complete release to do it, and make the old and new versions equivalent!** We do this because different implementations do not use the same internal structure or cache to represent things. When we refactor a spec and mix changes, the actual real changes become hard to spot in all of the refactoring. Having a release dedicated to refactoring will certainly make everyone’s life easier, and vastly improve the quality of life for all implementation teams.
+
+**Are there any particular things you would like to see Ethereum and/or blockchain tech in general evolve?**  
+One thing I really hope to see in the Ethereum community is investigating whether we can find more technical solutions to the current supposedly social problems we’re facing. After all, blockchain itself is a technical solution to a social problem. Most of our core devs would agree that carrying out a hard fork is hard. Can we design some sort of signaling solutions to simplify the process? Specification auditing and code review is hard and costly, can we design modularized client frameworks to make any on-chain bugs less dangerous? I believe the answer to both questions is yes, but we need to spend some time raising community awareness to let people know that this is pursuable.
+
+For Ethereum clients, we should explore ways to define more common interfaces, and make components swappable. When we have many multiple implementations, one of the nice things we can do is to combine different teams’ components together. For example, we can run Parity Ethereum’s state transition function, build with Geth’s JSON-RPC endpoints, and wrap it with Aleth’s networking stack. Besides allowing users to have wider choices of implementations, this also helps in making the network more reliable. Consider that we can have one client running the state transition function of both Parity Ethereum’s and Geth’s, we then require the client, if running as a miner, to only author blocks that passes both of the state transition functions. With this, bugs on the protocol will be much less dangerous, and much less likely to result in consensus split.
+
+**Do you have a vision for a better society through blockchain tech?**  
+I see blockchain as being part of the bigger movement of building an open and decentralized Internet. Open source to allow users to use and modify the software freely, open standard to allow implementations to conform to specifications freely, federated and peer-to-peer software that return full control of data back to users. Those are all important philosophies for an open and decentralized Internet. What I see from blockchain technology is that it really amplifies the strength of those philosophies with its high requirement of open governance, security, and working in trustless environments.
+
+**What’s it been like working at Parity?**  
+Working at Parity really feels more like working for an open source community compared to a traditional company. You learn about the current visions of the team and understand its goals. Then you just choose the best productive way that you feel comfortable with to work towards that goal. The management is flat, technical decisions are always based on best collective judgement, and you almost always pick your own tasks to work on for the day!
+
+***
+
+Stay tuned for more “People of Parity.” [Join the newsletter](https://www.parity.io/newsletter/) to be informed of new articles, tech releases, and events.
