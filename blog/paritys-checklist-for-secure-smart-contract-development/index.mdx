@@ -1,0 +1,87 @@
+---
+title: index
+tags: []
+author: Kirill Pimenov
+blogTitle: Parity’s Checklist for Secure Smart Contract Development
+slug: blog/paritys-checklist-for-secure-smart-contract-development/
+date_published: 2019-04-02T06:00:00+02:00
+image: "/images/checklist-for-secure-smart-contract-development-6.png"
+
+---
+As introduced in a [previous post](https://www.parity.io/new-smart-contract-development-processes/), we have developed a fourteen-point checklist for secure smart contract development. We are happy to provide this checklist as a resource to help the greater smart contract development community develop securely. We’ve incorporated the feedback from our auditing partner, [Trail of Bits](https://www.parity.io/parity-completes-trail-of-bits-security-review/), in this process, and we welcome feedback on anything that can be further improved. Our policy is to implement these procedures 100% for all new smart contracts we develop. On existing contracts, we have opted out of changes touching the API in order to avoid any redeployment issues.  
+  
+The secure smart contract development checklist:
+
+ 1. **Create a new GitHub organization** to exclusively house production-related contracts. For example, our repo is [parity-contracts](https://github.com/parity-contracts). All contracts in this dedicated repo should be actively maintained or in use, or be under active development for production. There should be no obsolete or legacy projects in this repo.
+ 2. **Put every contract in a separate repo** in your new dedicated organization. (“Every contract” can also mean a “logical unit” of a few tightly coupled contracts—for example Operations.sol and OperationsProxy.sol, which clearly go together and cannot be reasonably expected to be used separately.)
+ 3. **Embed dependencies** to make the code coverage metric more meaningful and make it easier to programmatically reason about the contract’s entire codebase. All duplicated sources should be explicitly listed as such (with cross-links!) in every repo’s README they’re copied into.
+ 4. **Ensure each contract in the repo meets the following code quality criteria:**  
+      
+    a. **The actual deployed state of each contract should live in a protected \`master\` branch.** The latest master should always reflect the code deployed to all relevant chains. No one should be able to commit directly to the master. Address fixes for all dependent code should be submitted right after this deployment, in the same Pull Request. The \`master\` branch should be made the default for the repo, so navigating there on GitHub shows you the latest deployed contract (and its addresses) right away.  
+      
+    It can be helpful to also have a \`development\` branch to accumulate not-yet-deployed changes to the contract, under the conditions that:  
+      
+    \- \`development\` is also a protected branch, with all the checks from this section (tests, reviews, linting, and so on) required  
+      
+    \- there’s an established process, with a responsible person and an agreed-upon timeframe, for this contract to be merged into \`master\` and deployed.  
+      
+    b. **Tests should be written in a language other than Solidity** (most likely JavaScript + Truffle) to make sure that bugs related to syntax quirks and misunderstandings are discoverable with tests, not just replicated there.  
+      
+    c. **Tests are covered by CI.** If your contracts are publicly available, running tests in [Travis](https://travis-ci.org/) or [CircleCI](https://circleci.com/) shouldn’t be a problem (and is recommended, since you’ll need less maintenance for CI machines this way). Having all tests passing is mandatory for a PR to be merged, and it should be enforced for everyone in the GitHub settings.  
+      
+    d. **Coverage should be set up for the tests** from the point above. It should be mandatory that a PR is only able to be merged if the code coverage won’t drop.  
+      
+    e. **Linting should be enabled for all the contract source files** in the contract repo, dependencies included. The linter should be included in the test run on CI, and failing to lint should make merging impossible. Linter line-specific exceptions are allowed, provided that the reason to do so (and some safety explanation) is described in the same comment.  
+      
+    f. **Each repo should have at least two code owners defined**, as described [here](https://help.github.com/articles/about-codeowners/). It is best practice to define repo-wide (aka ‘wildcard’) code owners to cover any contracts where Code Owners are not defined.  
+      
+    g. **Reviews should be required for Pull Requests.** Two reviewers should approve the PR at its latest revision in order for the PR to be merged, and at least one reviewer should be a Code Owner (enforced by GitHub). You can use [reviewable.io](http://reviewable.io/) to simplify this tracking of “who reviewed what.” It is OK for the submitter of the PR to deploy the “greenlit” version of the PR to the blockchain to obtain its address and modify the mapping in the README in the same PR. It is the **submitter**’s responsibility to make sure their PR is getting proper reviews; calling for attention in developers’ chatrooms is a good way of getting reviews to happen.  
+      
+    h. **Rebasing to the latest \`master\` should be mandatory** so that no PR can be merged without tests passing after a clean ff-merge with \`master\`.
+ 5. **Ensure every contract repo has its up-to-date bytecode and API in \`master\` branch.** It is the duty of the PR **submitter** to ensure that API and bytecode are updated appropriately.
+ 6. **Every contract should have a README that lists its deployment addresses in all networks.** Where applicable, that address should link to a blockchain-exploring service (e.g., Etherscan), which should contain a “verified code” tab for this address and contract source.
+ 7. **Ensure the README contains a separate “Update Strategy” section.** In that section, enumerate what needs to be done to properly do a (possibly security-critical) update to the contract. Example questions to cover in the Update Strategy section:  
+      
+    \- Is there a proxy contract?  
+      
+    \- Which other systems need to be updated?  
+      
+    \- How to move data from contract to contract?
+ 8. **At the top of the README, put a clear indication of the “production readiness” state of the contract** (like a badge):  
+      
+    \- **alpha** — contracts which are under active development and may not yet be in proper shape.  
+      
+    \- **beta** — contracts which are feature-ready and possibly ready for testnet use, but are not yet audited. These SHOULD NOT be used on the mainnet.  
+      
+    \- **stable** — contracts that are properly audited, deployed to mainnet, and are in active use.  
+      
+    \- **deprecated** — contracts no longer supported and used, but you want to keep around for some reason. (Avoid keeping these around! Deleting a repository is almost always a better idea, if only to discourage other parties from repeating your possible mistakes.)
+ 9. **Incorporate all the applicable points into a** [**PULL_REQUEST_TEMPLATE.md**](https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/) **file in the repo.** Format this file as a checklist. It is the **submitter**’s duty to ensure all checkboxes are checked prior to merging.
+10. **Ensure every contract’s main file has its URL in the comment header section.** This is to make it possible for anyone to trace the code back to the repo, even when copying or re-hosting the code.
+11. **Ensure contracts have view or pure functions** (or just public constant definitions, which would create corresponding getters automatically) with contract_name and contract_version defined. Those functions should have the following properties:  
+      
+    a. **contract_name** should correspond to the <organization>/<repository> part of the repository. Because we’re following a “one contract per repo” policy, this identifier should be unique enough.  
+      
+    b. **contract_version** should contain monotonically increasing integer versions. It’s mandatory to bump this version in every PR to master.
+12. **Ensure deployed versions on master have matching versioned git tags** (gpg-signed if possible). These tags should be created/uploaded _only after_ the actual deployment happened in order to not wipe out tags during possible redeployment cycles (especially possible in complicated migration cases).
+13. **Ensure each contract repo has a clearly defined license.**
+14. **Only allow addresses from the READMEs of \`master\` versions to be referenced from production code/configs**, so you know that those contracts are tested, maintained, and have their deployments documented properly. Referencing an address should on every occasion be accompanied with a permalink (with a commit hash included) to the corresponding contract repo. Reviewers of such PRs should verify that:  
+      
+    a. The deployed address from the README is correct.  
+      
+    b. It is the latest merged and deployed version.  
+      
+    c. The contract usage from other code corresponds to its declared goal.  
+      
+    d. The APIs are correct.
+
+***
+
+We hope this checklist helps the smart contract community develop securely. Feel free to [post in the Parity watercooler chat](https://riot.im/app/#/room/#watercooler:matrix.parity.io) if you have any questions about the checklist.
+
+**Further resources:**  
+[Secure from scratch: our new smart contract development processes](https://www.parity.io/new-smart-contract-development-processes/)
+
+[ConsenSys Ethereum Smart Contracts Best Practices](https://consensys.github.io/smart-contract-best-practices/)
+
+[SecurEth Guidelines](https://guidelines.secureth.org/)

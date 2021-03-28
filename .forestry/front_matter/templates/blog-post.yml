@@ -125,6 +125,7 @@ pages:
 - 'blog/parity: stepping up the security model 1: a modular approach to transaction
   signing/index.mdx'
 - blog/parity_1_11_beta_private_transactions/index.mdx
+- blog/paritys-checklist-for-secure-smart-contract-development/index.mdx
 - blog/people-of-parity-jack-fransham-core-developer/index.mdx
 - blog/people-of-parity-tomasz-drwiega/index.mdx
 - blog/performance-analysis/index.mdx
