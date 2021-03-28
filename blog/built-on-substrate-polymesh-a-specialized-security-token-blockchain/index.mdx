@@ -1,0 +1,54 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Custom Solutions
+author: Phil Lucsok
+blogTitle: 'Built on Substrate: Polymesh, a specialized security token blockchain'
+slug: blog/built-on-substrate-polymesh-a-specialized-security-token-blockchain/
+date_published: 2019-12-04T01:00:00+01:00
+image: "/images/blog-post-polymath-07.png"
+
+---
+Back in 2017 when Polymath began their mission to build the best in-class security token platform, they were faced with a significant decision: **should they build their own blockchain?** The unique requirements for building a compliant, confidential, and global security token platform meant that a specialized blockchain would be ideal. However, the overhead required to design, build, and deploy a blockchain was simply too high. Public blockchains such as Ethereum provided a general purpose network that gave Polymath the chance to begin distribution right away, but did not allow for the optimal adaptability and specialization that they needed for a decentralized securities platform.
+
+To create the optimal solution for security tokens, Polymath decided to build Polymesh, a security token blockchain, using Substrate. Not only does Substrate provide them with the ability to easily build a blockchain with features like confidentiality in transactions, KYC/AML compliance, and a fully sovereign governance system, it also allows them to rely on a framework that takes care of all the rest.
+
+## A compliant network
+
+Dealing with regulated assets on public chains has some unique challenges. Regulators love the transparency and on-chain compliance that security tokens provide, but also need reassurances in terms of dealing with activities like fraud, lost keys, and legal actions. So while transactions on the blockchain remain immutable and final, asset issuers need the flexibility to move their assets using features such as \`force_transfer\`. Know-Your-Customer (KYC) and Anti-Money Laundering (AML) practices are also very important. Polymath solves this through a sophisticated identity model, partnerships with appropriate off-chain service providers (custodians, KYC providers, chain analysis), and a flexible multi-tier model of compliance.
+
+## “Retrofitting is doomed to fail”
+
+There are now several general-purpose blockchains that could create the foundation for Polymath’s security tokens, but there hasn’t been a consensus on which chain is best suited for their purpose. The features many traditional blockchains boast about: immutability and permissionlessness, are not actually suited for every use case, especially for security tokens that must adhere to the laws of local jurisdictions.
+
+Specialization breeds optimization. However, creating a specialized blockchain is very difficult without much freedom. Building Polymesh on a traditional blockchain would require the team to sacrifice crucial design principles and requirements at the cost of their idea, while taking much more time to reach a mainnet launch. Polymath co-founder, Trevor Koverko, said, “retrofitting is doomed to fail,” and highlights one major reason for choosing Substrate: don’t fit your idea to a blockchain, customize your blockchain to fit your idea.
+
+## Substrate
+
+Substrate provides the modularity, upgradability, and future-proof technology that Polymath was looking for.
+
+The modular nature of Substrate’s Substrate Runtime Module Library (SRML) allows Polymath to pick and choose which modules make sense to implement on their network. Pre-built Existing modules include accounts, balances, and democracy for governance.
+
+The Polymath team is also developing their own custom modules which will enable them to specialize their blockchain for their security token network:
+
+* **Identity**: allows users to have an on-chain self-sovereign identity with flexible authentication options, key management, permissions, and delegation, which is suitable for regulated markets.
+* **Assets**: largely following the ERC-1400 security token standards, this module provides core functionality to issue and manage regulated assets on-chain.
+* **General Transfer Manager**: using the Polymath Identity module, this allows asset issuers to maintain a list of compliance rules for their asset and manage those using a claims / attestations model on their asset and investors.
+* **Voting / Dividend / STO**: modules for specific types of corporate activities.
+
+On governance, the primitives such as committees, democracy and so on provided by Substrate are very helpful in bootstrapping. Extending the existing governance modules to fit their network will allow [Polymesh](https://polymath.network/polymesh) to utilize Substrate’s on-chain governance upgrades. As the network evolves, it’s important to stay agile and make sure decisions are reached transparently across the network. Coordination costs are saved with clear participation/voting metrics and forkless upgrades. The Polymesh network doesn’t need to take into account the risk of their network splitting in the case that some participants choose not to engage in these upgrades.
+
+You can find the open-source codebase for [Polymesh on GitHub](https://github.com/PolymathNetwork/Polymesh).
+
+## Substrate: your blockchain, your expertise
+
+Because Substrate comes with peer-to-peer networking and a consensus algorithm with instant finality, as well as cryptographic libraries, tried-and-tested database systems, user interfaces, and WebAssembly for cross-language support, Polymath can focus on the parts of the blockchain they care about. By mixing, matching, and building modules within the framework of Substrate’s runtime, the Polymath team can focus on where they have their domain expertise: security tokens.
+
+> “The security tokens of the future will not live on blockchains in the past. They will choose to live on a purpose-built, compliance-focused blockchain.”  
+>    
+> \- Polymath co-founder Trevor Koverko.
+
+Read through tutorials or get started building your blockchain at [substrate.dev](https://substrate.dev/), the Substrate developer hub.
+
+_Special thanks to Adam Dossa, Head of Blockchain, Polymath._
