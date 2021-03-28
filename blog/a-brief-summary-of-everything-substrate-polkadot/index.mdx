@@ -1,0 +1,181 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Polkadot
+author: Parity Technologies
+blogTitle: A brief summary of everything Substrate and Polkadot
+slug: blog/a-brief-summary-of-everything-substrate-polkadot/
+date_published: 2019-03-14T05:00:00+01:00
+image: "/images/everything-polkadot-substrate.jpeg"
+
+---
+At Parity, we are currently focused on developing three main technologies: [Parity Ethereum](https://parity.io/ethereum) (Eth 1.0 as well as Serenity), [Parity Substrate](https://parity.io/substrate), and the Web3 Foundation’s project, [Polkadot](https://polkadot.network/). Ultimately, our goal with these projects is to enable the vision of Web3, “an inclusive set of protocols to provide building blocks for application makers. These building blocks take the place of traditional web technologies like HTTP, AJAX and MySQL, but present a whole new way of creating applications. These technologies give the user strong and verifiable guarantees about the information they are receiving, what information they are giving away, what they are paying and what they are receiving in return. By empowering users to act for themselves within low-barrier markets, we can ensure censorship and monopolization have fewer places to hide.” ([Gavin Wood](https://medium.com/@gavofyork/why-we-need-web-3-0-5da4f2bf95ab))
+
+Read more about the vision of Web3 in Gavin’s original [blog post](http://gavwood.com/dappsweb3.html) from 2014 and the [follow-up article](https://medium.com/@gavofyork/why-we-need-web-3-0-5da4f2bf95ab) from 2017.
+
+By now, there is already an extensive knowledge base on both [Polkadot](https://github.com/w3f/Web3-wiki/wiki/Polkadot) and [Substrate](https://https//github.com/w3f/Web3-wiki/wiki/Substrate). This article intends to cut through the material and take a deeper look at where we are going with the two technologies and why, while also showcasing how public networks such as Ethereum or Zcash fit into the picture.
+
+## **Origins**
+
+Dr. Gavin Wood conceived the original idea for Polkadot in 2016 while waiting for a new Ethereum specification that would include sharding. Already back then, it was clearly necessary for a main beacon/relay chain to link the shards and coordinate message passing.
+
+(A first-hand narration on how Polkadot came into being can be found in [Epicenter’s](https://epicenter.tv/) [episode 259](https://epicenter.tv/episode/259/).)
+
+Taking the thinking process a step further, Gavin ideated a system where the shards connected to the relay chain were not all the same, but allow for different nodes to run different application logic, making each chain its own platform.
+
+This would increase the overall system’s complexity and be much more difficult to build.The missing key to realizing this vision was found in WebAssembly: a generic and abstract machine specification that could mediate between blockchains with different runtimes (the chains’ application logic).
+
+Creating a system in which blockchains could coexist and complement each other had the potential to overcome chain maximalism, where blockchains compete to be the best end-all, be-all blockchain.
+
+If all the shards in a sharded system could have different tasks, they would enable a landscape of very specialized shards (that is, blockchains), without the usual trade-offs that come with specialized blockchains and also systems in general. Let’s have a closer look at this.
+
+## **Interoperability as the key to specialization**
+
+Right now, a lot of blockchains try to be the ‘chief cook and bottle washer’, incorporating everything from smart contracts, a currency, governance, and more. If you construct your application on one of these blockchains, you’re bound to the platform’s limitations, bottlenecks and governance decisions. On the other hand, you might benefit from that blockchain’s user base.
+
+By letting specialized chains exchange messages with other specialized chains, we are able to recover the network effects that would usually hinder specialized chains.
+
+Polkadot uses the relay chain to enable arbitrary message passing between blockchains in its ecosystem. The relay chain is generic enough to allow adjacent chains—we call them parachains—to have their own application logic. You have freedom to write your parachain in any language (Rust, C/C++, C#, Go, etc). You merely need to implement a specific function interface that Polkadot can call into, handling the messages passed to the chain.
+
+Polkadot connects a range of blockchains, from general to app-specific, to create a platform that enables more advanced applications. Some examples of such advanced applications that harness cross-chain arbitrary message passing:
+
+* Oracle service that puts real-world data on-chain
+* Identity management system to link user identity in multiple apps
+* Decentralized exchange order books and escrow
+* IoT network that receives messages from other networks or controllers
+* Cross-chain smart contract calls
+* Message passing between private and public chains
+
+## **Scalability**
+
+When we solve the dilemma of specialization vs. generalization by introducing interoperability, we also remove scalability bottlenecks. Besides transaction throughput, fully generalized, independent smart contract platforms have a problem with transaction collision. Consequently, transactions often run in sequence instead of in parallel. Through a deliberate delegation of tasks to different parachains, we are able to run transactions in parallel, without fear of collision.
+
+![](/images/everything-polkadot-substrate-image-one.png)
+
+In Polkadot’s version one, this means that dozens of blockchains can run in parallel, connected through one relay chain. The development process is still in progress; we currently estimate that the relay chain will be able to host about one hundred parachains, but anything between ten and one thousand slots is imaginable. In the case of dozens of blockchains able to run in parallel, that system would have about one hundred times the scalability of a current PoS system.
+
+Potentially, a version two of Polkadot could have multiple relay chains attached to the root relay chain (level zero). This is especially possible given that the Polkadot relay chain is itself developed with Substrate, the same technology stack that most parachains will be built with. With these level-one relay chains, we are looking at 1,000x to 10,000x scalability compared to current PoS systems. However, this will only be assessed at a later point in time.
+
+## **Security aspects**
+
+Overcoming inherent limitations of individual blockchain designs sounds promising so far, but we have not yet discussed the aspects of synchronization and consensus in such a system. Polkadot enables the deterministic understanding of messages passed between parachains, but how is the order of transactions in the overall network determined? How is security in every parachain, but also in the whole system, attained? At first glance, it might not seem like an issue. If you connect different chains, each one brings its own validator set to secure the chain, as is the case in well-known multi-chain scenarios like sidechains or Cosmos.
+
+### **Shared security**
+
+The first problem that comes to mind when brokering two chains might be the following scenario. A transaction is sent from one PoS chain to another. Chain 1 has weaker economic security guarantees over its finality. In an attack, the transaction is reverted and the block containing it is abandoned. Chain 1 lives on in a different fork, with the corresponding block not including this transaction anymore.
+
+![](/images/everything-polkadot-substrate-image-two.png)
+
+But its actual value has already been transferred to chain B. The weaker security of chain 1 has directly affected chain 2. Effectively, this opens up the possibility of double-spend attacks.
+
+Imagine not two, but one hundred interconnected chains with individual levels of security exchanging value. The chain with the weakest security will ultimately define the security of the overall system, representing the weakest link. It is therefore preferable to have the same security guarantees for all parachains. This can be achieved by pooling their security and delegating it to the Polkadot relay chain.
+
+![](/images/everything-polkadot-substrate-image-three.png)_The security model of Polkadot pools resources, countering the problem of the weakest link in the network._
+
+In addition, each validator can only commit a certain amount of resources—computational power in PoW, or financial stake in PoS—exacerbating the weakest link problem. When validators start securing different chains, some chains—first and foremost the ones with less appealing incentive structures—will end up with less economic security, posing an easier target for malicious actors.
+
+Another benefit with pooled security is that you won’t have to bootstrap a validator community to secure your blockchain, but can completely focus on your chain’s task (i.e. the runtime), leaving part of the security aspects to the Polkadot relay chain.
+
+## **Making blockchain development easy**
+
+What we’ve learned so far is that Polkadot is a heterogeneous multichain protocol, allowing for blockchain interoperability and pooled security of parachains. Let’s now explore how we can take full advantage of Polkadot’s possibilities by making the actual development of parachains as easy as possible.
+
+When we began building Polkadot at Parity, we realized that we were repeating a lot of development that we had done for our Ethereum and Bitcoin clients, such as writing RPC and database components. Even the most specialized blockchains have many attributes in common: a hashing algorithm, a database, networking, etc.
+
+While the ideation or design of a single blockchain is a conflict of versatility and specialization, the creation process of many different chains leads to another type of trade-off. In a system with homogeneous shards, the system can be scaled by duplicating shards. With heterogeneous shards as in Polkadot, each of them has to be designed and implemented individually, making the development process per se non-scalable.
+
+### **Substrate: a framework to efficiently build different blockchains**
+
+In order to efficiently build many different blockchains, Parity developers put all the functionalities needed to build a blockchain into a framework called [Substrate](https://parity.io/substrate). The idea was to take everything learned building Ethereum and Bitcoin implementations and make creating a blockchain as easy and flexible as possible. Substrate was created in a modular way to give technical freedom but also make functionalities like accounts, balances, governance, and smart contracts as easy as plugging in a library.
+
+In Polkadot cofounder Robert Habermeier’s words, Substrate is, “a set of libraries for doing all the things that are really annoying about writing blockchains.” Substrate effectively separates the individual functionalities of a blockchain as modules and generalizes them enough so that they can still be used effectively for different scenarios, while their manageability enables near instant implementation. Substrate has been developed to create blockchains that will easily connect to Polkadot.
+
+![](/images/everything-polkadot-substrate-image-four.jpeg)_From factory-sealed laptop to a fully-specced blockchain in 30 minutes—Dr. Gavin Wood presenting Substrate on stage at Web3 Summit 2018, Berlin._
+
+### **Designed for maximum technical freedom and ease**
+
+Substrate’s multilayered architecture lets developers choose between ease of development and technical freedom. The three layers are Substrate Core (with Polkadot-Core-integration), Substrate SRML, and Substrate Node.
+
+![](/images/most-concrete-to-most-abstract-small.png)_Developers are free to choose how much of the Substrate framework they want to use_
+
+To create a blockchain and connect it to Polkadot, on a technical level, you could build your own blockchain from scratch and equip it with a block validation function in WebAssembly. From scratch means that you have to implement your own node, RPC synchronization, networking, cryptography, database, storage, consensus, as well as extended features such as a light client and telemetry. This bare-bones approach is known as **Polkadot Core**.
+
+If you don’t want to create all of those for scratch, you can start with **Substrate Core.** Substrate Core provides you with all the above functionalities, only requiring you to code your own runtime (state transition function), but also offers the possibility to customize networking, block authoring, and the transaction queue functionality.
+
+If you decide to use the **Substrate Runtime Module Library** (SRML), then all you have to do is pick the modules you need from the library and configure them with your desired parameters. Your blockchain will work with tools such as event tracking and a blockchain explorer. Additionally, you are able to modify the existing modules or write your own ones, if needed.
+
+The blockchain development equivalent of room service is **Substrate Node.** With Substrate Node, you get a complete smart contract blockchain just by providing a JSON config file.
+
+Substrate gives you tools to develop your blockchain quickly without having to handle the complexity behind every functionality. [Learn more about what you get with Substrate](https://www.parity.io/substrate-has-arrived/).
+
+### **Polkadot is not Substrate is not Polkadot**
+
+Though Substrate makes it very easy to build blockchains ready for Polkadot, blockchains in the Polkadot network don’t need to be built with Substrate. And even if you don’t want your blockchain to connect to Polkadot, you will still find Substrate a very useful framework for creating a state-of-the-art blockchain.
+
+In the future, there might be frameworks redundant to Substrate, also optimized to integrate with Polkadot, that give developers an alternative or you could still build your parachain from scratch.
+
+For more information on how Polkadot and Substrate relate, watch [Fabian Gompf’s talk](https://www.youtube.com/watch?v=jyieXzflPAk) from the [Devcon IV](https://devcon4.ethereum.org/) Parity & Polkadot meetup.
+
+![](/images/parachains-substrate-polkadot-venn-diagram-1.png)
+
+## **Integrating existing blockchains**
+
+Substrate and Polkadot are not intended to replace existing infrastructure. Rather, they serve to connect it and fill the gaps regarding engineering possibilities. Polkadot parachains require more effort than smart contract-based Dapps and some applications don’t justify setting up a whole parachain, while others do. This depends on the scope of each application and has to be evaluated on an individual basis. In contrast to parachains, smart contracts represent a sandboxed environment and require less safety measures. One could argue that parachains are optimized for _inter_operability (communication between separate applications/chains), while smart contracts are optimized for _intra_operability (communication within a chain runtime).
+
+Parachains, blockchains in the Polkadot network, are secured by Polkadot’s relay chain and thus are not able to select their own consensus mechanism. If a blockchain wants to use its own consensus mechanism, it can use a parachain as a “bridge” to connect to Polkadot’s network.
+
+_![](/images/polkadot_relaychain.png)A bridge chain from a 10,000 foot view of the Polkadot architecture_
+
+A bridge chain allows an independent blockchain such as Ethereum, with its own particular consensus mechanism, to connect to the Polkadot network. As opposed to parachains, where security is pooled, a network like the Ethereum mainnet will stay independent.
+
+_![](/images/solochainsparachains.png)Possible manifestations of Substrate-based chains_
+
+The parachain functionality with pooled security in this case only extends to the bridge, whereas Ethereum, connected to the other side of the bridge, resembles more of a sidechain with the chains’ mutual ability to interpret each other’s block headers, state transition, and finality.
+
+Finality in a Proof-of-Stake (PoS) blockchain refers to the condition where reverting to a previous state would result in a significant amount of staked tokens being slashed because a supermajority of the chain’s validators had approved the final state. Although reverting a finalized block is technically possible, it would represent a large error by the validator set. It is not possible to have this type of finality - where reversion represents an error by a supermajority of the validators - in a PoW chain because the set of validators (miners) is theoretically infinite. PoW chains, therefore, have “probabilistic” finality, because at some point the probability of reversion is considered negligible.
+
+Bridging chains that have probabilistic finality will also have implications on latency. This means that it will be reasonable to wait an appropriate time period to consider a transaction coming from e.g. Ethereum to the relay chain as final. Transactions within, and coming from, the Polkadot network with its adaptive, progressive finality can be considered final much faster,almost instantly. This results in waiting time for a transaction exiting a bridged chain, but almost no waiting for all the other transactions in the Polkadot network.
+
+## **Forkless runtime upgrades**
+
+So far, the implications of Polkadot’s interoperability on scalability and security have been highlighted. However, there is also the question of what happens in case of a fork. Once blockchains become interdependent, a fork has tremendously larger impact than in the case of a siloed network splitting in two individual siloed networks. This is true for the relay chain as well as parachains and brings us to one of Substrate’s most exciting features, the forkless runtime upgrade.
+
+### **Updating the network – the usual way**
+
+The common practice for upgrading a blockchain network is to change the rules of the underlying protocol. This is done to introduce new features or alter the existing rules. If the upgrade is not compatible with older versions, this forces nodes to update in order to continue participating in the current version of the network. Nodes who do not update will be unable to understand the new rules and will be separated from the network, possibly forming an alternative network. While temporary forks happen due to the network finding consensus, planned, permanent forks happen due to intentioned network updates. This is essentially updating the network by resetting it, which is impractical in an interoperable environment. Polkadot’s relay chain is the turnstile of a heterogeneous multichain ecosystem. It is easy to imagine the problems caused by having two versions of the relay chain.
+
+### **Updating the network – the Substrate way**
+
+Since Polkadot is built on top of Substrate, we can utilize a handy feature of Substrate to circumvent forks in the relay chain and also every other blockchain built with Substrate. How do Substrate on-chain updates work?
+
+If a block is produced and propagated through the network, the Substrate nodes will execute that block after performing various generic checks on it. Executing a block is fulfilled by the Substrate nodes, but the impulse to do so comes from the chain runtime.
+
+What does executing a block imply? Once the block is determined valid by consensus, a node will start to execute the state transitions it contains. If successful, the node will store the block. While processing the state transitions, the node will effectively access its merklised storage database, which is basically a key-value store. Substrate operates on this key-value store with the basic functions set_state and get_state. Now Substrate can be provided with a special case for set_state, namely with the key :code . In this case, Substrate expects to be provided with a WebAssembly (Wasm) runtime. Since the blockchain runtime runs in Wasm itself, it can be presented with a new binary blob of Wasm code. This piece of code will be executed as part of the state transitions, causing the runtime to update as specified in the blob.
+
+![](/images/forkless_upgrade.png)_Every time Substrate executes a block, it checks its version of the code, being able to switch from native runtime to the Wasm runtime on-chain in case the node is not running the most recent version._
+
+On-chain governance will play an important role in Polkadot. Mechanisms to govern the network are [under design](https://github.com/paritytech/polkadot/wiki/Governance) and will be centered around stake-based voting schemes. Several additional measures such as a council as well as vote weighting, alternative vote counting schemes, and delegated voting will ensure that governance processes are efficient, practically feasible, and sufficiently respect minority opinions in the network. But if governance is supposed to be binding, decisions coming from the referenda have to be directly enacted on-chain, requiring the Polkadot runtime to update.
+
+A chain’s governance mechanism can be responsible for the :code key. This means that runtime updates could only be triggered by governance decisions. For example, in case of a positive voting outcome, the predefined key is automatically entered into the set of state transitions, making the governance decisions on the chain binding.
+
+## **Wrapping up**
+
+The article has picked up on the core concepts behind Polkadot and Substrate, how they came into being, and what they can mean for the blockchain ecosystem as a whole. As we’ve seen, Substrate and Polkadot perfectly complement each other. While the latter makes it possible to connect otherwise disparate chains with different characteristics, Substrate lets us create these chains in an efficient, safe, and comparatively easy manner.
+
+### **TL;DR**
+
+* Polkadot is a heterogeneous multichain protocol. This means that the shards connected to the relay chain are not all the same, but allow for different nodes to run different application logic, making each chain its own platform. If all the shards in a sharded system can have different tasks, they enable a landscape of very specialized shards (that is, blockchains).
+* By letting specialized chains exchange messages with other specialized chains, we are able to recover the network effects that would usually hinder specialized chains. Polkadot connects a range of blockchains, from general to app-specific, to create a platform that enables more advanced applications.
+* When we solve the dilemma of specialization vs. generalization by introducing interoperability, we also remove scalability bottlenecks.
+* The security model of Polkadot pools resources, countering the problem of the weakest link in the network. Parachains, blockchains in the Polkadot network, are secured by Polkadot’s relay chain and thus are not able to select their own consensus mechanism. Another benefit with pooled security is that it is not necessary to bootstrap a validator community to secure your blockchain.
+* If a blockchain wants to use its own consensus mechanism, it can use a parachain as a “bridge” to connect to Polkadot’s network.
+* In order to efficiently build many different (heterogeneous) blockchains for the Polkadot ecosystem, Parity developers put all the functionalities needed to build a blockchain into a framework called [Substrate](https://parity.io/substrate). Substrate’s multilayered architecture lets developers choose between ease of development and technical freedom.
+* Though Substrate makes it very easy to build blockchains ready for Polkadot, blockchains in the Polkadot network don’t need to be built with Substrate.
+* Substrate comes with the ability to conduct forkless runtime upgrades. Once blockchains become interdependent, a fork has tremendously larger impact than in the case of a siloed network splitting in two individual siloed networks.
+
+### **Next Steps**
+
+Stay tuned for the next Polkadot milestones by [following Polkadot on Twitter](https://twitter.com/polkadotnetwork).
+
+If you want to try out Substrate, check out the [Substrate Developer Hub](https://substrate.readme.io/).
