@@ -1,0 +1,66 @@
+---
+title: index
+tags:
+- People of Parity
+- Company and Culture
+- Polkadot
+author: Alexandra Heller
+blogTitle: 'People of Parity: Jaco Greeff'
+slug: blog/people-of-parity-jaco-greeff/
+date_published: 2019-05-15T06:00:00+02:00
+image: "/images/people-of-parity-jaco-greeff.jpeg"
+
+---
+“It was a string of numbers they gave me. It will never work,” Jaco Greeff ([GitHub](https://github.com/jacogr), [Twitter](https://twitter.com/jacogr)) recalls about his first impressions of Bitcoin. An electrical engineer by training, Jaco wrote embedded systems, C++, C, and was CTO at a few companies. His interest in Bitcoin and Ethereum drew him to Parity, where he says he’s having the most fun ever.
+
+The story of how Jaco came to work at Parity is pretty endearing: One of [Parity Ethereum](https://parity.io/ethereum)’s first users, he downloaded the 1.0 version of the client. He was disappointed to discover it didn’t have any RPCs but, “They moved really fast. Soon version 1.1 came out with RPCs and I could start playing with it.” He started making contributions, especially to the UI. When Jaco’s daughter was born to his German girlfriend, they didn’t know if they wanted to be in South Africa or Germany. “But once I held the little kid in my hands, I said ‘Oh yes, I want to be in Germany.’ So when I looked to get a job in Germany, I said, ‘Well I know someone.’”
+
+Jaco is passionate and animated in conversation, which you wouldn’t necessarily know from observing him at the office. There he sits on a couch for hours on end, silent except for the occasional sigh or mumbled curse. (When rearranging the office, the joke was that it would be necessary to move Jaco with the couch in order to move the couch to another room.)
+
+Aside from his permanent couch residence, Jaco’s other easily-observable quirk is he almost exclusively wears the toed Vibram shoes. When I bring up the shoes, he shares a story about how a former colleague convinced a restaurant manager to pull Jaco aside and tell him that he could not be seated with “those monkey shoes.” But Jaco’s thoughts on Polkadot and Substrate are more interesting than his quirks, which we discussed in addition to work-family balance and blockchain’s potential.
+
+**You’re the primary author of** [**Polkadot-js**](https://github.com/polkadot-js/)**, which resides in a separate GitHub repo and not Parity’s. How did Polkadot-js come about?**  
+When the Polkadot spec was written, I implemented a JavaScript API in my free time. There was nothing for the API to talk to, but I had some code. I said to Gav, “What I actually want to do is create a Polkadot runtime environment in Javascript.” Gav said, “Cool, not sure how this fits in, but it helps the Polkadot ecosystem, so go on.”
+
+Polkadot-js is three things: the UI, the API, and the client. When we got to Polkadot PoC-1, external people started using the [Polkadot-js UI](https://polkadot.js.org/apps/#/explorer). We didn’t explicitly plan to have a UI for PoC-1. It started as a developer tool, then a lot of people started using it and it has been growing ever since. It’s great seeing the community grow from that. There have been users such as validators who know JavaScript and they add features to make their own lives easier. When I see an external PR come in, it really makes my day.
+
+**I talked to two different parties at** [**Sub0**](https://sub0.parity.io/) **about how responsive and helpful you are.**  
+I want to make whatever I’m involved in the best I possibly can. We’ve got users of the API and UI that sit all over the world. There’s some guys in NZ, there’s some guys somewhere in the US. It’s not just a Europe-based thing. You can’t come in at 8am and then switch off at 6pm and let everyone wait. There are people who are building on top of Polkadot and Substrate and they want to be successful; when they’ve got a misunderstanding on the APIs or the UI and you don’t respond quickly, you’re wasting the developers’ time.
+
+So the way I internally prioritize things is that the API takes a slightly higher priority because there are developers out there using it. Next I try to focus on what people are using on a daily basis and prioritize those issues. And in the chats, as well. As things progress, there’s more people that can help and everybody’s lives become easier. But the short version is that I hate any open issues. I don’t want to waste anybody’s time. The priority always goes to making a user’s life easier and better. And that’s issues, questions, whatever it might be.
+
+**What’s the coolest feature of the Polkadot-js UI?**  
+It’s a [Substrate](https://parity.io/substrate) feature, not a UI feature—the fact that you can add new runtime modules and it will show up in the UI. So yes, the UI does some magic, but Substrate makes it possible. So when you add [Substrate Collectables](https://shawntabrizi.com/substrate-collectables-workshop/#/), it will show up on the UI and will show you what’s in storage. If I connect to [Edgeware](https://edgewa.re/), it shows the modules on the chain, you can query the transactions—that’s without the UI understanding what the chain does. That’s Substrate magic.
+
+**What are some big opportunities on Substrate and Polkadot?**  
+We just started adding bounties to issues on the [Polkadot-js repos](https://github.com/polkadot-js/), sponsored by the [Web3 Foundation](https://web3.foundation/). So lately we’ve been trying to describe the issues better, especially with an eye towards external contributors.
+
+Other than that, the things I’d like to see more of in the ecosystem are:
+
+1. Browser extensions, which I’d like to see integrated with the UI.
+2. Mobile apps like the [Parity Signer](https://www.parity.io/signer/) and wallets.
+3. Explorers. I’m really rooting for the [Polkascan](https://polkascan.io/) guys to get their stuff out there, I think that’s a critical piece.
+
+But there’s so many opportunities to build cool chains with Substrate. A lot of guys are starting to build chains on Substrate, some of them without making much noise until launch. It’s a great environment to be in.
+
+**What makes you most excited about** [**Polkadot**](https://polkadot.network/)**?**  
+Any blockchain always needs to solve a specific problem. Bitcoin proved that you can do distributed consensus this way and everyone was blown away. Ethereum introduced smart contracts which is wow, I can fire up an editor and a couple minutes later I can deploy a contract. Polkadot is really about enabling all these different chains to talk to each other. For me it’s so exciting to take these disparate things and bring them together.
+
+Getting to the point where we can finally have something like Bitcoin Cash and Ethereum connected and by some mechanism they can exchange information—for me, that would be magic. And Polkadot is exactly that magic.
+
+For the technology stack, I got the most excited about the on-chain Wasm. You can code your chain, have the runtime information exposed via metadata and anybody using an API can interact with your chain. When an upgrade is deployed, the code is available on all nodes at the same time, including any new features that you added.
+
+**Do you find it hard to balance work and family?**  
+I’m a really simple person. I always try to break down things into buckets. My life breaks down into two buckets: family and blockchain. If it doesn’t fit in those two buckets, then I’m probably not interested. Having an understanding girlfriend and kids with crypto saving accounts helps bridge the gap.
+
+**What interests you about blockchain?**  
+When I look at blockchains that are exciting, it’s because there’s really exciting value contributions. It’s not a value proposition to just change the parameter decreasing the block time. At the end of the day, even with it being cool technology, we’ve got to get to a point where it solves real problems.
+
+That’s why I was so excited when we did the [UN World Food Programme](https://www.parity.io/un-world-food-programme-uses-parity-ethereum-to-aid-100-000-refugees/). When you’re really making an impact, then it becomes real. Just writing code and getting people to use that code—it’s almost real, but not quite. Impacting lives, solving problems out there—that’s what it’s about.
+
+**What’s your experience of working at Parity?**  
+Parity’s completely different. One of my best friends visited a short while ago. We hadn’t seen each other in three years and, he said, “You know, you look the happiest I’ve ever seen you.” And we’ve known each other since 1998 and we’ve worked together at 3-4 companies. So between the work and the kid, I suppose I’m doing something right. I’m being paid to make an impact in something I really like, no wonder I’m happy.
+
+***
+
+Stay tuned for more “People of Parity.”[ Join the newsletter](https://www.parity.io/newsletter/) to be informed of new articles, tech releases, and events.
