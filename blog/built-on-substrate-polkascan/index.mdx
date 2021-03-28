@@ -1,0 +1,44 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Community
+- Polkadot
+author: Phil Lucsok
+blogTitle: '"Built on Substrate: Polkascan"'
+slug: blog/built-on-substrate-polkascan/
+date_published: 2019-07-15T01:00:00+02:00
+image: "/images/built-with-substrate-polkascan.png"
+
+---
+## Substrate for Substrate chains. How Polkascan is building a multi-chain block explorer using Substrate.
+
+As Substrate’s 1.0 release nears, many projects have already begun building on the blockchain framework. One such project that’s been working closely with the Parity development team is [Polkascan](https://polkascan.io/), the first multi-chain block explorer.
+
+Block explorers allow the public to query the blockchain for addresses, transactions (what we call “extrinsics” in Substrate), block details and all data stored in blockchains, so that users and developers can verify states, transactions and blocks on the network. Polkascan uses Substrate as the technological basis for making data on Substrate blockchains accessible and understandable.
+
+## A multi-chain explorer
+
+There are unique challenges in building a block explorer for the many different parachains that will connect to Polkadot, such as meeting each chain’s requirements for specialized transactions, varying block times, and unique data types.
+
+Thanks to Substrate, every chain that is built on this framework shares common principles, which makes it possible for the first time to build a multi-chain explorer on a singular tech stack.
+
+> _“We believe Substrate is one of the core technology frameworks that allows teams to easily and rigorously develop a very broad spectrum of blockchains and state machines. By building explorers that are compatible with Substrate, we make our explorers compatible with all the tech that is being built using Substrate.” -- Emiel Sebastiaan, CEO Polkascan_
+
+The alpha version of Polkascan is live on [Polkascan.io](https://polkascan.io/), and is already serving the data of Polkadot and three other networks built on Substrate including Robonomics, Joystream, and Edgeware.
+
+_Emiel Sebastiaan demos Polkascan at Sub0 in Berlin_
+
+## Milestones and Progress
+
+The Web3 Foundation (W3F) has awarded Polkascan with a grant to complete a fully functional multi-chain explorer, and progress has been steadily moving forward. Three major milestones outlined by the W3F, including the finalized architecture design and support for Substrate’s core data types, have already been completed.
+
+The [latest milestone reached](https://medium.com/polkadot-network/polkascan-development-update-3-fdea45ab959f) by the Polkascan is support for Substrate’s Runtime Module Library (SRML), so that custom Substrate chains that utilize governance, accounts, treasury, and democracy modules can have this specialized data presented and accessible on Polkascan.io.
+
+> The third milestone extends the base system-architecture of the explorer with a number of Substrate Runtime Module Libraries (SRML) that are key to the inner workings of the Polkadot Relay Chain, such as: timestamp, indices (accounts), sessions, democracy & staking. With this milestone the explorer should provide basic data structures for the following entities: block timestamps, accounts, staking (validators), sessions (validators) & democracy (proposals, referenda).
+
+![](https://lh6.googleusercontent.com/KaGfdzy5tx0u6aAMY3AoWfA7Xvnh_4tIjCCwuJb1o1T10IFPxC7Gh5xmtnc5ZykRQ30q5-gxk6mVFFnCGhNOdNPo8G4caZEOo2TjQc9glDDYh1huw8CC7R7RIei2A9-P7H32euxg)
+
+Once support for the SRML is completed, Polkascan will continue optimizing their database and server architecture so that users can quickly and easily find the data they’re looking for, no matter which Substrate chain they want to query.
+
+Start exploring the chains on [Polkascan.io](http://polkascan.io/) right now, and if you want to dig into the code, it’s open-source and hosted at [https://github.com/polkascan](https://github.com/polkascan "https://github.com/polkascan").
