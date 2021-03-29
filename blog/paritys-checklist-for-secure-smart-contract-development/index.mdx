@@ -60,7 +60,7 @@ The secure smart contract development checklist:
 10. **Ensure every contract’s main file has its URL in the comment header section.** This is to make it possible for anyone to trace the code back to the repo, even when copying or re-hosting the code.
 11. **Ensure contracts have view or pure functions** (or just public constant definitions, which would create corresponding getters automatically) with contract_name and contract_version defined. Those functions should have the following properties:  
       
-    a. **contract_name** should correspond to the <organization>/<repository> part of the repository. Because we’re following a “one contract per repo” policy, this identifier should be unique enough.  
+    a. **contract_name** should correspond to the organization/repository part of the repository. Because we’re following a “one contract per repo” policy, this identifier should be unique enough.  
       
     b. **contract_version** should contain monotonically increasing integer versions. It’s mandatory to bump this version in every PR to master.
 12. **Ensure deployed versions on master have matching versioned git tags** (gpg-signed if possible). These tags should be created/uploaded _only after_ the actual deployment happened in order to not wipe out tags during possible redeployment cycles (especially possible in complicated migration cases).

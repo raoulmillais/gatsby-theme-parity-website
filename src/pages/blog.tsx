@@ -42,7 +42,7 @@ export default function BlogPage(props: BlogPageProps) {
                 timeToRead={edge.node.timeToRead}
               />
             </article>
-          )
+          );
         })}
       </section>
       <Social />
