@@ -14,22 +14,58 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+      tags: allMdx {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+      authors: allMdx {
+        group(field: frontmatter___author) {
+          fieldValue
+        }
+      }
     }
   `);
 
   if (result.errors) {
-    reporter.panicOnBuild(result.errors);
+    reporter.panicOnBuild('ERROR: Loading "createPages" query for blogs', result.errors);
     return;
   }
 
+  //Creating Blog Posts based on slugs
   const blogPosts = result.data.blog.nodes;
-
   blogPosts.forEach(({ childMdx: node }) => {
     createPage({
       path: node.frontmatter.slug,
       component: blogTemplate,
       context: {
         slug: node.frontmatter.slug,
+      },
+    });
+  });
+
+  //Creating Tag Pages based on tags mentioned in each mdx file
+  const tags = result.data.tags.group;
+  tags.forEach(({ fieldValue }) => {
+    fieldValue = fieldValue.replace(/\s+/g, '-').toLowerCase();
+    createPage({
+      path: `blog/tag/${fieldValue}`,
+      component: require.resolve(`./src/components/templates/tag-template.tsx`),
+      context: {
+        tag: fieldValue,
+      },
+    });
+  });
+
+  //Creating Author Pages based on author mentioned in Forestry MDX files
+  const authors = result.data.authors.group;
+  authors.forEach(({ fieldValue }) => {
+    fieldValue = fieldValue.replace(/\s+/g, '-').toLowerCase();
+    createPage({
+      path: `blog/author/${fieldValue}`,
+      component: require.resolve(`./src/components/templates/author-template.tsx`),
+      context: {
+        author: fieldValue,
       },
     });
   });

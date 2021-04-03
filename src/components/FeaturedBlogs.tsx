@@ -1,37 +1,44 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Button from './Button';
-import { LocalizedLink } from 'gatsby-theme-i18n';
 import BlogCard from './BlogCard';
-import tempImage from '../images/defi-on-polkadot.png';
 import { useIntl } from 'react-intl';
 
 export default function FeaturedBlogs() {
   const intl = useIntl();
+
+  const recentThreeBlogs = useStaticQuery(graphql`
+    {
+      allMdx(sort: { fields: frontmatter___date_published, order: DESC }, limit: 3) {
+        edges {
+          node {
+            frontmatter {
+              blogTitle
+              date_published(formatString: "MMMM DD, YYYY")
+              image
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  console.log(recentThreeBlogs.allMdx.edges);
 
   return (
     <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray h-full">
       <div className="container pb-16">
         <h4 className="pt-20 mt-0 mx-4 md:mb-0">{intl.formatMessage({ id: 'homepage-featured-blog-heading' })}</h4>
         <div className="md:flex">
-          <BlogCard
-            image={tempImage}
-            date="December 10, 2020"
-            title="Defi on Polkadot: An Ecosystem Overview"
-            link="/blog"
-          />
-          <BlogCard
-            image={tempImage}
-            date="December 10, 2020"
-            title="Defi on Polkadot: An Ecosystem Overview"
-            link="/blog"
-          />
-          <BlogCard
-            image={tempImage}
-            date="December 10, 2020"
-            title="Defi on Polkadot: An Ecosystem Overview"
-            link="/blog"
-          />
+          {recentThreeBlogs.allMdx.edges.map((post: any) => (
+            <>
+              <BlogCard
+                image={post.node.frontmatter.image}
+                date={post.node.frontmatter.date_published}
+                title={post.node.frontmatter.blogTitle}
+                link={post.node.frontmatter.slug}
+              />
+            </>
+          ))}
         </div>
       </div>
     </section>

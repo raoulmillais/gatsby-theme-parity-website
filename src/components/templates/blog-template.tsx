@@ -27,7 +27,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
 
   return (
     <Layout>
-      <SEO title={props.data.mdx.frontmatter.title} />
+      <SEO title={props.data.mdx.frontmatter.blogTitle} />
       <section className="md:bg-hero-pattern bg-top bg-no-repeat bg-contain">
         <div className="md:flex md:justify-center">
           <article className="mx-4 font-normal md:text-lg xl:text-xl max-w-screen-md">
@@ -38,7 +38,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
             </div>
             <AuthorCard
               image={authorInfo.avatar}
-              name={props.data.mdx.frontmatter.author}
+              name={props.data.mdx.frontmatter.author}ß
               authorPage={authorInfo.link}
               title={authorInfo.title}
               company={authorInfo.company}
@@ -75,10 +75,10 @@ export default function BlogTemplate(props: BlogTemplateProps) {
       </section>
       {/* <h1>Context</h1>
       <pre>{JSON.stringify(props.pageContext, null, 2)}</pre> */}
-      <FeaturedBlogs />
+      {/* <FeaturedBlogs /> */}
       <Social />
     </Layout>
-  );
+  );ß
 }
 
 export const query = graphql`
