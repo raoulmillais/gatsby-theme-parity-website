@@ -32,7 +32,7 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
   }, []);
 
   return (
-    <div className="container max-w-screen-md border-b ">
+    <div className="container max-w-screen-md border-b animate-fade-in">
       <div className="text-center my-12 tracking-wide">
         <LocalizedLink className="no-underline hover:text-textLight" to={`/${link}`}>
           <h3>{title}</h3>
@@ -46,7 +46,7 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
                 <LocalizedLink className="text-parityPink no-underline hover:underline" to={eachTag.slug}>
                   {eachTag.name}
                 </LocalizedLink>
-                ,&nbsp;
+                {index === tagsInfo.length - 1  ? '' : `, `}
               </span>
             );
           })}

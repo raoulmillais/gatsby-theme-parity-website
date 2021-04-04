@@ -55,7 +55,7 @@ export default function AuthorCard(props: AuthorCardProps) {
                 <LocalizedLink className="text-parityPink no-underline hover:underline" to={eachTag.slug}>
                   {eachTag.name}
                 </LocalizedLink>
-                ,&nbsp;
+                {index === tagsInfo.length - 1 ? '' : `, `}
               </span>
             );
           })}

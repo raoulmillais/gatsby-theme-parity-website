@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../layouts/Layout';
 import SEO from '../layouts/SEO';
-import FeaturedBlogs from '../FeaturedBlogs';
 import Social from '../Social';
 import AuthorCard from '../AuthorCard';
 import { LocalizedLink } from 'gatsby-theme-i18n';
@@ -38,7 +37,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
             </div>
             <AuthorCard
               image={authorInfo.avatar}
-              name={props.data.mdx.frontmatter.author}ß
+              name={props.data.mdx.frontmatter.author}
               authorPage={authorInfo.link}
               title={authorInfo.title}
               company={authorInfo.company}
@@ -78,7 +77,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
       {/* <FeaturedBlogs /> */}
       <Social />
     </Layout>
-  );ß
+  );
 }
 
 export const query = graphql`

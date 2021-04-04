@@ -13,6 +13,7 @@ module.exports = {
         parityBlack: '#111',
         parityWhite: '#F1F3F2',
         parityBorder: '#3c3c3c',
+        buttonRed: '#ff0048',
         textDark: '#282828',
         textLight: '#757575',
         navItemColor: '#b4b5b1',
@@ -22,6 +23,64 @@ module.exports = {
       fontFamily: {
         title: ['ManifoldCF', 'Helvetica', 'Arial', 'sans'],
         body: ['Roboto', 'Helvetica', 'Arial', 'sans'],
+      },
+      keyframes: {
+        'fade-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'fade-out-down': {
+          from: {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+          to: {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'fade-out-up': {
+          from: {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+          to: {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+        },
+        'fade-in': {
+          from: {
+            opacity: '0',
+          },
+          to: {
+            opacity: '1',
+          },
+        },
+      },
+      animation: {
+        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'fade-out-down': 'fade-out-down 0.5s ease-out',
+        'fade-in-up': 'fade-in-up 0.5s ease-out',
+        'fade-out-up': 'fade-out-up 0.5s ease-out',
+        'fade-in': 'fade-in 0.5s ease-out',
+        'fade-in-slow': 'fade-in 2s ease-in',
       },
       backgroundImage: theme => ({
         'hero-pattern': "url('./background-images/bg-light-1.png')",

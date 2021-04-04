@@ -47,9 +47,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   //Creating Tag Pages based on tags mentioned in each mdx file
   const tags = result.data.tags.group;
   tags.forEach(({ fieldValue }) => {
-    fieldValue = fieldValue.replace(/\s+/g, '-').toLowerCase();
+    let customSlug = fieldValue.replace(/[.!]/g, '').replace(/\s+/g, '-').toLowerCase();
     createPage({
-      path: `blog/tag/${fieldValue}`,
+      path: `blog/tag/${customSlug}`,
       component: require.resolve(`./src/components/templates/tag-template.tsx`),
       context: {
         tag: fieldValue,
@@ -60,9 +60,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   //Creating Author Pages based on author mentioned in Forestry MDX files
   const authors = result.data.authors.group;
   authors.forEach(({ fieldValue }) => {
-    fieldValue = fieldValue.replace(/\s+/g, '-').toLowerCase();
+    let customSlug = fieldValue.replace(/\s+/g, '-').toLowerCase();
     createPage({
-      path: `blog/author/${fieldValue}`,
+      path: `blog/author/${customSlug}`,
       component: require.resolve(`./src/components/templates/author-template.tsx`),
       context: {
         author: fieldValue,
