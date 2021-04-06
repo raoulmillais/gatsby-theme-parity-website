@@ -33,7 +33,7 @@ export default function Footer() {
       <div className="bg-footerLight w-full flex justify-center">
         <div className="container flex justify-center flex-wrap mt-12 mb-8 mx-6">
           <div className="w-1/2 sm:w-1/3 lg:w-1/4 xl:w-1/6">
-            <p className="uppercase text-xs opacity-90 font-normal tracking-widest">
+            <p className="uppercase font-title tracking-nav text-xs opacity-90 font-normal">
               {intl.formatMessage({ id: 'nav-company' })}
             </p>
             <div className="flex flex-col mt-8 mb-8">
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="w-1/2 sm:w-1/3 lg:w-1/4 xl:w-1/6">
-            <p className="uppercase text-xs opacity-90 font-normal tracking-widest">
+            <p className="uppercase font-title text-xs opacity-90 font-normal tracking-nav">
               {intl.formatMessage({ id: 'nav-technologies' })}
             </p>
             <div className="flex flex-col mt-8">
@@ -84,7 +84,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="w-1/2 sm:w-1/3 lg:w-1/4 xl:w-1/6">
-            <p className="uppercase text-xs opacity-90 font-normal tracking-widest">
+            <p className="uppercase font-title text-xs opacity-90 font-normal tracking-nav">
               {intl.formatMessage({ id: 'nav-solutions' })}
             </p>
             <div className="flex flex-col mt-8">
@@ -100,7 +100,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="w-1/2 sm:w-1/3 lg:w-1/4 xl:w-1/6">
-            <p className="uppercase text-xs opacity-90 font-normal tracking-widest">
+            <p className="uppercase font-title text-xs opacity-90 font-normal tracking-nav">
               {intl.formatMessage({ id: 'nav-community' })}
             </p>
             <div className="flex flex-col mt-8">
@@ -134,7 +134,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="w-full sm:w-2/3 lg:w-full xl:w-2/6">
-            <p className="uppercase text-xs opacity-90 font-normal tracking-widest">
+            <p className="uppercase font-title text-xs opacity-90 font-normal tracking-nav">
               {intl.formatMessage({ id: 'nav-newsletter' })}
             </p>
             <p className={`${navItemsFooter} mt-8 opacity-90`}>{intl.formatMessage({ id: 'nav-newsletter-text' })}</p>
@@ -145,7 +145,7 @@ export default function Footer() {
 
       <div className="w-full mt-8">
         <div className="container flex flex-wrap justify-center xl:justify-between">
-          <div className="flex flex-wrap justify-center mb-8 xl:justify-start">
+          <div className="flex flex-wrap justify-center items-center mb-8 xl:justify-start">
             <div className={navItemsSubFooter}>
               <span className="text-textLight">© {new Date().getFullYear()}</span>
               <LocalizedLink to="/" className="no-underline text-textLight">

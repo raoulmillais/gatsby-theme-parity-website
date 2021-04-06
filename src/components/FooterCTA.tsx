@@ -19,7 +19,7 @@ export default function FooterCTA(props: FooterCTAProps) {
   return (
     <section className="bg-parityGray h-full">
       <div className="container">
-        <div className="flex flex-col items-center pb-12 text-center">
+        <div className="flex flex-col items-center py-12 text-center">
           <h4 className="md:text-3xl pt-4 pb-4">{title}</h4>
           <Button link={buttonLink} extraClass="">
             {buttonText}

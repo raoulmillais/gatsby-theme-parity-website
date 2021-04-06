@@ -116,7 +116,7 @@ export default function JobsPage() {
           </div>
         </div>
       </section>
-      <section id="jobboard" className="bg-parityGray pb-8">
+      <section id="jobboard" className="pb-8">
         <div className="container">
           <div className="text-center py-16">
             <h3 className="md:text-5xl">{intl.formatMessage({ id: 'jobs-page-board-title' })}</h3>

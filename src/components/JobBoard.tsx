@@ -28,7 +28,7 @@ export default function JobBoard() {
                       <>
                         <div>
                           <a href={jobPost.absolute_url} target="_blank" rel="noreferrer" className="no-underline">
-                            <div className="flex flex-col md:flex-row md:justify-between md:items-center transition duration-150 ease-in-out hover:bg-white px-2 pt-4 pb-2 md:p-2">
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center transition duration-150 ease-in-out px-2 pt-4 pb-2 md:p-2">
                               <div>
                                 <h5 className="m-0 pb-2">{jobPost.title}</h5>
                                 <p className="m-0">{jobPost.location.name}</p>
