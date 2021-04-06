@@ -5,6 +5,22 @@ module.exports = {
     container: {
       center: true,
     },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1140px',
+    },
+    letterSpacing: {
+      tightest: '-.075em',
+      tighter: '-.05em',
+      tight: '-.025em',
+      normal: '0',
+      wide: '.025em',
+      wider: '.05em',
+      widest: '.25em',
+      nav: '.15em',
+    },
     extend: {
       colors: {
         parityPink: '#FF1864',

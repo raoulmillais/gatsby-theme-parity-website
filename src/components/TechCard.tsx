@@ -16,7 +16,7 @@ export default function TechCard(props: TechCardProps) {
   return (
     <>
       {theme === 'light' ? (
-        <div className="bg-white m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3">
+        <div className="bg-white m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3 rounded-md">
           <LocalizedLink to={link} className="no-underline">
             <div className="px-4 pt-6 pb-6 md:pb-16 flex flex-col items-center">
               <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />
@@ -28,7 +28,7 @@ export default function TechCard(props: TechCardProps) {
       ) : null}
 
       {theme === 'dark' ? (
-        <div className="bg-textDark text-gray-200 m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3">
+        <div className="bg-textDark text-gray-200 m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3 rounded-md">
           <LocalizedLink to={link} className="no-underline">
             <div className="px-4 pt-6 pb-6 md:pb-16 flex flex-col items-center">
               <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />
@@ -40,7 +40,7 @@ export default function TechCard(props: TechCardProps) {
       ) : null}
 
       {theme === 'red' ? (
-        <div className="bg-parityRed  text-gray-200 m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3">
+        <div className="bg-parityRed  text-gray-200 m-6 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3 rounded-md">
           <LocalizedLink to={link} className="no-underline">
             <div className="px-4 pt-6 pb-6 md:pb-16 flex flex-col items-center">
               <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />

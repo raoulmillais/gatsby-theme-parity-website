@@ -7,8 +7,8 @@ import parityLogo from '../../images/parity_logo_dark.png';
 
 const navItemsDiv = 'px-2 pt-2 pb-4 h-screen flex flex-col md:h-auto md:flex md:flex-row md:items-center md:mt-8';
 const navItemStyles =
-  'block mt-1 px-4 py-1 font-normal text-navItemColor  tracking-widest no-underline uppercase  hover:text-textLight text-center animate__animated animate__slideInRight animate__faster';
-const socialIcons = 'w-6 h-auto fill-current text-navItemColor hover:text-textLight mx-4';
+  'block mt-1 px-4 py-1 font-title font-semibold  text-navItemColor tracking-nav no-underline uppercase  hover:text-textLight text-center animate-fade-in';
+const socialIcons = 'w-6 h-auto fill-current text-navItemColor hover:text-textLight mx-4 animate-fade-in';
 
 export default function Header() {
   const intl = useIntl();

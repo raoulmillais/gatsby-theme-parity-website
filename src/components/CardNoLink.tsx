@@ -11,7 +11,7 @@ export default function CardNoLink(props: CardNoLinkProps) {
   const { title, description, logo } = props;
 
   return (
-    <div className="bg-white m-6 text-center md:w-1/3 shadow">
+    <div className="bg-white m-6 text-center md:w-1/3 shadow rounded-md">
       <div className="px-4 pt-6 pb-6 md:pb-16 flex flex-col items-center">
         <div className="object-center object-contain">
           <img className="" src={logo} alt="" />
