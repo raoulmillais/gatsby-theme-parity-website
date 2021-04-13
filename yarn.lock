@@ -6683,6 +6683,11 @@ gatsby-plugin-eslint@^2.0.8:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.8.tgz#1ff7f546a427d274dc2de3932ba29822aae330c3"
   integrity sha512-vAMy37povmQJNg6ZxY78fkWR3pKwG8MNMhO3u+4vXj2MYT5avhFvHPJTAb126ZCuygf30gAWlpwbV50zP894Jw==
 
+gatsby-plugin-klaro@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-klaro/-/gatsby-plugin-klaro-1.0.1.tgz#b1329bdec44f933d2d9586806fe1145b92861e40"
+  integrity sha512-iV1oGn6A2zhKMQUAZwsKgZepPz4NtYaJf/pkjeRvvl2rq7hRM6FL+sclH0kx4dkS8N+CYN1/mwQJN2rBb/Klxg==
+
 gatsby-plugin-manifest@^2.9.1:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.10.0.tgz#6d555410aff8b063f95383d0c03f1947c53339f7"
