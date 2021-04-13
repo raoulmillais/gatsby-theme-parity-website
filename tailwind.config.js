@@ -39,6 +39,7 @@ module.exports = {
       fontFamily: {
         title: ['ManifoldCF', 'Helvetica', 'Arial', 'sans'],
         body: ['Roboto', 'Helvetica', 'Arial', 'sans'],
+        quote: ['serif'],
       },
       keyframes: {
         'fade-in-down': {

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @import "./font-manifold.css";
-@import '~animate.css'; 
 
 @tailwind base;
 @tailwind components;
@@ -13,49 +13,53 @@
         scroll-behavior: smooth;
     }
     body {
-        @apply bg-white font-body text-base;
+        @apply overflow-x-hidden bg-white font-body font-normal text-base leading-7 text-textLight antialiased;
     }
     
     /* Headings */
     h1, h2, h3, h4, h5, h6 {
-        @apply font-title ;
+        @apply font-title text-textDark font-semibold m-0 p-0;
     }
 
-    h1 {
-    @apply my-3 text-5xl font-normal;
+    h1 { 
+    @apply text-3xl md:text-5xl leading-snug;
     }
 
     h2 {
-    @apply my-4 text-4xl font-normal;
+    @apply text-3xl md:text-4xl leading-8;
     }
 
     h3 {
-    @apply my-5 text-3xl font-normal;
+    @apply text-3xl leading-9 mb-6;
     }
 
     h4 {
-    @apply my-6 text-2xl font-normal;
+    @apply text-xl leading-5;
     }
 
     h5 {
-    @apply my-8 text-xl font-medium;
+    @apply text-base leading-7;
     }
 
     h6 {
-    @apply my-10 text-lg font-medium;
+    @apply text-sm leading-8;
     }
 
     /* Paragraphs */
+    p, ul, ol, pre, table, blockquote {
+    @apply mb-4;
+    }
+
     p {
-    @apply my-3 font-light leading-relaxed;
+    @apply font-light leading-snug;
     }
     
     strong {
-    @apply font-medium;
+    @apply font-semibold;
     }
     /* Blockquotes */
     blockquote {
-    @apply my-4 px-8 font-title italic text-xl;
+    @apply font-quote font-normal italic text-xl md:text-2xl leading-6 p-0 m-0 border-l-0;
     }
 
     /* Horizontal Rules */
@@ -65,7 +69,7 @@
 
     /* Lists */
     dl, ol, ul {
-    @apply my-0 ml-1 pl-3 list-outside;
+    @apply list-outside;
     }
 
     li {

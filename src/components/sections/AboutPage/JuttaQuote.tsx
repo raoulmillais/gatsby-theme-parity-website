@@ -28,11 +28,11 @@ export default function JuttaQuote() {
       <div className="2xl:container" style={bgStyles}>
         <div className="container py-28 max-w-3xl">
           <div className="text-center">
-            <blockquote className="tracking-wider">
+            <blockquote className="mb-8 leading-8 text-textDark">
               {`"${intl.formatMessage({ id: 'about-page-jutta-quote' })}"`}
             </blockquote>
-            <p className="text-lg mb-0 mt-8">{intl.formatMessage({ id: 'homepage-team-jutta' })}</p>
-            <p className="text-sm mt-0 text-textLight">{intl.formatMessage({ id: 'about-page-jutta-title' })}</p>
+            <h4 className="font-semibold mb-2">{intl.formatMessage({ id: 'homepage-team-jutta' })}</h4>
+            <span className="text-sm">{intl.formatMessage({ id: 'about-page-jutta-title' })}</span>
           </div>
         </div>
       </div>
