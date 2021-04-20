@@ -35,6 +35,7 @@ module.exports = {
         navItemColor: '#b4b5b1',
         footerDark: '#1b1b1b',
         footerLight: '#282828',
+        cookieBg: '#333',
       },
       fontFamily: {
         title: ['ManifoldCF', 'Helvetica', 'Arial', 'sans'],
