@@ -6,7 +6,7 @@ import SEO from '../layouts/SEO';
 import Social from '../Social';
 import AuthorCard from '../AuthorCard';
 import BlogSocial from '../BlogSocial';
-import FeaturedBlogs from '../FeaturedBlogs';
+import BlogCard from '../BlogCard';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import authorsData from '../../../content/blog/authors.json';
 
@@ -18,7 +18,6 @@ interface BlogTemplateProps {
 export default function BlogTemplate(props: BlogTemplateProps) {
   const { authors } = authorsData;
   const authorName = props.data.mdx.frontmatter.author;
-
   const authorsFiltered = authors.filter((author: any) => {
     if (author.name === authorName) {
       return true;
@@ -77,7 +76,22 @@ export default function BlogTemplate(props: BlogTemplateProps) {
           </article>
         </div>
       </section>
-      <FeaturedBlogs />
+      <section className="bg-parityWhite h-full">
+        <div className="container pb-16">
+          <h4 className="md:text-2xl font-medium pt-20 mt-0 mx-4 md:mb-0">More recent stories</h4>
+          <div className="md:flex">
+            {props.data.allMdx.edges.map((post: any, index: number) => (
+              <BlogCard
+                image={post.node.frontmatter.image}
+                date={post.node.frontmatter.date_published}
+                title={post.node.frontmatter.blogTitle}
+                link={`https://staging.parity.io/${post.node.frontmatter.slug}`}
+                key={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
       <Social />
     </Layout>
   );
@@ -96,6 +110,18 @@ export const query = graphql`
       }
       body
       timeToRead
+    }
+    allMdx(sort: { fields: frontmatter___date_published, order: DESC }, limit: 3) {
+      edges {
+        node {
+          frontmatter {
+            blogTitle
+            date_published(formatString: "MMMM DD, YYYY")
+            image
+            slug
+          }
+        }
+      }
     }
   }
 `;

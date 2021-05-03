@@ -11,7 +11,7 @@ interface BlogCardProps {
 export default function BlogCard(props: BlogCardProps) {
   const { image, date, title, link } = props;
   const trimmedTitle = title.replace(/^(.{50}[^\s]*).*/, '$1');
-  console.log(title.length, trimmedTitle.length);
+
   return (
     <div className="bg-white mx-4 my-8 rounded-lg shadow h-full md:w-1/3">
       <div className="object-cover h-2/3 md:h-3/4">
