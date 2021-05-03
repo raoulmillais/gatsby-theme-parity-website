@@ -26,7 +26,7 @@ export default function JuttaQuote() {
   return (
     <section className="h-full bg-gray-200">
       <div className="2xl:container" style={bgStyles}>
-        <div className="container py-28 max-w-3xl">
+        <div className="container py-28 max-w-2xl">
           <div className="text-center">
             <blockquote className="mb-8 leading-8 text-textDark">
               {`"${intl.formatMessage({ id: 'about-page-jutta-quote' })}"`}

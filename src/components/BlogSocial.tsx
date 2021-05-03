@@ -1,0 +1,52 @@
+import React from 'react';
+
+export default function BlogSocial() {
+  const twitterBtnStyles =
+    'bg-twitter font-title text-lg md:text-xl text-white font-semibold opacity-90 py-1 mb-4 focus:outline-none';
+  const newsletterBtnStyles =
+    'bg-parityPink font-title text-lg md:text-xl text-white font-semibold opacity-90 py-1 mb-4 focus:outline-none';
+  const hoverStyles = 'hover:opacity-80 transition-transform transform hover:-translate-y-0.5';
+  const focusStyles = 'focus:bg-buttonRed';
+
+  return (
+    <div className="flex flex-col py-16 sm:py-20 sm:flex-row sm:justify-evenly">
+      <button className={`${twitterBtnStyles} ${hoverStyles} ${focusStyles} sm:w-1/2 sm:mr-4`}>
+        <a className="no-underline" href="https://twitter.com/ParityTech" target="_blank" rel="noreferrer">
+          <div className="flex flex-row justify-between items-center">
+            <div className="bg-black bg-opacity-10 py-1 px-3">
+              <svg
+                className="w-auto h-6 fill-current"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Twitter icon</title>
+                <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path>
+              </svg>
+            </div>
+            <div className="w-full">Follow Parity on Twitter</div>
+          </div>
+        </a>
+      </button>
+      <button className={`${newsletterBtnStyles} ${hoverStyles} ${focusStyles} sm:w-1/2 sm:ml-4`}>
+        <a className="no-underline" href="#">
+          <div className="flex flex-row justify-between items-center">
+            <div className="bg-black bg-opacity-10 py-1 px-3">
+              <svg
+                className="fill-current text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="-2 -5 24 24"
+                width="24"
+                height="24"
+                preserveAspectRatio="xMinYMin"
+              >
+                <path d="M18.572.083L10.676 7.12a1 1 0 0 1-1.331 0L1.416.087A2 2 0 0 1 2 0h16a2 2 0 0 1 .572.083zm1.356 1.385c.047.17.072.348.072.532v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2c0-.185.025-.364.072-.534l7.942 7.148a3 3 0 0 0 3.992 0l7.922-7.146z"></path>
+              </svg>
+            </div>
+            <div className="w-full">Subscribe to the newsletter</div>
+          </div>
+        </a>
+      </button>
+    </div>
+  );
+}

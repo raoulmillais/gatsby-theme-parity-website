@@ -23,15 +23,17 @@ export default function BitcoinPage() {
       <SEO title="Parity Bitcoin Client" />
       <section className="md:bg-hero-pattern bg-cover bg-center bg-fixed -mt-32 xl:-mt-36 md:-mb-32">
         <div className="md:h-screen">
-          <div className="container h-full text-center max-w-4xl pt-64 md:pt-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:items-center md:w-2/3">
+          <div className="container h-full text-center max-w-4xl pt-48 md:pt-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:items-center md:w-2/3">
             <img className="mx-auto w-64 h-auto py-4" src={parityBitcoinLogo} alt="Parity Bitcoin Client Logo" />
-            <h3 className="md:text-3xl lg:text-5xl py-4">{intl.formatMessage({ id: 'bitcoin-page-title' })}</h3>
+            <h4 className="font-normal text-2xl md:text-3xl mx-auto py-10 max-w-lg">
+              {intl.formatMessage({ id: 'bitcoin-page-title' })}
+            </h4>
             <Button link="/technologies/bitcoin/#download">
               {intl.formatMessage({ id: 'bitcoin-page-hero-cta' })}
             </Button>
-            <p className="text-sm">
+            <p className="font-normal text-sm mt-4">
               {intl.formatMessage({ id: 'bitcoin-page-hero-sub-cta-one' })}{' '}
-              <a href="/technologies/bitcoin/#intro" className="text-parityPink no-underline hover:underline">
+              <a href="/technologies/bitcoin/#intro" className="text-parityPink">
                 {intl.formatMessage({ id: 'bitcoin-page-hero-sub-cta-two' })}
               </a>{' '}
               {intl.formatMessage({ id: 'bitcoin-page-hero-sub-cta-three' })}
@@ -43,7 +45,7 @@ export default function BitcoinPage() {
         <div className="container">
           <div className="flex flex-col md:flex-row md:max-w-screen-md md:mx-auto py-4 md:py-7">
             <div className="flex flex-col items-center md:flex-row py-4">
-              <a href={githubBitcoin} target="_blank" rel="noreferrer">
+              <a className="mb-4 md:mb-0" href={githubBitcoin} target="_blank" rel="noreferrer">
                 <svg
                   className="w-auto h-12"
                   fill="white"
@@ -54,7 +56,7 @@ export default function BitcoinPage() {
                   <path d="M18.944 26.128H13.743s.007-1.544 0-2.602c-3.56.766-4.553-1.951-4.553-1.951-.65-1.301-1.301-1.951-1.301-1.951-1.301-.773 0-.65 0-.65 1.301 0 1.951 1.301 1.951 1.301 1.142 1.938 3.173 1.626 3.903 1.301 0-.65.285-1.634.65-1.951-2.841-.32-5.207-1.951-5.207-5.204s.653-3.903 1.304-4.553c-.131-.321-.676-1.506.02-3.252 0 0 1.278 0 2.579 1.951.645-.645 2.602-.65 3.253-.65.649 0 2.607.006 3.251.65 1.301-1.951 2.582-1.951 2.582-1.951.695 1.747.152 2.932.02 3.252.65.65 1.301 1.301 1.301 4.553s-2.362 4.884-5.204 5.204c.366.317.65 1.437.65 1.951l.002 4.552z" />
                 </svg>
               </a>
-              <p className="text-sm text-parityGray text-center md:text-left mx-8">
+              <p className="font-normal text-sm text-parityGray text-center md:text-left mx-8 mb-0">
                 {intl.formatMessage({ id: 'bitcoin-page-github-description' })}{' '}
                 <a href={githubBitcoin} target="_blank" rel="noreferrer">
                   {intl.formatMessage({ id: 'bitcoin-page-github-cta' })}
@@ -62,10 +64,10 @@ export default function BitcoinPage() {
               </p>
             </div>
             <div className="flex flex-col items-center md:flex-row py-4 md:border-l md:pl-12">
-              <a href={gitterSigner} target="_blank" rel="noreferrer">
+              <a className="mb-4 md:mb-0" href={gitterSigner} target="_blank" rel="noreferrer">
                 <img className="w-auto h-12" src={gitterLogo} alt="gitter logo parity technologies" />
               </a>
-              <p className="text-sm text-parityGray text-center md:text-left mx-8">
+              <p className="font-normal text-sm text-parityGray text-center md:text-left mx-8 mb-0">
                 {intl.formatMessage({ id: 'bitcoin-page-gitter-description' })}{' '}
                 <a href={gitterSigner} target="_blank" rel="noreferrer">
                   {intl.formatMessage({ id: 'bitcoin-page-gitter-cta' })}
@@ -75,32 +77,37 @@ export default function BitcoinPage() {
           </div>
         </div>
       </section>
-      <section id="intro" className="bg-parityGray h-full">
-        <div className="container flex  flex-col px-4 ">
-          <div className="mt-12 md:flex md:justify-center">
+      <section id="intro" className="bg-parityWhite h-full">
+        <div className="container flex  flex-col px-4 text-textDark">
+          <div className="mt-24 md:mt-12 md:flex md:justify-center">
             <div className="hidden md:inline-block md:w-1/2 md:mx-4 md:my-4 max-w-md">
               <img className="w-auto h-auto mx-auto " src={introImageOne} alt="parity intro image" />
             </div>
             <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-              <h3 className="text-2xl md:text-3xl">
-                {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-title' })}
-              </h3>
-              <p className="text-lg">{intl.formatMessage({ id: 'bitcoin-page-intro-section-one-description' })}</p>
+              <h3 className="font-normal">{intl.formatMessage({ id: 'bitcoin-page-intro-section-one-title' })}</h3>
+              <p className="text-base md:text-lg mb-0">
+                {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <ul>
-                <li className="text-base md:text-xl font-light">
+              <ul className="list-none">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-bullet-one' })}
                 </li>
-                <li className="text-base md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-bullet-two' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-bullet-three' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-bullet-four' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-one-bullet-five' })}
                 </li>
               </ul>
@@ -110,20 +117,23 @@ export default function BitcoinPage() {
             <div className="md:w-1/2 md:mx-4 md:my-4 max-w-md">
               <img className="w-auto h-auto mx-auto my-12" src={introImageTwo} alt="parity intro image" />
             </div>
-            <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-              <h3 className="text-2xl md:text-3xl">
-                {intl.formatMessage({ id: 'bitcoin-page-intro-section-two-title' })}
-              </h3>
-              <p className="text-lg">{intl.formatMessage({ id: 'bitcoin-page-intro-section-two-description' })}</p>
+            <div className="my-24 md:my-0 md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
+              <h3 className="font-normal">{intl.formatMessage({ id: 'bitcoin-page-intro-section-two-title' })}</h3>
+              <p className="text-base md:text-lg mb-0">
+                {intl.formatMessage({ id: 'bitcoin-page-intro-section-two-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <ul>
-                <li className="text-base md:text-xl font-light">
+              <ul className="list-none">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-two-bullet-one' })}
                 </li>
-                <li className="text-base md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-two-bullet-two' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-base md:text-lg font-light">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'bitcoin-page-intro-section-two-bullet-three' })}
                 </li>
               </ul>
@@ -140,13 +150,17 @@ export default function BitcoinPage() {
               alt="World Food Programme build on Parity Technologie"
             />
           </div>
-          <div className="text-textDark px-6 pb-12 md:w-1/2 lg:flex lg:justify-center">
+          <div className="text-textDark px-6 py-16 md:w-1/2 lg:flex lg:justify-center">
             <div className="lg:w-2/3">
-              <h6 className="text-xs uppercase tracking-wide">
+              <h6 className="text-xs uppercase tracking-wide mb-8">
                 {intl.formatMessage({ id: 'bitcoin-page-from-the-blog' })}
               </h6>
-              <h4 className="md:text-3xl">{intl.formatMessage({ id: 'bitcoin-page-blog-section-title' })}</h4>
-              <p>{intl.formatMessage({ id: 'bitcoin-page-blog-section-description' })}</p>
+              <h4 className="text-2xl xl:text-3xl font-normal mb-4">
+                {intl.formatMessage({ id: 'bitcoin-page-blog-section-title' })}
+              </h4>
+              <p className="text-base md:text-lg">
+                {intl.formatMessage({ id: 'bitcoin-page-blog-section-description' })}
+              </p>
               <span className="text-xs text-parityPink font-bold">
                 <LocalizedLink
                   className="no-underline"
@@ -161,8 +175,10 @@ export default function BitcoinPage() {
       </section>
       <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray">
         <div className="container py-16 md:pt-16 md:pb-24 flex flex-col items-center text-center ">
-          <div className="px-4 max-w-3xl md:py-8">
-            <h3 className="md:text-4xl">{intl.formatMessage({ id: 'bitcoin-page-why-parity-bitcoin' })}</h3>
+          <div className="px-4 py-8 max-w-3xl">
+            <h3 className="text-2xl xl:text-3xl font-normal">
+              {intl.formatMessage({ id: 'bitcoin-page-why-parity-bitcoin' })}
+            </h3>
           </div>
           <div className="md:flex">
             <CardNoLink
@@ -183,13 +199,19 @@ export default function BitcoinPage() {
       <section id="download" className="bg-textDark h-full pb-24">
         <div className="flex flex-col justify-center">
           <div className="px-4 py-16 text-center text-gray-200">
-            <h3 className="md:text-4xl">{intl.formatMessage({ id: 'bitcoin-page-download-section-title' })}</h3>
+            <h3 className="text-parityWhite text-2xl xl:text-3xl font-normal">
+              {intl.formatMessage({ id: 'bitcoin-page-download-section-title' })}
+            </h3>
           </div>
           <div className="mx-auto flex flex-col md:flex-row md:items-center">
             <div className="mx-4 md:mx-0 my-2 border-2 border-parityBorder h-52 md:h-56 flex flex-col justify-between rounded-md max-w-sm">
-              <div className="text-gray-200 text-center pt-2 px-10">
-                <p className="md:text-lg">{intl.formatMessage({ id: 'bitcoin-page-download-block-one-title' })}</p>
-                <p className="text-sm">{intl.formatMessage({ id: 'bitcoin-page-download-block-one-description' })}</p>
+              <div className="text-parityWhite text-center pt-4 px-10">
+                <p className="font-normal md:text-lg">
+                  {intl.formatMessage({ id: 'bitcoin-page-download-block-one-title' })}
+                </p>
+                <p className="font-normal text-sm leading-loose">
+                  {intl.formatMessage({ id: 'bitcoin-page-download-block-one-description' })}
+                </p>
               </div>
               <a
                 className="no-underline"
@@ -216,12 +238,16 @@ export default function BitcoinPage() {
               </a>
             </div>
             <div className="mx-4 md:-mx-2 z-10 my-2 border-2 bg-textDark border-parityBorder h-52 md:h-60 flex flex-col justify-between rounded-md max-w-sm">
-              <div className="relative text-gray-200 text-center pt-2 px-12">
-                <span className="absolute top-3 right-3 bg-parityPink text-xxs font-bold uppercase rounded-xl py-1 px-3 ml-2">
+              <div className="relative text-gray-200 text-center pt-4 px-12">
+                <span className="absolute top-5 right-3 bg-parityPink text-xxs font-bold uppercase rounded-xl py-1 px-3 ml-2">
                   {intl.formatMessage({ id: 'bitcoin-page-download-block-two-popular' })}
                 </span>
-                <p className="md:text-lg">{intl.formatMessage({ id: 'bitcoin-page-download-block-two-title' })}</p>
-                <p className="text-sm">{intl.formatMessage({ id: 'bitcoin-page-download-block-two-description' })}</p>
+                <p className="font-normal md:text-lg">
+                  {intl.formatMessage({ id: 'bitcoin-page-download-block-two-title' })}
+                </p>
+                <p className="font-normal text-sm leading-loose">
+                  {intl.formatMessage({ id: 'bitcoin-page-download-block-two-description' })}
+                </p>
               </div>
               <a className="no-underline" href={githubBitcoin} target="_blank" rel="noreferrer">
                 <div className="relative hover:opacity-90">

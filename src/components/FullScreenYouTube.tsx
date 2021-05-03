@@ -20,9 +20,9 @@ export default function FullScreenYouTube(props: FullScreenYouTubeProps) {
   };
 
   return (
-    <div className="m-4">
+    <div className="p-2">
       <div style={sectionBackground}>
-        <div className="flex justify-center items-center h-64 md:w-96">
+        <div className="flex justify-center items-center h-64 md:w-84">
           <div
             className="bg-white h-12 w-12 rounded-full flex justify-center items-center cursor-pointer transition-all transform duration-500 hover:-translate-y-0.5 hover:shadow-lg"
             onClick={() => setShowModal(!showModal)}
@@ -33,18 +33,18 @@ export default function FullScreenYouTube(props: FullScreenYouTubeProps) {
           </div>
         </div>
       </div>
-      <div className="my-7">
+      <div className="my-4">
         {link === 'none' ? (
-          <p className="font-normal text-lg mb-0">{name}</p>
+          <p className="text-textLight font-bold mb-0">{name}</p>
         ) : (
           <LocalizedLink
             to={link}
-            className="font-normal text-lg mb-0 no-underline hover:text-parityPink hover:underline"
+            className="font-normal text-textDark text-lg mb-0 no-underline hover:text-parityPink hover:underline"
           >
             {name}
           </LocalizedLink>
         )}
-        <p className="text-sm mt-1">{title}</p>
+        <p className="text-sm text-textDark mt-1">{title}</p>
       </div>
       {showModal ? (
         <div

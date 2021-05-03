@@ -29,11 +29,11 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="container md:flex md:justify-between md:px-4 md:py-4">
+    <header className="container relative md:flex md:justify-between md:px-4 z-10">
       <div className="flex items-center justify-between px-4 py-3 md:p-0 ">
         <div>
           <LocalizedLink to="/">
-            <img className="h-14" src={isOpen ? parityLogoDark : parityLogo} alt="Sub0 Logo" />
+            <img className="h-14" src={isOpen ? parityLogoDark : parityLogo} alt="Parity Logo" />
           </LocalizedLink>
         </div>
         <div className="md:hidden">

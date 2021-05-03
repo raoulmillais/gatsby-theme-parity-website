@@ -4,8 +4,8 @@ import Layout from '../components/layouts/Layout';
 export default function GlobalStylesPage() {
   return (
     <Layout>
-      <section className="bg-purple-600">
-        <div className="container bg-purple-300">
+      <section className="">
+        <div className="container">
           <h1 id="headingone">Heading One</h1>
           <h2>Heading Two</h2>
           <h3>Heading Three</h3>
@@ -51,6 +51,10 @@ export default function GlobalStylesPage() {
               <td>94</td>
             </tr>
           </table>
+          <p>Icons</p>
+          <div className="w-12 h-12 text-2xl leading-7 bg-black">
+            <i className="socicon-twitter"></i>
+          </div>
         </div>
       </section>
     </Layout>

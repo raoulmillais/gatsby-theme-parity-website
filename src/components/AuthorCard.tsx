@@ -37,22 +37,22 @@ export default function AuthorCard(props: AuthorCardProps) {
           <img className="rounded-full" src={image} alt={name} />
         </LocalizedLink>
       </div>
-      <div className="text-xs sm:text-sm pl-3">
-        <p className="my-0">
+      <div className="pl-3">
+        <p className="my-0 text-xs sm:text-sm">
           <LocalizedLink className="no-underline hover:underline" to={authorPage}>
             <strong>{name}</strong>
           </LocalizedLink>
         </p>
-        <p className="my-0 text-textLight">
+        <p className="my-0 text-textLight text-xs sm:text-sm">
           {title} @ {company}
         </p>
-        <p className="my-0 text-textLight">
+        <p className="my-0 text-textLight text-xs sm:text-sm">
           {date}
           {` `}in{` `}
           {tagsInfo.map((eachTag: any, index) => {
             return (
               <span key={index}>
-                <LocalizedLink className="text-parityPink no-underline hover:underline" to={eachTag.slug}>
+                <LocalizedLink className="text-parityPink" to={eachTag.slug}>
                   {eachTag.name}
                 </LocalizedLink>
                 {index === tagsInfo.length - 1 ? '' : `, `}
@@ -60,7 +60,7 @@ export default function AuthorCard(props: AuthorCardProps) {
             );
           })}
         </p>
-        <p className="my-0 text-textLight">{timeToRead} min read</p>
+        <p className="my-0 text-textLight text-xs sm:text-sm">{timeToRead} min read</p>
       </div>
     </div>
   );

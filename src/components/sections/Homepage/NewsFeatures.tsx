@@ -71,7 +71,9 @@ export default function NewsFeatures() {
   return (
     <section className="h-full border pb-8 pt-6">
       <div className="container text-center flex flex-col items-center justify-center">
-        <h5 className="text-textLight opacity-50 px-2 mb-3">{intl.formatMessage({ id: 'homepage-news-title' })}</h5>
+        <h5 className="text-textLight md:text-xl opacity-50 px-2 mb-3">
+          {intl.formatMessage({ id: 'homepage-news-title' })}
+        </h5>
         <div className="flex flex-wrap justify-center opacity-50 max-w-screen-md">
           <a
             href="https://www.wsj.com/articles/crypto-startup-polkadot-seeking-new-token-sale-above-1-billion-valuation-11548377842"

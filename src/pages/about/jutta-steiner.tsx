@@ -9,15 +9,20 @@ import FullScreenYouTube from '../../components/FullScreenYouTube';
 import Social from '../../components/Social';
 import SEO from '../../components/layouts/SEO';
 
-export default function JuttaSteiner({ data }) {
+interface JuttaSteinerProps {
+  data: any;
+}
+
+export default function JuttaSteiner(props: JuttaSteinerProps) {
   const intl = useIntl();
+  const { data } = props;
 
   return (
     <Layout theme="">
       <SEO title={intl.formatMessage({ id: 'jutta-page-title' })} />
       <section>
         <div className="container">
-          <h3 className="text-center py-24 px-8 mx-auto tracking-wide max-w-xl md:text-4xl">
+          <h3 className="font-medium text-center max-w-3xl leading-9 py-20 px-8 mx-auto text-3xl md:text-5xl md:leading-tight">
             {intl.formatMessage({ id: 'jutta-page-title' })}
           </h3>
           <div className="mx-auto sm:flex sm:justify-center lg:max-w-5xl">
@@ -31,8 +36,8 @@ export default function JuttaSteiner({ data }) {
                 {intl.formatMessage({ id: 'jutta-steiner' })}
               </caption>
             </div>
-            <div className="px-4 text-lg lg:text-xl sm:w-2/3 md:w-1/2">
-              <p>
+            <div className="text-textDark px-4 text-lg lg:text-xl sm:w-2/3 md:w-1/2">
+              <p className="font-normal">
                 {intl.formatMessage({ id: 'jutta-page-description-one-1' })}&nbsp;
                 <a
                   href="https://techcrunch.com/2018/06/15/here-are-the-finalists-for-the-europas-awards-2018-july-3-london/"
@@ -47,10 +52,10 @@ export default function JuttaSteiner({ data }) {
                 </a>
                 &nbsp;{intl.formatMessage({ id: 'jutta-page-description-one-5' })}
               </p>
-              <p>{intl.formatMessage({ id: 'jutta-page-description-two' })}</p>
-              <p>{intl.formatMessage({ id: 'jutta-page-description-three' })}</p>
+              <p className="font-normal">{intl.formatMessage({ id: 'jutta-page-description-two' })}</p>
+              <p className="font-normal">{intl.formatMessage({ id: 'jutta-page-description-three' })}</p>
               <hr />
-              <a href={data.site.siteMetadata.twitter} target="_blank" rel="noreferrer">
+              <a href="https://twitter.com/jutta_steiner" target="_blank" rel="noreferrer">
                 <svg
                   className="w-6 h-auto fill-current text-textLight hover:text-parityPink mx-4"
                   role="img"
@@ -68,10 +73,12 @@ export default function JuttaSteiner({ data }) {
       <section>
         <div className="container py-16 max-w-3xl">
           <div className="text-center">
-            <blockquote className="tracking-wider text-textLight">
+            <blockquote className="font-light tracking-wide">
               {`"${intl.formatMessage({ id: 'about-page-jutta-quote' })}"`}
             </blockquote>
-            <p className="text-lg mb-0 mt-8">— {intl.formatMessage({ id: 'jutta-steiner' })}</p>
+            <p className="text-textDark font-normal text-lg mb-0 mt-8">
+              — {intl.formatMessage({ id: 'jutta-steiner' })}
+            </p>
           </div>
           <div className="py-12 max-w-md mx-auto ">
             <FullScreenYouTube
@@ -79,22 +86,24 @@ export default function JuttaSteiner({ data }) {
               videoId="Gsy2Sl1EtFs"
               link="/about/jutta-steiner/"
             />
-            <p className="text-sm text-textLight pt-0 -mt-5 ml-4">
+            <p className="font-normal text-sm pt-0 -mt-5 ml-2">
               {intl.formatMessage({ id: 'jutta-page-video-caption' })}
             </p>
           </div>
         </div>
       </section>
       <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray">
-        <div className="container py-8 md:pt-16 md:pb-20 flex flex-col items-center text-center ">
+        <div className="container py-16 flex flex-col items-center text-center ">
           <div className="px-4 max-w-3xl md:py-8">
-            <h3 className="md:text-4xl md:pb-6 ">{intl.formatMessage({ id: 'jutta-page-bottom-cta-title' })}</h3>
-            <Button extraClass="" link="/about">
+            <h3 className="font-normal text-2xl md:text-4xl md:pb-6 ">
+              {intl.formatMessage({ id: 'jutta-page-bottom-cta-title' })}
+            </h3>
+            <Button extraClass="mb-8 md:mb-4" link="/about">
               {intl.formatMessage({ id: 'jutta-page-bottom-cta' })}
             </Button>
-            <p className="text-sm">
+            <p className="font-normal text-sm">
               {intl.formatMessage({ id: 'jutta-page-bottom-sub-cta-1' })}
-              <LocalizedLink className="no-underline text-parityPink hover:underline" to="/blog/">
+              <LocalizedLink className="text-parityPink hover:underline" to="/blog/">
                 {intl.formatMessage({ id: 'jutta-page-bottom-sub-cta-2' })}
               </LocalizedLink>
             </p>

@@ -35,47 +35,60 @@ export default function RustJobsPage() {
       <SEO title={intl.formatMessage({ id: 'rust-jobs-page-seo' })} />
       <section className="bg-hero-rustJobs bg-cover bg-center bg-fixed -mt-24 xl:-mt-36 md:-mb-32">
         <div className="md:h-screen">
-          <div className="container h-full text-center max-w-4xl pt-64 md:pt-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:items-center md:w-2/3">
-            <img className="mx-auto w-96 h-auto py-4" src={parityRustImage} alt="Parity Loves Rust Image" />
-            <h3 className="text-white">{intl.formatMessage({ id: 'rust-jobs-page-title-one' })}</h3>
-            <h3 className="text-white -mt-2">{intl.formatMessage({ id: 'rust-jobs-page-title-two' })}</h3>
+          <div className="container h-full text-center pt-64 md:pt-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:items-center md:w-2/3">
+            <img className="mx-auto w-96 md:w-4/6 h-auto py-10" src={parityRustImage} alt="Parity Loves Rust Image" />
+            <h4 className="text-white font-normal text-2xl md:text-4xl mb-2">
+              {intl.formatMessage({ id: 'rust-jobs-page-title-one' })}
+            </h4>
+            <h4 className="text-white font-normal text-2xl md:text-4xl">
+              {intl.formatMessage({ id: 'rust-jobs-page-title-two' })}
+            </h4>
           </div>
         </div>
       </section>
-      <section className="bg-white">
+      <section className="bg-white text-textDark">
         <div className="container">
           <div className="flex justify-center mx-4 md:mx-auto py-12 max-w-screen-lg">
             <div className="max-w-screen-md">
-              <h2 className="text-center py-4 md:text-5xl">
+              <h2 className="font-normal text-center py-10 md:text-5xl">
                 {intl.formatMessage({ id: 'rust-jobs-page-intro-title' })}
               </h2>
-              <p className="md:text-lg md:py-2">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-one' })}</p>
-              <p className="md:text-lg md:py-2">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-two' })}</p>
-              <p className="md:text-lg md:py-2">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-three' })}</p>
-              <h3>{intl.formatMessage({ id: 'rust-jobs-page-intro-requirements' })}</h3>
-              <ul>
-                <li className="font-light">
+              <p className="text-lg md:text-xl">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-one' })}</p>
+              <p className="text-lg md:text-xl">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-two' })}</p>
+              <p className="text-lg md:text-xl">{intl.formatMessage({ id: 'rust-jobs-page-intro-paragraph-three' })}</p>
+              <h4 className="text-2xl md:text-3xl mb-4">
+                {intl.formatMessage({ id: 'rust-jobs-page-intro-requirements' })}
+              </h4>
+              <ul className="list-inside">
+                <li className="font-normal text-lg md:text-xl">
                   {intl.formatMessage({ id: 'rust-jobs-page-intro-requirements-bullet-one' })}
                 </li>
-                <li className="font-light">
+                <li className="font-normal text-lg md:text-xl">
                   {intl.formatMessage({ id: 'rust-jobs-page-intro-requirements-bullet-two' })}
                 </li>
               </ul>
-              <h3>{intl.formatMessage({ id: 'rust-jobs-page-intro-benefits' })}</h3>
-              <ul>
-                <li className="font-light">{intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-one' })}</li>
-                <li className="font-light">{intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-two' })}</li>
-                <li className="font-light">
+              <h4 className="text-2xl md:text-3xl mb-4">
+                {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits' })}
+              </h4>
+              <ul className="list-inside">
+                <li className="font-normal text-lg md:text-xl">
+                  {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-one' })}
+                </li>
+                <li className="font-normal text-lg md:text-xl">
+                  {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-two' })}
+                </li>
+                <li className="font-normal text-lg md:text-xl">
                   {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-three' })}
                 </li>
-                <li className="font-light">
+                <li className="font-normal text-lg md:text-xl">
                   {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-four' })}
                 </li>
-                <li className="font-light">
+                <li className="font-normal text-lg md:text-xl">
                   {intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-bullet-five' })}
                 </li>
               </ul>
               <p
+                className="text-lg md:text-xl"
                 dangerouslySetInnerHTML={{
                   __html: intl.formatMessage({ id: 'rust-jobs-page-intro-benefits-privacy-policy' }),
                 }}
@@ -86,34 +99,46 @@ export default function RustJobsPage() {
       </section>
       <section className="h-full bg-black">
         <div style={bgStyles}>
-          <div className="container py-28 max-w-2xl">
-            <div className="text-center text-white">
-              <blockquote className="tracking-wider">
+          <div className="container py-28 max-w-3xl">
+            <div className="text-center text-parityWhite">
+              <blockquote className="mb-8 leading-8 text-parityWhite">
                 {`"${intl.formatMessage({ id: 'rust-jobs-page-fred-quote' })}"`}
               </blockquote>
-              <p className="text-base mb-0 mt-8">{intl.formatMessage({ id: 'rust-jobs-page-fred' })}</p>
-              <p className="text-sm mt-0">{intl.formatMessage({ id: 'rust-jobs-page-fred-title' })}</p>
+              <h4 className="font-semibold mb-2 text-parityWhite">
+                {intl.formatMessage({ id: 'rust-jobs-page-fred' })}
+              </h4>
+              <span className="text-sm">{intl.formatMessage({ id: 'rust-jobs-page-fred-title' })}</span>
             </div>
           </div>
         </div>
       </section>
       <section>
         <div className="container">
-          <div className="px-4 py-20 md:flex md:justify-between">
-            <div className="md:w-2/3 md:max-w-xl">
-              <h3 className="text-2xl md:text-4xl">{intl.formatMessage({ id: 'rust-jobs-page-developers-title' })}</h3>
-              <p className="md:text-lg">{intl.formatMessage({ id: 'rust-jobs-page-developers-description' })}</p>
+          <div className="px-4 py-20 md:py-28 md:flex md:justify-between">
+            <div className="md:w-2/3 md:max-w-xl text-textDark">
+              <h3 className="font-normal text-2xl md:text-4xl">
+                {intl.formatMessage({ id: 'rust-jobs-page-developers-title' })}
+              </h3>
+              <p className="font-light text-lg md:text-xl">
+                {intl.formatMessage({ id: 'rust-jobs-page-developers-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <h5 className="mb-0">{intl.formatMessage({ id: 'rust-jobs-page-developers-one-title' })}</h5>
-              <p className="text-sm tracking-wide text-textDark">
+              <h5 className="font-semibold tracking-normal text-xl mb-3">
+                {intl.formatMessage({ id: 'rust-jobs-page-developers-one-title' })}
+              </h5>
+              <p className="text-sm tracking-wide text-textLight">
                 {intl.formatMessage({ id: 'rust-jobs-page-developers-one-description' })}
               </p>
-              <h5 className="mb-0">{intl.formatMessage({ id: 'rust-jobs-page-developers-two-title' })}</h5>
-              <p className="text-sm tracking-wide text-textDark">
+              <h5 className="font-semibold tracking-normal text-xl mb-3">
+                {intl.formatMessage({ id: 'rust-jobs-page-developers-two-title' })}
+              </h5>
+              <p className="text-sm tracking-wide text-textLight">
                 {intl.formatMessage({ id: 'rust-jobs-page-developers-two-description' })}
               </p>
-              <h5 className="mb-0">{intl.formatMessage({ id: 'rust-jobs-page-developers-three-title' })}</h5>
-              <p className="text-sm tracking-wide text-textDark">
+              <h5 className="font-semibold tracking-normal text-xl mb-3">
+                {intl.formatMessage({ id: 'rust-jobs-page-developers-three-title' })}
+              </h5>
+              <p className="text-sm tracking-wide text-textLight">
                 {intl.formatMessage({ id: 'rust-jobs-page-developers-three-description' })}
               </p>
               <p className="py-4">
@@ -122,11 +147,9 @@ export default function RustJobsPage() {
                 </LocalizedLink>
               </p>
             </div>
-            <div className="md:w-1/3">
+            <div className="md:w-1/3 text-textDark">
               <ul className="list-none text-sm pt-6 md:pt-0 pb-6">
-                <li className="font-base pb-1">
-                  <strong>{intl.formatMessage({ id: 'about-page-team-stats-office' })}</strong>
-                </li>
+                <li className="font-medium pb-1">{intl.formatMessage({ id: 'about-page-team-stats-office' })}</li>
                 <li className="font-light pb-1">{intl.formatMessage({ id: 'about-page-team-stats-office-berlin' })}</li>
                 <li className="font-light pb-1">{intl.formatMessage({ id: 'about-page-team-stats-office-london' })}</li>
                 <li className="font-light pb-1">
@@ -134,9 +157,7 @@ export default function RustJobsPage() {
                 </li>
               </ul>
               <ul className="list-none text-sm">
-                <li className="font-base pb-1">
-                  <strong>{intl.formatMessage({ id: 'about-page-team-stats-facts' })}</strong>
-                </li>
+                <li className="font-medium pb-1">{intl.formatMessage({ id: 'about-page-team-stats-facts' })}</li>
                 <li className="font-light pb-1">{intl.formatMessage({ id: 'about-page-team-stats-facts-one' })}</li>
                 <li className="font-light pb-1">{intl.formatMessage({ id: 'about-page-team-stats-facts-two' })}</li>
               </ul>
@@ -146,8 +167,10 @@ export default function RustJobsPage() {
       </section>
       <section className="h-full border-t">
         <div className="container">
-          <div className="flex flex-col items-center pt-12 pb-24 text-center">
-            <h4 className="md:text-3xl pt-4 pb-4">{intl.formatMessage({ id: 'rust-jobs-page-footer-cta-title' })}</h4>
+          <div className="flex flex-col items-center text-center py-16 md:py-28">
+            <h3 className="font-normal text-2xl md:text-3xl mb-4">
+              {intl.formatMessage({ id: 'rust-jobs-page-footer-cta-title' })}
+            </h3>
             <Button link="/jobs/" extraClass="">
               {intl.formatMessage({ id: 'rust-jobs-page-footer-cta' })}
             </Button>

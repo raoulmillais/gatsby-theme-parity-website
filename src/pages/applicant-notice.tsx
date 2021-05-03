@@ -11,7 +11,9 @@ export default function ApplicantNoticePage() {
         <div className="md:flex md:justify-center">
           <div className="mx-4 mb-20 md:text-lg xl:text-xl max-w-screen-md">
             <article className="font-normal">
-              <h2 className="text-center py-16 md:text-5xl">Applicant Privacy Notice</h2>
+              <h3 className="text-textDark text-center pt-24 pb-8 font-normal md:text-5xl md:mb-8">
+                Applicant Privacy Notice
+              </h3>
               <p>
                 <strong>Who Are We?</strong>
               </p>

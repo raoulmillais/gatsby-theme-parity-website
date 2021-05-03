@@ -36,11 +36,11 @@ export default function ParityTech() {
   `);
 
   return (
-    <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray">
+    <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityWhite">
       <div className="container py-16 md:pt-16 md:pb-24 flex flex-col items-center text-center ">
         <div className="px-4 max-w-3xl md:py-8">
-          <h3 className="md:text-5xl">{intl.formatMessage({ id: 'solutions-page-expert-title' })}</h3>
-          <p className="leading-7 md:text-lg md:py-8">
+          <h3 className="font-normal md:text-5xl">{intl.formatMessage({ id: 'solutions-page-expert-title' })}</h3>
+          <p className="text-base md:text-lg text-textDark leading-7 md:py-8">
             {intl.formatMessage({ id: 'solutions-page-expert-description' })}
           </p>
         </div>

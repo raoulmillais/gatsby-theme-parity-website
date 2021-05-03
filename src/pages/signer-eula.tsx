@@ -11,9 +11,9 @@ export default function SignerEULAPage() {
         <div className="md:flex md:justify-center">
           <div className="mx-4 mb-20 md:text-lg xl:text-xl max-w-screen-md">
             <article className="font-normal">
-              <h2 className="text-center py-16 md:text-5xl leading-normal">
+              <h3 className="text-textDark text-center pt-24 pb-8 font-normal md:text-5xl md:mb-8 md:leading-tight">
                 Parity Signer Mobile Application - End User Licence Agreement
-              </h2>
+              </h3>
               <p>
                 <strong>Parity Technologies Limited</strong> is a company registered in England and Wales under company
                 number 09760015, with its registered office at c/o Ignition Law, 1 Sans Walk, London, England, EC1R 0LT

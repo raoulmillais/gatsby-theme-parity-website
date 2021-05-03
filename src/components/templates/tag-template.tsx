@@ -20,15 +20,18 @@ export default function TagTemplate(props: TagTemplateProps) {
   return (
     <Layout theme="light">
       <SEO title={`${pageContext.tag} Blogs`} />
-      <section className="bg-hero-blogPage bg-auto bg-bottom bg-fixed -mt-32 md:pb-64">
-        <div className="text-white">
-          <div className="container text-center pt-40 md:pt-64 md:pb-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:w-3/4">
-            <h3 className="md:text-5xl">{intl.formatMessage({ id: 'blog-page-title' })}</h3>
-            <p className="leading-9 px-4 mb-8 md:text-2xl md:px-12">{pageContext.tag}</p>
-          </div>
+      <section className="block h-hero">
+        <div className="absolute min-h-hero max-h-96 z-0 w-full top-0 left-0 bg-hero-blogPage bg-cover bg-center"></div>
+        <div className="container relative text-center text-white h-5/6 flex flex-col justify-center">
+          <h3 className="text-white font-normal md:text-5xl md:mb-8">
+            {intl.formatMessage({ id: 'blog-page-title' })}
+          </h3>
+          <h4 className="text-white font-normal leading-relaxed px-4 mb-8 text-lg md:text-2xl md:px-24">
+            {pageContext.tag}
+          </h4>
         </div>
       </section>
-      <section className="mx-4">
+      <section className="mx-4 -mt-16">
         {data.allMdx.edges.slice(0, visibleBlogs).map((edge: any, index: any) => {
           return (
             <article key={index}>

@@ -14,169 +14,129 @@ export default function BugBountyPage() {
         <div className="md:flex md:justify-center">
           <div className="mx-4 md:text-lg max-w-screen-md">
             <article>
-              <h2 className="text-center py-16 md:text-5xl">{intl.formatMessage({ id: 'bug-bounty-page-title' })}</h2>
+              <h2 className="font-normal text-center pt-24 md:text-5xl">
+                {intl.formatMessage({ id: 'bug-bounty-page-title' })}
+              </h2>
               <div className="py-12 md:flex">
-                <div className="bg-white md:mx-4 pt-5 pb-7 px-8 shadow-md ring-1 ring-black ring-opacity-5 h-full md:w-1/2">
+                <div className="bg-white md:mx-4 pt-5 pb-2 px-8 shadow-md ring-1 ring-black ring-opacity-5 h-full md:w-1/2">
                   <a className="no-underline" href="/bug-bounty/#hunters">
-                    <p className="text-2xl hover:text-parityPink hover:underline">
+                    <h3 className="font-normal text-textDark text-2xl hover:text-parityPink hover:underline">
                       {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-title' })}
-                    </p>
+                    </h3>
                   </a>
-                  <ul className="font-light">
+                  <ul className="text-textDark ml-4">
                     <a className="no-underline" href="/bug-bounty/#hunters-description">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-one' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-one' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-investigation-reporting">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-two' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-two' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-eligibility">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-three' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-three' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-ineligibility">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-four' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-four' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-reward">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-five' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-five' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-report-bug">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-six' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-six' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-legal-information">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-seven' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-seven' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-governing-law">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-eight' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-eight' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#hunters-customer-services">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-nine' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-hunters-bullet-nine' })}
                       </li>
                     </a>
                   </ul>
                 </div>
-                <div className="bg-white md:mx-4 my-6 md:my-0 pt-5 pb-7 px-8 shadow-md ring-1 ring-black ring-opacity-5 h-full md:w-1/2">
+                <div className="bg-white md:mx-4 my-6 md:my-0 pt-5 pb-2 px-8 shadow-md ring-1 ring-black ring-opacity-5 h-full md:w-1/2">
                   <a className="no-underline" href="/bug-bounty/#contributors">
-                    <p className="text-2xl hover:text-parityPink hover:underline">
+                    <h3 className="font-normal text-textDark text-2xl hover:text-parityPink hover:underline">
                       {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-title' })}
-                    </p>
+                    </h3>
                   </a>
-                  <ul className="font-light">
+                  <ul className="font-normal text-textDark ml-4">
                     <a className="no-underline" href="/bug-bounty/#contributors-description">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-one' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-one' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-making-contributions">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-two' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-two' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-refunds">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-three' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-three' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-confidentiality">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-four' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-four' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-data-protection">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-five' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-five' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-liability">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-six' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-six' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-waiver">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-seven' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-seven' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-third-party">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-eight' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-eight' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-severance">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-nine' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-nine' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-agreement">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-ten' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-ten' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-governing-law">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-eleven' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-eleven' })}
                       </li>
                     </a>
                     <a className="no-underline" href="/bug-bounty/#contributors-customer-services">
-                      <li>
-                        <p className="m-0 hover:text-parityPink hover:underline">
-                          {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-twelve' })}
-                        </p>
+                      <li className="font-normal m-0 hover:text-parityPink hover:underline">
+                        {intl.formatMessage({ id: 'bug-bounty-page-contributors-bullet-twelve' })}
                       </li>
                     </a>
                   </ul>
@@ -354,11 +314,11 @@ export default function BugBountyPage() {
       </section>
       <section className="border-t mt-24">
         <div className="text-center py-20">
-          <h3>{intl.formatMessage({ id: 'bug-bounty-footer-cta-title' })}</h3>
-          <h3>
+          <h3 className="font-normal mb-2">{intl.formatMessage({ id: 'bug-bounty-footer-cta-title' })}</h3>
+          <h3 className="font-normal mb-4">
             {intl.formatMessage({ id: 'bug-bountry-footer-cta-one' })}
             {` `}
-            <a className="text-parityPink no-underline hover:underline" href="mailto:bugbounty@parity.io">
+            <a className="text-parityPink font-semibold no-underline hover:underline" href="mailto:bugbounty@parity.io">
               bugbounty@parity.io
             </a>
           </h3>

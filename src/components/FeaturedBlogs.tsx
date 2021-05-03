@@ -24,9 +24,11 @@ export default function FeaturedBlogs() {
   `);
 
   return (
-    <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray h-full">
+    <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityWhite h-full">
       <div className="container pb-16">
-        <h4 className="pt-20 mt-0 mx-4 md:mb-0">{intl.formatMessage({ id: 'homepage-featured-blog-heading' })}</h4>
+        <h4 className="md:text-2xl font-medium pt-20 mt-0 mx-4 md:mb-0">
+          {intl.formatMessage({ id: 'homepage-featured-blog-heading' })}
+        </h4>
         <div className="md:flex">
           {recentThreeBlogs.allMdx.edges.map((post: any, index: number) => (
             <BlogCard

@@ -17,12 +17,12 @@ export default function HeroIntro() {
             <h3 className="text-2xl mt-16 md:mt-0 md:text-3xl font-normal ">
               {intl.formatMessage({ id: 'homepage-intro-section-one-title' })}
             </h3>
-            <p className="text-lg text-textDark">{intl.formatMessage({ id: 'homepage-intro-section-one-text-one' })}</p>
-            <p className="text-lg text-textDark mb-0">
+            <p className="font-light text-lg text-textDark">{intl.formatMessage({ id: 'homepage-intro-section-one-text-one' })}</p>
+            <p className="font-light text-lg text-textDark mb-0">
               {intl.formatMessage({ id: 'homepage-intro-section-one-text-two' })}
             </p>
             <hr className="border-1 border-parityPink w-12" />
-            <p className="text-xs md:text-sm leading-8 text-textLight">
+            <p className="text-xs leading-loose md:text-sm md:leading-loose text-textLight">
               {intl.formatMessage({ id: 'homepage-intro-section-one-text-three' })}
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function HeroIntro() {
               </li>
             </ul>
             <hr className="border-1 border-parityPink w-12" />
-            <p className="text-xs md:text-sm leading-7 text-textLight">
+            <p className="text-xs leading-loose md:text-sm md:leading-loose">
               {intl.formatMessage({ id: 'homepage-intro-section-two-text' })}
             </p>
           </div>

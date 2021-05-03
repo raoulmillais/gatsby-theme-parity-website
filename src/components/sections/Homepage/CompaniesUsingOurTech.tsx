@@ -29,7 +29,7 @@ export default function ParityTech() {
   return (
     <section className="bg-parityGray h-full border-t-2 pb-8 pt-6">
       <div className="container text-center flex flex-col items-center justify-center">
-        <h5 className="text-textLight opacity-50 px-2 mb-3">
+        <h5 className="text-textLight md:text-xl opacity-50 px-2 mb-10">
           {intl.formatMessage({ id: 'homepage-companies-using-our-tech-title' })}
         </h5>
         <div className="flex flex-wrap justify-center opacity-50 max-w-screen-md">

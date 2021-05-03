@@ -5,6 +5,8 @@ import Layout from '../layouts/Layout';
 import SEO from '../layouts/SEO';
 import Social from '../Social';
 import AuthorCard from '../AuthorCard';
+import BlogSocial from '../BlogSocial';
+import FeaturedBlogs from '../FeaturedBlogs';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import authorsData from '../../../content/blog/authors.json';
 
@@ -32,7 +34,9 @@ export default function BlogTemplate(props: BlogTemplateProps) {
           <article className="mx-4 font-normal md:text-lg xl:text-xl max-w-screen-md">
             <div className="">
               <div className="container h-full text-center pt-6 md:pt-12 pb-6 px-2 md:flex md:flex-col md:justify-center md:max-w-screen-md">
-                <h3 className="md:text-4xl">{props.data.mdx.frontmatter.blogTitle}</h3>{' '}
+                <h3 className="text-textDark text-center pt-8 font-normal md:text-5xl md:mb-8 md:leading-tight">
+                  {props.data.mdx.frontmatter.blogTitle}
+                </h3>{' '}
               </div>
             </div>
             <AuthorCard
@@ -60,21 +64,20 @@ export default function BlogTemplate(props: BlogTemplateProps) {
               )}
             </div>
             <div>
-              <div className="text-center border my-20">
-                <h3>
+              <div className="text-center border my-8">
+                <h3 className="font-normal mt-6">
                   Want to build the future of the web?{' '}
-                  <LocalizedLink className="text-parityPink no-underline hover:underline" to="/jobs">
+                  <LocalizedLink className="text-parityPink" to="/jobs">
                     We&apos;re hiring
                   </LocalizedLink>
                 </h3>
               </div>
             </div>
+            <BlogSocial />
           </article>
         </div>
       </section>
-      {/* <h1>Context</h1>
-      <pre>{JSON.stringify(props.pageContext, null, 2)}</pre> */}
-      {/* <FeaturedBlogs /> */}
+      <FeaturedBlogs />
       <Social />
     </Layout>
   );
