@@ -4,7 +4,8 @@ import { useIntl } from 'react-intl';
 ///////////////---STYLES---///////////////////
 const modalDiv =
   'fixed top-0 bottom-0 left-0 right-0 z-10 bg-opacity-80 h-full w-full bg-black text-textDark flex justify-center items-center';
-const whiteContainer = 'relative w-full mx-4 rounded-md bg-white flex flex-col justify-center items-center sm:w-96';
+const whiteContainer =
+  'relative w-full md:w-auto md:max-w-xl mx-4 rounded-md bg-white flex flex-col justify-center items-center sm:w-96';
 const closeX = 'absolute top-0 right-0 pt-2 pr-3 opacity-40 hover:opacity-100 cursor-pointer';
 ///////////////---END STYLES---////////////////
 
@@ -40,7 +41,7 @@ const NewsletterModal = () => {
   return (
     <>
       <button
-        className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-widest  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
+        className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-wider  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
         onClick={() => setShowModal(!showModal)}
       >
         {intl.formatMessage({ id: 'newsletter-cta' })}
@@ -68,13 +69,15 @@ const NewsletterModal = () => {
             </div>
 
             {formSubmitted ? (
-              <div>
-                <h2 className="text-center font-light">{intl.formatMessage({ id: 'newsletter-modal-two-title' })}</h2>
-                <h5 className="text-center font-light mt-6">
+              <div className="p-6 md:p-8">
+                <h4 className="text-center text-2xl md:text-4xl font-normal">
+                  {intl.formatMessage({ id: 'newsletter-modal-two-title' })}
+                </h4>
+                <p className="text-center font-normal mt-6">
                   {intl.formatMessage({ id: 'newsletter-modal-two-text' })}
-                </h5>
+                </p>
                 <hr className="border border-parityPink w-1/12 mx-auto" />
-                <p className="text-center font-light">
+                <p className="text-center font-normal">
                   {intl.formatMessage({ id: 'newsletter-modal-footer-text' })}{' '}
                   <a href="https://twitter.com/ParityTech" className="text-parityPink">
                     {intl.formatMessage({ id: 'newsletter-modal-footer-parity-handle' })}
@@ -85,8 +88,8 @@ const NewsletterModal = () => {
             ) : null}
 
             {!formSubmitted ? (
-              <div>
-                <h4 className="text-center font-light px-4">
+              <div className="p-6 md:p-8">
+                <h4 className="text-center text-2xl md:text-4xl font-normal px-4 pb-10">
                   {intl.formatMessage({ id: 'newsletter-modal-one-title' })}
                 </h4>
                 <form onSubmit={event => handleSubmit(event)}>
@@ -99,21 +102,21 @@ const NewsletterModal = () => {
                   <input type="hidden" name="v" value="2" />
 
                   <input
-                    className="w-72 mx-auto mt-4 border-textLight"
+                    className="w-72 md:w-3/4 mx-auto border-gray-400 focus:border-parityPink"
                     type="email"
                     name="email"
                     placeholder="Your Email Address"
                     required
                   />
                   <button
-                    className="block mx-auto mt-4 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-widest  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
+                    className="block mx-auto mt-8 md:mt-3 md:w-3/4 bg-parityPink tracking-wider text-sm text-white opacity-90 font-normal px-24 py-3 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
                     type="submit"
                     value="Submit"
                     onSubmit={event => handleSubmit(event)}
                   >
                     {intl.formatMessage({ id: 'newsletter-cta' })}
                   </button>
-                  <p className="text-xs text-textLight text-center mt-6">
+                  <p className="text-xs text-textDark text-center mt-6">
                     {intl.formatMessage({ id: 'newsletter-modal-one-footer-text' })}{' '}
                     <a href="/privacy">{intl.formatMessage({ id: 'newsletter-modal-one-footer-privacy' })}</a>
                   </p>

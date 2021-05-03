@@ -33,9 +33,9 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
 
   return (
     <div className="container max-w-screen-md border-b animate-fade-in">
-      <div className="text-center my-12 tracking-wide">
+      <div className="text-center my-10 tracking-wide">
         <LocalizedLink className="no-underline hover:text-textLight" to={`/${link}`}>
-          <h3>{title}</h3>
+          <h2 className="font-normal text-2xl md:text-4xl md:leading-tight mb-6">{title}</h2>
         </LocalizedLink>
         <p className="text-textLight text-sm my-0">
           {date}

@@ -62,9 +62,9 @@ export default function FeaturedVideos() {
   return (
     <section className="md:bg-hero-pattern-dark-2 bg-cover bg-center bg-parityGray h-full">
       <div className="container">
-        <div className="flex flex-row justify-between items-center pt-20 mt-0 mx-4 md:mb-0">
+        <div className="flex flex-row justify-between items-center pt-20 mt-0 mx-4 mb-4">
           <h4 className="">{intl.formatMessage({ id: 'about-page-featured-video-title' })}</h4>
-          <p className="text-parityPink font-bold text-sm">
+          <p className="text-parityPink font-bold text-sm mb-0">
             <a
               className="no-underline hover:underline"
               href="https://www.youtube.com/channel/UCSs5vZi0U7qHLkUjF3QnaWg"
@@ -120,7 +120,9 @@ export default function FeaturedVideos() {
           />
         </div>
         <div className="flex flex-col items-center pt-12 pb-24 text-center">
-          <h4 className="md:text-3xl pt-4 pb-4">{intl.formatMessage({ id: 'about-page-learn-about-parity' })}</h4>
+          <h3 className="font-normal text-2xl md:text-4xl py-4">
+            {intl.formatMessage({ id: 'about-page-learn-about-parity' })}
+          </h3>
           <Button link="/blog" extraClass="">
             {intl.formatMessage({ id: 'about-page-blog-cta' })}
           </Button>

@@ -7,24 +7,25 @@ export default function HeroAbout() {
   const intl = useIntl();
 
   return (
-    <section className="bg-hero-about bg-cover bg-center bg-fixed -mt-32 md:-mb-64">
-      <div className="md:h-screen text-white">
-        <div className="container text-center pt-40 md:pt-52 md:pb-0 pb-16 px-2 md:flex md:flex-col md:justify-center md:w-3/4">
-          <h3 className="md:text-5xl">{intl.formatMessage({ id: 'about-page-hero-title' })}</h3>
-          <p className="leading-9 px-4 mb-8 md:text-2xl md:px-12">
-            {intl.formatMessage({ id: 'about-page-hero-description' })}
-          </p>
-          <TransparentButton extraClass=" " link="/about/#about">
-            {intl.formatMessage({ id: 'about-page-hero-cta' })}
-          </TransparentButton>
-          <p className="text-xs">
-            {intl.formatMessage({ id: 'about-page-hero-sub-cta-1' })}&nbsp;
-            <LocalizedLink className="font-bold" to="/contact/">
-              {intl.formatMessage({ id: 'about-page-hero-sub-cta-2' })}
-            </LocalizedLink>
-            &nbsp;{intl.formatMessage({ id: 'about-page-hero-sub-cta-3' })}
-          </p>
-        </div>
+    <section className="block h-hero">
+      <div className="absolute min-h-hero max-h-96 z-0 w-full top-0 left-0 bg-hero-about bg-cover bg-center"></div>
+      <div className="container relative text-center text-white h-5/6 flex flex-col justify-center">
+        <h3 className="text-white font-normal md:text-5xl md:mb-8">
+          {intl.formatMessage({ id: 'about-page-hero-title' })}
+        </h3>
+        <h4 className="text-white font-normal leading-relaxed px-4 mb-8 text-lg md:text-2xl md:px-24">
+          {intl.formatMessage({ id: 'about-page-hero-description' })}
+        </h4>
+        <TransparentButton extraClass="mb-10 md:mb-4" link="/about/#about">
+          {intl.formatMessage({ id: 'about-page-hero-cta' })}
+        </TransparentButton>
+        <p className="font-normal text-xs">
+          {intl.formatMessage({ id: 'about-page-hero-sub-cta-1' })}&nbsp;
+          <LocalizedLink className="font-bold" to="/contact/">
+            {intl.formatMessage({ id: 'about-page-hero-sub-cta-2' })}
+          </LocalizedLink>
+          &nbsp;{intl.formatMessage({ id: 'about-page-hero-sub-cta-3' })}
+        </p>
       </div>
     </section>
   );

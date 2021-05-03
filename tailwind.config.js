@@ -35,10 +35,21 @@ module.exports = {
         navItemColor: '#b4b5b1',
         footerDark: '#1b1b1b',
         footerLight: '#282828',
+        twitter: '#00aced',
+      },
+      height: {
+        hero: '70vh',
+      },
+      minHeight: {
+        hero: '70vh',
+      },
+      spacing: {
+        84: '22rem',
       },
       fontFamily: {
         title: ['ManifoldCF', 'Helvetica', 'Arial', 'sans'],
         body: ['Roboto', 'Helvetica', 'Arial', 'sans'],
+        quote: ['serif'],
       },
       keyframes: {
         'fade-in-down': {

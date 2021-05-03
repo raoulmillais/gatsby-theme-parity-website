@@ -6,14 +6,19 @@ import Img from 'gatsby-image';
 import Social from '../../components/Social';
 import SEO from '../../components/layouts/SEO';
 
-export default function GavinWood({ data }) {
+interface GavinWoodProps {
+  data: any;
+}
+
+export default function GavinWood(props: GavinWoodProps) {
+  const { data } = props;
   const intl = useIntl();
 
   return (
     <Layout theme="">
       <SEO title={intl.formatMessage({ id: 'gavin-wood-page-seo' })} />
       <div className="">
-        <h3 className="text-center py-16 px-1 md:px-8 mx-auto tracking-wide max-w-xl md:text-4xl">
+        <h3 className="font-normal text-center pt-24 pb-6 px-1 md:px-8 mx-auto  max-w-3xl md:text-5xl md:leading-tight">
           {intl.formatMessage({ id: 'gavin-wood-page-title' })}
         </h3>
         <div className="w-screen">
@@ -21,11 +26,15 @@ export default function GavinWood({ data }) {
             fluid={data.gavinMainImage.childImageSharp.fluid}
             alt={intl.formatMessage({ id: 'gavin-wood-page-main-image-caption' })}
           />
-          <caption className="flex text-sm text-textLight italic ml-4 my-2">{intl.formatMessage({ id: 'gavin-wood-page-main-image-caption' })}</caption>
+          <caption className="flex text-xs text-textLight italic ml-4 my-2">
+            {intl.formatMessage({ id: 'gavin-wood-page-main-image-caption' })}
+          </caption>
         </div>
-        <div className="max-w-3xl mx-auto text-lg font-medium tracking-wide px-4 pb-24">
+        <div className="max-w-3xl mx-auto text-lg font-normal text-textDark px-4 pb-24">
           <p dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'gavin-wood-page-paragraph-one' }) }} />
-          <h4>{intl.formatMessage({ id: 'gavin-wood-page-subtitle-one' })}</h4>
+          <h4 className="mb-6 md:text-2xl md:font-semibold">
+            {intl.formatMessage({ id: 'gavin-wood-page-subtitle-one' })}
+          </h4>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-two' })}</p>
           <p dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'gavin-wood-page-paragraph-three' }) }} />
           <div>
@@ -36,15 +45,19 @@ export default function GavinWood({ data }) {
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <caption className="flex text-sm text-textLight italic my-4">
+            <caption className="flex text-xs text-textLight italic my-4">
               {intl.formatMessage({ id: 'gavin-wood-page-video-caption' })}
             </caption>
           </div>
-          <h4>{intl.formatMessage({ id: 'gavin-wood-page-subtitle-two' })}</h4>
+          <h4 className="mb-6 md:text-2xl md:font-semibold">
+            {intl.formatMessage({ id: 'gavin-wood-page-subtitle-two' })}
+          </h4>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-four' })}</p>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-five' })}</p>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-six' })}</p>
-          <h4>{intl.formatMessage({ id: 'gavin-wood-page-subtitle-three' })}</h4>
+          <h4 className="mb-6 md:text-2xl md:font-semibold">
+            {intl.formatMessage({ id: 'gavin-wood-page-subtitle-three' })}
+          </h4>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-seven' })}</p>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-eight' })}</p>
           <p>{intl.formatMessage({ id: 'gavin-wood-page-paragraph-nine' })}</p>
