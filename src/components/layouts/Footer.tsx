@@ -130,7 +130,7 @@ export default function Footer() {
               {intl.formatMessage({ id: 'nav-newsletter' })}
             </p>
             <p className={`${navItemsFooter} mt-8 opacity-90`}>{intl.formatMessage({ id: 'nav-newsletter-text' })}</p>
-            <NewsletterModal />
+            <NewsletterModal sourcePage="footer" />
           </div>
         </div>
       </div>

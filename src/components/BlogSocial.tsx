@@ -1,15 +1,14 @@
 import React from 'react';
+import NewsletterModal from '../components/NewsletterModal';
 
 export default function BlogSocial() {
   const twitterBtnStyles =
     'bg-twitter font-title text-lg md:text-xl text-white font-semibold opacity-90 py-1 mb-4 focus:outline-none';
-  const newsletterBtnStyles =
-    'bg-parityPink font-title text-lg md:text-xl text-white font-semibold opacity-90 py-1 mb-4 focus:outline-none';
   const hoverStyles = 'hover:opacity-80 transition-transform transform hover:-translate-y-0.5';
   const focusStyles = 'focus:bg-buttonRed';
 
   return (
-    <div className="flex flex-col py-16 sm:py-20 sm:flex-row sm:justify-evenly">
+    <div className="flex flex-col py-16 md:mb-8 sm:flex-row sm:justify-evenly">
       <button className={`${twitterBtnStyles} ${hoverStyles} ${focusStyles} sm:w-1/2 sm:mr-4`}>
         <a className="no-underline" href="https://twitter.com/ParityTech" target="_blank" rel="noreferrer">
           <div className="flex flex-row justify-between items-center">
@@ -28,25 +27,7 @@ export default function BlogSocial() {
           </div>
         </a>
       </button>
-      <button className={`${newsletterBtnStyles} ${hoverStyles} ${focusStyles} sm:w-1/2 sm:ml-4`}>
-        <a className="no-underline" href="#">
-          <div className="flex flex-row justify-between items-center">
-            <div className="bg-black bg-opacity-10 py-1 px-3">
-              <svg
-                className="fill-current text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="-2 -5 24 24"
-                width="24"
-                height="24"
-                preserveAspectRatio="xMinYMin"
-              >
-                <path d="M18.572.083L10.676 7.12a1 1 0 0 1-1.331 0L1.416.087A2 2 0 0 1 2 0h16a2 2 0 0 1 .572.083zm1.356 1.385c.047.17.072.348.072.532v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2c0-.185.025-.364.072-.534l7.942 7.148a3 3 0 0 0 3.992 0l7.922-7.146z"></path>
-              </svg>
-            </div>
-            <div className="w-full">Subscribe to the newsletter</div>
-          </div>
-        </a>
-      </button>
+      <NewsletterModal sourcePage="blog-template" />
     </div>
   );
 }

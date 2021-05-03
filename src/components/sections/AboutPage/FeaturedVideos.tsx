@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Button from '../../Button';
 import FullScreenYouTube from '../../FullScreenYouTube';
+import NewsletterModal from '../../NewsletterModal';
 import { useIntl } from 'react-intl';
 
 export default function FeaturedVideos() {
@@ -126,6 +127,7 @@ export default function FeaturedVideos() {
           <Button link="/blog" extraClass="">
             {intl.formatMessage({ id: 'about-page-blog-cta' })}
           </Button>
+          <NewsletterModal sourcePage='about' />
         </div>
       </div>
     </section>
