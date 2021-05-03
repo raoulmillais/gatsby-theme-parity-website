@@ -17,7 +17,9 @@ export default function HeroIntro() {
             <h3 className="text-2xl mt-16 md:mt-0 md:text-3xl font-normal ">
               {intl.formatMessage({ id: 'homepage-intro-section-one-title' })}
             </h3>
-            <p className="font-light text-lg text-textDark">{intl.formatMessage({ id: 'homepage-intro-section-one-text-one' })}</p>
+            <p className="font-light text-lg text-textDark">
+              {intl.formatMessage({ id: 'homepage-intro-section-one-text-one' })}
+            </p>
             <p className="font-light text-lg text-textDark mb-0">
               {intl.formatMessage({ id: 'homepage-intro-section-one-text-two' })}
             </p>
