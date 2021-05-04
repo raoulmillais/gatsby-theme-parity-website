@@ -28,24 +28,22 @@ export default function ParityTech() {
   `);
 
   return (
-    <section className="h-full border-t-2">
+    <section className="h-full border-t">
       <div className="container text-center flex flex-col items-center justify-center">
         <h4 className="font-normal text-lg md:text-2xl py-10">
           {intl.formatMessage({ id: 'solutions-page-teams-building' })}
         </h4>
         <div className="flex flex-wrap justify-center opacity-50 pb-6 object-contain">
-          {images.allFile.edges.map((edge: any) => {
+          {images.allFile.edges.map((edge: any, index: number) => {
             return (
-              <>
-                <div className="mx-8 mb-8 flex items-center justify-center">
-                  <Img
-                    className="w-40 h-auto"
-                    key={edge.node.id}
-                    fluid={edge.node.childImageSharp.fluid}
-                    alt={edge.node.name}
-                  />
-                </div>
-              </>
+              <div key={index} className="mx-8 mb-8 flex items-center justify-center">
+                <Img
+                  className="w-40 h-auto"
+                  key={edge.node.id}
+                  fluid={edge.node.childImageSharp.fluid}
+                  alt={edge.node.name}
+                />
+              </div>
             );
           })}
         </div>
