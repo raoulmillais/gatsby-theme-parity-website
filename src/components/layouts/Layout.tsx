@@ -6,6 +6,7 @@ import Header from './Header';
 import HeaderLight from './HeaderLight';
 import Footer from './Footer';
 import ScrollToTop from '../ScrollToTop';
+import Banner from '../Banner';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ const components = {
 export default function Layout(props: LayoutProps) {
   return (
     <>
+      <Banner />
       {props.theme === 'light' ? <HeaderLight /> : <Header />}
       <main className="">
         <ScrollToTop />
