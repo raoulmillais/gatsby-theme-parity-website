@@ -25,7 +25,7 @@ export default function PolkadotPage() {
       </section>
       <section className="bg-textDark">
         <div className="container">
-          <div className="text-gray-300 px-4 lg:px-0 py-24 lg:py-32 lg:flex lg:justify-between">
+          <div className="text-gray-300 px-8 lg:px-0 py-24 lg:py-32 lg:flex lg:justify-between">
             <div className="lg:w-1/2">
               <h4 className="text-gray-300 font-normal text-3xl md:text-5xl leading-snug mb-6 lg:max-w-lg">
                 {intl.formatMessage({ id: 'polkadot-page-intro-title' })}

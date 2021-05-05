@@ -15,7 +15,7 @@ export default function AboutIntro() {
           </div>
           <div className="mt-10 md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
             <h3 className="font-normal">{intl.formatMessage({ id: 'about-page-text-block-one-title' })}</h3>
-            <p className="text-textDark text-lg">
+            <p className="text-textLight text-lg">
               {intl.formatMessage({ id: 'about-page-text-block-one-description' })}
             </p>
             <hr className="border-1 border-parityPink w-12" />
@@ -27,7 +27,7 @@ export default function AboutIntro() {
           </div>
           <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
             <h3 className="font-normal max-w-md">{intl.formatMessage({ id: 'about-page-text-block-two-title' })}</h3>
-            <p className="text-textDark text-lg">
+            <p className="text-textLight text-lg">
               {intl.formatMessage({ id: 'about-page-text-block-two-description' })}
             </p>
             <hr className="border-1 border-parityPink w-12" />

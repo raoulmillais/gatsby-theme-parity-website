@@ -16,7 +16,7 @@ export default function BuildOnParity() {
             alt="World Food Programme build on Parity Technologie"
           />
         </div>
-        <div className="text-textDark px-6 md:py-6 md:w-1/2 lg:flex lg:justify-center lg:items-center">
+        <div className="text-textDark px-6 py-6 md:w-1/2 lg:flex lg:justify-center lg:items-center">
           <div className="lg:w-2/3 ">
             <h6 className="text-xs uppercase tracking-wide mb-10 md:mb-8">
               {intl.formatMessage({ id: 'homepage-build-on-parity-tech' })}

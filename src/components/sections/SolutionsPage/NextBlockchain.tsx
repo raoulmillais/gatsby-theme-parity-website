@@ -6,7 +6,7 @@ export default function NextBlockchain() {
 
   return (
     <section className="h-full">
-      <div className="container px-4 pt-12 md:pt-24 pb-20 md:pb-32 max-w-5xl">
+      <div className="container px-8 pt-12 md:pt-24 pb-20 md:pb-32 max-w-5xl">
         <h3 className="text-center py-6 font-normal md:text-4xl lg:text-5xl">
           {intl.formatMessage({ id: 'solutions-page-blockchain-title' })}
         </h3>

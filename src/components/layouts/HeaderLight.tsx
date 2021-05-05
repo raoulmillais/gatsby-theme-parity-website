@@ -29,7 +29,7 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="container relative md:flex md:justify-between md:px-4 z-10">
+    <header className={`container relative md:flex md:justify-between md:px-4 z-10 ${isOpen ? 'bg-white' : null}`}>
       <div className="flex items-center justify-between px-4 py-3 md:p-0 ">
         <div>
           <LocalizedLink to="/">
