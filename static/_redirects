@@ -1,0 +1,9 @@
+# Parity.io Redirects for Gatsby site
+
+# Technology section
+
+/polkadot /technologies/polkadot
+/substrate /technologies/ubstrate
+/signer /technologies/signer
+/bitcoin /technologies/bitcoin
+/ethereum /technologies/ethereum
