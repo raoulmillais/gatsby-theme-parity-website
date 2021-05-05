@@ -85,7 +85,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
                 image={post.node.frontmatter.image}
                 date={post.node.frontmatter.date_published}
                 title={post.node.frontmatter.blogTitle}
-                link={`https://staging.parity.io/${post.node.frontmatter.slug}`}
+                link={post.node.frontmatter.slug}
                 key={index}
               />
             ))}
