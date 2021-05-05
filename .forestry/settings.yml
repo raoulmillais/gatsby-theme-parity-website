@@ -22,6 +22,10 @@ sections:
   path: content/events/events.json
   label: Events
 - type: document
+  path: content/banner/banner.json
+  label: Banner
+  match: "**/*"
+- type: document
   path: package.json
   label: Scripts
   read_only: true
