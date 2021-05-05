@@ -24,7 +24,6 @@ sections:
 - type: document
   path: content/banner/banner.json
   label: Banner
-  match: "**/*"
 - type: document
   path: package.json
   label: Scripts
