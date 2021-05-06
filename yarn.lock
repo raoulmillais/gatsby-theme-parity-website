@@ -6683,6 +6683,18 @@ gatsby-plugin-eslint@^2.0.8:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.8.tgz#1ff7f546a427d274dc2de3932ba29822aae330c3"
   integrity sha512-vAMy37povmQJNg6ZxY78fkWR3pKwG8MNMhO3u+4vXj2MYT5avhFvHPJTAb126ZCuygf30gAWlpwbV50zP894Jw==
 
+gatsby-plugin-gdpr-cookies@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gdpr-cookies/-/gatsby-plugin-gdpr-cookies-2.0.0.tgz#7cb3a4c3c8e8b887f73359f3397d4ec6055d5323"
+  integrity sha512-qyCYgxhjJcpVKdG5fBKBlJPmjDV8J6n5UJfCmKcR4gWmJYVVZNKgEi9R1a7C8BS4dOwJ7ZvW84dSW4VqcY9b9g==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+
+gatsby-plugin-klaro@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-klaro/-/gatsby-plugin-klaro-1.0.1.tgz#b1329bdec44f933d2d9586806fe1145b92861e40"
+  integrity sha512-iV1oGn6A2zhKMQUAZwsKgZepPz4NtYaJf/pkjeRvvl2rq7hRM6FL+sclH0kx4dkS8N+CYN1/mwQJN2rBb/Klxg==
+
 gatsby-plugin-manifest@^2.9.1:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.10.0.tgz#6d555410aff8b063f95383d0c03f1947c53339f7"
@@ -6802,6 +6814,11 @@ gatsby-plugin-sharp@^2.11.2:
     sharp "^0.27.0"
     svgo "1.3.2"
     uuid "3.4.0"
+
+gatsby-plugin-simple-analytics@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-simple-analytics/-/gatsby-plugin-simple-analytics-1.0.3.tgz#8a051604c1f73cedf62ca4f8412bad2e396aaad2"
+  integrity sha512-CAKVfAlN8EbOoNThXeDwC4Neh7G8V7zTBzrdZpO0S1k60rcr0gXjI1V8QS5QJ5TYQ9yRTSjSXYhL4q3oM04jIg==
 
 gatsby-plugin-sitemap@^2.9.0:
   version "2.10.0"

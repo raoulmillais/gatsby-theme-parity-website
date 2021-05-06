@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { MdxLink } from 'gatsby-theme-i18n';
+import { useLocation } from '@reach/router';
+import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 
 import Header from './Header';
 import HeaderLight from './HeaderLight';
@@ -18,6 +20,20 @@ const components = {
 };
 
 export default function Layout(props: LayoutProps) {
+  const location = useLocation();
+  const [cookieClicked, setCookieClicked] = useState(false);
+
+  useEffect(() => {
+    const learnMoreAnchor = document.querySelector('.cn-learn-more');
+    learnMoreAnchor?.addEventListener('click', () => {
+      setCookieClicked(!cookieClicked);
+    });
+    const acceptCookieButton = document.querySelector('.cm-btn-success');
+    acceptCookieButton?.addEventListener('click', () => {
+      initializeAndTrack(location);
+    });
+  }, [cookieClicked]);
+
   return (
     <>
       <Banner />

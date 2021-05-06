@@ -49,8 +49,8 @@ export default function BlogTemplate(props: BlogTemplateProps) {
               timeToRead={props.data.mdx.timeToRead}
             />
             {props.data.mdx.frontmatter.image ? (
-              <div className="mb-12 ring-1 ring-black ring-opacity-5 shadow-xl">
-                <img src={props.data.mdx.frontmatter.image} alt={props.data.mdx.frontmatter.title} />
+              <div className="mb-12 ring-1 ring-black ring-opacity-5 shadow-xl rounded">
+                <img className="rounded" src={props.data.mdx.frontmatter.image} alt={props.data.mdx.frontmatter.title} />
               </div>
             ) : (
               <div className="my-12"></div>

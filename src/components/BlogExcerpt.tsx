@@ -56,7 +56,7 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
       <div>
         {image ? (
           <LocalizedLink to={`/${link}`}>
-            <img src={image} alt={title} />
+            <img className="rounded" src={image} alt={title} />
           </LocalizedLink>
         ) : (
           <div className="my-12"></div>

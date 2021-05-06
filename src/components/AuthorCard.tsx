@@ -31,7 +31,7 @@ export default function AuthorCard(props: AuthorCardProps) {
   }, []);
 
   return (
-    <div className="flex items-center bg-white py-4 px-1 sm:px-8 mb-4 ring-1 ring-black ring-opacity-5 shadow-sm">
+    <div className="flex items-center bg-white py-4 px-1 sm:px-8 mb-4 ring-1 ring-black ring-opacity-5 rounded shadow-sm">
       <div className="h-20 w-20">
         <LocalizedLink to={authorPage}>
           <img className="rounded-full" src={image} alt={name} />

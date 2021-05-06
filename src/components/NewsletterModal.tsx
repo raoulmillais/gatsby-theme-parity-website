@@ -47,7 +47,7 @@ const NewsletterModal = (props: NewsletterModalProps) => {
     <>
       {sourcePage === 'footer' ? (
         <button
-          className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-wider  px-24 py-2 focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
+          className="mt-6 bg-parityPink font-border text-sm text-white opacity-90 font-normal tracking-wider  px-24 py-2 rounded-sm focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5"
           onClick={() => setShowModal(!showModal)}
         >
           {intl.formatMessage({ id: 'newsletter-cta' })}

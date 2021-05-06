@@ -156,9 +156,9 @@ export default function Footer() {
             <LocalizedLink to="/applicant-notice" className={navItemsSubFooter}>
               {intl.formatMessage({ id: 'nav-applicant' })}
             </LocalizedLink>
-            <LocalizedLink to="/#" className={navItemsSubFooter}>
+            <span className={`${navItemsSubFooter} cursor-pointer`} onClick={() => klaro.show()}>
               {intl.formatMessage({ id: 'nav-cookie-settings' })}
-            </LocalizedLink>
+            </span>
           </div>
           <div className="flex justify-center mb-8 xl:justify-end">
             <a href={socialLinks.site.siteMetadata.twitter} target="_blank" rel="noreferrer">
