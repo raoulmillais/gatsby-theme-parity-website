@@ -1,6 +1,6 @@
 import React from 'react';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import { Link } from "gatsby";
+import { Link } from 'gatsby';
 
 interface BlogCardProps {
   image: string;
@@ -12,8 +12,6 @@ interface BlogCardProps {
 export default function BlogCard(props: BlogCardProps) {
   const { image, date, title, link } = props;
   const trimmedTitle = title.replace(/^(.{50}[^\s]*).*/, '$1');
-
-  console.log(link);
 
   return (
     <div className="bg-white mx-4 my-8 rounded-lg shadow h-full md:w-1/3">
