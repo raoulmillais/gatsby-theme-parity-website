@@ -39,7 +39,9 @@ export default function ParityTech() {
     <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityWhite">
       <div className="container py-16 md:pt-16 md:pb-24 flex flex-col items-center text-center ">
         <div className="px-8 max-w-3xl md:py-8">
-          <h3 className="font-normal md:text-5xl">{intl.formatMessage({ id: 'solutions-page-expert-title' })}</h3>
+          <h3 className="font-normal md:text-5xl md:leading-tight">
+            {intl.formatMessage({ id: 'solutions-page-expert-title' })}
+          </h3>
           <p className="text-base md:text-lg text-textDark leading-7 md:py-8">
             {intl.formatMessage({ id: 'solutions-page-expert-description' })}
           </p>

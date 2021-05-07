@@ -25,7 +25,7 @@ export default function Social() {
     <section className="h-full bg-parityPink">
       <div className="container flex flex-col md:flex-row md:justify-evenly items-center">
         <div className="my-8 md:my-0">
-          <h4 className="text-white md:text-2xl opacity-70">
+          <h4 className="text-white md:text-2xl opacity-90">
             {intl.formatMessage({ id: 'homepage-social-card-title' })}
           </h4>
         </div>
