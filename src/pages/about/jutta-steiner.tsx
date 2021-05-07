@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import Img from 'gatsby-image';
 import Button from '../../components/Button';
-import FullScreenYouTube from '../../components/FullScreenYouTube';
+import FullWidthYouTube from '../../components/FullWidthYouTube';
 import Social from '../../components/Social';
 import SEO from '../../components/layouts/SEO';
 
@@ -32,9 +32,7 @@ export default function JuttaSteiner(props: JuttaSteinerProps) {
                 fluid={data.juttaPortrait.childImageSharp.fluid}
                 alt={intl.formatMessage({ id: 'jutta-steiner' })}
               />
-              <caption className="text-xs flex italic text-textLight py-4">
-                {intl.formatMessage({ id: 'jutta-steiner' })}
-              </caption>
+              <p className="text-xs flex italic text-textLight py-4">{intl.formatMessage({ id: 'jutta-steiner' })}</p>
             </div>
             <div className="text-textDark px-4 text-lg lg:text-xl sm:w-2/3 md:w-1/2">
               <p className="font-normal">
@@ -71,7 +69,7 @@ export default function JuttaSteiner(props: JuttaSteinerProps) {
         </div>
       </section>
       <section>
-        <div className="container py-16 max-w-3xl">
+        <div className="container px-4 py-16 max-w-3xl">
           <div className="text-center">
             <blockquote className="font-light tracking-wide">
               {`"${intl.formatMessage({ id: 'about-page-jutta-quote' })}"`}
@@ -80,15 +78,9 @@ export default function JuttaSteiner(props: JuttaSteinerProps) {
               — {intl.formatMessage({ id: 'jutta-steiner' })}
             </p>
           </div>
-          <div className="py-12 max-w-md mx-auto ">
-            <FullScreenYouTube
-              image={data.jutta.childImageSharp.fluid.src}
-              videoId="Gsy2Sl1EtFs"
-              link="/about/jutta-steiner/"
-            />
-            <p className="font-normal text-sm pt-0 -mt-5 ml-2">
-              {intl.formatMessage({ id: 'jutta-page-video-caption' })}
-            </p>
+          <div className="py-12 max-w-2xl mx-auto">
+            <FullWidthYouTube image={data.jutta.childImageSharp.fluid.src} videoId="Gsy2Sl1EtFs" />
+            <p className="font-normal text-sm pt-2 ml-2">{intl.formatMessage({ id: 'jutta-page-video-caption' })}</p>
           </div>
         </div>
       </section>

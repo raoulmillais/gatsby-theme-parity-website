@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../../components/layouts/Layout';
 import TransparentButton from '../../components/TransparentButton';
 import FullScreenYouTube from '../../components/FullScreenYouTube';
+import FullWidthYouTube from '../../components/FullWidthYouTube';
 import Img from 'gatsby-image';
 import { useIntl } from 'react-intl';
 import substrateLogo from '../../images/substrate-logo-dark.svg';
@@ -289,17 +290,17 @@ export default function SubstratePage({ data }: SubstratePageProps) {
           </div>
         </div>
       </section>
-      <section className="bg-textDark">
-        <div className="flex flex-col md:flex-row md:justify-center md:items-center py-12">
-          <div className="">
-            <FullScreenYouTube image={data.gavinWeb3.childImageSharp.fluid.src} link="none" videoId="0IoUZdDi5Is" />
-          </div>
-          <div className="text-gray-300 mx-4 -mt-6 lg:w-1/2 max-w-lg">
-            <h4 className="text-gray-300 font-normal text-2xl md:text-4xl mb-8 leading-relaxed">
-              {intl.formatMessage({ id: 'substrate-page-launch-blockchain-title' })}
-            </h4>
-            <p className="text-lg">{intl.formatMessage({ id: 'substrate-page-launch-blockchain-description' })}</p>
-          </div>
+      <section className="bg-textDark md:flex">
+        <div className="md:w-1/2">
+          <FullWidthYouTube image={data.gavinWeb3.childImageSharp.fluid.src} videoId="0IoUZdDi5Is" />
+        </div>
+        <div className="mx-4 py-10 md:w-1/2 md:py-0 md:flex md:flex-col md:justify-center xl:pl-20">
+          <h4 className="text-parityWhite font-normal max-w-md text-2xl md:text-3xl mb-8">
+            {intl.formatMessage({ id: 'substrate-page-launch-blockchain-title' })}
+          </h4>
+          <p className="text-parityWhite font-light text-base max-w-md md:text-lg md:mb-0">
+            {intl.formatMessage({ id: 'substrate-page-launch-blockchain-description' })}
+          </p>
         </div>
       </section>
       <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray h-full py-6">

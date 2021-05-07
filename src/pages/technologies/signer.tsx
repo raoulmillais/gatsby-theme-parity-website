@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import Layout from '../../components/layouts/Layout';
 import SEO from '../../components/layouts/SEO';
 import Img from 'gatsby-image';
-import FullScreenYouTube from '../../components/FullScreenYouTube';
+import FullWidthYouTube from '../../components/FullWidthYouTube';
 import Social from '../../components/Social';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import signerLogo from '../../images/signer/logo-parity-signer-light.svg';
@@ -12,7 +12,6 @@ import signerApple from '../../images/signer/button-app-store-light.svg';
 import signerAppleDark from '../../images/signer/button-app-store.svg';
 import signerAndroid from '../../images/signer/button-google-play-light.svg';
 import signerAndroidDark from '../../images/signer/button-google-play.svg';
-import elementLogo from '../../images/';
 
 interface ParitySignerProps {
   data: any;
@@ -212,23 +211,17 @@ export default function ParitySigner({ data }: ParitySignerProps) {
           </div>
         </div>
       </section>
-      <section className="bg-textDark">
-        <div className="flex flex-col md:flex-row md:justify-center md:items-center py-12">
-          <div className="lg:w-1/2 max-w-md mb-12 md:mb-0">
-            <FullScreenYouTube
-              image={data.videoThumbnail.childImageSharp.fluid.src}
-              link="none"
-              videoId="57fl_hmOuZg"
-            />
-          </div>
-          <div className="mx-4 -mt-6 lg:w-1/2 max-w-lg">
-            <h4 className="text-parityWhite font-normal text-2xl md:text-3xl mb-8">
-              {intl.formatMessage({ id: 'signer-page-video-section-title' })}
-            </h4>
-            <p className="text-parityWhite text-base md:text-lg">
-              {intl.formatMessage({ id: 'signer-page-video-section-description' })}
-            </p>
-          </div>
+      <section className="bg-textDark md:flex">
+        <div className="md:w-1/2">
+          <FullWidthYouTube image={data.videoThumbnail.childImageSharp.fluid.src} videoId="57fl_hmOuZg" />
+        </div>
+        <div className="mx-4 py-10 md:w-1/2 md:py-0 md:flex md:flex-col md:justify-center xl:pl-20">
+          <h4 className="text-parityWhite font-normal max-w-md text-2xl md:text-3xl mb-8">
+            {intl.formatMessage({ id: 'signer-page-video-section-title' })}
+          </h4>
+          <p className="text-parityWhite font-light text-base max-w-md md:text-lg md:mb-0">
+            {intl.formatMessage({ id: 'signer-page-video-section-description' })}
+          </p>
         </div>
       </section>
       <section className="bg-hero-pattern-dark bg-cover bg-center h-full">
