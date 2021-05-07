@@ -1,6 +1,5 @@
 import React from 'react';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import { Link } from 'gatsby';
 
 interface BlogCardProps {
   image: string;
@@ -17,7 +16,7 @@ export default function BlogCard(props: BlogCardProps) {
     <div className="bg-white mx-4 my-8 rounded-lg shadow h-full md:w-1/3">
       <div className="object-cover h-2/3 md:h-3/4">
         <LocalizedLink to={`/${link}`}>
-          <img className="rounded-t-lg" src={image} />
+          <img className="rounded-t-lg" src={image} alt={title} />
         </LocalizedLink>
       </div>
       <div className="p-4 md:py-6 h-1/3 md:h-1/4">

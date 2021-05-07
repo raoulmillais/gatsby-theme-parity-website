@@ -20,7 +20,7 @@ export default function BlogCard(props: EventCardProps) {
     <article className="bg-white mx-4 my-8 rounded-lg shadow max-w-sm">
       <div className="object-cover">
         <a href={link}>
-          <img className="rounded-t-lg" src={image} />
+          <img className="rounded-t-lg" src={image} alt="Parity Event Main Image" />
         </a>
       </div>
       <div className="px-4 pb-3">

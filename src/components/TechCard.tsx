@@ -19,7 +19,7 @@ export default function TechCard(props: TechCardProps) {
         <div className="bg-white m-4 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3 rounded-md">
           <LocalizedLink to={link} className="no-underline">
             <div className="px-4 pt-6 pb-6 flex flex-col items-center">
-              <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />
+              <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="Parity Technology Logo" />
               <h4 className="m-6">{title}</h4>
               <p className="text-sm md:text-base text-textDark leading-7 2xl:w-2/3">{description}</p>
             </div>
@@ -31,7 +31,7 @@ export default function TechCard(props: TechCardProps) {
         <div className="bg-textDark text-gray-200 m-4 text-center hover:shadow-2xl transition-shadow duration-500 cursor-pointer md:w-1/3 rounded-md">
           <LocalizedLink to={link} className="no-underline">
             <div className="px-4 pt-6 pb-6 md:pb-16 flex flex-col items-center">
-              <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="" />
+              <img className={`h-16 w-auto ${extraClass}`} src={logo} alt="Parity Technology Logo" />
               <h6 className="m-3 text-lg md:text-xl text-gray-200">{title}</h6>
               <p className="text-sm md:text-base leading-7 2xl:w-2/3">{description}</p>
             </div>

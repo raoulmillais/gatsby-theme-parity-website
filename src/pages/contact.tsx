@@ -61,7 +61,7 @@ export default function ContactPage({ data }: ContactPageProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <img className="h-12 w-12 mx-auto mb-2 md:mb-0" src={elementLogo} />
+                    <img className="h-12 w-12 mx-auto mb-2 md:mb-0" src={elementLogo} alt="Element Logo" />
                   </a>
                   <div className="text-center md:text-left md:px-4 text-sm">
                     <div className="mb-0 md:mb-2">

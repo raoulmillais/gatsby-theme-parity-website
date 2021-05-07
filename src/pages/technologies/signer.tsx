@@ -102,7 +102,7 @@ export default function ParitySigner({ data }: ParitySignerProps) {
       <section className="bg-textDark border-b border-parityBorder">
         <div className="md:py-10">
           <div className="text-gray-200 text-center mx-6 py-16">
-            <img className="h-12 w-auto mx-auto mb-10" src={signerLogo} alt="" />
+            <img className="h-12 w-auto mx-auto mb-10" src={signerLogo} alt="Parity Signer Logo" />
             <h3 className="text-gray-200 font-normal md:text-5xl max-w-screen-lg mx-auto">
               {intl.formatMessage({ id: 'signer-page-into-title' })}
             </h3>
