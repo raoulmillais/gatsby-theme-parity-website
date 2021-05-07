@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { useIntl } from 'react-intl';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import Layout from '../../components/layouts/Layout';
@@ -8,15 +9,17 @@ import CardNoLink from '../../components/CardNoLink';
 import FooterCTA from '../../components/FooterCTA';
 import Social from '../../components/Social';
 import parityBitcoinLogo from '../../images/logo-parity-bitcoin.svg';
-import gitterLogo from '../../images/signer/logo-gitter.svg';
 import introImageOne from '../../images/image-5.jpg';
 import introImageTwo from '../../images/image-3.jpg';
 import imageOne from '../../images/blog-parity-bitcoin.png';
 
-export default function BitcoinPage() {
+interface BitcoinPageProps {
+  data: any;
+}
+
+export default function BitcoinPage({ data }: BitcoinPageProps) {
   const intl = useIntl();
   const githubBitcoin = 'https://github.com/paritytech/parity-bitcoin';
-  const gitterSigner = 'https://gitter.im/paritytech/parity-bitcoin';
 
   return (
     <Layout>
@@ -64,13 +67,30 @@ export default function BitcoinPage() {
               </p>
             </div>
             <div className="flex flex-col items-center md:flex-row py-4 md:border-l md:pl-12">
-              <a className="mb-4 md:mb-0" href={gitterSigner} target="_blank" rel="noreferrer">
-                <img className="w-auto h-12" src={gitterLogo} alt="gitter logo parity technologies" />
+              <a className="mb-4 md:mb-0" href={data.site.siteMetadata.element} target="_blank" rel="noreferrer">
+                <svg className="h-12 w-auto" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M25.28 10.88C25.28 9.28942 26.5694 8 28.16 8C38.7639 8 47.36 16.5961 47.36 27.2C47.36 28.7906 46.0706 30.08 44.48 30.08C42.8894 30.08 41.6 28.7906 41.6 27.2C41.6 19.7773 35.5827 13.76 28.16 13.76C26.5694 13.76 25.28 12.4706 25.28 10.88Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M38.72 53.12C38.72 54.7106 37.4306 56 35.84 56C25.2361 56 16.64 47.4039 16.64 36.8C16.64 35.2094 17.9294 33.92 19.52 33.92C21.1105 33.92 22.4 35.2094 22.4 36.8C22.4 44.2227 28.4173 50.24 35.84 50.24C37.4306 50.24 38.72 51.5294 38.72 53.12Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M10.88 38.72C9.28942 38.72 8 37.4306 8 35.84C8 25.2361 16.5961 16.64 27.2 16.64C28.7906 16.64 30.08 17.9294 30.08 19.52C30.08 21.1105 28.7906 22.4 27.2 22.4C19.7773 22.4 13.76 28.4173 13.76 35.84C13.76 37.4306 12.4706 38.72 10.88 38.72Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M53.12 25.28C54.7106 25.28 56 26.5694 56 28.16C56 38.7639 47.4039 47.36 36.8 47.36C35.2094 47.36 33.92 46.0706 33.92 44.48C33.92 42.8895 35.2094 41.6 36.8 41.6C44.2227 41.6 50.24 35.5827 50.24 28.16C50.24 26.5694 51.5294 25.28 53.12 25.28Z"
+                    fill="white"
+                  />
+                </svg>
               </a>
               <p className="font-normal text-sm text-parityGray text-center md:text-left mx-8 mb-0">
-                {intl.formatMessage({ id: 'bitcoin-page-gitter-description' })}{' '}
-                <a href={gitterSigner} target="_blank" rel="noreferrer">
-                  {intl.formatMessage({ id: 'bitcoin-page-gitter-cta' })}
+                {intl.formatMessage({ id: 'bitcoin-page-element-description' })}{' '}
+                <a href={data.site.siteMetadata.element} target="_blank" rel="noreferrer">
+                  {intl.formatMessage({ id: 'bitcoin-page-element-cta' })}
                 </a>
               </p>
             </div>
@@ -142,15 +162,15 @@ export default function BitcoinPage() {
         </div>
       </section>
       <section>
-        <div className="2xl:container md:flex ">
-          <div className="h-64 md:h-96 md:w-1/2">
+        <div className="container md:flex">
+          <div className="h-64 md:h-96 w-auto md:w-1/2">
             <img
               className="h-full w-full object-cover"
               src={imageOne}
               alt="World Food Programme build on Parity Technologie"
             />
           </div>
-          <div className="text-textDark px-6 py-16 md:w-1/2 lg:flex lg:justify-center">
+          <div className="text-textDark px-6 py-11 md:w-1/2 lg:flex lg:justify-center">
             <div className="lg:w-2/3">
               <h6 className="text-xs uppercase tracking-wide mb-8">
                 {intl.formatMessage({ id: 'bitcoin-page-from-the-blog' })}
@@ -285,3 +305,13 @@ export default function BitcoinPage() {
     </Layout>
   );
 }
+
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        element
+      }
+    }
+  }
+`;

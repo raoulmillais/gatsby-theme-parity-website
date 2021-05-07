@@ -6,7 +6,7 @@ import Layout from '../components/layouts/Layout';
 import SEO from '../components/layouts/SEO';
 import Social from '../components/Social';
 import NewsletterModal from '../components/NewsletterModal';
-import gitterLogo from '../images/logo-gitter-dark.svg';
+// import gitterLogo from '../images/logo-gitter-dark.svg';
 import elementLogo from '../images/logo-element-dark.svg';
 
 interface ContactPageProps {
@@ -27,7 +27,7 @@ export default function ContactPage({ data }: ContactPageProps) {
                 {intl.formatMessage({ id: 'contact-page-title' })}
               </h3>
               <div className="pt-12 pb-4 md:flex md:place-content-center">
-                <div className="bg-white text-textDark m-4 py-4 md:py-6 flex flex-col md:flex-grow md:flex md:flex-row md:justify-center md:items-center md:max-w-xs">
+                {/* <div className="bg-white text-textDark m-4 py-4 md:py-6 flex flex-col md:flex-grow md:flex md:flex-row md:justify-center md:items-center md:max-w-xs">
                   <a
                     className="text-parityPink no-underline hover:underline"
                     href={data.site.siteMetadata.gitter}
@@ -53,7 +53,7 @@ export default function ContactPage({ data }: ContactPageProps) {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="bg-white text-textDark m-4 py-4 md:py-6 flex flex-col md:flex-grow md:flex md:flex-row md:justify-center md:items-center md:max-w-xs">
                   <a
                     className="text-parityPink no-underline hover:underline"

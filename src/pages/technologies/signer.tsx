@@ -20,7 +20,6 @@ interface ParitySignerProps {
 export default function ParitySigner({ data }: ParitySignerProps) {
   const intl = useIntl();
   const githubSigner = 'https://github.com/paritytech/parity-signer';
-  const gitterSigner = 'https://gitter.im/paritytech/parity-signer';
 
   return (
     <Layout theme="light">
@@ -70,7 +69,7 @@ export default function ParitySigner({ data }: ParitySignerProps) {
               </p>
             </div>
             <div className="flex flex-col items-center md:flex-row md:items-center py-4 md:border-l md:pl-12">
-              <a className="mb-4 md:mb-0" href={gitterSigner} target="_blank" rel="noreferrer">
+              <a className="mb-4 md:mb-0" href={data.site.siteMetadata.element} target="_blank" rel="noreferrer">
                 <svg className="h-12 w-auto" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M25.28 10.88C25.28 9.28942 26.5694 8 28.16 8C38.7639 8 47.36 16.5961 47.36 27.2C47.36 28.7906 46.0706 30.08 44.48 30.08C42.8894 30.08 41.6 28.7906 41.6 27.2C41.6 19.7773 35.5827 13.76 28.16 13.76C26.5694 13.76 25.28 12.4706 25.28 10.88Z"
@@ -92,7 +91,7 @@ export default function ParitySigner({ data }: ParitySignerProps) {
               </a>
               <p className="font-normal text-sm text-parityGray text-center md:text-left mx-8 mb-0">
                 {intl.formatMessage({ id: 'signer-page-element-text' })}{' '}
-                <a href={gitterSigner} target="_blank" rel="noreferrer">
+                <a href={data.site.siteMetadata.element} target="_blank" rel="noreferrer">
                   {intl.formatMessage({ id: 'signer-page-element-link-text' })}
                 </a>
               </p>
@@ -264,7 +263,7 @@ export const query = graphql`
   {
     site {
       siteMetadata {
-        gitter
+        element
         github
       }
     }
