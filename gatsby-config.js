@@ -10,8 +10,8 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 module.exports = {
   siteMetadata: {
     title: 'Parity Technologies',
-    siteUrl: 'https://www.parity.io',
-    description: 'Parity Description',
+    siteUrl: siteUrl,
+    description: 'Blockchain Infrastructure for Decentralized Web',
     author: 'Parity WebDev Team',
     pressEmail: 'press@parity.io',
     email: 'info@parity.io',
@@ -139,6 +139,62 @@ module.exports = {
             host: null,
           },
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed-mdx`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  title: edge.node.frontmatter.blogTitle,
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date_published,
+                  url: site.siteMetadata.siteUrl + '/' + edge.node.frontmatter.slug,
+                  guid: site.siteMetadata.siteUrl + '/' + edge.node.frontmatter.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.body }],
+                });
+              });
+            },
+            query: `
+              {
+                allMdx(sort: {order: DESC, fields: [frontmatter___date_published]}) {
+                  edges {
+                    node {
+                      excerpt
+                      frontmatter {
+                        tags
+                        slug
+                        image
+                        date_published(formatString: "MMMM DD, YYYY")
+                        author
+                        blogTitle
+                      }
+                      body
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Parity Blog RSS Feed',
+            match: '^/blog/',
+          },
+        ],
       },
     },
     'gatsby-plugin-offline',
