@@ -11,7 +11,10 @@ module.exports = {
   siteMetadata: {
     title: 'Parity Technologies',
     siteUrl: siteUrl,
-    description: 'Blockchain Infrastructure for Decentralized Web',
+    image: '/static/images/parity-og-image.jpeg',
+    description:
+      'Parity Technologies builds core blockchain infrastructure. From Parity Ethereum, the most advanced Ethereum client, to Polkadot, the next-generation interoperable blockchain network.',
+    keywords: ['Blockchain', 'Polkadot', 'Substrate', 'Web3.0', 'Parity Technologies'],
     author: 'Parity WebDev Team',
     pressEmail: 'press@parity.io',
     email: 'info@parity.io',
@@ -238,6 +241,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
+        name: this.siteMetadata.title,
+        short_name: this.siteMetadata.title,
+        start_url: siteUrl,
+        background_color: `#F1F3F2`,
+        theme_color: `#FF1864`,
+        display: `standalone`,
         icon: './src/images/favicon.png',
       },
     },

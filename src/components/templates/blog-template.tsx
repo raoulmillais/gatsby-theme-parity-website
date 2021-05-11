@@ -27,7 +27,13 @@ export default function BlogTemplate(props: BlogTemplateProps) {
 
   return (
     <Layout>
-      <SEO title={props.data.mdx.frontmatter.blogTitle} />
+      <SEO
+        title={props.data.mdx.frontmatter.blogTitle}
+        image={props.data.mdx.frontmatter.image}
+        description={props.data.mdx.excerpt}
+        author={props.data.mdx.frontmatter.author}
+        keywords={props.data.mdx.frontmatter.tags}
+      />
       <section className="md:bg-hero-pattern bg-top bg-no-repeat bg-contain">
         <div className="md:flex md:justify-center">
           <article className="mx-4 font-normal md:text-lg xl:text-xl max-w-screen-md">
@@ -114,6 +120,7 @@ export const query = graphql`
       }
       body
       timeToRead
+      excerpt
     }
     allMdx(sort: { fields: frontmatter___date_published, order: DESC }, limit: 3) {
       edges {
