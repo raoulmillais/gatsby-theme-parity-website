@@ -241,8 +241,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: this.siteMetadata.title,
-        short_name: this.siteMetadata.title,
+        name: `Parity Technologies`,
+        short_name: `Parity Technologies`,
         start_url: siteUrl,
         background_color: `#F1F3F2`,
         theme_color: `#FF1864`,
