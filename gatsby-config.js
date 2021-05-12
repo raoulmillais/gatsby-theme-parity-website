@@ -200,7 +200,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-offline',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -250,7 +249,7 @@ module.exports = {
         icon: './src/images/favicon.png',
       },
     },
-
+    'gatsby-plugin-offline',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
