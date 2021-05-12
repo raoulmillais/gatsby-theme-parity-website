@@ -21,13 +21,13 @@ The first step towards getting started with Substrate is setting up your develop
 
 Run the following command in your terminal, and it will set up your machine ready to hack on Substrate.
 
-`curl`[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")`-sSf | bash`
+`curl https://getsubstrate.io -sSf | bash`
 
 The command takes a few minutes to complete (depending on your hardware) as it also compiles all the Rust packages needed for the Substrate framework.
 
 There is a faster option also available, but it installs only the dependencies and does not compile the Substrate packages. To use this option, run the following command.
 
-`curl`[`https://getsubstrate.io`](https://getsubstrate.io "https://getsubstrate.io")`-sSf | bash`**`-s -- --fast`**
+`curl https://getsubstrate.io -sSf | bash -s -- --fast`
 
 **Note:** In the faster option you will not have the Substrate CLI installed globally in your system.
 
@@ -45,7 +45,7 @@ The first parameter is a name for your blockchain project and the second (option
 
 For example:
 
-`substrate-node-new`**`substrate-demodemoauthor`**
+`substrate-node-new` **`substrate-demodemoauthor`**
 
 Once this command completes, it will create the following directory structure inside the _substrate-demo_ (or the project name you used) directory. It will also initialize a git repository in this directory.
 
@@ -132,14 +132,16 @@ In the second line, we are creating another storage item as a `StorageMap` with 
 
 The full storage declaration code for this module looks like the following. (Note: We’ve removed the dummy storage items which came with the template module.)
 
-    // storage for this runtime module
-    decl_storage! {
-      trait Store for Module<T: Trait> as Template {
-        
-        TotalSupply get(total_supply): u64 = 21000000;
-        BalanceOf get(balance_of): map T::AccountId => u64;
-      }
-    }
+``` rust
+// storage for this runtime module
+decl_storage! {
+  trait Store for Module<T: Trait> as Template {
+    
+    TotalSupply get(total_supply): u64 = 21000000;
+    BalanceOf get(balance_of): map T::AccountId => u64;
+  }
+}
+```
 
 ### Implementing the Runtime Logic
 
@@ -148,39 +150,39 @@ Now that we have the storage defined for our Substrate module let’s write some
 In Substrate modules, public dispatchable functions are defined using the `decl_module!` macro. We have two functions to implement the simple token transfer functionality in our module. These are the initialization of the token and the transfer function.
 
 In the following snippet, these two dispatchable functions — `init` and `transfer` are defined in the `decl_module!` macro.
-
-    decl_module! {
-      pub struct Module<T: Trait> for enum Call where origin: T::Origin {
-          // initialize the token
-          // transfers the total_supply amout to the caller
-          fn init(origin) -> Result {
-            let sender = ensure_signed(origin)?;
-            <BalanceOf<T>>::insert(sender, Self::total_supply());
-            Ok(())
-          }
-          // transfer tokens from one account to another
-          fn transfer(_origin, to: T::AccountId, value: u64) -> Result {
-            let sender = ensure_signed(_origin)?;
-            let sender_balance = Self::balance_of(sender.clone());
-            ensure!(sender_balance >= value, "Not enough balance.");
-            let updated_from_balance =         
-            sender_balance.checked_sub(value)
-            .ok_or("overflow in calculating balance")?;
-            
-            let receiver_balance = Self::balance_of(to.clone());
-            let updated_to_balance = receiver_balance.checked_add(value)
-            .ok_or("overflow in calculating balance")?;
-            
-            // reduce sender's balance
-            <BalanceOf<T>>::insert(sender, updated_from_balance);
-            // increase receiver's balance
-            <BalanceOf<T>>::insert(to.clone(), updated_to_balance);
-            
-            Ok(())
-          }
+``` rust
+decl_module! {
+  pub struct Module<T: Trait> for enum Call where origin: T::Origin {
+      // initialize the token
+      // transfers the total_supply amout to the caller
+      fn init(origin) -> Result {
+        let sender = ensure_signed(origin)?;
+        <BalanceOf<T>>::insert(sender, Self::total_supply());
+        Ok(())
       }
-    }
-
+      // transfer tokens from one account to another
+      fn transfer(_origin, to: T::AccountId, value: u64) -> Result {
+        let sender = ensure_signed(_origin)?;
+        let sender_balance = Self::balance_of(sender.clone());
+        ensure!(sender_balance >= value, "Not enough balance.");
+        let updated_from_balance =         
+        sender_balance.checked_sub(value)
+        .ok_or("overflow in calculating balance")?;
+        
+        let receiver_balance = Self::balance_of(to.clone());
+        let updated_to_balance = receiver_balance.checked_add(value)
+        .ok_or("overflow in calculating balance")?;
+        
+        // reduce sender's balance
+        <BalanceOf<T>>::insert(sender, updated_from_balance);
+        // increase receiver's balance
+        <BalanceOf<T>>::insert(to.clone(), updated_to_balance);
+        
+        Ok(())
+      }
+  }
+}
+```
 Note how we are accessing the module’s storage with`Self::total_supply()` and `<BalanceOf<T>>` to get and set values of these storage items.
 
 Note: From a security perspective, these functions do need a bit more in terms of checks and validations. But to keep things simple, let’s skip them for now.
@@ -189,59 +191,61 @@ That’s it; we have now defined the state and behavior of our tiny blockchain r
 
 The full module code is available in the following GitHub gist. We have removed most of the code with came initially with the `template.rs` file and have only included the proper storage and functions needed for the token transfer functionality.
 
-    use frame_support::{decl_module, decl_storage, dispatch, ensure};
-    use system::ensure_signed;
-    use sp_runtime::{
-    	DispatchResult,
-    	traits::{
-    		SimpleArithmetic, CheckedAdd, CheckedSub,
-    	},
-    };
-    
-    // the module configuration trait
-    pub trait Trait: system::Trait { }
-    
-    // storage for this runtime module
-    decl_storage! {
-      trait Store for Module<T: Trait> as Template {
-        TotalSupply get(fn total_supply) config(): u64 = 21000000;
-    
-        BalanceOf get(fn balance_of): map hasher(blake2_256) T::AccountId => u64;
+``` rust
+use frame_support::{decl_module, decl_storage, dispatch, ensure};
+use system::ensure_signed;
+use sp_runtime::{
+  DispatchResult,
+  traits::{
+    SimpleArithmetic, CheckedAdd, CheckedSub,
+  },
+};
+
+// the module configuration trait
+pub trait Trait: system::Trait { }
+
+// storage for this runtime module
+decl_storage! {
+  trait Store for Module<T: Trait> as Template {
+    TotalSupply get(fn total_supply) config(): u64 = 21000000;
+
+    BalanceOf get(fn balance_of): map hasher(blake2_256) T::AccountId => u64;
+  }
+}
+
+// public interface for this runtime module
+decl_module! {
+  pub struct Module<T: Trait> for enum Call where origin: T::Origin {
+
+      // initialize the token
+      // transfers the total_supply amout to the caller
+      fn init(origin) -> DispatchResult {
+        let sender = ensure_signed(origin)?;
+        <BalanceOf<T>>::insert(sender, Self::total_supply());
+        Ok(())
       }
-    }
-    
-    // public interface for this runtime module
-    decl_module! {
-      pub struct Module<T: Trait> for enum Call where origin: T::Origin {
-    
-          // initialize the token
-          // transfers the total_supply amout to the caller
-          fn init(origin) -> DispatchResult {
-            let sender = ensure_signed(origin)?;
-            <BalanceOf<T>>::insert(sender, Self::total_supply());
-            Ok(())
-          }
-    
-          // transfer tokens from one account to another
-          fn transfer(origin, to: T::AccountId, value: u64) -> DispatchResult {
-            let sender = ensure_signed(origin)?;
-            let sender_balance = Self::balance_of(sender.clone());
-            ensure!(sender_balance >= value, "Not enough balance.");
-    
-            let updated_from_balance = sender_balance.checked_sub(value).ok_or("overflow in calculating balance")?;
-            let receiver_balance = Self::balance_of(to.clone());
-            let updated_to_balance = receiver_balance.checked_add(value).ok_or("overflow in calculating balance")?;
-            
-            // reduce sender's balance
-            <BalanceOf<T>>::insert(sender, updated_from_balance);
-    
-            // increase receiver's balance
-            <BalanceOf<T>>::insert(to.clone(), updated_to_balance);
-            
-            Ok(())
-          }
+
+      // transfer tokens from one account to another
+      fn transfer(origin, to: T::AccountId, value: u64) -> DispatchResult {
+        let sender = ensure_signed(origin)?;
+        let sender_balance = Self::balance_of(sender.clone());
+        ensure!(sender_balance >= value, "Not enough balance.");
+
+        let updated_from_balance = sender_balance.checked_sub(value).ok_or("overflow in calculating balance")?;
+        let receiver_balance = Self::balance_of(to.clone());
+        let updated_to_balance = receiver_balance.checked_add(value).ok_or("overflow in calculating balance")?;
+        
+        // reduce sender's balance
+        <BalanceOf<T>>::insert(sender, updated_from_balance);
+
+        // increase receiver's balance
+        <BalanceOf<T>>::insert(to.clone(), updated_to_balance);
+        
+        Ok(())
       }
-    }
+  }
+}
+```
 
 ### Building and Running the Substrate Node
 

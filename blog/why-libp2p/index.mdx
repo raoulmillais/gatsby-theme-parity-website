@@ -30,7 +30,7 @@ Libp2p also handles peer discovery and handshake protocols. In a world where cli
 
 Many web protocols are stuck in the 90’s, and as security holes are breached, more and more patches are added. That’s where libp2p’s modularity comes in. Libp2p is designed so that you can upgrade any element you want, all while remaining backwards compatible.
 
-# Modularity
+## Modularity
 
 Libp2p has been designed from the start to be very modular, so that it can be implemented in many different peer-to-peer projects. While nodes in traditional peer-to-peer applications are referred to by an IP address and port combination, libp2p uses the concept of a _multiaddress_ instead. Some examples:
 
@@ -44,7 +44,7 @@ The second main aspect of libp2p’s modularity is its protocol negotiation proc
 
 While nodes are encouraged to support a specific set of common protocols, none of them are technically mandatory. This makes it possible to easily experiment with new protocols or new ideas, and to deploy new versions of protocols while still supporting old versions without adding technical debt.
 
-# The main libp2p protocols
+## The main libp2p protocols
 
 While there is no mandatory protocol, in practice nodes are encouraged to support the most commonly-supported protocols. This includes:
 
@@ -63,7 +63,7 @@ Once we have the ability to do this, we can, almost for free, open as many subst
 
 In the context of Substrate, each project is able to define its own networking protocol. For example, the protocol used by the _BBQ Birch_ testnet is named _bbq_ while the protocol used by Polkadot is named _dot_.
 
-# The global vision of libp2p
+## The global vision of libp2p
 
 Another reason to use libp2p is its involvement in decentralized projects. It has been powering [IPFS](https://ipfs.io/) from the very beginning, and is going to be powering several emerging projects such as [Filecoin](https://filecoin.io/), probably Ethereum 2.0, [Agoric](https://agoric.com/), and of course Substrate and Polkadot.
 

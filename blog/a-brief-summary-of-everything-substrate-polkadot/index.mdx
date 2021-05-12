@@ -125,11 +125,11 @@ Substrate and Polkadot are not intended to replace existing infrastructure. Rath
 
 Parachains, blockchains in the Polkadot network, are secured by Polkadot’s relay chain and thus are not able to select their own consensus mechanism. If a blockchain wants to use its own consensus mechanism, it can use a parachain as a “bridge” to connect to Polkadot’s network.
 
-_![](/images/polkadot_relaychain.png)A bridge chain from a 10,000 foot view of the Polkadot architecture_
+![](/images/polkadot_relaychain.png)_A bridge chain from a 10,000 foot view of the Polkadot architecture_
 
 A bridge chain allows an independent blockchain such as Ethereum, with its own particular consensus mechanism, to connect to the Polkadot network. As opposed to parachains, where security is pooled, a network like the Ethereum mainnet will stay independent.
 
-_![](/images/solochainsparachains.png)Possible manifestations of Substrate-based chains_
+![](/images/solochainsparachains.png)_Possible manifestations of Substrate-based chains_
 
 The parachain functionality with pooled security in this case only extends to the bridge, whereas Ethereum, connected to the other side of the bridge, resembles more of a sidechain with the chains’ mutual ability to interpret each other’s block headers, state transition, and finality.
 

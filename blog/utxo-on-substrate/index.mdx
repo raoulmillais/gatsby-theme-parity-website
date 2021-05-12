@@ -55,34 +55,37 @@ That’s exactly what the runtime is meant to do — it defines all entities and
 
 Let’s start by specifying the data types we’ll use to define the business logic of our UTXO chain. The `Transaction` type comes first. It represents a single UTXO transaction to be dispatched:
 
-    /// Single transaction to be dispatched
-    #[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
-    #[derive(PartialEq, Eq, PartialOrd, Ord, Default, Clone, Encode, Decode, Hash)]
-    pub struct Transaction {
-    	/// UTXOs to be used as inputs for current transaction
-    	pub inputs: Vec<TransactionInput>,
-    
-    	/// UTXOs to be created as a result of current transaction dispatch
-    	pub outputs: Vec<TransactionOutput>,
-    }
+<script src="https://gist.github.com/0x7CFE/23e7545fd86e58430e868ff38804e436.js"></script>
+``` rust
+/// Single transaction to be dispatched
+#[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Default, Clone, Encode, Decode, Hash)]
+pub struct Transaction {
+	/// UTXOs to be used as inputs for current transaction
+	pub inputs: Vec<TransactionInput>,
 
+	/// UTXOs to be created as a result of current transaction dispatch
+	pub outputs: Vec<TransactionOutput>,
+}
+```
 Nothing extraordinary here, just a plain definition that the `Transaction` is just a bunch of `inputs` and `outputs`. If you’re curious, you can [compare it](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fparitytech%2Fparity-bitcoin%2Fblob%2Fdadfefe0a47ba79102f5050b81ccbab276261831%2Fchain%2Fsrc%2Ftransaction.rs%23L94) with the version from Parity Bitcoin to see some similarity. All `#[...]` weirdness above is called [attributes](https://medium.com/r/?url=https%3A%2F%2Fdoc.rust-lang.org%2Freference%2Fattributes.html), and it tells the Rust compiler to implement various things for us, like the comparison operators, hash functions, and serialization routines. You may safely ignore them for now.
 
 I’ve intentionally left all the comments and attributes to show that even with them being included, the code remains compact and may be written on a few napkins. I think this is a considerable achievement of Substrate, even when compared to Parity Bitcoin that does “the same thing” in tens of thousands of lines. Much like when writing in JavaScript for the web, you’re not thinking about the overwhelming complexity of a browser engine or anything beneath, down to the OS level. Instead, you just formulate your business logic in a high-level form and allow the system to do the rest.
 
 Okay, but what about `TransactionInput`?
 
-    /// Single transaction input that refers to one UTXO
-    #[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
-    #[derive(PartialEq, Eq, PartialOrd, Ord, Default, Clone, Encode, Decode, Hash)]
-    pub struct TransactionInput {
-    	/// Reference to an UTXO to be spent
-    	pub parent_output: H256,
-    
-    	/// Proof that transaction owner is authorized to spend referred UTXO
-    	pub signature: Signature,
-    }
+``` rust
+/// Single transaction input that refers to one UTXO
+#[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Default, Clone, Encode, Decode, Hash)]
+pub struct TransactionInput {
+	/// Reference to an UTXO to be spent
+	pub parent_output: H256,
 
+	/// Proof that transaction owner is authorized to spend referred UTXO
+	pub signature: Signature,
+}
+``` 
 `TransactionInput` aggregates all data needed to spend a single UTXO. First of all, we need a way to refer to some existing UTXO to spend. The easiest way to do so is to use its hash as an identifier. This is a common practice in the world of distributed systems, and it works really well as long as the probability of a hash collision is negligible. For that, we use 256 bit Blake2. The `parent_output` field contains such a hash.
 
 As previously mentioned, to spend a UTXO the owner must sign it with a secret key that matches the public key stored in that particular UTXO. This is safe as long as the only person knowing the secret key is the owner. Such proof is stored in the `signature` field.
@@ -90,24 +93,25 @@ As previously mentioned, to spend a UTXO the owner must sign it with a secret ke
 The difference between our implementation and Bitcoin is that we refer to `parent_output` directly by its hash, whereas [Bitcoin uses](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fparitytech%2Fparity-bitcoin%2Fblob%2Fdadfefe0a47ba79102f5050b81ccbab276261831%2Fchain%2Fsrc%2Ftransaction.rs%23L19-L44) the hash of a _transaction_ that produced the UTXO coupled with an index to select a particular entry from the list of transaction’s outputs. The reason is that Bitcoin is defined in terms of transactions and blocks, whereas we speak in terms of business logic and state transitions. In our case, Substrate transactions are just supplementary entities that facilitate the process and are mostly out of the scope of the business logic. More on that later.
 
 Next goes the `TransactionOutput` structure that essentially defines the UTXO:
+``` rust
+/// Single transaction output to create upon transaction dispatch
+#[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
+#[derive(Default, PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Hash)]
+pub struct TransactionOutput {
+	/// Value associated with this output
+	pub value: Value,
 
-    /// Single transaction output to create upon transaction dispatch
-    #[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
-    #[derive(Default, PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Hash)]
-    pub struct TransactionOutput {
-    	/// Value associated with this output
-    	pub value: Value,
-    
-    	/// Public key associated with this output. In order to spend this output
-    	/// owner must provide a proof by hashing whole `TransactionOutput` and
-    	/// signing it with a corresponding private key.
-    	pub pubkey: H256,
-    
-    	/// Unique (potentially random) value used to distinguish this
-    	/// particular output from others addressed to the same public
-    	/// key with the same value. Prevents potential replay attacks.
-    	pub salt: u32,
-    }
+	/// Public key associated with this output. In order to spend this output
+	/// owner must provide a proof by hashing whole `TransactionOutput` and
+	/// signing it with a corresponding private key.
+	pub pubkey: H256,
+
+	/// Unique (potentially random) value used to distinguish this
+	/// particular output from others addressed to the same public
+	/// key with the same value. Prevents potential replay attacks.
+	pub salt: u32,
+}
+```
 
 The purpose of `value` and `pubkey` fields should already be clear. The only field worth explaining is `salt`. This field provides extra entropy to make each UTXO and its hash truly unique.
 
@@ -122,33 +126,33 @@ Note, that since the Bitcoin implementation [relies on a transaction hash](https
 So far we have defined all data structures needed to represent a single transaction in memory. But we also need to tell Substrate _what_ to store in its state database to support the business logic of the chain by persisting this information over time.
 
 This is done by defining the module storage using `decl_storage!` macro:
+``` rust
+decl_storage! {
+		trait Store for Module<T: Trait> as Utxo {
+			/// All valid unspent transaction outputs are stored in this map.
+			/// Initial set of UTXO is populated from the list stored in genesis.
+			UnspentOutputs build(|config: &GenesisConfig<T>| {
+				config.initial_utxo
+					.iter()
+					.cloned()
+					.map(|u| (BlakeTwo256::hash_of(&u), u))
+					.collect::<Vec<_>>()
+			}): map H256 => Option<TransactionOutput>;
 
-    decl_storage! {
-    	trait Store for Module<T: Trait> as Utxo {
-    		/// All valid unspent transaction outputs are stored in this map.
-    		/// Initial set of UTXO is populated from the list stored in genesis.
-    		UnspentOutputs build(|config: &GenesisConfig<T>| {
-    			config.initial_utxo
-    				.iter()
-    				.cloned()
-    				.map(|u| (BlakeTwo256::hash_of(&u), u))
-    				.collect::<Vec<_>>()
-    		}): map H256 => Option<TransactionOutput>;
-    
-    		/// Total leftover value to be redistributed among authorities.
-    		/// It is accumulated during block execution and then drained
-    		/// on block finalization.
-    		LeftoverTotal: Value;
-    
-    		/// Outputs that are locked
-    		LockedOutputs: map H256 => Option<LockStatus<T>>;
-    	}
-    
-    	add_extra_genesis {
-    		config(initial_utxo): Vec<TransactionOutput>;
-    	}
-    }
+			/// Total leftover value to be redistributed among authorities.
+			/// It is accumulated during block execution and then drained
+			/// on block finalization.
+			LeftoverTotal: Value;
 
+			/// Outputs that are locked
+			LockedOutputs: map H256 => Option<LockStatus<T>>;
+		}
+
+		add_extra_genesis {
+			config(initial_utxo): Vec<TransactionOutput>;
+		}
+}
+``` 
 It seems to be a large chunk of text, but essentially it defines only three things: a list of unspent outputs, a current amount of leftover value and a list of outputs that are locked and could not be spent unless unlocked. Aside from that, it defines how to populate the chain with an initial set of UTXO during the bootstrap process.
 
 It is important to note that the state storage is very different from block storage.
@@ -165,30 +169,32 @@ These rules are the essence of business logic and need to be considered when val
 
 Let’s have a look at the entry point to the whole UTXO module:
 
-    decl_module! {
-    	pub struct Module<T: Trait> for enum Call where origin: T::Origin {
-    		/// Dispatch a single transaction and update UTXO set accordingly
-    		pub fn execute(origin, transaction: Transaction) -> Result {
-    			ensure_inherent(origin)?;
-    
-    			let leftover = match Self::check_transaction(&transaction)? {
-    				CheckInfo::MissingInputs(_) => return Err("all parent outputs must exist and be unspent"),
-    				CheckInfo::Totals { input, output } => input - output
-    			};
-    
-    			Self::update_storage(&transaction, leftover)?;
-    			Self::deposit_event(Event::TransactionExecuted(transaction));
-    
-    			Ok(())
-    		}
-    
-    		/// Handler called by the system on block finalization
-    		fn on_finalise() {
-    			let authorities: Vec<_> = Consensus::authorities().iter().map(|&a| a.into()).collect();
-    			Self::spend_leftover(&authorities);
-    		}
-    	}
-    }
+``` rust
+decl_module! {
+	pub struct Module<T: Trait> for enum Call where origin: T::Origin {
+		/// Dispatch a single transaction and update UTXO set accordingly
+		pub fn execute(origin, transaction: Transaction) -> Result {
+			ensure_inherent(origin)?;
+
+			let leftover = match Self::check_transaction(&transaction)? {
+				CheckInfo::MissingInputs(_) => return Err("all parent outputs must exist and be unspent"),
+				CheckInfo::Totals { input, output } => input - output
+			};
+
+			Self::update_storage(&transaction, leftover)?;
+			Self::deposit_event(Event::TransactionExecuted(transaction));
+
+			Ok(())
+		}
+
+		/// Handler called by the system on block finalization
+		fn on_finalise() {
+			let authorities: Vec<_> = Consensus::authorities().iter().map(|&a| a.into()).collect();
+			Self::spend_leftover(&authorities);
+		}
+	}
+}
+```
 
 We have two functions defined: `execute` and `on_finalize`.
 
@@ -210,101 +216,101 @@ In order to validate an incoming transaction, we need to ensure that:
 * Provided signatures are valid
 
 Violation of any of these checks may lead to chain security issues, so it’s critical to implement them correctly. Luckily, the logic is quite simple and straightforward:
+``` rust
+pub fn check_transaction(transaction: &Transaction) -> CheckResult<'_> {
+	ensure!(!transaction.inputs.is_empty(), "no inputs");
+	ensure!(!transaction.outputs.is_empty(), "no outputs");
 
-    pub fn check_transaction(transaction: &Transaction) -> CheckResult<'_> {
-    	ensure!(!transaction.inputs.is_empty(), "no inputs");
-    	ensure!(!transaction.outputs.is_empty(), "no outputs");
-    
-    	{
-    		// Collecting inputs into a set where every element is unique.
-    		// If two equal elements are inserted, only one will remain.
-    		let input_set: BTreeMap<_, ()> = transaction
-    			.inputs
-    			.iter()
-    			.map(|input| (input, ()))
-    			.collect();
-    
-    		// Ensuring that the size of original collection and the set are equal.
-    		// If they are not, then due to pigeonhole principle, some entries must
-    		// have been maliciously mentioned several times.
-    		ensure!(
-    			input_set.len() == transaction.inputs.len(),
-    			"each input must be used only once"
-    		);
-    	}
-    
-    	{
-    		let output_set: BTreeMap<_, ()> = transaction
-    			.outputs
-    			.iter()
-    			.map(|output| (output, ()))
-    			.collect();
-    
-    		ensure!(
-    			output_set.len() == transaction.outputs.len(),
-    			"each output must be defined only once"
-    		);
-    	}
-    
-    	let mut total_input: Value = 0;
-    	let mut missing_utxo = Vec::new();
-    	for input in transaction.inputs.iter() {
-    		// Fetch UTXO from the storage
-    		if let Some(output) = <UnspentOutputs<T>>::get(&input.parent_output) {
-    			ensure!(!<LockedOutputs<T>>::exists(&input.parent_output), "utxo is locked");
-    
-    			// Check that we're authorized to spend this UTXO
-    			ensure!(
-    				ed25519_verify(
-    					input.signature.as_fixed_bytes(),
-    					input.parent_output.as_fixed_bytes(),
-    					&output.pubkey
-    				),
-    				"signature must be valid"
-    			);
-    
-    			// Add the value to the input total
-    			total_input = total_input.checked_add(output.value).ok_or("input value overflow")?;
-    		} else {
-    			missing_utxo.push(&input.parent_output);
-    		}
-    	}
-    
-    	let mut total_output: Value = 0;
-    	for output in transaction.outputs.iter() {
-    		ensure!(output.value != 0, "output value must be nonzero");
-    
-    		let hash = BlakeTwo256::hash_of(output);
-    		ensure!(!<UnspentOutputs<T>>::exists(hash), "output already exists");
-    
-    		total_output = total_output.checked_add(output.value).ok_or("output value overflow")?;
-    	}
-    
-    	if missing_utxo.is_empty() {
-    		ensure!(total_input >= total_output, "output value must not exceed input value");
-    		Ok(CheckInfo::Totals { input: total_input, output: total_output })
-    	} else {
-    		Ok(CheckInfo::MissingInputs(missing_utxo))
-    	}
-    }
+	{
+		// Collecting inputs into a set where every element is unique.
+		// If two equal elements are inserted, only one will remain.
+		let input_set: BTreeMap<_, ()> = transaction
+			.inputs
+			.iter()
+			.map(|input| (input, ()))
+			.collect();
 
+		// Ensuring that the size of original collection and the set are equal.
+		// If they are not, then due to pigeonhole principle, some entries must
+		// have been maliciously mentioned several times.
+		ensure!(
+			input_set.len() == transaction.inputs.len(),
+			"each input must be used only once"
+		);
+	}
+
+	{
+		let output_set: BTreeMap<_, ()> = transaction
+			.outputs
+			.iter()
+			.map(|output| (output, ()))
+			.collect();
+
+		ensure!(
+			output_set.len() == transaction.outputs.len(),
+			"each output must be defined only once"
+		);
+	}
+
+	let mut total_input: Value = 0;
+	let mut missing_utxo = Vec::new();
+	for input in transaction.inputs.iter() {
+		// Fetch UTXO from the storage
+		if let Some(output) = <UnspentOutputs<T>>::get(&input.parent_output) {
+			ensure!(!<LockedOutputs<T>>::exists(&input.parent_output), "utxo is locked");
+
+			// Check that we're authorized to spend this UTXO
+			ensure!(
+				ed25519_verify(
+					input.signature.as_fixed_bytes(),
+					input.parent_output.as_fixed_bytes(),
+					&output.pubkey
+				),
+				"signature must be valid"
+			);
+
+			// Add the value to the input total
+			total_input = total_input.checked_add(output.value).ok_or("input value overflow")?;
+		} else {
+			missing_utxo.push(&input.parent_output);
+		}
+	}
+
+	let mut total_output: Value = 0;
+	for output in transaction.outputs.iter() {
+		ensure!(output.value != 0, "output value must be nonzero");
+
+		let hash = BlakeTwo256::hash_of(output);
+		ensure!(!<UnspentOutputs<T>>::exists(hash), "output already exists");
+
+		total_output = total_output.checked_add(output.value).ok_or("output value overflow")?;
+	}
+
+	if missing_utxo.is_empty() {
+		ensure!(total_input >= total_output, "output value must not exceed input value");
+		Ok(CheckInfo::Totals { input: total_input, output: total_output })
+	} else {
+		Ok(CheckInfo::MissingInputs(missing_utxo))
+	}
+}
+``` 
 As you probably noticed, aside from the transaction checking, this function collects some information. Let’s see its definition:
+``` rust
+/// Result of transaction verification
+pub type CheckResult<'a> = rstd::result::Result<CheckInfo<'a>, &'static str>;
 
-    /// Result of transaction verification
-    pub type CheckResult<'a> = rstd::result::Result<CheckInfo<'a>, &'static str>;
-    
-    /// Information collected during transaction verification
-    pub enum CheckInfo<'a> {
-    	/// Combined value of all inputs and outputs
-    	Totals { input: Value, output: Value },
-    
-    	/// Some referred UTXOs were missing
-    	MissingInputs(Vec<&'a H256>),
-    }
-    
-    /// Representation of UTXO value
-    pub type Value = u128;
+/// Information collected during transaction verification
+pub enum CheckInfo<'a> {
+	/// Combined value of all inputs and outputs
+	Totals { input: Value, output: Value },
 
+	/// Some referred UTXOs were missing
+	MissingInputs(Vec<&'a H256>),
+}
+
+/// Representation of UTXO value
+pub type Value = u128;
+``` 
 Later it would be shown that we use total `input`s and `output`s to calculate the priority of the transaction and an amount of leftover value to be redistributed among validators as a block reward.
 
 However, it makes absolutely no sense to talk about such values if the transaction had failed its verification. Otherwise, an attacker would be able to intentionally craft transactions that would have maximum priority and DoS the chain by flooding the transaction pool and preventing normal transactions from being dispatched. Or it could produce a huge amount of leftover value “out of thin air” to exploit the reward system.
@@ -315,63 +321,65 @@ By organizing this data as Rust `enum`s, we prevent accidental misuse since valu
 
 If a transaction was verified and proven to be correct then all we need to do is alter the chain state to reflect the changes made by the transaction:
 
-    /// Update storage to reflect changes made by transaction
-    fn update_storage(transaction: &Transaction, leftover: Value) -> Result {
-    	// Calculate new leftover total
-    	let new_total = <LeftoverTotal<T>>::get()
-    		.checked_add(leftover)
-    		.ok_or("leftover overflow")?;
-    
-    	// Storing updated leftover value
-    	<LeftoverTotal<T>>::put(new_total);
-    
-    	// Remove all used UTXO since they are now spent
-    	for input in &transaction.inputs {
-    		<UnspentOutputs<T>>::remove(input.parent_output);
-    	}
-    
-    	// Add new UTXO to be used by future transactions
-    	for output in &transaction.outputs {
-    		let hash = BlakeTwo256::hash_of(output);
-    		<UnspentOutputs<T>>::insert(hash, output);
-    	}
-    
-    	Ok(())
-    }
+``` rust
+/// Update storage to reflect changes made by transaction
+fn update_storage(transaction: &Transaction, leftover: Value) -> Result {
+	// Calculate new leftover total
+	let new_total = <LeftoverTotal<T>>::get()
+		.checked_add(leftover)
+		.ok_or("leftover overflow")?;
+
+	// Storing updated leftover value
+	<LeftoverTotal<T>>::put(new_total);
+
+	// Remove all used UTXO since they are now spent
+	for input in &transaction.inputs {
+		<UnspentOutputs<T>>::remove(input.parent_output);
+	}
+
+	// Add new UTXO to be used by future transactions
+	for output in &transaction.outputs {
+		let hash = BlakeTwo256::hash_of(output);
+		<UnspentOutputs<T>>::insert(hash, output);
+	}
+
+	Ok(())
+}
+``` 
 
 Basically, we remove all inputs that are now considered spent and add all new outputs to mark them as available. We also accumulate the leftover value in a temporary storage variable `LeftoverTotal` that will be used during block finalization.
 
 ### Block rewards
 
 When a block gets finalized, it is time to reward the nodes that authored the block. This is done by redistributing leftover value collected from all transactions that were included in this block:
+``` rust
+/// Redistribute combined leftover value evenly among authorities
+fn spend_leftover(authorities: &[H256]) {
+	let leftover = <LeftoverTotal<T>>::take();
+	let share_value = leftover / authorities.len() as Value;
 
-    /// Redistribute combined leftover value evenly among authorities
-    fn spend_leftover(authorities: &[H256]) {
-    	let leftover = <LeftoverTotal<T>>::take();
-    	let share_value = leftover / authorities.len() as Value;
-    
-    	if share_value == 0 { return }
-    
-    	for authority in authorities {
-    		let utxo = TransactionOutput {
-    			pubkey: *authority,
-    			value: share_value,
-    			salt: System::block_number() as u32,
-    		};
-    
-    		let hash = BlakeTwo256::hash_of(&utxo);
-    
-    		if !<UnspentOutputs<T>>::exists(hash) {
-    			<UnspentOutputs<T>>::insert(hash, utxo);
-    
-    			runtime_io::print("leftover share sent to");
-    			runtime_io::print(hash.as_fixed_bytes() as &[u8]);
-    		} else {
-    			runtime_io::print("leftover share wasted due to hash collision");
-    		}
-    	}
-    }
+	if share_value == 0 { return }
 
+	for authority in authorities {
+		let utxo = TransactionOutput {
+			pubkey: *authority,
+			value: share_value,
+			salt: System::block_number() as u32,
+		};
+
+		let hash = BlakeTwo256::hash_of(&utxo);
+
+		if !<UnspentOutputs<T>>::exists(hash) {
+			<UnspentOutputs<T>>::insert(hash, utxo);
+
+			runtime_io::print("leftover share sent to");
+			runtime_io::print(hash.as_fixed_bytes() as &[u8]);
+		} else {
+			runtime_io::print("leftover share wasted due to hash collision");
+		}
+	}
+}
+``` 
 The logic is pretty simple: we accept a list of `authorities` and calculate a `share_value` by dividing total `leftover` value by the number of authorities evenly. Then we create one UTXO per author and insert it into `UnspentOutputs`. We use current block number as a salt value to prevent potential replay attacks that were mentioned above.
 
 We also check that by inserting the reward UTXO to `UnspentOutputs` we do not accidentally overwrite some existing UTXO that happened to have the same hash. Such a scenario is extremely rare in practice, but nevertheless, it would be unfortunate if someone would lose his or her UTXO worth of millions just because it was overwritten by a routine reward UTXO.
@@ -390,24 +398,26 @@ In contrast, our UTXO implementation has the global state database that is agree
 
 But nothing prevents us from storing anything extra. For example, we may add a mapping from a hash of an existing UTXO to a structure that defines the lock status of that UTXO. If UTXO is locked, then it is not allowed to spend it in the usual way:
 
-    #[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
-    #[derive(Clone, Encode, Decode, Hash)]
-    pub enum LockStatus<T: Trait> {
-    	// Referred UTXO is locked
-    	Locked,
-    
-    	// Referred UTXO is locked until specified block
-    	LockedUntil(T::BlockNumber),
-    }
-    
-    decl_storage! {
-    	trait Store for Module<T: Trait> as Utxo {
-    		...
-    		
-    		/// Outputs that are locked
-    		LockedOutputs: map H256 => Option<LockStatus<T>>;
-    	}
-    }
+``` rust
+#[cfg_attr(feature = "std", derive(Serialize, Deserialize, Debug))]
+#[derive(Clone, Encode, Decode, Hash)]
+pub enum LockStatus<T: Trait> {
+	// Referred UTXO is locked
+	Locked,
+
+	// Referred UTXO is locked until specified block
+	LockedUntil(T::BlockNumber),
+}
+
+decl_storage! {
+	trait Store for Module<T: Trait> as Utxo {
+		...
+		
+		/// Outputs that are locked
+		LockedOutputs: map H256 => Option<LockStatus<T>>;
+	}
+}
+``` 
 
 Much like the cash that is locked in the safe: you may use it eventually, but no sooner than when you open the safe. It’s available, just locked.
 
@@ -449,115 +459,115 @@ Sometimes two transactions do not depend on each other but in turn depend on a t
 The classical solution is to use the amount of leftover value as the priority. The more funds were intentionally left by a transaction owner for authorities, the higher transaction priority will be. Win-win.
 
 Let’s see how it’s implemented in our chain:
+``` rust
+impl runtime_api::TaggedTransactionQueue<Block> for Runtime {
+	fn validate_transaction(tx: <Block as BlockT>::Extrinsic) -> TransactionValidity {
+		// A bunch of imports
+		use srml_support::IsSubType;
+		use runtime_primitives::{
+			traits::Hash,
+			transaction_validity::{TransactionLongevity, TransactionPriority, TransactionValidity},
+		};
 
-    impl runtime_api::TaggedTransactionQueue<Block> for Runtime {
-        fn validate_transaction(tx: <Block as BlockT>::Extrinsic) -> TransactionValidity {
-            // A bunch of imports
-            use srml_support::IsSubType;
-            use runtime_primitives::{
-                traits::Hash,
-                transaction_validity::{TransactionLongevity, TransactionPriority, TransactionValidity},
-            };
-    
-            // Extrinsics representing UTXO transaction need some special handling
-            if let Some(&utxo::Call::execute(ref transaction)) = IsSubType::<utxo::Module<Runtime>>::is_aux_sub_type(&tx.function) {
-                // List of tags to require
-                let requires;
-    
-                // Transaction priority to assign
-                let priority;
-    
-                match <utxo::Module<Runtime>>::check_transaction(&transaction) {
-                    // Verification failed
-                    Err(e) => {
-                        runtime_io::print(e);
-                        return TransactionValidity::Invalid(1);
-                    }
-    
-                    // Transaction was fully verified and is valid
-                    Ok(utxo::CheckInfo::Totals { input, output }) => {
-                        // All input UTXOs were found, so we consider input conditions to be met
-                        requires = Vec::new();
-    
-                        // Priority is based on a transaction fee that is equal to the leftover value
-                        let max_priority = utxo::Value::from(TransactionPriority::max_value());
-                        priority = max_priority.min(input - output) as TransactionPriority;
-                    }
-    
-                    // All checks passed except that some of inputs are missing
-                    Ok(utxo::CheckInfo::MissingInputs(missing)) => {
-                        // Since some referred UTXOs were not found in the storage yet,
-                        // we tag current transaction as requiring those particular UTXOs
-                        requires = missing
-                            .iter()
-                            .map(|hash| hash.as_fixed_bytes().to_vec())
-                            .collect();
-    
-                        // Transaction could not be validated at this point,
-                        // so we have no sane way to calculate the priority
-                        priority = 0;
-                    }
-                }
-    
-                // Output tags that this transaction provides
-                let provides = transaction.outputs
-                    .iter()
-                    .map(|output| BlakeTwo256::hash_of(output).as_fixed_bytes().to_vec())
-                    .collect();
-    
-                return TransactionValidity::Valid {
-                    requires,
-                    provides,
-                    priority,
-                    longevity: TransactionLongevity::max_value(),
-                };
-            }
-    
-            // Fall back to default logic for other extrinsics
-            Executive::validate_transaction(tx)
-        }
-    }
+		// Extrinsics representing UTXO transaction need some special handling
+		if let Some(&utxo::Call::execute(ref transaction)) = IsSubType::<utxo::Module<Runtime>>::is_aux_sub_type(&tx.function) {
+			// List of tags to require
+			let requires;
 
+			// Transaction priority to assign
+			let priority;
+
+			match <utxo::Module<Runtime>>::check_transaction(&transaction) {
+				// Verification failed
+				Err(e) => {
+					runtime_io::print(e);
+					return TransactionValidity::Invalid(1);
+				}
+
+				// Transaction was fully verified and is valid
+				Ok(utxo::CheckInfo::Totals { input, output }) => {
+					// All input UTXOs were found, so we consider input conditions to be met
+					requires = Vec::new();
+
+					// Priority is based on a transaction fee that is equal to the leftover value
+					let max_priority = utxo::Value::from(TransactionPriority::max_value());
+					priority = max_priority.min(input - output) as TransactionPriority;
+				}
+
+				// All checks passed except that some of inputs are missing
+				Ok(utxo::CheckInfo::MissingInputs(missing)) => {
+					// Since some referred UTXOs were not found in the storage yet,
+					// we tag current transaction as requiring those particular UTXOs
+					requires = missing
+						.iter()
+						.map(|hash| hash.as_fixed_bytes().to_vec())
+						.collect();
+
+					// Transaction could not be validated at this point,
+					// so we have no sane way to calculate the priority
+					priority = 0;
+				}
+			}
+
+			// Output tags that this transaction provides
+			let provides = transaction.outputs
+				.iter()
+				.map(|output| BlakeTwo256::hash_of(output).as_fixed_bytes().to_vec())
+				.collect();
+
+			return TransactionValidity::Valid {
+				requires,
+				provides,
+				priority,
+				longevity: TransactionLongevity::max_value(),
+			};
+		}
+
+		// Fall back to default logic for other extrinsics
+		Executive::validate_transaction(tx)
+	}
+}
+``` 
 `TaggedTransactionQueue` API handles all incoming extrinsics, not just our custom UTXO transactions. This gives a runtime a fine-grained control over the process of extrinsic validation. For example, runtime may perform additional checks, assign custom priority, or simply discard unwanted extrinsics.
 
 Upon its completion, `validate_transaction` function yields the `TransactionValidity` structure that contains hints for the transaction pool to order and prioritize the extrinsic:
-
-    /// Information on a transaction's validity and, 
-    // if valid, on how it relates to other transactions.
-    #[derive(Clone, PartialEq, Eq, Encode)]
-    #[cfg_attr(feature = "std", derive(Debug))]
-    pub enum TransactionValidity {
-    	/// Transaction is invalid. Details are described by the error code.
-    	Invalid(i8),
-    	/// Transaction is valid.
-    	Valid {
-    		/// Priority determines the ordering of two transactions that have all
-    		/// their dependencies (required tags) satisfied.
-    		priority: TransactionPriority,
-    		
-    		/// A non-empty list signifies that some other transactions which provide
-    		/// given tags are required to be included before that one.
-    		requires: Vec<TransactionTag>, 
-        
-    		/// A list of tags this transaction provides. Successfully importing the transaction
-    		/// will enable other transactions that depend on (require) those tags to be included as well.
-    		/// Provided and required tags allow Substrate to build a dependency graph of transactions
-    		/// and import them in the right (linear) order.
-    		provides: Vec<TransactionTag>,
-    		
-    		/// Longevity describes minimum number of blocks the validity is correct.
-    		/// After this period transaction should be removed from the pool or revalidated.
-    		longevity: TransactionLongevity,
-        
-    		/// By setting `false` here the transaction will still be considered for
-    		/// including in blocks that are authored on the current node, but will
-    		/// never be sent to other peers.
-    		propagate: bool,
-    	},
-    	/// Transaction validity can't be determined.
-    	Unknown(i8),
-    }
-
+``` rust
+/// Information on a transaction's validity and, 
+// if valid, on how it relates to other transactions.
+#[derive(Clone, PartialEq, Eq, Encode)]
+#[cfg_attr(feature = "std", derive(Debug))]
+pub enum TransactionValidity {
+	/// Transaction is invalid. Details are described by the error code.
+	Invalid(i8),
+	/// Transaction is valid.
+	Valid {
+		/// Priority determines the ordering of two transactions that have all
+		/// their dependencies (required tags) satisfied.
+		priority: TransactionPriority,
+		
+		/// A non-empty list signifies that some other transactions which provide
+		/// given tags are required to be included before that one.
+		requires: Vec<TransactionTag>, 
+		
+		/// A list of tags this transaction provides. Successfully importing the transaction
+		/// will enable other transactions that depend on (require) those tags to be included as well.
+		/// Provided and required tags allow Substrate to build a dependency graph of transactions
+		/// and import them in the right (linear) order.
+		provides: Vec<TransactionTag>,
+		
+		/// Longevity describes minimum number of blocks the validity is correct.
+		/// After this period transaction should be removed from the pool or revalidated.
+		longevity: TransactionLongevity,
+		
+		/// By setting `false` here the transaction will still be considered for
+		/// including in blocks that are authored on the current node, but will
+		/// never be sent to other peers.
+		propagate: bool,
+	},
+	/// Transaction validity can't be determined.
+	Unknown(i8),
+}
+```
 In order to implement our logic we need to select only the extrinsics that correspond to UTXO transactions. This is done using the “magic” call to the `IsSubType::is_aux_sub_type(&tx.function)` function parametrized by the module name `utxo::Module<Runtime>`. Upon success, this function returns a type that contains a deserialized call to our `execute` method along with a `Transaction` instance — everything we need to reason about transaction tags and priority.
 
 The rest is just a logic that assigns tags and priority depending on `check_transaction` result:
@@ -581,25 +591,25 @@ If you like, you may try implementing the UTXO chain yourself. Based on my [prot
 First of all, we need to build our Substrate node with the UTXO runtime. I am assuming you are already familiar with the Rust ecosystem and know how to build stuff. If you’re unfamiliar with Rust, I suggest you have a look at the [Rust language site](https://medium.com/r/?url=https%3A%2F%2Fwww.rust-lang.org%2F).
 
 Next, we need to [configure the UI](https://medium.com/r/?url=https%3A%2F%2Fpolkadot.js.org%2Fapps%2F%23%2Fsettings) to connect to `Local Node` instead of the default. We also need to [tell the UI](https://medium.com/r/?url=https%3A%2F%2Fpolkadot.js.org%2Fapps%2F%23%2Fsettings%2Fdeveloper) how to read into our custom UTXO types. This is done by providing a JSON file that has a mapping from our custom types to the core types that the UI is already familiar with:
-
-    {
-      "Value": "u128",
-      "LockStatus": "u32",
-      "TransactionInput": {
-        "parent_output": "Hash",
-        "signature": "Signature"
-      },
-      "TransactionOutput": {
-        "value": "Value",
-        "pubkey": "Hash",
-        "salt": "u64"
-      },
-      "Transaction": {
-        "inputs": "Vec<TransactionInput>",
-        "outputs": "Vec<TransactionOutput>"
-      }
-    }
-
+``` json
+{
+	"Value": "u128",
+	"LockStatus": "u32",
+	"TransactionInput": {
+		"parent_output": "Hash",
+		"signature": "Signature"
+	},
+	"TransactionOutput": {
+		"value": "Value",
+		"pubkey": "Hash",
+		"salt": "u64"
+	},
+	"Transaction": {
+		"inputs": "Vec<TransactionInput>",
+		"outputs": "Vec<TransactionOutput>"
+	}
+}
+```
 The rest of the setup instructions may be found in [the workshop’s Readme file](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fnczhu%2Futxo-workshop%2Fblob%2Fmaster%2FREADME.md).
 
 Dev chain has its genesis block compiled-in. In our case it contains the only UTXO that gives Alice a ridiculously huge amount of `0xff...f` tokens.

@@ -62,6 +62,12 @@
     @apply font-quote font-normal italic text-xl md:text-2xl leading-6 p-0 m-0 border-l-0;
     }
 
+    pre {
+        font-size: .9rem;
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+    }
     /* Horizontal Rules */
     hr {
     @apply my-6 border-t;
@@ -203,6 +209,18 @@
     }
 
     article img {
-    @apply mb-6;    
+    @apply mb-6 mx-auto;    
+    }
+
+    article img + em {
+    @apply text-sm text-textLight leading-3;    
+    }
+
+    article code {
+    @apply text-parityPink text-base;
+    }
+
+    article blockquote p {
+    @apply font-quote font-normal italic text-xl text-textLight text-center md:text-2xl md:leading-normal tracking-wide mb-6 py-6 border-l-0;
     }
 }

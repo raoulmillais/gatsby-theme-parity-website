@@ -32,57 +32,61 @@ COP addresses this by requiring the programmer to explicitly enumerate all such 
 ## HOW IT WORKS
 
 If you have already used Solidity, the chances are that you inadvertently flirted with COP already. Let's look at a simple token contract:
-
-    contract Token {
+``` sol
+contract Token {
     // The balance of everyone
     mapping (address => uint) public balances;
-    
+
     // Constructor - we're a millionaire!
     function Token() {
         balances[msg.sender] = 1000000;
     }
-    
+
     // Transfer `_amount` tokens of ours to `_dest`.
     function transfer(uint _amount, address _dest) {
         balances[msg.sender] -= _amount;
         balances[_dest] += _amount;
     }
-    }
-
+}
+```
 The astute reader will realise there is a bug here: the transfer function doesn't ensure that the sender has enough in their account. The normal imperative-language fix for this would be to introduce an if statement:
-
-    function transfer(uint _amount, address _dest) {
+``` solidity
+function transfer(uint _amount, address _dest) {
     if (balances[msg.sender] >= _amount) {
-    balances[msg.sender] -= _amount;
-    balances[_dest] += _amount;
+        balances[msg.sender] -= _amount;
+        balances[_dest] += _amount;
     }
-    }
-
+}
+```
 or perhaps:
-
-    function transfer(uint _amount, address _dest) {
+``` solidity
+function transfer(uint _amount, address _dest) {
     if (balances[msg.sender] >= _amount) {
-    balances[msg.sender] -= _amount;
-    balances[_dest] += _amount;
+        balances[msg.sender] -= _amount;
+        balances[_dest] += _amount;
     }
-    }
-
+}
+``` 
 However both of these solutions rather miss the point of COP; we're muddling the implementation (which ever one we choose) with the meaning, which remains the same in both cases: that the executing account msg.sender, should have a balance of at least amount. As a COP coder, we understand this problem perfectly since both solutions break our fundamental rule:
 
 **Function bodies should have no conditional paths.**
 
 So in COP, we rather abstract the condition (balances\[msg.sender\] >= amount) and create a function modifier:
 
-    modifier only_with_at_least(uint x) { if (balances[msg.sender] >= x) _ }
+``` solidity
+modifier only_with_at_least(uint x) { if (balances[msg.sender] >= x) _ }
+```
 
 This piece of code fundamentally abstracts the notion of "executing account has a balance of at least some particular amount". With it in place, we no longer need to think in terms of conditionals, and most importantly, we don't need to mix pre-condition logic with state-transition logic. This allows a far greater scope for human-understandable analysis of state-transitions.
 
 Here's the new transfer function:
 
-    function transfer(uint _amount, address _dest) only_with_at_least(_amount) {
+``` solidity
+function transfer(uint _amount, address _dest) only_with_at_least(_amount) {
     balances[msg.sender] -= _amount;
     balances[_dest] += _amount;
-    }
+}
+```
 
 ## ABSTRACTION AND REUSE
 
@@ -90,17 +94,21 @@ Suppose we have another function, which allows anyone with a balance more than 1
 
 In our old scheme of things, we'd have a function like this:
 
-    function vote(uint _opinion) {
+``` solidity
+function vote(uint _opinion) {
     if (balances[msg.sender] >= 1000) {
-    votes[msg.sender] = _opinion;
+        votes[msg.sender] = _opinion;
     }
-    }
+}
+```
 
 Added to our old codebase, we would now have two similar-meaning conditionals. In principle, we would like to have only one such conditional, audited and documented once but used twice. With COP that's exactly what we do:
 
-    function vote(uint _opinion) only_when_at_least(1000) {
+``` solidity
+function vote(uint _opinion) only_when_at_least(1000) {
     votes[msg.sender] = _opinion;
-    }
+}
+```
 
 This makes our vote function substantially more readable and allows us to reuse important guard-logic, minimizing our potential attack surface.
 
@@ -112,44 +120,46 @@ Following on the voting example, suppose we extend the transfer function so that
 
 In the traditional, imperative, way we would simply place a conditional near the balance reduction code:
 
-    function transfer(uint _amount, address _dest) {
+``` solidity
+function transfer(uint _amount, address _dest) {
     if (balances[msg.sender] >= _amount) {
-    balances[msg.sender] -= _amount;
-    balances[_dest] += _amount;
-    if (balances[msg.sender] < 1000) {
-    votes[msg.sender] = 0; // Clear their vote.
+        balances[msg.sender] -= _amount;
+        balances[_dest] += _amount;
+        if (balances[msg.sender] < 1000) {
+            votes[msg.sender] = 0; // Clear their vote.
+        }
     }
-    }
-    }
+}
+``` 
 
 However, this rather goes against the grain of COP. However we cannot address this directly with a new function modifier since there is no obvious function to modify; we actually wish to place the guard within an internal scope of transfer. In this case (at least with Solidity), we rather create a new (inline) function:
-
-    function clear_undeserved_vote(account _who)
+``` solidity
+function clear_undeserved_vote(account _who)
     only_with_under(1000) only_when_voted {
     delete votes[_who];
-    }
-
+}
+```
 Note inline is not yet available in Solidity; we would use it here whenever it be available. This function relies on two modifiers which are easily coded (and audited):
-
-    modifier only_with_under(uint x) { if (balances[msg.sender] < x) _ }
-    modifier only_when_voted { if (votes[msg.sender] != 0) _ }
-
+``` solidity
+modifier only_with_under(uint x) { if (balances[msg.sender] < x) _ }
+modifier only_when_voted { if (votes[msg.sender] != 0) _ }
+``` 
 We can then use this function within our transfer function:
-
-    function transfer(uint _amount, address _dest) only_with_at_least(_amount) {
+``` solidity
+function transfer(uint _amount, address _dest) only_with_at_least(_amount) {
     balances[msg.sender] -= _amount;
     balances[_dest] += _amount;
     clear_undeserved_vote();
-    }
-
+}
+``` 
 ## CONCLUSION
 
 The main part of our final contract has changed from:
-
-    contract Token
+``` solidity
+contract Token
     {
     //...
-    
+
     function transfer(uint _amount, address _dest) {
         if (balances[msg.sender] >= _amount) {
             balances[msg.sender] -= _amount;
@@ -159,41 +169,41 @@ The main part of our final contract has changed from:
             }
         }
     }
-    
+
     function vote(uint _opinion) {
         if (balances[msg.sender] >= 1000) {
             votes[msg.sender] = _opinion;
         }
     }
-    }
-
+}
+``` 
 To the new: 
-
-    contract Token
+``` solidity
+contract Token
     {
     //...
-    
+
     modifier only_with_at_least(uint x) { if (balances[msg.sender] >= x) _ }
     modifier only_with_under(uint x) { if (balances[msg.sender] < x) _ }
     modifier only_when_voted { if (votes[msg.sender] != 0) _ }
-    
+
     function clear_undeserved_vote(account _who)
-      only_with_under(1000) only_when_voted {
+        only_with_under(1000) only_when_voted {
         delete votes[_who];
     }
-    
+
     function transfer(uint _amount, address _dest)
-      only_with_at_least(_amount) {
+        only_with_at_least(_amount) {
         balances[msg.sender] -= _amount;
         balances[_dest] += _amount;
         clear_undeserved_vote();
     }
-    
+
     function vote(uint _opinion) only_when_at_least(1000) {
         votes[msg.sender] = _opinion;
     }
-    }
-
+}
+``` 
 The code we have is somewhat longer, however it has now forced the coder to document the internals, encouraging them to place weight on considering the conditions in isolation and abstracts the important parts to ensure that no copy/paste bugs creep in. The execution structure is flat, easing the conceptual baggage that the auditor must consider. It can be documented and audited, piece-by-piece in a comprehensive and methodical fashion. And, even if left undocumented, it is far more comprehensible, with the named conditions over the original version which muddles them into the transition logic.
 
 Being rather verbose, COP certainly won’t be to everyone’s taste. And without certain language support, it can become somewhat unwieldy with large contracts. However, for small and medium-size contracts it provides the programmer and auditor with a clear path to enlightenment that can otherwise be difficult to attain.

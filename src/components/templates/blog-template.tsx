@@ -57,7 +57,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
             {props.data.mdx.frontmatter.image ? (
               <div className="mb-12 ring-1 ring-black ring-opacity-5 shadow-xl rounded">
                 <img
-                  className="rounded"
+                  className="rounded  h-full w-full"
                   src={props.data.mdx.frontmatter.image}
                   alt={props.data.mdx.frontmatter.title}
                 />
@@ -74,7 +74,7 @@ export default function BlogTemplate(props: BlogTemplateProps) {
             </div>
             <div>
               <div className="text-center border my-8">
-                <h3 className="font-normal mt-6">
+                <h3 className="text-2xl md:text-3xl font-normal mt-6">
                   Want to build the future of the web?{' '}
                   <LocalizedLink className="text-parityPink" to="/jobs">
                     We&apos;re hiring
