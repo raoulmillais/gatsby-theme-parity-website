@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { websiteData } from './seoData';
 
 interface SEOProps {
   title: string;
@@ -12,7 +13,6 @@ interface SEOProps {
   children?: React.ReactNode;
 }
 
-// TODO add graphql types
 export default function SEO(props: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
@@ -98,6 +98,8 @@ export default function SEO(props: SEOProps) {
             }
           : []
       )}
-    />
+    >
+      <script type="application/ld+json">{JSON.stringify(websiteData)}</script>
+    </Helmet>
   );
 }

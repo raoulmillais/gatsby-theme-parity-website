@@ -242,11 +242,11 @@ module.exports = {
       options: {
         name: `Parity Technologies`,
         short_name: `Parity Technologies`,
-        start_url: siteUrl,
+        start_url: `/`,
         background_color: `#F1F3F2`,
         theme_color: `#FF1864`,
         display: `standalone`,
-        icon: './src/images/favicon.png',
+        icon: 'src/images/favicon.png',
       },
     },
     'gatsby-plugin-offline',
