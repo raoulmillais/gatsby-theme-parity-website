@@ -39,6 +39,7 @@ module.exports = {
       },
       height: {
         hero: '70vh',
+        googleForm: '1500px',
       },
       minHeight: {
         hero: '70vh',

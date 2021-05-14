@@ -26,7 +26,7 @@ export default function ApplicantNoticePage() {
         <div className="flex justify-center">
           <div className="flex-grow place-content-center">
             <iframe
-              className="w-full"
+              className="w-full h-googleForm overflow-y-hidden"
               src="https://docs.google.com/forms/d/e/1FAIpQLSdBADP87fFHLoi_9nNujkK-AnMr6uopojaeJkTWUdainsPFZA/viewform?embedded=true"
               width="640"
               height="1365"
