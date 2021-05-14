@@ -81,6 +81,13 @@ const NewsletterModal = (props: NewsletterModalProps) => {
           </a>{' '}
           to the newsletter
         </p>
+      ) : sourcePage === 'contact' ? (
+        <button
+          className="bg-parityPink font-title text-lg text-white font-semibold opacity-90 tracking-wider mx-4 px-12 py-2 rounded-sm focus:outline-none uppercase transition-transform transform hover:-translate-y-0.5 focus:bg-buttonRed"
+          onClick={() => setShowModal(!showModal)}
+        >
+          {intl.formatMessage({ id: 'contact-page-footer-button' })}
+        </button>
       ) : null}
 
       {showModal ? (

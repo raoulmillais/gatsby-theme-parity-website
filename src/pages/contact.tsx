@@ -122,12 +122,12 @@ export default function ContactPage({ data }: ContactPageProps) {
           </div>
         </div>
       </section>
-      <section className="bg-parityGray">
+      <section className="bg-parityWhite">
         <div className="container">
           <div className="flex flex-col justify-center text-center py-16 md:py-24">
-            <h3 className="font-normal mb-4 md:text-4xl">{intl.formatMessage({ id: 'contact-page-footer-title' })}</h3>
+            <h3 className="font-normal mb-8 md:text-4xl">{intl.formatMessage({ id: 'contact-page-footer-title' })}</h3>
             <div className="mb-4">
-              <NewsletterModal />
+              <NewsletterModal sourcePage="contact" />
             </div>
             <p className="text-sm text-textLight">
               {intl.formatMessage({ id: 'contact-page-footer-subcta-one' })}{' '}
