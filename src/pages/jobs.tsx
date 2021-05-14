@@ -84,7 +84,10 @@ export default function JobsPage() {
                 {intl.formatMessage({ id: 'rust-jobs-page-developers-three-description' })}
               </p>
               <p className="py-4">
-                <LocalizedLink className="no-underline text-parityPink hover:underline text-sm font-normal" to="/jobs/">
+                <LocalizedLink
+                  className="no-underline text-parityPink hover:underline text-sm font-normal"
+                  to="/jobs/#jobboard"
+                >
                   {intl.formatMessage({ id: 'rust-jobs-page-developers-cta' })}
                 </LocalizedLink>
               </p>
