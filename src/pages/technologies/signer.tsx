@@ -33,11 +33,15 @@ export default function ParitySigner({ data }: ParitySignerProps) {
             </h3>
             <div className="flex md:flex-row items-center pt-8">
               <a href="https://itunes.apple.com/us/app/parity-signer/id1218174838" target="_blank" rel="noreferrer">
-                <img className="w-auto h-12 mx-1 opacity-80" src={signerApple} alt="Parity Signer Apple iTunes" />
+                <img
+                  className="w-auto h-12 mx-1 opacity-80 hover:opacity-100"
+                  src={signerApple}
+                  alt="Parity Signer Apple iTunes"
+                />
               </a>
               <a href="https://play.google.com/store/apps/details?id=io.parity.signer" target="_blank" rel="noreferrer">
                 <img
-                  className="w-auto h-12 mx-1 opacity-80 md:pl-8"
+                  className="w-auto h-12 mx-1 opacity-80 hover:opacity-100"
                   src={signerAndroid}
                   alt="Parity Signer Apple iTunes"
                 />

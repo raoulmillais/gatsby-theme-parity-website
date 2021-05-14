@@ -1,5 +1,15 @@
 # Parity.io Redirects for Gatsby site
 
+# Legacy Redirects
+/blog/security-altert /secyrity-alert-2
+/security-is-a-process-a-postmortem-on-the-parity-multi-sig-library-self-destruct /blog/a-postmortem-on-the-parity-multi-sig-library-self-destruct 
+/on-classes-of-stuck-ether-and-potential-solutions-2 /blog/on-classes-of-stuck-ether-and-potential-solutions
+/enterprise /solutions
+/technology /technologies
+/legal /terms
+/rustjobs /rust-jobs
+/bugbounty /bug-bounty
+
 # Technology Section
 /polkadot /technologies/polkadot
 /substrate /technologies/substrate
