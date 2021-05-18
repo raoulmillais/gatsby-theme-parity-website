@@ -1,0 +1,91 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Custom Solutions
+- Security
+author: Phil Lucsok
+blogTitle: Social recovery on Substrate
+slug: blog/social-recovery-on-substrate/
+date_published: 2020-04-16T01:00:00+02:00
+image: "/images/social-recovery2.png"
+
+---
+### Never lose access to your cryptocurrency accounts
+
+## Why do we need social recovery systems?
+
+Only a small group of people have the experience to comfortably manage their private keys, and key management stands as a barrier for average users to interact with blockchains. Some of us may be familiar with the cumbersome task of onboarding friends or family members and explaining what a private key, seed phrase or encrypted JSON file does and why it’s important to keep it secure and safe.
+
+Decentralization and blockchain can improve the quality of life for people because it enables them to to own their data and their finances without relying on trusted intermediaries. While custodial services such as Coinbase are an unfortunate necessity to onboard everyday users, they also do contribute to lowering the barrier of entry to using blockchains and cryptocurrencies.
+
+## The Social Recovery Pallet on Substrate
+
+Substrate is the blockchain framework for creating any kind of blockchain, and as more blockchains are built and deployed, it’s necessary that key management can be improved without resorting to centralized custodians who may not be trustworthy or competent. That’s why we’ve created the Recovery pallet ([GitHub](https://github.com/paritytech/substrate/blob/master/frame/recovery/src/lib.rs)), a module that any blockchain innovator can use for their blockchain to increase their userbase and reduce headaches in their community.
+
+<iframe className="w-full h-56 my-8 sm:h-80 md:h-96" src="https://www.youtube.com/embed/rRnWKDaTb9E" allowFullScreen></iframe>_Video walkthrough of the Recovery pallet code_
+
+The Substrate Recovery pallet is an M-of-N social recovery tool, based on a multisignature wallet. It allows users to recover their accounts if their private key or other authentication mechanism has been lost. Substrate is generalized to the point where we do not even assume that the blockchain you’re building is using public-private keypairs, enabling the Recovery Pallet to be used for authentication mechanisms of your choice. You can specify the set of users allowed to give you access to your account again.
+
+It's possible for the user of a blockchain to set their: number of total friends, minimum threshold of friends, and the delay period. The Substrate developer creating the blockchain initially decides: the deposit amount and the maximum number of total friends per user. The latter two can always be modified using an on-chain upgrade.G[itHub](https://github.com/paritytech/substrate/blob/master/frame/recovery/src/lib.rs)
+
+## How does it work?
+
+### Step 1: Set up a recovery configuration
+
+* User selects up to N friends that they trust
+* User picks a threshold M
+* User selects a minimum delay period for the recovery process
+* User places a refundable configuration deposit, making sure that previous data/accounts are cleaned up
+
+### Step 2: Lose access to your account
+
+* We don’t recommend performing this step, but just in case you do lose access, continue to step 3
+
+### Step 3: Initiate recovery process
+
+* User creates a new account
+* User funds this new account with enough funds to pay the recovery deposit and pay for transaction fees
+* User calls the Recovery pallet by declaring the account that is lost, and the new account with the deposit
+* User contacts friends to vouch for your recovery attempt
+* At least M of N friends need to approve
+* Wait for the delay period to pass
+
+Once these steps are completed, you are now able to make calls with your lost account.
+
+The recovery pallet gives you access to all other pallets. This is so that each pallet that’s configured on the blockchain runtime you’re using does not need further configuration if the Recovery pallet is implemented on-chain.
+
+### Step 4: Clean up your old account
+
+* Close the recovery process, which refunds the deposit
+* Remove recovery configuration, which refunds the other deposit
+* Call other pallets through the Recovery pallets, such as unbonding, removing Identity information
+* Finally, transfer all your funds from the lost account to your new account
+
+## What about malicious recovery attempts?
+
+It’s possible that a malicious user may attempt to “recover” your account, even though it’s not lost. There are a few safeguards we put in place to prevent malicious account recovery attempts.
+
+First, the minimum threshold of friends needs to approve the recovery initiation. Security experts often say that the largest attack vector is social engineering attacks, and this case is no different. A malicious user may compromise another social media account or create a similar looking account to trick your friends into believing this is you. Hopefully, your friends will notice the attempt and block it. But what happens if this part of the attack is successful?
+
+If enough friends approve the recovery process initiation, the attacker still must wait the delay period to gain access to your funds. However, if you check your account just once during this delay period, you can cancel the recovery process and get the deposit the attacker made. So in a sense, it’s a honeypot for malicious users if you catch them in time.
+
+After you notice a malicious recovery attempt, it is recommended you change the set of friends and remove those who were easily tricked.
+
+## Other considerations
+
+For high security, you should choose your Recovery pallet settings carefully.
+
+### Set a long delay period
+
+The longer the delay period is, the less often you must check your account, and the more likely it is you will catch a malicious recovery attempt. For accounts with most of your holdings, it is recommended to have very long delay periods of 6 months to 1 year, just in case.
+
+### Set a high threshold count
+
+If possible, you should set a high threshold count in order to initiate the recovery process. A threshold of 2-out-of-3 is probably too low for accounts you value highly. Something more like 7-out-of-10 may be more wise.
+
+### Pick your friends wisely, and update them regularly
+
+Make sure that the group of friends you choose are well spread out among your social circle. It is not recommended to choose friends only from the same company you work with, or any group that could easily collude to initiate the recovery process. Also, as you progress through life, friends may change, so we recommend you also update your friends list on-chain as regularly as possible.
+
+The Recovery pallet provides a low-risk way to regain access to lost accounts without sacrificing security. Check out the code on G[itHub](https://github.com/paritytech/substrate/blob/master/frame/recovery/src/lib.rs) to get familiar with this pallet, or try it now on [Kusama](https://kusama.network/).

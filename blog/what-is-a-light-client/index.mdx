@@ -1,0 +1,57 @@
+---
+title: index
+tags:
+- Parity Fether
+author: Thibaut Sardan
+blogTitle: What is a light client and why you should care?
+slug: blog/what-is-a-light-client/
+date_published: 2018-07-26T06:00:00+02:00
+image: "/images/light-clients-1.jpeg"
+
+---
+Light clients are crucial elements in blockchain ecosystems. They help users access and interact with a blockchain in a secure and decentralized manner without having to sync the full blockchain. In this article, I will explain in simple words what a light client is, what it isn’t, and where it comes from.
+
+Before talking about what a light client is, let’s start by clarifying what a client is. A client in computer science is a piece of hardware or software that connects to a server. An internet browser, for instance, is a client—it connects to a website’s server to request its content. In the context of a blockchain, a client is a software that connects to other clients in a peer-to-peer manner. Because all these clients talk to each other, they form a network where each client is a node. This is the reason why the term node is also used in place of client.
+
+In the case of Ethereum, there used to be only one type of node, now referred to as a full node. This software is responsible for verifying and relaying the transactions and blocks on the network. Because of the trustless environment (the open internet) and the nature of a blockchain, each full node needs to download and verify every single block, and therefore every single transaction in each block.
+
+Both Parity Ethereum and Geth, the two most popular Ethereum clients, can run on a [moderately powerful laptop](https://wiki.parity.io/FAQ#what-are-the-parity-disk-space-needs-and-overall-hardware-requirements) today. However, downloading and verifying the whole chain of blocks takes time and resources. As an example, using an SSD is now required to fully synchronize the Ethereum blockchain. An HDD cannot keep up with the needed input/output operations per second.
+
+## The full node’s use cases
+
+Nowadays, organizations and individuals run full nodes because they need it for their business. Think about miners, block explorers, exchanges. Individual users might want to run a full node because it is the most secure way to interact with the blockchain. At a much smaller scale, they might also do it by pure altruism to help the network. Running a full node 24/7 requires a good level of knowledge and resources that most users are understandably not willing to invest. Except for miners, there is no built-in incentive to run a full node despite this piece of infrastructure being critical to the network.
+
+As a result, most users interacting with the blockchain will, voluntarily or not, use a centralized piece of infrastructure. The most popular software wallets rely per default on a 3rd-party hosted node. These clients connect to a remote node and completely trust its responses in a non-cryptographically-proven manner. The positive aspect of it is obviously the enhanced user experience as the users of these wallets do not need to run their own node. However, they are forced to trust a third party node. Metamask, MyEtherWallet, and MyCrypto connect to a remote node by default but still allow users to connect to their own local node if they wish to. This is not the case of the Jaxx or Exodus wallets, which connect to a remote node by default with no option of connecting to a user’s own local node. Mobile wallets are not mentioned here, as mobiles phone are not able to run full nodes.
+
+Companies such as Infura are dedicated to running full nodes and make them available to those who need them, for free. Abstracting the hassle to synchronize a full node allows any user to access the blockchain effortlessly. Such solutions help to make Ethereum accessible to more users. However, even though this initiative has been a great addition to the ecosystem, it represents a centralized single point of failure that is antithetical to the decentralized blockchain philosophy. Until a couple of months ago, wallet developers did not have any other choice.
+
+> “Our goal is to create a protocol which is compatible with varying degrees of ‘lightness,’ from clients which store almost nothing to those which store almost everything.” _—_ [_PIP, Parity Light Protocol_](https://wiki.parity.io/The-Parity-Light-Protocol-%28PIP%29)
+
+## The lightweight alternative: light clients
+
+A light client or light node is a piece of software that connects to full nodes to interact with the blockchain. Unlike their full node counterparts, light nodes don’t need to run 24/7 or read and write a lot of information on the blockchain. In fact, light clients do not interact directly with the blockchain; they instead use full nodes as intermediaries. Light clients rely on full nodes for many operations, from requesting the latest headers to asking for the balance of an account.
+
+The way light client protocols are designed allows them to interact with full nodes in a trust-minimized manner. This is a crucial aspect to understand, so let’s take a step back to review Ethereum blockchain basics:
+
+* Regular users send transactions on the network using full nodes, light nodes, or trusted remote nodes.
+* Full nodes receive transactions from their peers on the network, check the validity of these transactions, and broadcast them to the network.
+* Miners are full nodes attached to a specific software. They receive and verify the transactions from the network like a regular full node, but additionally invest a lot of energy to find the solution to a problem to be allowed to author the next block.  
+  The full nodes used by miners achieve consensus on which block should be added to the blockchain and built on top of. Any block which has at least 10 blocks built on top of it is considered secure in the sense that the transactions it contains have a very low probability of being reverted.
+
+Now, back to our light clients. As a starting point, a light client needs to download the block headers of the blockchain. The light client does not need to trust the full node for every request that it makes to the full node. This is because the block headers contain a piece of information called the [Merkle tree root](https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture). The Merkle tree root is like a fingerprint of all information on the blockchain about account balances and smart contract storage. If any tiny bit of information changes, this fingerprint will change as well. Assuming that the majority of the miners are honest, block headers and therefore the fingerprints they contain are assumed to be valid. A light client may need to request information from full nodes such as the balance of a specific account. Knowing the fingerprints for each block, a light client can verify whether the answer given by the full node matches with the fingerprint it has. This is a powerful tool to prove the authenticity of information without knowing it beforehand.
+
+As light clients need to send several requests to do simple operations, the overall network bandwidth needed is higher than that of a full node. On the other hand, the amount of resources and storage needed is several orders of magnitude lower than that of a full node while achieving a very high level of security. Requiring only about 100 MB of storage and low computational power, a light node can run on a mobile device! This means that a cell phone can access the blockchain in a decentralized manner.
+
+As it requires a fraction of the information of a full node, a light node can synchronize with a blockchain much faster. It currently takes about an hour to synchronize the entire Ethereum mainnet blockchain with a light client, but anything more than a couple seconds for the node to sync would be too much for any application. Solutions were developed for light clients to sync with the top of the blockchain quickly, though these solutions often include tradeoffs. Currently, light clients have a trusted blockchain checkpoint built into their code. Thanks to this, the client only needs to download the latest headers, allowing it to achieve a sync in a matter of seconds. Light client users are trusting the client developers to integrate a valid checkpoint. This tradeoff is considered acceptable as users already need to trust the developers for the client implementation. To perform a sync quickly in a decentralized manner, Parity Technologies currently develops an alternative solution allowing light clients to perform a [warp-sync](https://wiki.parity.io/Warp-Sync) in a similar way to full nodes.
+
+> In the future, Light Clients are all over the place. _— Marty McFly_
+
+## Light Clients’ challenges
+
+Light clients are well-suited for mainstream usages, like sending some transactions and verifying the balance of accounts. The major critiques made of light clients are that light clients do not directly help the network. They do not verify any other information than the one they need for their own purpose, they do not serve or relay information from the network to other peers, and they use resources from full nodes without giving anything in exchange.
+
+Compared to full nodes, light clients provide a much better end-user experience while letting end-users access the blockchain in a decentralized and secure manner. The key is to find a way to incentivize individuals and institutions to run full nodes, serve light nodes, and punish malicious full nodes serving bad data. One way to make light clients sustainable is to have them perform micro-payments for each request made to full nodes. In the near future, light clients will play a significant role in Ethereum sharding to let validator sync different shards quickly. Light clients could also be used to report malicious actors (validators or plasma authorities). Full node incentivization by light clients is an active area of research, as the incentivization is key to the ecosystem’s stability.
+
+There are promising ideas for allowing light clients to sync quickly while avoiding the aforementioned tradeoffs. One idea is to allow full nodes to provide zero-knowledge proofs (e.g., [zk-STARK](https://eprint.iacr.org/2018/046.pdf)) of the latest known header. The light client could then verify it and sync with the top of the chain without prior knowledge of the blockchain state.
+
+All in all, light clients will be the backbone of decentralized applications in the near term, and this is very good news for a user-friendly decentralized ecosystem.

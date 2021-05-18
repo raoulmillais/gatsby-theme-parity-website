@@ -21,6 +21,13 @@ sections:
 - type: document
   path: content/events/events.json
   label: Events
+- type: document
+  path: content/banner/banner.json
+  label: Banner
+- type: document
+  path: package.json
+  label: Scripts
+  read_only: true
 upload_dir: static/images
 public_path: "/images"
 front_matter_path: ''
@@ -32,4 +39,4 @@ build:
   preview_docker_image: forestryio/node:12
   mount_path: "/srv"
   working_dir: "/srv"
-  instant_preview_command: yarn dev
+  instant_preview_command: yarn forestry:preview

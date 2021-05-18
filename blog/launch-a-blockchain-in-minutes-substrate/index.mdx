@@ -1,0 +1,92 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Wasm
+- Polkadot
+- Custom Solutions
+author: Phil Lucsok
+blogTitle: Launch a blockchain in minutes with Substrate, arriving November 2018
+slug: blog/launch-a-blockchain-in-minutes-substrate/
+date_published: 2018-10-26T06:00:00+02:00
+image: "/images/gavin-wood-substrate-launch-blog-hero.jpeg"
+
+---
+At the [Web3 Summit](https://web3summit.com/) in Berlin, Parity Technologies founder Gavin Wood demoed launching a blockchain in under 60 minutes on a brand new laptop, announcing the November 2018 release of Substrate 1.0-beta. Calling it, “the biggest bet against blockchain maximalism,” Substrate, the foundation for [Polkadot](https://polkadot.network/), now comes as a standalone blockchain framework. [Substrate](https://parity.io/substrate) allows developers to build highly advanced blockchains customized for any project.
+
+## **A tale of two technologies**
+
+While Polkadot and Substrate share a goal to spark a wave of blockchain innovation, they are two distinct technologies. Substrate is like the PC that people choose to run their application, whereas Polkadot, a protocol that connects blockchains together, is like plugging a network card into that computer. Every community, project, or enterprise functions differently and requires norms and nuances that inform a particular state machine and blockchain’s optimal functionality.
+
+Substrate gives blockchain innovators the framework for maximum freedom with minimal effort. It is highly customizable, adaptable, and made by blockchain developers for blockchain developers. It allows developers to focus their effort on the thing they care most about—the state transition function—while providing them with the networking, consensus and security as well as an upgrade path to interoperability with Polkadot.
+
+![](/images/web3_tuesday_106.jpeg)_Parity Founder Gavin Wood used a brand-new laptop to demonstrate launching a blockchain in minutes_
+
+## **Just how general is Substrate?**
+
+Essential for any blockchain architect is creating the state transition function (STF), i.e., the business logic that comprises the blockchain. The STF’s feature set, capabilities, and limitations depends on who or what the blockchain is for, and Substrate is designed to be general to support the vast majority of present and future blockchain designs.
+
+The STF for Substrate chains is expressed, in a deterministic subset of WebAssembly, a cross-platform instruction architecture designed to be lightweight, fast and well-supported. As of version 1.0-beta of Substrate, the “runtime” or STF of a blockchain can be written in purely Rust, C++ or C. WebAssembly support for other languages are expected to follow.
+
+The networking is built on Libp2p, the modular network stack, and works out of the box. For blockchains that require additional network messages, future versions of Substrate are planned to include a network topology API.
+
+Through a multi-level, component-oriented design, Substrate is designed to be both entirely general at its core, yet highly composable and suitable for rapid application development. It supports various consensus algorithms including Polkadot’s novel SHAFT (GRANDPA) adaptive progressive finality gadget. Cryptographic database backends and even the block format can be configured or rewritten. Substrate’s revolutionary generality and developability is evidenced through it being used to build four wildly different blockchains including Polkadot and Ethereum 2.0 simultaneously and in a fraction of the time it would otherwise take (an early version of Ethereum 2.0 was prototyped in a few weeks).
+
+Several consensus algorithms are supported in the 1.0-beta, with more are coming soon, including:
+
+* Rhododendron (instant finality)
+* [SHAFT/GRANDPA](https://medium.com/polkadot-network/grandpa-block-finality-in-polkadot-an-introduction-part-1-d08a24a021b5) (progressive, adaptive finality)
+* Aurand (probabilistic finality, constant blocktime)
+* Ouroboros (live, probabilistic finality) (planned)
+* PoW (e.g., Ethash) (planned)
+* Parachain (PoV, Polkadot consensus) (planned)
+
+Your can also design your own consensus algorithm with Substrate’s API.
+
+## **What’s included in Substrate?**
+
+Substrate 1.0-beta is designed to give developers the tools and freedom to create innovative state machines. The general and neutral nature makes it highly customizable, but many tools come working out-of-the-box, including:
+
+* [Polkadot](https://polkadot.network/) connectivity
+* Hot-swappable, pluggable Consensus
+* Hot-upgradeable, pluggable STF
+* Flexible and general sync
+* Pub/Sub WebSocket JSON-RPC
+* Light client
+* Transaction queue
+* Pervasive, secure networking
+* JavaScript implementation
+* Substrate Runtime Module Library (SRML)
+
+Because of Substrate’s novel on-chain upgrade mechanism, you will be able “hot-swap” consensus algorithms or upgrade STFs without the need to hard fork. The latter, a forkless upgrade mechanism was [first publicly demonstrated](https://medium.com/polkadot-network/polkadot-poc-2-is-here-parachains-runtime-upgrades-and-libp2p-networking-7035bb141c25) on the Polkadot “Krumme Lanke” testnet on July 17th, 2018, and continues as the PoC-2 testnet at the time of this article’s release.
+
+## **Substrate Runtime Module Library**
+
+To help developers more quickly launch their blockchains, Gavin introduced Substrate Runtime Module Library (SRML), a comprehensive and extensible set of generic trait-based modules to easily create runtimes.
+
+These modules add functionality around accounts and balances, fungible assets, PoS staking, contracts, treasury, and more. Build your chain by snapping together modules to quickly and easily create your needed feature set quickly and easily. All the networking, consensus, light client, and other features will still work with your custom blockchain. If you need new functionality, just create a new module.
+
+![](/images/srml.png)
+
+Beyond the SRML, Substrate includes two additional layers in its design: a JSON-configurable generic blockchain node for executing its runtime, and a minimal core blockchain engine which handles the consensus, block production, networking, database and other miscellaneous features.
+
+## **Solo chains and Parachains**
+
+The Polkadot relay chain is built on Substrate, and future chains that will connect on and benefit from the interoperability layer of Polkadot (the relay chain) will also be built on Substrate. Enterprises and consortiums concerned about privacy and permissioning can easily add those features for better control, and while Substrate does not require your blockchain to connect to Polkadot, it provides an easy upgrade path using a bridge or becoming a native Parachain.
+
+![](/images/solochainsparachains.png)
+
+## **A license to build - Apache 2.0**
+
+Parity is committed to supporting all developers and organizations with the tools and freedom they need to innovate and utilize this ground-breaking technology. To that end, Substrate 1.0-beta will be released under the Apache 2.0 license, a commonly found permissive license that makes no requirements over how our software is used, modified or distributed.
+
+[Substrate](https://parity.io/substrate) is [already on Github](https://github.com/paritytech/substrate) and released under the General Public License (version 3).
+
+Want to dig deeper? Check out our resources to learn more about Substrate and start hacking:
+
+* [Substrate testnet “BBQ-Birch” launched](https://medium.com/paritytech/substrate-testnet-launched-a55b990e6eba)
+* [How to get on the Substrate BBQ-Birch Testnet](https://hackmd.io/y-E9Q9jTRreni6z9EU0kkA)
+* [Substrate in a Nutshell](https://www.parity.io/substrate-in-a-nutshell/)
+* [What is Substrate?](https://www.parity.io/what-is-substrate/)
+* [Substrate Technical Chat on Riot](https://matrix.to/#/#substrate-technical:matrix.org)
+* [Substrate nodes on telemetry](https://telemetry.polkadot.io/#/BBQ%20Birch)

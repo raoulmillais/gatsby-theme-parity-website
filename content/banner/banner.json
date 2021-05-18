@@ -1,0 +1,11 @@
+{
+  "active": true,
+  "text": "Polkadot Decoded, the biggest Polkadot event of the year. May19th & 20th",
+  "emoji": "👉",
+  "link-text": "Register now",
+  "url": "https://decoded.polkadot.network/?utm_source=parity.io&utm_medium=referral&utm_campaign=decoded+2&utm_content=register",
+  "pages": [
+    "/",
+    "/technologies/polkadot"
+  ]
+}

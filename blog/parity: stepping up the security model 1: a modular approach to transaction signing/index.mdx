@@ -1,0 +1,33 @@
+---
+title: index
+tags:
+- Security
+author: Parity Technologies
+blogTitle: 'Parity: Stepping Up the Security Model 1: A modular approach to transaction
+  signing'
+slug: blog/parity-stepping-up-the-security-model-1-a-modular-approach-to-transaction-signing/
+date_published: 2016-05-30T06:00:00+02:00
+image: ''
+
+---
+A security flaw in Geth / Mist has been attracting some attention recently mainly because of the size of the loss of Ether suffered by the user affected. Almost 100,000 USD was lost after he sent a transaction to theDAO using a Geth client whose settings had been changed from the default.
+
+The official response was: ‘SFYL but don’t mess with the settings’ - rather disappointing given the fundamental issue was not that the user compromised himself with his setup (though this was extremely unfortunate) but, that the process of sending a transaction to the client via IPC unlocks the account for two seconds. Claiming that because the attack vector demonstrated required some contrivance to enable means that the weakness in the system is not a weakness is simply wrong.
+
+The Geth team have acknowledged this with a hotfix which adds a new RPC method personal_signAndSendTransaction which does not unlock the account and instead requires you to send the password and transaction data in one call. This is again not ideal - in this case, it means that browser based Ðapps (like Augur, Gnosis, MakerOTC etc..) would need you to input your password into their front end requiring you to trust the code being executed in the browser to not steal this.
+
+Parity is being built specifically to serve and operate Ðapps natively inside your browser - so how are we going to make sure that we never need to leave access to our private keys unlocked, and never need to give our password to Ðapp front-ends?
+
+The first thing we have done is to make sure that each Ðapp front-end has its own RPC endpoint meaning that CORS is not required. Secondly, we have re-imagined and re-designed the API used by applications to speak to the client - essentially splitting it into two parts. The first portion will be a normal public API; these are the ‘safe’ functions available to Ðapps like querying storage or watching for changes to log filters. They will be available directly from Parity through the normal RPC server.
+
+However, the second portion of the API will be an API available only through the Trusted Signer System. This and only this will be able to sign transactions using the user’s private keys and it will do so without exposing passwords to Ðapp front ends - or leaving accounts unlocked for arbitrary periods.
+
+This Trusted Signer will always operate from a fully isolated context; one that is not available to the Ðapp (or wallet, for that matter). Crucially, this will be an operating system process that is not that which is requesting the transaction signing event. Furthermore, it is designed to be modular, meaning it will be possible to switch out EthCore’s hardened key management and signing module with some other means, for example, a hardware wallet or a 2-factor authentication system.
+
+The solution to the Mist hack problem will always be to isolate the process of signing transactions from Ðapps, keeping the security-sensitive processes both insulated from attack and well under the control of the user. Only by doing this can you keep your keys, and the increasing shades of value they represent, safe and secure.
+
+However, this is insufficient protection for users if they are either unaware of the dangers of signing transactions or that they succumb to the dreaded “[Alarm Fatigue](https://en.wikipedia.org/wiki/Alarm_fatigue)” that repeatedly entering passwords to use Ðapps that can ruin the UX and make security measures redundant. This is why Ethcore’s Trusted Signer System will protect users from malicious Ðapps using our Semantic Transaction Processing System designed to expose the meaning behind every transaction sent.
+
+Coming soon:
+
+Parity: Stepping Up the Security Model 2: The Semantic Transaction Processing System

@@ -75,7 +75,7 @@
     "homepage-news-title": "Featured on",
     "homepage-featured-blog-heading":"From the blog",
     "homepage-featured-blog-title":"How can Parity help your project?",
-    "homepage-featured-blog-cta":"See our Technology",
+    "homepage-featured-blog-cta":"See our Technologies",
     "homepage-featured-blog-subtext":"or check out Parity's",
     "homepage-featured-blog-subtext-link":"custom solutions",
     "homepage-social-card-title":"Join the discussion:",
@@ -88,7 +88,7 @@
     "technology-page-title":"Open-Source Software for Building the Decentralised Web",
     "technology-page-sub-title-1":"Parity develops cutting-edge blockchain technologies to foster innovation.",
     "technology-page-sub-title-2":"Don't know which technology is right for you?",
-    "technology-page-cta":"See our csutom solution",
+    "technology-page-cta":"See our custom solution",
     "technology-page-sub-cta-1":"or",
     "technology-page-sub-cta-2":"get in touch",
     "technology-page-sub-cta-3":"with us",
@@ -108,8 +108,8 @@
     "polkadot-page-cta":"Visit the website",
 
     "substrate-page-hero-title":"The foundation for blockchain innovators.",
-    "substrate-page-hero-cta-one":"Learn More",
-    "substrate-page-hero-cta-two":"Browse Documentation",
+    "substrate-page-hero-cta-one":"Learn more",
+    "substrate-page-hero-cta-two":"Browse the documentation",
     "substrate-page-intro-one-title":"Create the perfect custom blockchain for your enterprise",
     "substrate-page-intro-one-description":"Parity knows blockchains. That’s why we’ve built Substrate, a technology that makes it quick and easy to build the perfect blockchain for your needs.",
     "substrate-page-intro-one-bullet-one":"Create a blockchain with the right privacy level for your use case",
@@ -168,8 +168,8 @@
     "signer-page-title":"Turn your smartphone into a hardware wallet.",
     "signer-page-github-text":"Check out the open-source repo for Parity Signer.",
     "signer-page-github-link-text":"Go to GitHub",
-    "signer-page-gitter-text":"Connect with the community and talk to developers.",
-    "signer-page-gitter-link-text":"Go to Gitter",
+    "signer-page-element-text":"Connect with the community and talk to developers.",
+    "signer-page-element-link-text":"Go to Element",
     "signer-page-into-title":"The simplest solution for cold storage",
     "signer-page-into-description":"With Parity Signer, you keep your private keys secure and sign transactions easily. Turn your old smartphone into a hardware wallet for Polkadot, Kusama, and other Substrate-based chains, as well as Ethereum. All data is transmitted over the air via QR-codes.",
     "signer-page-section-one-title":"Download, go offline, and create your keys",
@@ -197,8 +197,8 @@
     "bitcoin-page-hero-sub-cta-three":"about Parity Bitcoin",
     "bitcoin-page-github-description":"See the latest changes and complete version history.",
     "bitcoin-page-github-cta":"Go to releases",
-    "bitcoin-page-gitter-description":"Connect with support and the Parity Bitcoin community.",
-    "bitcoin-page-gitter-cta":"Go to Gitter",
+    "bitcoin-page-element-description":"Connect with support and the Parity Bitcoin community.",
+    "bitcoin-page-element-cta":"Go to Element",
     "bitcoin-page-intro-section-one-title":"Built-in stability and speed",
     "bitcoin-page-intro-section-one-description":"Every second is valuable, that’s why we’ve built a Bitcoin client in Rust from the ground up. Parity Bitcoin ensures your node or mining rig stays up and running.",
     "bitcoin-page-intro-section-one-bullet-one":"Blazing fast transaction processing",
@@ -329,7 +329,7 @@
     "jutta-page-description-three":"At Parity, Jutta works to ensure web 3.0 will be a fair web for all.",
     "jutta-page-video-caption":"Jutta Steiner at TechCrunch Sessions: Blockchain",
     "jutta-page-bottom-cta-title":"A team of the world’s top blockchain engineers",
-    "jutta-page-bottom-cta":"Learn more about the team",
+    "jutta-page-bottom-cta":"Learn about the team",
     "jutta-page-bottom-sub-cta-1":"or checkout ",
     "jutta-page-bottom-sub-cta-2":"Parity's blog",
 
@@ -377,7 +377,7 @@
     "rust-jobs-page-developers-one-title":"Work on what interests you",
     "rust-jobs-page-developers-one-description":"We believe people do their best work when they’re driven by their own curiosity and interest. We align people with the projects they’re passionate about.",
     "rust-jobs-page-developers-two-title":"Work on your own terms",
-    "rust-jobs-page-developers-two-descriptoin":"Flexible schedule and location. Work from home or bring your dog to the office. Most communication is done asynchronously through GitHub and chat.",
+    "rust-jobs-page-developers-two-description":"Flexible schedule and location. Work from home or bring your dog to the office. Most communication is done asynchronously through GitHub and chat.",
     "rust-jobs-page-developers-three-title":"Do meaningful work",
     "rust-jobs-page-developers-three-description":"Parity is an organization where people are valued for their contributions. We focus on development, not on unnecessary meetings.",
     "rust-jobs-page-developers-cta":"View all jobs »",
@@ -398,6 +398,7 @@
     "contact-page-job-title":"Want to join the team?",
     "contact-page-job-cta":"See job openings",
     "contact-page-footer-title":"Want to stay informed of Parity updates and events?",
+    "contact-page-footer-button":"Subscribe to our newsletter",
     "contact-page-footer-subcta-one":"or read",
     "contact-page-footer-subcta-two":"our blog",
 
@@ -407,7 +408,7 @@
     "bug-bounty-page-hunters-bullet-one":"Description",
     "bug-bounty-page-hunters-description-html":"<p>We work hard to make sure our systems are bug-free, but acknowledge that we might not catch them all. We call on our community and all bug bounty hunters to help identify bugs in the protocols and software. If you discover a bug, we appreciate your cooperation in responsibly investigating and reporting it to us so that we can address it as soon as possible.</p><p>Our Parity Bug Bounty Program allows us to recognise and reward members of the Parity community for helping us find and address significant bugs, in accordance with the terms of the Parity Bug Bounty Program set out below.</p><p>We want to remind all Hunters that Parity’s main product is blockchain-related source code (located in <a href='https://github.com/paritytech' target='_blank' rel='noreferrer'>our Github repositories</a>) and associated released binaries, and not websites or services in any form. This is the reason for our Bug Bounty Program covering only former, and not the latter.</p>",
     "bug-bounty-page-hunters-bullet-two":"Responsible investigation and reporting",
-    "bug-bounty-page-hunters-responsible-investigation-html":"<p>Responsible investigation and reporting includes, but isn't limited to, the following:</p><ul><li>Don't violate the privacy of other users, destroy data, etc.</li><li>Don’t defraud or harm Parity Technologies Ltd or its users during your research; you should make a good faith effort to not interrupt or degrade our services.</li><li>Don't target our physical security measures, or attempt to use social engineering, spam, distributed denial of service (DDOS) attacks, etc.</li><li>Initially report the bug only to us and not to anyone else.</li><li>Give us a reasonable amount of time to fix the bug before disclosing it to anyone else, and give us adequate written warning before disclosing it to anyone else.</li><li>In general, please investigate and report bugs in a way that makes a reasonable, good faith effort not to be disruptive or harmful to us or our users. Otherwise your actions might be interpreted as an attack rather than an effort to be helpful.</li></ul>",
+    "bug-bounty-page-hunters-responsible-investigation-html":"<p>Responsible investigation and reporting includes, but isn't limited to, the following:</p><ul className='text-textDark ml-4'><li>Don't violate the privacy of other users, destroy data, etc.</li><li>Don’t defraud or harm Parity Technologies Ltd or its users during your research; you should make a good faith effort to not interrupt or degrade our services.</li><li>Don't target our physical security measures, or attempt to use social engineering, spam, distributed denial of service (DDOS) attacks, etc.</li><li>Initially report the bug only to us and not to anyone else.</li><li>Give us a reasonable amount of time to fix the bug before disclosing it to anyone else, and give us adequate written warning before disclosing it to anyone else.</li><li>In general, please investigate and report bugs in a way that makes a reasonable, good faith effort not to be disruptive or harmful to us or our users. Otherwise your actions might be interpreted as an attack rather than an effort to be helpful.</li></ul>",
     "bug-bounty-page-hunters-bullet-three":"Eligibility",
     "bug-bounty-page-hunters-eligibility-html":"<p>Generally speaking, any bug that poses a significant vulnerability, either to the soundness of protocols and protocol/implementation compliance to network security, to classical client security as well as security of cryptographic primitives, could be eligible for reward. In addition, security issues with certain services that Parity offer are in scope as well, see below. Please note that it's entirely at our discretion to decide whether a bug is significant enough to be eligible for reward.</p><p>The Parity Bug Bounty Program covers security issues identified in the following sets of protocols, code bases and services:</p><ul><li>Cryptography code: any bugs relating to cryptography, encryption, decryption, and signing of messages (this includes account creation and recovery).</li><li>Client Code: any bugs which can be used to bring down or take control of Parity clients without direct access to the machine</li><li>Smart contracts: any bugs which compromise the intended behavior of a smart contract in the Parity suite, particularly bugs which can lead to Ether or ERC20 tokens being transferred.</li><li>Client Application Security:<ul><li>bugs which can allow DApps running in the Parity browser to obtain privileges not intended for them.</li><li>DApps should not be able to escape the 'sandbox' they run in.</li></ul></li><li>Whisper code: any errors in the implementation of encryption</li><li>Parity releases pipeline: any bugs which can be used to halt Parity’s release process or add malicious/unintended functions to the released binaries.</li></ul>",
     "bug-bounty-page-hunters-bullet-four":"Ineligibility",
@@ -460,7 +461,7 @@
     "events-page-newsletter-description":"Subscribe below to Paritys' Newsletter",
 
     "newsletter-cta":"Subscribe",
-    "newsletter-modal-one-title":"Subscribe to hear about Parity Updates and events",
+    "newsletter-modal-one-title":"Subscribe to hear about Parity updates and events.",
     "newsletter-modal-one-footer-text":"To see how we use your information please see our",
     "newsletter-modal-one-footer-privacy":"privacy policy",
     "newsletter-modal-two-title":"Almost finished...",
@@ -469,6 +470,7 @@
     "newsletter-modal-footer-parity-handle":"@ParityTech",
     "newsletter-modal-footer-twitter":"on Twitter.",
 
+    "jobs-page-seo":"We're Hiring",
     "jobs-page-hero-title":"Want to Build the Future of the Web?",
     "jobs-page-hero-sub-title":"We are seeking out the world's best developers to build the future of blockchain and Web 3.0.",
     "jobs-page-hero-cta":"view our curent openings",
@@ -477,6 +479,9 @@
     "jobs-page-footer-cta-title":"Want to learn more about the work we do?",
     "jobs-page-footer-cta-button-text":"Read our Blog",
     "jobs-page-footer-cta-text-one":"or",
-    "jobs-page-footer-cta-text-two":"get in touch with us"
+    "jobs-page-footer-cta-text-two":"get in touch with us",
+
+    "newsletter-page-title": "Want to stay informmed about Parity updates and events?",
+    "newsletter-page-cta": "Click to Subscrtibe"
 
 }

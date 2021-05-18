@@ -38,11 +38,15 @@ export default function KusamaAddresses() {
               x
             </div>
             <div className="pt-6 pb-10">
-              <h4 className="text-center font-light px-4">{intl.formatMessage({ id: 'kusama-addresses' })}</h4>
+              <h4 className="md:text-2xl px-4 mb-6 font-medium">{intl.formatMessage({ id: 'kusama-addresses' })}</h4>
               <div className="pl-4 mx-auto">
-                <p className="uppercase font-title">{intl.formatMessage({ id: 'kusama-addresses-parity-one' })}:</p>
+                <p className="uppercase font-title font-medium">
+                  {intl.formatMessage({ id: 'kusama-addresses-parity-one' })}:
+                </p>
                 <code className="bg-pink-100 break-all">Fa1me4dit46AFSjinM89EsfiF7T91seEPU4wY9JNJQ752Sg</code>
-                <p className="uppercase font-title">{intl.formatMessage({ id: 'kusama-addresses-parity-two' })}:</p>
+                <p className="uppercase font-title font-medium mt-6">
+                  {intl.formatMessage({ id: 'kusama-addresses-parity-two' })}:
+                </p>
                 <code className="bg-pink-100 break-all">F2i6trfXqFknbgB3d9wcd1X98WWdLLktmFtK8Beud75bjTW</code>
               </div>
             </div>

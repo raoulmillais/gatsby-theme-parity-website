@@ -1,0 +1,45 @@
+---
+title: index
+tags:
+- Community
+- Security
+author: Parity Technologies
+blogTitle: 'Attack on The DAO: What will be your response?'
+slug: blog/attack-on-the-dao-what-will-be-your-response/
+date_published: 2016-06-17T06:00:00+02:00
+image: ''
+
+---
+Two days ago a flaw was spotted in the contract code of theDAO - specifically a recursive call issue that exists in the function withdrawRewardFor.
+
+[https://forum.daohub.org/t/bug-discovered-in-mkr-token-contract-also-affects-thedao-would-allow-users-to-steal-rewards-from-thedao-by-calling-recursively/4947/7](https://forum.daohub.org/t/bug-discovered-in-mkr-token-contract-also-affects-thedao-would-allow-users-to-steal-rewards-from-thedao-by-calling-recursively/4947/7 "https://forum.daohub.org/t/bug-discovered-in-mkr-token-contract-also-affects-thedao-would-allow-users-to-steal-rewards-from-thedao-by-calling-recursively/4947/7")
+
+At the time, it was thought that this was an annoying bug that meant the reward functionality that would be needed in the long term would not work properly and would require an upgrade to allow Dao Token Holders to get rewards from their investments.
+
+[https://blog.slock.it/no-dao-funds-at-risk-following-the-ethereum-smart-contract-recursive-call-bug-discovery-29f482d348b#](https://blog.slock.it/no-dao-funds-at-risk-following-the-ethereum-smart-contract-recursive-call-bug-discovery-29f482d348b# "https://blog.slock.it/no-dao-funds-at-risk-following-the-ethereum-smart-contract-recursive-call-bug-discovery-29f482d348b#")
+
+Unfortunately, at the time, it was not realised that this affected the splitDAO function which includes a call to this function…
+
+It is this exploit which allowed this attacker to recursively call the splitDAO function until they had completely drained the DAO. This attack has been underway for many hours by now… There is nothing the Ethereum Foundation or slock.it can do to stop it.
+
+If this had been spotted early enough a concerted white hat attack could have gotten the ether into the hands of an altruistic group - but the window of opportunity has been missed.
+
+_But we can fix this._
+
+**A legitimate community response:**
+
+Decentralised consensus networks are peer-to-peer networks where individuals acting in their own self-interest maintain consensus on an agreed upon state of the blockchain database. It is these two terms; ‘agreed upon’ and ‘self-interest’ that are the most important. These two notions took bitcoin through bug after bug during its bumpy launch; the community would decide to act when the intended execution of the protocol did not match the real world outcome.
+
+Fixing bugs in the protocol has always been a part of the iterative process of development that all software systems must undergo. Planning new features to be implemented with hard forks is a philosophical difference between Ethereum and Bitcoin.
+
+This, however, is different. The DAO is not the Ethereum protocol. The bug discovered is an exploit of poorly written solidity code. The threat is not from the bug per se - but from the magnitude of the (illicit) redistribution of ether that this bug is allowing.
+
+So what can we do? Ethcore is a part of the developer community of Ethereum. We do not run mining farms. We are not controllers of the network. Neither are Jeff’s or Christian’s teams. We are technologist and codebase maintainers. Ethereum belongs to the ether holders, the miners, the full nodes. These individuals, who are operating in their own self-interest, are maintaining an agreed upon state of the blockchain.
+
+We would like to give you the option to agree on another state of the world. In this state theDAO attacker would not be allowed to take control of the ether inside theDAO - nor would he or she be able to move or spend it. Instead, the DAO tokens will be returned to the Dao token holders, theDAO experiment will end and we will move on wiser.
+
+We will offer you this choice through an optional update to the parity client that will move ether to a recovery contract that will allow DAO token holders to recover their ether. This will maintain consensus with other updates from the Geth team and the CPP team.
+
+We are at a fork in the road - we hope that you guys make the right decision.
+
+The EthCore team.

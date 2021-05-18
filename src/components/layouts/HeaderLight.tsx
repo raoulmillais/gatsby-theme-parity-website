@@ -8,7 +8,7 @@ import parityLogoDark from '../../images/parity_logo_dark.png';
 
 const navItemsDiv = 'px-2 pt-2 pb-4 h-screen flex flex-col md:h-auto md:flex md:flex-row md:items-center md:mt-8';
 const navItemStyles =
-  'block mt-1 px-4 py-1 font-normal text-white  tracking-widest no-underline uppercase  hover:text-navItemColor text-center animate__animated animate__slideInRight animate__faster';
+  'block mt-1 px-4 py-1 font-title font-semibold  text-white  tracking-nav no-underline uppercase  hover:text-navItemColor text-center animate-fade-in';
 const socialIcons = 'w-6 h-auto fill-current text-white hover:text-navItemColor mx-4';
 
 export default function Header() {
@@ -29,11 +29,11 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="container md:flex md:justify-between md:px-4 md:py-4">
+    <header className={`container relative md:flex md:justify-between md:px-4 z-10 ${isOpen ? 'bg-white' : null}`}>
       <div className="flex items-center justify-between px-4 py-3 md:p-0 ">
         <div>
           <LocalizedLink to="/">
-            <img className="h-14" src={ isOpen ? parityLogoDark : parityLogo} alt="Sub0 Logo" />
+            <img className="h-14" src={isOpen ? parityLogoDark : parityLogo} alt="Parity Logo" />
           </LocalizedLink>
         </div>
         <div className="md:hidden">

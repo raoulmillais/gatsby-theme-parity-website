@@ -1,0 +1,57 @@
+---
+title: index
+tags:
+- People of Parity
+- Company and Culture
+- Rust
+- Wasm
+author: Alexandra Heller
+blogTitle: 'People of Parity: Jack Fransham, Core Developer'
+slug: blog/people-of-parity-jack-fransham-core-developer/
+date_published: 2019-02-15T06:00:00+01:00
+image: "/images/people-of-parity-jack2.jpeg"
+
+---
+Parity Technologies is made up of a large number of talented developers who are often as passionate about the technologies they build with as those they build. Jack Fransham falls into this category, being able to talk at length about the merits of the Rust programming language, WebAssembly (Wasm), and [Substrate](https://parity.io/substrate).
+
+In the year and a half Jack has worked at Parity, he has worked on a number of projects, including [Wasmi](https://github.com/paritytech/wasmi), Parity’s Wasm interpreter; the [“Fleetwood” eDSL library](https://github.com/paritytech/fleetwood) for writing safe smart contracts in Rust; EVM optimization; hashing algorithms; and now the [Lightbeam Wasm compiler](https://github.com/CraneStation/lightbeam).
+
+Jack’s offbeat and occasionally morbid sense of humor can be witnessed in his writing. For example, when explaining Substrate’s forkless upgrades, he [likens blockchain forks to replacing a family dog](https://medium.com/polkadot-network/never-fork-again-438c5e985cd8):
+
+> There’s no way to actually “upgrade” a blockchain in the traditional sense, only create a new blockchain that retains the old one’s history. Like if you replace your dead dog with another of the same breed and you call it the same name for the sake of the kids. Except in this case the original dog isn’t dead, and also I guess the new dog has all the memories of the original dog surgically implanted into its brain somehow.
+
+I sat down with Jack to chat about writing smart contracts in Rust, what’s remarkable about WebAssembly, what it’s like working at Parity, and life in Berlin.
+
+***
+
+**Like most Parity developers, you’re a big** [**Rust**](https://parity.io/why-rust) **fan. What made you fall in love with the programming language?**  
+  
+The fact that, for the first time, I could write code that looked like what I was used to in a language like Python or C# but with the ability to visualize the assembly that it compiles down to. Maybe not the exact instructions, but you can at least work out the flow and use that to optimism your program effectively without resorting to memory-unsafe languages or constructs. C++ has this ability too, but I didn’t have a spare decade to learn it.
+
+**You’ve made the case for** [**writing smart contracts in Rust**](http://troubles.md/posts/why-write-smart-contracts-in-rust/)**. Why should someone consider writing smart contracts in Rust?**  
+  
+Well, my first answer will always be because Rust is a fantastic language in general, but it’s also very well-tailored to blockchain use-cases specifically. Many of the constraints that you get on the blockchain are identical to those found in high-reliability embedded systems—small code-size, excellent security, high reliability, and minimal resource use. One of Rust’s design goals is to target high-reliability embedded systems and we can piggyback off that work to have a well-designed language that is also designed for the blockchain as a side effect. This isn’t to mention the fact that it already has a world-class optimizing compiler that produces Wasm, which as mentioned is an excellent VM ISA for the blockchain.
+
+**You write a lot about WebAssembly (Wasm)** [**on your blog**](http://troubles.md/)**. What interests you about Wasm?**
+
+I’ve always been fascinated by virtual machines and language design, but WebAssembly is truly something new. It’s the first virtual machine that’s designed to be as easily-compilable to assembly as possible while also having the kind of deterministic, safe and well-defined semantics you’d expect from a higher-level VM ISA. It’s certainly got problems, but even if in ten years no one’s using Wasm, the ideas that it brought to the table are still a real turning point in application security and virtual machine design.
+
+**You seem to also be a** [**Substrate**](https://parity.io/substrate) **fan. What’s your favorite aspect of Substrate?**
+
+Without a doubt the runtime upgrade mechanism. No blockchain to my knowledge had ever been upgraded before the first Polkadot runtime upgrade—they were always simply forked. There’s probably a computer in a cupboard somewhere still mining Bitcoin v0.1; that simply can’t be true with Substrate’s upgrade mechanism as long as the network doesn’t get partitioned. This means that the design of Polkadot and other Substrate chains can be iterated a lot faster without every update being a huge deal like in Ethereum.
+
+**What are you working on right now?**
+
+An [optimising linear-time compiler for WebAssembly](https://github.com/CraneStation/lightbeam). We want to be able to produce native code for Wasm so we can get maximum performance, but traditional compilers are basically impossible to write without allowing so-called “compiler bombs” - pieces of code that you can send to the compiler that cause it to take an extremely long amount of time. I’m building a compiler that produces high-quality native code while also being immune to compiler bombs.
+
+**What do you like about working at Parity?**
+
+The fact that many of the projects that Parity needs people to work on are projects that I totally would have worked on in my spare time anyway. There’s such a wide variety of work that needs to be done and a large amount of it is interesting and enjoyable. Also, the freedom to work from home when I want to - I like working in an office but no office can compete with the ability to play my own music over my speaker system.
+
+**Like many Parity developers, you live in Berlin. What do you enjoy about the city?**
+
+The feeling of being part of a community that the nightlife here gives you. When you go on a night out, for the most part people are respectful and friendly and when they’re not, people do actually call them out. You see many of the same faces if you go out a lot. Even if you’re not friends with all of them, you at least recognize them. The techno scene is small enough that you feel like a part of something but big enough that there’s always something to do.
+
+***
+
+Stay tuned for more “People of Parity.” [Join the newsletter](https://www.parity.io/newsletter/) to be informed of new articles, tech releases, and events.

@@ -1,0 +1,22 @@
+---
+title: index
+tags:
+- Security
+author: Parity Technologies
+blogTitle: Parity Technologies Multi-Sig Wallet Issue Update
+slug: blog/parity-technologies-multi-sig-wallet-issue-update/
+date_published: 2017-11-13T06:00:00+01:00
+image: ''
+
+---
+This week, as has been widely reported, a vulnerability in the Parity Wallet library contract of the standard multi-sig contract was found by an anonymous user. This user managed to gain access to the smart contract, effectively making themselves the owner of the contract. Subsequently, the user made the unfortunate move to “suicide” the smart contract underlying the multi-sig wallet which in turn blocked funds of of 587 wallets with a total amount of 513,774.16 Ether. While the funds remain in the affected wallets, the wallets themselves are inaccessible.
+
+Jutta Steiner, Founder of Parity Technologies says, “We deeply regret the impact this situation is causing among our users and within the community. We do ask that people get in touch with us if they have any uncertainties and to not believe the speculation circulating the media. We are endeavoring to find a solution as soon as possible and we would like to thank everyone for the support we’ve experienced so far.”
+
+Regarding the affected wallets, we are reaching out to the owners on an individual basis and welcome users to get in touch. If you are still unsure about the state of your wallet, please visit [this website](https://affected.parity.io/) and if you have any questions remaining or would like to get in touch you can email us at [community@parity.io](mailto:community@parity.io).
+
+We have spent the last few days rigorously examining the events. While it is too early to decide on a fixed solution, EIP156 has been discussed for a significant time and has drawn support from various directions in the community. The team is working on a broadly accepted solution that will unblock the funds.
+
+This is a learning opportunity (albeit a painful one) for our company, for our collaborators and the community that stands with us. There have been discussions within Parity and across the open source community for a while now on how to build better and more secure systems. Moving forward we will further improve our process related to the development of mission critical code and work together with the community to make core infrastructure more secure.
+
+We continue to analyze the events and will issue a detailed postmortem in the next few days.

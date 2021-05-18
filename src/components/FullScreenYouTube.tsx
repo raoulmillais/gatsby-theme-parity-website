@@ -20,38 +20,31 @@ export default function FullScreenYouTube(props: FullScreenYouTubeProps) {
   };
 
   return (
-    <div className="m-4">
+    <div className="p-2">
       <div style={sectionBackground}>
-        <div className="flex justify-center items-center h-64 md:w-96">
+        <div className="flex justify-center items-center h-64 md:w-84">
           <div
-            className="bg-white h-16 w-16 rounded-full flex justify-center items-center cursor-pointer hover:shadow-lg transition-shadow duration-500"
+            className="bg-white h-12 w-12 rounded-full flex justify-center items-center cursor-pointer transition-all transform duration-500 hover:-translate-y-0.5 hover:shadow-lg"
             onClick={() => setShowModal(!showModal)}
           >
-            <svg
-              className="fill-current text-textDark"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="-4 -3 24 24"
-              width="24"
-              height="24"
-              preserveAspectRatio="xMinYMin"
-            >
-              <path d="M13.82 9.523a.976.976 0 0 0-.324-1.363L3.574 2.128a1.031 1.031 0 0 0-.535-.149c-.56 0-1.013.443-1.013.99V15.03c0 .185.053.366.153.523.296.464.92.606 1.395.317l9.922-6.031c.131-.08.243-.189.325-.317zm.746 1.997l-9.921 6.031c-1.425.867-3.3.44-4.186-.951A2.918 2.918 0 0 1 0 15.03V2.97C0 1.329 1.36 0 3.04 0c.567 0 1.123.155 1.605.448l9.921 6.032c1.425.866 1.862 2.696.975 4.088-.246.386-.58.712-.975.952z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
+              <path d="M152.443 136.417l207.114 119.573-207.114 119.593z" fill="#000000" />
             </svg>
           </div>
         </div>
       </div>
-      <div className="my-7">
+      <div className="my-4">
         {link === 'none' ? (
-          <p className="font-normal text-lg mb-0">{name}</p>
+          <p className="text-textLight font-bold mb-0">{name}</p>
         ) : (
           <LocalizedLink
             to={link}
-            className="font-normal text-lg mb-0 no-underline hover:text-parityPink hover:underline"
+            className="font-normal text-textDark text-lg mb-0 no-underline hover:text-parityPink hover:underline"
           >
             {name}
           </LocalizedLink>
         )}
-        <p className="text-sm mt-1">{title}</p>
+        <p className="text-sm text-textDark mt-1">{title}</p>
       </div>
       {showModal ? (
         <div

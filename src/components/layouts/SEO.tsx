@@ -1,14 +1,18 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { websiteData } from './seoData';
 
 interface SEOProps {
   title: string;
   description?: string;
+  author?: string;
+  image?: string;
+  keywords?: string;
+  url?: string;
   children?: React.ReactNode;
 }
 
-// TODO add graphql types
 export default function SEO(props: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
@@ -18,25 +22,84 @@ export default function SEO(props: SEOProps) {
             title
             description
             author
+            image
+            siteUrl
+            keywords
           }
         }
       }
     `
   );
-
   const metaDescription = props.description || site.siteMetadata.description;
+  const metaTitle = props.title || site.siteMetadata.title;
+  const metaAuthor = props.author || site.siteMetadata.author;
+  const metaUrl = props.url || site.siteMetadata.siteUrl;
+  const metaImage = props.image || site.siteMetadata.image;
+  const metaKeywords = props.keywords || site.siteMetadata.keywords;
 
   return (
-    <Helmet title={props.title} titleTemplate={`%s | ${site.siteMetadata.title}`}>
-      <meta name="description" content={metaDescription} />
-      <meta name="og:title" content={props.title} />
-      <meta name="og:description" content={metaDescription} />
-      <meta name="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={site.siteMetadata.author} />
-      <meta name="twitter:title" content={props.title} />
-      <meta name="twitter:description" content={metaDescription} />
-      {props.children}
+    <Helmet
+      title={props.title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: metaTitle,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
+          property: `og:url`,
+          content: metaUrl,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:creator`,
+          content: metaAuthor,
+        },
+        {
+          name: `twitter:title`,
+          content: metaTitle,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+        {
+          name: `twitter:title`,
+          content: metaTitle,
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage,
+        },
+      ].concat(
+        metaKeywords && metaKeywords.length > 0
+          ? {
+              name: `keywords`,
+              content: metaKeywords.join(`, `),
+            }
+          : []
+      )}
+    >
+      <script type="application/ld+json">{JSON.stringify(websiteData)}</script>
     </Helmet>
   );
 }

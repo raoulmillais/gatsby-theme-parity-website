@@ -1,0 +1,44 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Polkadot
+- Custom Solutions
+author: Zach Cavanaugh
+blogTitle: Substrate EVM and Polkadot-Ethereum Compatibility
+slug: blog/substrate-evm/
+date_published: 2019-11-15T01:00:00+01:00
+image: "/images/substrate-evm-blog-graphic-02.png"
+
+---
+**_TL;DR_**_: Substrate EVM will allow unmodified Solidity code to be deployed on a Substrate-based blockchain (including Polkadot parachains), opening up Substrate and Polkadot to pre-existing Ethereum smart contracts, with the possibility of connecting to Ethereum mainnet via bridges._
+
+Since its earliest conception, [Polkadot](https://polkadot.network/) has been envisioned as a network of disparate yet interconnected blockchains, with compatibility and interoperability at the center of the design. In bridging diverse communities, economies, and enterprises together under one shared ecosystem, Polkadot paves the way for a future of interconnected, decentralized networks and DApps. This includes not only public, private, and consortium blockchains built "natively" for Polkadot, but pre-existing networks as well. Compatibility with Ethereum, in particular, has been part of the Polkadot roadmap since day one, having been discussed in the very first lines of the [Polkadot whitepaper](https://polkadot.network/PolkaDotPaper.pdf).
+
+With the development of Substrate, a modular, extensible blockchain framework, we're making it easier than ever to build custom blockchains and Polkadot parachains. The Substrate Runtime Module Library (SRML) provides the basic building blocks for Substrate-based blockchains and includes all the essential functionality for a purpose-built blockchain. Among the various modules included with the SRML is the [Contracts module](https://substrate.dev/docs/en/next/conceptual/runtime/contracts/), designed for executing "native" Wasm smart contracts on any Substrate-based chain.
+
+While there are many benefits to Substrate's own native Wasm-based Contracts module, including native-speed execution, deep and mature tooling, platform independence, and the ability to write contracts in a variety of languages, a strong case exists for supporting projects that may already have a significant codebase written in Solidity for Ethereum’s native EVM. Moreover, Parity Technologies is a long-term supporter and builder in the Ethereum ecosystem, and we want to continue to provide support and infrastructure as we can to teams who have built on the Parity platform as we move from “Blockchain 2.0” to “3.0”.
+
+As part of this ongoing support, and to ensure that Substrate and Polkadot remain as inclusive as possible to the broader DApp community, we’ve built an EVM implementation for the SRML.
+
+## Substrate EVM
+
+[Substrate EVM](https://substrate.dev/docs/en/next/conceptual/runtime/contracts/evm_module) is an SRML module that provides an EVM execution environment for running unmodified Solidity code “natively” on a Substrate-based blockchain. In essence, Substrate EVM will allow Substrate-based blockchains, including Polkadot parachains, to host a nearly-complete instance of the Ethereum state transition function on-chain, alongside any additional Substrate modules as required for custom functionality.
+
+Existing Solidity applications can be deployed and executed in this environment, and will gain the added benefits of being part of a Substrate-based blockchain. These benefits include the possibility of integration with other Substrate modules and of connecting to the broader Polkadot network, thereby enabling interoperability not only with other Polkadot parachains but, via bridges, with external blockchains as well, including Ethereum mainnet.
+
+Interoperability with other Substrate modules is possible thanks to custom-built "pre-compiled contract" APIs, which will allow all basic SRML functionality, including calls between modules, balance transfers, and interchain messaging.
+
+We expect Substrate EVM to be capable of executing all normal EVM transactions (message calls and contract creation transactions), giving the same results as when running on Ethereum mainnet. This includes gas cost, which is currently configured to the Istanbul hard fork (this can later be expanded for backwards compatibility with earlier hard fork configurations).
+
+Differences between the Substrate EVM module and the Ethereum mainnet EVM include block hashes, which are fetched via the System module. Depending on the System module's configuration, the available hash length may or may not be 256. Second, difficulty and coinbase have been hard coded to zero in Substrate EVM, since they are not relevant in this context. In addition, the underlying EVM engine (SputnikVM) has been modified to make it modular, which will allow us to enable users to swap out and customize individual components (such as the gasometer) to their applications' specific needs.
+
+With the ability for Substrate-based blockchains to essentially host an entire Ethereum blockchain in a single SRML module, Solidity applications can interoperate with other modules, such as Substrate's native smart contracts module, governance, and Polkadot parachains, opening up a whole new space for innovation.
+
+## Additional Ethereum Support
+
+Substrate EVM is just one component of a broader push toward Polkadot-Ethereum compatibility. A Polkadot-Ethereum public bridge, first proposed in the original Polkadot whitepaper, will allow Polkadot parachains to connect to Ethereum mainnet for basic interoperability, while a Substrate to Parity-Ethereum POA bridge will allow connection between any Ethereum POA blockchain built on Parity Ethereum and a Substrate SRML module (thereby gaining potential access to the Polkadot network).
+
+In addition, we're working to support ongoing efforts to develop a Substrate-compatible WebAssembly backend for the Solidity compiler, which would allow pre-existing Solidity code to be deployed directly into a Substrate Contracts module rather than a Substrate EVM module.
+
+_For more information on Substrate and the Substrate EVM module, visit the_ [_Substrate Developer Hub_](https://substrate.dev/docs/en/next/conceptual/runtime/contracts/evm_module)_._

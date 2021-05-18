@@ -1,0 +1,39 @@
+---
+title: index
+tags:
+- Parity Ethereum
+- Custom Solutions
+author: Phil Lucsok
+blogTitle: Why Chronicled chose to build on Parity’s tech stack
+slug: blog/chronicled-mediledger-parity/
+date_published: 2019-11-28T01:00:00+01:00
+image: "/images/why-chronicled-chose-parity-stack.png"
+
+---
+Early on, the blockchain community realized that requirements and priorities for enterprise blockchain implementations were quite different from those of public blockchains. For example, the original Bitcoin blockchain did not contemplate the need for privacy, performance, scalability, business rule enforcement, and ease of integration with existing enterprise systems. For many businesses, adopting public blockchain technology to meet their needs has been a multi-year journey.
+
+Working closely with organizations including the [UN World Food Programme](https://www.parity.io/un-world-food-programme-uses-parity-ethereum-to-aid-100-000-refugees/) and consortium members of the [Energy Web Foundation](https://www.parity.io/private-transactions-webassembly-and-permissioning-new-features-energy-web-foundation-blockchain-for-energy/), Parity’s tech stack has evolved to meet the demands of enterprises looking to harness the promise of blockchain technology. Countless blockchain projects have also taken advantage of the open-source blockchain software Parity provides and adapted it to their use cases, including Gnosis, Ocean Protocol, and Chainlink.
+
+## Designing a blockchain for regulatory compliance
+
+One such company using Parity’s tech stack is [Chronicled](https://www.chronicled.com/), a company based in San Francisco that delivers business networks for the pharmaceutical industry. The Chronicled team has established a working group of pharmaceutical companies to design and deliver production-ready solutions that meet the unique requirements of the US pharmaceutical industry for regulatory compliance and decentralized business process automation.
+
+In the first half of 2019, the US pharmaceutical industry launched and tested the [MediLedger Network](https://www.mediledger.com/), which relies on blockchain nodes based on [Parity Ethereum](https://www.parity.io/ethereum/). The MediLedger Network was developed by Chronicled to meet a key milestone of the Drug Supply Chain Security Act (DSCSA), an FDA regulation which becomes active in November 2019. The objective of the solution is to strengthen the process of verifying the authenticity of saleable returns, which is a verification step prior to the return and resale of prescription medicines by wholesale distributors in the US, and is designed to prevent counterfeit medicines from entering the supply chain. Based on commitments to date, the MediLedger Network will process more than 80% of the saleable returns verifications by year end, with many different members of the pharma industry, including manufacturers, wholesale distributors, and software services providers, each running the decentralized software and connecting to the network through a common protocol.
+
+The MediLedger Network brings together Fortune 500 companies and software service providers. Some of them - the software service providers - compete with each other to connect pharma companies into the MediLedger Network via their software. This collaborative/competitive community means that there is no single company leading the effort to implement a production-ready solution to meet the industry requirements.
+
+## Building a custom blockchain for enterprise needs
+
+In the design and implementation process, Chronicled needed to discover and address the highest priorities for their network’s specific needs, including:
+
+* **Consensus,** which leverages the Aura consensus plugin in Parity Ethereum and allows the network to authorize participants and block creators in a permissioned network environment whereby block creators stake their reputation instead of tokens.
+* **Privacy**, which is paramount for any company to participate, clashes with the need to enforce industry-wide business rules. Chronicled solved this problem by coupling zk-SNARK technology with Parity Ethereum, making it possible to record proofs of transactions on-chain while ensuring that all of the participants in the network retain control over their raw transactional data.
+* **Performance**, which is solved by using off-chain p2p communications and on-chain proofs of transactions only where needed to enforce cross-industry business rules. Such efficient design coupled with the use Aura consensus algorithm and the use of zk-SNARK for privacy has allowed the MediLedger Network to accomplish the full set of requirements defined by the industry with sub-second response times.
+
+The pharmaceutical industry needed an end-to-end solution to a specific regulatory problem that all of the companies in the industry could easily integrate with their legacy enterprise systems.
+
+Ryan Orr, co-founder of Chronicled said, “Whether the solution was built on a blockchain was not initially a concern: the solution needed to be secure, maintain existing industry norms of data privacy, meet the regulatory goals, and deliver adequate performance. By leveraging a blockchain architecture, we were able to achieve all of these goals, and also accomplish several important industry requirements, which taken together would have been impossible to solve with a non-blockchain architecture.”
+
+In order to deliver the solution, Chronicled has built a platform using Parity’s tech stack that can deliver a complete enterprise solution via a single installation. The new Chronicled Platform is easily deployable by diverse industry participants with different levels of IT sophistication, as is now being demonstrated within the US pharmaceutical industry.
+
+“_The model of Parity Team is about delivering a toolkit and a modular underlying layer - i.e., Parity Substrate - that allows the professionals of each industry to build the most appealing solution for the targeted use case. At the same time, the network interoperability technology that Parity is creating - i.e. Polkadot - will allow us to integrate blockchain networks together.” -_ Chronicled CTO Maurizio Greco

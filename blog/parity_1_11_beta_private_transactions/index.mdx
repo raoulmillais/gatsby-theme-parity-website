@@ -1,0 +1,43 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Phil Lucsok
+blogTitle: 'Parity 1.11 Beta: Now with Private Transactions'
+slug: blog/parity_1_11_beta_private_transactions
+date_published: 2018-05-15T06:00:00+02:00
+image: ''
+
+---
+[Parity 1.11 Beta](https://github.com/paritytech/parity/releases/tag/v1.11.1) is here: a faster, more extensible Ethereum client. This huge update to Parity Ethereum allows you to create encrypted contracts and transactions on-chain and warp-sync to specific blocks.
+
+## Now Possible: Private Transactions
+
+We are very excited about implementing [Private Transactions](https://wiki.parity.io/Private-Transactions.html) into Parity Ethereum. Private Transactions make it possible for you to store, modify, and view code _and_ state for a set of permissioned participants. This means that with private transactions on public chains, all contracts and transactions are accessible only by those with the right permissions viewable by anyone, but now you can work with others in the open behind strong encryption.
+
+Let's take a look at how Private Transactions work:
+
+* A regular smart contract is deployed which contains encrypted state and code for the Private Contract, as well as a list of Validators.
+* A separate Registry Contract controls which users may obtain access to a set of encrypted Private Contracts. Any owner of a permissioned address can ask the [Secret Store](https://wiki.parity.io/Secret-Store.html) on Kovan for key elements that will allow it to decrypt the code and state of the Private Contract.
+* Once decrypted, a Private Transaction can be sent as a message to the Validators, which can then execute it, produce the new, encrypted state, and sign it. If all Validators agree on the new state, a regular transaction can then be sent to update it on-chain.
+
+## Improved Warp Sync
+
+Warp Sync on Parity enables you to get your node up to speed by downloading snapshots of the current state. As the transactions on Ethereum have exponentially increased and become more complex, it's been much more difficult for nodes to get up to speed. Now with Warp Barrier, you can jump to a minimum block number to make sure you're getting the latest possible snapshot, and built-in safeguards to prevent you from falling back to normal sync methods.
+
+To use the new Warp Barrier feature, launch Parity with **--warp-barrier \[NUM\]**. Replacing \[NUM\] with [the chain’s latest block number](https://stats.parity.io/) minus at least 10,000 blocks. More info [in our Wiki](https://wiki.parity.io/FAQ-Basic-Operations,-Configuration,-and-Synchronization.html#why-is-warp-synchronization-so-fast).
+
+## Transaction queue optimizations
+
+The Parity Ethereum transaction queue implementation has been rewritten from scratch to increase performance significantly. The transaction verification is now done in parallel. The complexity of inserting new transactions is now only limited by the number of transactions per sender. In addition, there is no longer a distinction between current and future transactions in the pool, only their “readiness” determines whether or not they should be verified. This optimization makes for a much faster and efficient experience when running your full node.
+
+## Where's my UI?
+
+You may have already noticed that Parity Ethereum no longer comes with the UI you're familiar with. By having the UI in a repository on its own, we hope to attract more contributors that just want to help build a great frontend ([more about that update here](https://paritytech.io/creating-a-lighter-experience/)). If you aren't comfortable with navigating the client in the command-line interface, head over to our Parity-UI repo on GitHub and download it there to [launch alongside your node](https://github.com/Parity-JS/shell/releases).
+
+## And more...
+
+Lastly, there’s now [Whisper CLI](https://github.com/paritytech/parity/pull/8201) and more Aura/PoA customizations, specifically for block rewards.
+
+Have any feedback? We'd love to hear it in our [Parity Support channel](https://riot.im/app/#/room/#support:matrix.parity.io) on Riot. You can also directly report any issues with this [Beta release on Github](https://github.com/paritytech/parity/issues/new).

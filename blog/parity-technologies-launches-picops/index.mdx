@@ -1,0 +1,43 @@
+---
+title: index
+tags:
+- Releases
+- PICOPS
+author: Parity Technologies
+blogTitle: Parity Technologies launches PICOPS!
+slug: blog/parity-technologies-launches-picops/
+date_published: 2017-10-06T06:00:00+02:00
+image: ''
+
+---
+**PICOPS (Parity ICO Passport Service)** is a new service, created and hosted by Parity Technologies which enables members of the public worldwide to associate a single Ethereum address with their unique identity; more precisely, the service offers a means to validate that the owner of an Ethereum wallet has passed an ID background check stating that they are not part of a restricted set of users (e.g. US citizen or individuals on official watchlists).
+
+Many transactional applications require “identity checks” or “KYC” (“Know Your Customer”). In many respects, the blockchain is no different and legal entities who have a beneficial relationship with blockchain-logic may also have need for ensuring the blockchain logic itself ascertains this kind of knowledge before engaging in a transactional relationship.
+
+PICOPS is a service to allow those applications to make use of smart contracts while also avoiding interactions with problematic counter-parties. Conversely, a PICOPS certification allows would-be counter-parties to freely make reliable on-chain claims to smart contracts.
+
+PICOPS aims to ensure that each certified applicant:
+
+* has a valid government-issued ID, Passport or Driver’s License;
+* is not a citizen of the U.S.;
+* is not named on a major official sanctions watchlist; has not already been certified under a different Ethereum address.
+
+Parity expects the adoption of PICOPS in a number of relevant projects that require extensive KYC and is excited to be working with them.
+
+### Technicals
+
+PICOPS is usable on-chain as a simple certification contract implementing Parity’s standard Certifier interface. Smart contracts on Ethereum are able to determine whether a given address has been certified or not through a free and simple function call into the PICOPS contract.
+
+PICOPS is available to individuals for a fee of 0.024 ETH per participant (this fee is used to pay for system development, auditing, maintenance and charges that Parity faces from its onward identity service provider). For this fee, the applicant may submit (a scan of) their government issued document to Parity’s onward service provider, Onfido, for a document and watchlist check. If the applicant successfully passes the requirements above, Parity will mark the applicant’s nominated Ethereum address as certified in the main PICOPS contract.
+
+### PRIVACY
+
+Parity Technologies never stores sensitive user data such as document scans or passport fields. Parity is able to access selected portions of it via its account at the backend service provider, Onfido. Parity ensures that it comes into contact with the minimum amount of information possible to provide its service.
+
+All code by Parity Technologies which is used in this service is open source and may be reviewed by the public at will. For the full details and the code please visit:
+
+[https://picops.parity.io/#/details](https://picops.parity.io/#/details "https://picops.parity.io/#/details") or contact us by email at [picops@parity.io](mailto:picops@parity.io)
+
+To certify your Ethereum address as a user please visit: [https://picops.parity.io](https://picops.parity.io "https://picops.parity.io")
+
+To join the conversation on all things Parity, join our Riot room: # parity-watercooler:matrix.org

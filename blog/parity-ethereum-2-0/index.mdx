@@ -1,0 +1,39 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Afri Schoedon
+blogTitle: Parity-Ethereum//v2.0.0-beta
+slug: blog/parity-ethereum-2-0/
+date_published: 2018-07-18T06:00:00+02:00
+image: "/images/parity-ethereum-blog-3.png"
+
+---
+Code-named “Ethereum,” [the Parity Ethereum client v2.0 release](https://github.com/paritytech/parity/releases/tag/v2.0.0) has arrived. This release not only comes with new features, performance optimisations, and general stability improvements but also introduces some changes how Parity Technologies places the Ethereum client in the ecosystem and among other technologies Parity provides.
+
+## We love Ethereum.
+
+Parity Ethereum is a full-node client powering Ethereum since [the early 2016 v0.9-beta release](https://github.com/paritytech/parity/releases/tag/beta-0.9). With the v2.0 release, we wish to honour the Ethereum community by renaming the client to Parity Ethereum. Ethereum is not only a protocol, a public blockchain network, the world computer, but a stack of technologies that revolutionised how we think about decentralised systems and the next iteration of the web.
+
+Thus, the Parity Ethereum client comes with a highly customizable chain specification, allowing to:
+
+* plugin different consensus engines
+* choose between Ethereum VM (EVM) and [WebAssembly VM (WasmVM)](https://medium.com/paritytech/why-we-believe-in-wasm-as-the-base-layer-of-decentralised-application-development-6196b8e3977e)
+* develop with [Permissioning, Private Transactions, and Secret Store](https://medium.com/paritytech/private-transactions-webassembly-and-permissioning-new-features-supported-by-energy-web-150178bb9612), only to name a few.
+
+As of today, more than a dozen public value-bearing networks are supported and powered by Parity Ethereum.
+
+## Breaking Changes.
+
+This major release comes with some notable changes. First and most importantly, Parity Ethereum is built to serve as expert software for production use and shouldn’t be considered end-user software or an “Ethereum Wallet.” It is meant for mission-critical use in mining pools, exchanges, or any other type of infrastructure or service provider.
+
+We reflect these strategic changes by completely removing the graphical user interface, the so-called “Parity Wallet,” from the client. Furthermore, we have removed all installers and operating-system specific packages. In this way, we see Parity Ethereum as a piece of core infrastructure, to be bundled into end-user software packages such as graphical wallets or to be used as a library in mobile apps. Finally, we encourage communities to provide their packages, pipelines, and repositories to distribute Parity Ethereum to their users, [as Arch Linux does for instance](https://www.archlinux.org/packages/community/x86_64/parity/).
+
+## The Parity Wallets.
+
+End-users that appreciated using the built-in Parity Wallet will find a suitable replacement with [the stand-alone Parity User-Interface available on Github](https://github.com/Parity-JS/shell/releases). However, we only minimally maintain it at this point. To get a sneak peek of an upcoming wallet alternative, check out [the Parity Fether light wallet alpha releases](https://github.com/paritytech/fether/releases).
+
+## Get Parity Ethereum.
+
+Developers, miners, exchanges, and other service providers running Parity Ethereum in production are encouraged to read [the changelog and the release notes in full carefully](https://github.com/paritytech/parity/blob/master/CHANGELOG.md). The [source code is available on Github](https://github.com/paritytech/parity/), and [the v2.0 binary releases can be downloaded from our mirrors](https://github.com/paritytech/parity/releases/tag/v2.0.0).

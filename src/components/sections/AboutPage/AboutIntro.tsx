@@ -7,15 +7,17 @@ export default function AboutIntro() {
   const intl = useIntl();
 
   return (
-    <section id="about" className="bg-white h-full">
+    <section id="about" className="bg-white h-full relative">
       <div className="container flex  flex-col px-4 ">
-        <div className="mt-12 md:flex md:justify-center">
+        <div className="md:flex md:justify-center">
           <div className="md:w-1/2 md:mx-4 md:my-4 max-w-md">
             <img className="w-auto h-auto mx-auto " src={imageTwo} alt="parity intro image" />
           </div>
-          <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-            <h3 className="text-2xl md:text-3xl">{intl.formatMessage({ id: 'about-page-text-block-one-title' })}</h3>
-            <p className="text-lg">{intl.formatMessage({ id: 'about-page-text-block-one-description' })}</p>
+          <div className="mt-10 md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
+            <h3 className="font-normal">{intl.formatMessage({ id: 'about-page-text-block-one-title' })}</h3>
+            <p className="text-textLight text-lg">
+              {intl.formatMessage({ id: 'about-page-text-block-one-description' })}
+            </p>
             <hr className="border-1 border-parityPink w-12" />
           </div>
         </div>
@@ -24,8 +26,10 @@ export default function AboutIntro() {
             <img className="w-auto h-auto mx-auto my-12" src={imageOne} alt="parity intro image" />
           </div>
           <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-            <h3 className="text-2xl md:text-3xl">{intl.formatMessage({ id: 'about-page-text-block-two-title' })}</h3>
-            <p className="text-lg">{intl.formatMessage({ id: 'about-page-text-block-one-description' })}</p>
+            <h3 className="font-normal max-w-md">{intl.formatMessage({ id: 'about-page-text-block-two-title' })}</h3>
+            <p className="text-textLight text-lg">
+              {intl.formatMessage({ id: 'about-page-text-block-two-description' })}
+            </p>
             <hr className="border-1 border-parityPink w-12" />
           </div>
         </div>

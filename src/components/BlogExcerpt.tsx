@@ -32,10 +32,10 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
   }, []);
 
   return (
-    <div className="container max-w-screen-md border-b ">
-      <div className="text-center my-12 tracking-wide">
+    <div className="container max-w-screen-md border-b animate-fade-in">
+      <div className="text-center my-10 tracking-wide">
         <LocalizedLink className="no-underline hover:text-textLight" to={`/${link}`}>
-          <h3>{title}</h3>
+          <h2 className="font-normal text-2xl md:text-4xl md:leading-tight mb-6">{title}</h2>
         </LocalizedLink>
         <p className="text-textLight text-sm my-0">
           {date}
@@ -46,7 +46,7 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
                 <LocalizedLink className="text-parityPink no-underline hover:underline" to={eachTag.slug}>
                   {eachTag.name}
                 </LocalizedLink>
-                ,&nbsp;
+                {index === tagsInfo.length - 1  ? '' : `, `}
               </span>
             );
           })}
@@ -56,7 +56,7 @@ export default function BlogExcerpt(props: BlogExcerptProps) {
       <div>
         {image ? (
           <LocalizedLink to={`/${link}`}>
-            <img src={image} alt={title} />
+            <img className="rounded" src={image} alt={title} />
           </LocalizedLink>
         ) : (
           <div className="my-12"></div>

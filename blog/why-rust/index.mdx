@@ -1,0 +1,96 @@
+---
+title: index
+tags:
+- Rust
+author: Dimitiy Kashitsyn
+blogTitle: Why Rust?
+slug: blog/why-rust
+date_published: 2018-07-03T06:00:00+02:00
+image: "/images/why-rust-for-blockchain.png"
+
+---
+Programming is hard.
+
+Not because our hardware is complex, but simply because we're all humans. Our attention span is limited, our memory is volatile—in other words, we tend to make mistakes.
+
+Computers and software are everywhere: in space, in the air, on the ground, on and even in our bodies. Every day more and more systems are automated and more and more lives depend on software and its quality.
+
+Avionics, self-driving cars, nuclear power plants, traffic control systems, implanted pacemakers. Bugs in such systems almost always [endanger human life](https://en.wikipedia.org/wiki/Therac-25).
+
+There is a huge difference between "program correctness was _checked_ by tests" and "program correctness was logically _proven_". Unfortunately, even if we have a test for every single line of our code, we still cannot be sure that it's correct. However, having a formal system that would prove our code is correct (at least in some aspects) is another story.
+
+## The Rust way
+
+[Rust as a language](https://www.rust-lang.org/en-US/) is _different_. Not because of its fancy syntax or welcoming community, but because of the confidence one gains when writing a program in it. Rust's very strict and pedantic compiler checks each and every variable you use and every memory address you reference. It may seem that it would prevent you from writing effective and expressive code, but surprisingly enough, it's very much the reverse: writing an effective and idiomatic Rust program is actually _easier_ than writing a potentially dangerous one. In the latter case, you'd be fighting the compiler, since almost every operation you try would cause memory safety issues.
+
+![Linux-CVEs-in-2018](/images/linux-cves-in-2018.png "Linux-CVEs-in-2018")
+
+  
+[https://phil-opp.github.io/talk-konstanz-may-2018/#14](https://phil-opp.github.io/talk-konstanz-may-2018/#14 "https://phil-opp.github.io/talk-konstanz-may-2018/#14"). Also check out [slide #13](https://phil-opp.github.io/talk-konstanz-may-2018/#13).
+
+The right part of the chart above shows concurrency and memory safety issues that are _fundamentally impossible_ to get in the safe subset of Rust.
+
+So, just by using Rust they could prevent roughly half of the bugs of that period. Moreover, buffer overflow bugs are one of the most dangerous, since they often cause [secrets to be compromised](http://heartbleed.com/), denial of service, and remote code execution vulnerabilities.
+
+Also, it shows that ideas like "one just need to know how to write C" and "just leave low-level stuff to professionals" are not enough. Linux kernel is written by best of the best, top 5% of the industry, and yet, every year, again and again, we get CVEs from the same good ol' memory bugs.
+
+Surely, those 50 bugs are nothing when compared to millions and millions of lines of working code. But again, life and death problems, remember? When we speak about critical systems, even the tiniest bug may lead to disastrous consequences. Not to mention that these 50 are the bugs that were found. But who knows how many are still there? By using Rust, we know the answer beforehand.
+
+## How fast is Rust?
+
+You may be wondering: sure, Rust may provide all that stuff that prevents those pitfalls, but at what cost? Usually, memory safety in modern programming languages comes with a cost of a garbage collector. Concurrency issues are typically solved by locking all affected data structures and execution paths by special synchronization primitives.
+
+But for Rust it is not the case. All its power comes from its ingenious type system that solves all those issues right at compile time. [The very same design](https://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html) that prevents memory issues also prevents data races.
+
+Much like in C++, you only pay for what you use. For example, in Rust you use mutex only when you absolutely need to. Moreover, Rust compiler will _force_ you to use it, so you will never forget to add it.
+
+And all that comes at essentially zero cost. Since most of the checks are performed at compile time, compiled assembly would not be much different from what C or C++ compiler would generate.
+
+For this reason, Rust is now very promising in the fields of [embedded electronics](http://blog.japaric.io/), [internet of things](https://www.tockos.org/), and even [operating system development](https://wiki.osdev.org/Rust)—the areas that previously were dominated by C due to high control requirements and strict resource and performance constraints.
+
+Recent versions of Rust even brought SIMD support to the userspace. Previously it was available in nightly releases only, due to API stability constraints. Now you may unleash the full potential of your hardware by using vector instructions either directly or by using [convenient wrapper libraries](https://github.com/AdamNiederer/faster). And even if you don’t plan to do so, the compiler would still auto-vectorize loops and other stuff where possible, in many cases achieving the comparable level of performance as handcrafted vector code.
+
+## Why we use Rust
+
+Parity Technologies uses Rust for the very same reasons. Because it allows us to write complex and performant software without fear. We are free to experiment because we're sure that Rust would cover our back. Be it a simple command line utility or a multi-threaded monster, it simply makes no difference. Rust ensures that our programs are free from undefined behavior, data races or any memory safety issues. Not to mention, Rust is [blazingly fast](https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/rust.html), fun to write, easy to read, and has essentially zero runtime.
+
+Memory bugs are so hard because you cannot easily write tests to catch them. If you haven’t found a bug during the beta period, then it may stay in the code for years, like a ticking bomb waiting for its hour. Of course, there are tools, like [Valgrind](http://valgrind.org/), that may help to catch such bugs. But even Valgrind would not catch a bug if the code that it produces wasn’t executed during a debug session, or if it was executed in a way that does not result in a memory issue.
+
+So, by using Rust we eliminate one of the most complex and unpredictable classes of errors.
+
+## The role of tests
+
+Of course, memory safety issues are only a part of the story. For example, we may write a function that’s intended to sum its integer arguments, but instead it just returns an arbitrary constant as a result. Or we could write a random number generator that yields predictable values. Such behavior does not violate Rust’s memory guarantees, but it’s clearly incorrect.
+
+![](/images/random_number.png)  
+[https://xkcd.com/221/](https://xkcd.com/221/ "https://xkcd.com/221/")
+
+And that’s where tests come to play. Tests allow us to check invariants that the compiler could not be aware of. Basically, we need to ensure that a corresponding test covers each result returned and each point in our program where a decision is made. In the examples above, tests must check that function indeed returns the sum of its arguments, and that produced random values are random enough.
+
+In some sense, logic bugs are much easier to deal with. They are, by definition, from the very same domain that a programmer thinks of when writing a program (whereas memory bugs are anywhere but that).
+
+Luckily, we know how to work with such bugs. In the past decades, programmers and computer scientists created a set of methods and tools, by using which we may reduce the amount of logic bugs and keep them at a minimum.
+
+## The power of math
+
+In the most strict and complex approach, program correctness is _proven_, not _checked_. Languages like [Iris](http://iris-project.org/) and [Coq](https://coq.inria.fr/) may be used to prove program correctness as a whole. Unlike checking program validity for some inputs (like tests do), it is proven as a math theorem, once and for all possible inputs and every possible scenario. Only through constructing such proofs may you gain confidence that the program is correct (as long as your specs and understanding are correct).
+
+Basically, Rust does the very same thing, but for a limited set of issues—specifically, for concurrency and memory safety. Under the hood it uses logic to prove your program is correct in those terms. Think about it, just by writing your normal Rust code, you may have the same level of confidence, as by having a group of mathematicians working on a theorem every time you compile your project.
+
+Unfortunately, proving each and every part of the system is so complex and time-consuming that it’s usually done only for the most critical parts of the software, like an operating system kernel, crypto algorithms, and in some cases, standard library of the language.
+
+For a long time, it was a killer feature of functional programming languages like Haskell to formally prove the code, whereas traditional imperative programming languages remain mostly unprovable, due to extensive use of shared mutability, unsafe pointer arithmetic, and uncontrolled side effects. But Rust can change that, despite being an imperative language, it's still [on its way to being formally proven](https://www.ralfj.de/blog/2015/10/12/formalizing-rust.html).
+
+[Ralf Jung et al. from the RustBelt project](http://plv.mpi-sws.org/rustbelt/) already published [some papers](https://people.mpi-sws.org/\~dreyer/papers/rustbelt/paper.pdf) that prove that declared fundamental invariants of the Rust language do indeed hold in some important primitives of the standard library.
+
+The thing is, for performance reasons, the Rust standard library contains a lot of potentially unsafe code and raw pointer arithmetic.
+
+In order to prove the correctness of the standard library, Ralf Jung with colleagues designed an approach to unsafety using separation logic and their own calculus that they called λrust. Using that calculus they are trying to prove that standard library primitives and containers work as intended and that they do not violate the fundamental invariants of Rust. As a byproduct, they had even found a couple of bugs in the synchronization primitives, such as [MutexGuard](https://www.ralfj.de/blog/2017/06/09/mutexguard-sync.html) and [Arc](https://www.ralfj.de/blog/2018/07/13/arc-synchronization.html).
+
+But that work is far from completion. As the author [points out](https://www.reddit.com/r/rust/comments/8vzwyd/parity_blog_why_rust/e2dablj):
+
+> We have proven far from everything in libstd. That would need way more manpower than we can muster. Instead, we have focused on the libstd primitives that seemed most interesting, and that seemed to stress the type system the most. That’s mostly around interior mutability. As such, we have verified Cell, RefCell, Rc, Mutex, RwLock, Arc and some more individual methods [listed in the blog post on the paper](https://www.ralfj.de/blog/2017/07/08/rustbelt.html).
+
+We hope that someday we’ll be able to bring the same level of correctness proofs to the code written at Parity Technologies.
+
+Combined with its level of control, ability to catch memory and concurrency issues, Rust is becoming one of the most advanced mainstream general purpose languages that may be successfully used to write robust, secure, and efficient programs.

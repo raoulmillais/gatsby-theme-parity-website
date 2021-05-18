@@ -1,0 +1,86 @@
+---
+title: index
+tags:
+- Security
+author: Fredrik Harryson
+blogTitle: 'Secure from scratch: our new smart contract development processes'
+slug: blog/new-smart-contract-development-processes/
+date_published: 2018-05-11T06:00:00+02:00
+image: ''
+
+---
+We founded Parity Technologies with the aspiration to write the best and safest software we can. We’ve learned a lot from our past mistakes. The wallet bugs, in particular, lead us to research how we can make writing and deploying software as safe as possible. This resulted in:
+
+* Rebuilding how we develop smart contracts from the ground up.
+* Retiring all smart contract development unless absolutely necessary.
+* Overhauling our processes and creating a security-first development environment for our innovations.
+
+Having users affected by software bugs is an experience we would not wish on anyone. **We would like for our bugs to be a catalyst for more secure Ethereum development.** To aid that process, we are sharing whatever we can to help the Ethereum community develop more securely and prevent bugs.
+
+Soon we’ll release our newly developed smart contract procedures and maintenance guidelines. In this post, we are sharing our standards for reviewing pull requests, the tools we use for better security, our 100% coverage policy, our 100% external review policy, and our strict adherence to a style guide. We welcome teams to review these procedures and guidelines to help inform their own secure development practices. We also invite feedback on the procedures so we can keep iterating and improving. Humans are fallible, but by working together we can improve development processes we can make Ethereum a safer place for developers and users.
+
+## Introducing Our Head of Security
+
+As part of our security-first initiative, we have created a Head of Security role to focus on ensuring secure development. We are pleased to announce that we appointed Kirill Pimenov for this role. Previously, Kirill worked on continuously delivering web-facing services for Suse Linux, including the ones handling the most sensitive customers’ data. He has an excellent understanding of not only our codebase but the necessity to continuously push security forward on every front. Kirill supervises audits, manages bug bounties, and advances our secure development practices.
+
+_“In most web development, you can say, ‘worst case scenario, we do a patch update.’ But this is not the case in smart contract development. It’s necessary that we approach smart contract engineering like what we see in aerospace—another field where you cannot have anything fail.”_ — Kirill Pimenov
+
+## Ensuring Security: A 14-Point Checklist for Well-Maintained Smart Contracts
+
+To ensure smart contract security, we have developed a [14-point smart contract security process](https://www.parity.io/paritys-checklist-for-secure-smart-contract-development/). This process has been [reviewed by our auditing partner, Trail of Bits](https://paritytech.io/parity-technologies-appoints-trail-of-bits-to-lead-security-review/).
+
+The process is developed from an end-to-end perspective on writing smart contracts. This includes having a separate organization on Github under which contracts live for ease of visibility and auditability. Every contract has its own repository with its own CI pipeline. We specify how contracts should be developed and provide a standardized CI pipeline of tools that need to pass without error, and developers are encouraged to add more on top of that. The checklist also details how to track real-world deployments and outlines what documentation is necessary (such as contingency plans or documentation on how to handle updates and redeployments).
+
+We are in the final stages of preparing this checklist for public release. We look forward to publishing this checklist to get feedback on anything that can be further improved, as well as provide a resource to help the greater smart contract development community develop securely. (Update: the checklist is now available [here](https://www.parity.io/paritys-checklist-for-secure-smart-contract-development/).)
+
+## Explicitly Assigned Code Owners & Double Mandatory Code Reviews
+
+To ensure every code commit is thoroughly reviewed, we now require two reviews for every pull request. Additionally, we understand that sometimes code has implicit assumptions which may not be evident to those who are seeing the code for the first time. To counter that, we have explicitly assigned code owners who are required to be one of the two reviewers.
+
+## Trail of Bits Security Audit
+
+We are in the final stages of [a security audit led by Trail of Bits](https://paritytech.io/parity-technologies-appoints-trail-of-bits-to-lead-security-review/). We will soon announce the findings and learnings from this in-depth review.
+
+## Tools for Better Security
+
+Our auditing partner Trail of Bits provided us with [Slither](https://blog.trailofbits.com/2018/03/23/use-our-suite-of-ethereum-security-tools/), their tool that combines a set of proprietary static analyses on Solidity to detect common mistakes such as bugs in reentrancy, constructors, method access, and more. Parity Technologies is one of the first to integrate Slither into a Continuous Testing cycle. To make that process smoother, we’ve contributed some code to Slither so that the tool plays nicely with other tooling.
+
+Additionally, we use other tools to help ensure security:
+
+* [Solium](https://www.getsolium.com/), a static analyzer for solidity
+* [Truffle](http://truffleframework.com/), a testing framework
+* [Coveralls](https://coveralls.io/), service to measure and track test coverage
+* [Travis](https://travis-ci.org/), a tool for running tests that disables the merge button if any test fails
+* [Echidna](https://github.com/trailofbits/echidna/), a tool for fuzz testing smart contracts (used outside of our automated continuous testing feedback loop)
+
+Furthermore, we disallow any pull request to be merged if the test coverage, as reported by Coveralls, goes down.
+
+While Slither is proprietary, the rest of the tools are free for open source projects and provide a decent foundation for secure development. **We believe everyone should be using them or similar alternatives.**
+
+These are the tools that we try to integrate into our CI pipeline. Aside from these, we are looking into several other tools including different languages. Some of these tools we are actively using and some we are very interested in using in the future, examples include [Manticore for EVM](https://github.com/trailofbits/manticore), [Mythril](https://github.com/ConsenSys/mythril) and early stage or experimental efforts like [Vyper](https://github.com/ethereum/vyper) and [Bamboo](https://github.com/pirapira/bamboo).
+
+## 100% Coverage Policy
+
+We have committed to a 100% coverage policy, meaning that every line in the smart contract is executed by a testing tool at least once. However, in practice, we execute each line of code multiple times by multiple test suites. We know that 100% test coverage is not a perfect security indicator, but it is a helpful yardstick in code review. You can [see examples](https://github.com/paritytech/parity-bridge) of several test-suites for the contracts in practice, like a unit test suite and an integration test suite.
+
+## 100% External Review Policy
+
+Before any contract is deployed to main-net and deemed ready for production use, there is a strict requirement to go through a third party code review aka audit for that contract. While code reviews will never guarantee a smart contract is bug-free, it is another important step to help ensure correct operation.
+
+We prefer the term “external code review,” as the term “audit” might create a false sense of security. There is no magic to that step. It is in the end also only another pair of external eyes – though ideally very experienced and thorough leveraging advanced tools.
+
+## Adopting a Strict Style Guide
+
+_“Humans should be able to easily understand our code, machines should be delighted by the adherence to best coding practices.”_ — Kirill Pimenov, Parity Technologies’ Head of Security
+
+To ensure our code is easily followable by auditors, team members, code-parsing machinery of different tools, and the wider community, we’ve set a strict style guide. Because we want our code to be easily readable by [Solium](https://www.getsolium.com/), our style guide is based on Solium’s standards. Having a set and automatically enforced style guide will additionally make it easier to spot erroneous code.
+
+## Continuing Our Successful Bug Bounty Program
+
+Our [Bug Bounty program](https://paritytech.io/bug-bounty/) is alive and well. Thanks to the bounty program, volunteers came forward and helped us find several bugs. The Geth team has also initiated a discussion to start a Common Vulnerabilities and Exposures (CVE) list/programme, an initiative we wholly support and want to contribute to, this could apply to both client work and contracts/compilers.
+
+## Helping Make Ethereum Development More Secure
+
+We hope our revamped security processes will inspire other projects. [Follow us on Twitter](https://twitter.com/ParityTech) for updates on our future public releases of our smart contract procedures, as well as our thoughts on Wasm being the future of smart contract development.
+
+We welcome questions, feedback, and contribution on our security processes. Please join us on [Gitter](https://gitter.im/paritytech/parity) and [Riot](https://riot.im/app/#/room/#watercooler:matrix.parity.io) to discuss secure development best practices.

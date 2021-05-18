@@ -1,0 +1,39 @@
+---
+title: index
+tags:
+- Community
+- Custom Solutions
+- Parity Substrate
+author: Benjamin Kampmann
+blogTitle: 'Gather: Why a Decentralized Blockchain Platform is the Only Sustainable
+  Answer to the Meetup.com Price Hike'
+slug: blog/gather-why-a-decentralized-blockchain-platform-is-the-only-sustainable-answer-to-the-meetup-com-pricing-hike/
+date_published: 2019-10-29T01:00:00+01:00
+image: "/images/gather-blog-post-graphic-1-02.png"
+
+---
+_TL;DR: In light of the recent price hike on Meetup.com, switching back to self-hosted solutions will not solve the underlying issue, and misjudges the benefits of having a market-leading platform. Instead, we the decentralized community must come together and build an actual global registry as an alternative._
+
+Recently, Meetup.com announced their new money-grabbing pricing policy, effectively charging $2 per RSVP on free events. Not only is this yet another clear example of why centralized platforms are bound for corruption, it is also a kick in the stomach to those who've championed their platform and arguably made it become the market leader that it is today. As to be expected, the response from the community has been frank and harsh. Many are calling for a revolt, building alternative systems and taking back control. Most prominently, the founder of Freecodecamp—one of the biggest open code-learning groups out there—[announced they'll be building their own open-source tool](https://twitter.com/ossia/status/1184151052398010370) that anyone can self-host.
+
+### The Importance of Network Effects
+
+While this seems like a good solution at first glance, it misses the wider point of what Meetup.com actually is and provides. From my own experience as a volunteer organizer for community events, I can attest that, regarding their features, Meetup.com lacks essential functionality. Community group and RSVP management really isn't that hard, and plenty of open-source tools have been out there, some for years (like [Kommunity](https://kommunity.com/), [open events](https://github.com/fossasia/open-event-server), [commudle](https://commudle.com/)). We didn't switch to any of them—but why?
+
+Because group management and event registration might be the superficial features, but they are not Meetup.com's core unique value proposition. What made Meetup.com so useful is the network effect: with every new participant, more value is added to the overall platform. In this particular case, users can discover, join, and create new communities that others then learn about. "The platform" is thus primarily the intermediary, a global marketplace, on which the actors find each other, interact and transact. The platform's main proposition is to be the global registry to find and discover and be found and discovered alike.
+
+That is Meetup.com’s core value, and the reason we stayed through all the price and policy changes over the years. No self-hosted solution out there can provide this value, because they never have access to the global registry. Everyone self-hosting their own solution will fall short in providing the core value that the current market leader brings to the table. Many then cry for federated protocols, even though, as we know from experience, federation is really hard to get right; it's slow in both performance and in keeping up-to-date with a changing landscape.
+
+But we are also not in 2012 anymore. The world has moved forward and technology has progressed. We now have new tools at our disposal, among them a new way to organize, manage, and govern global registries: blockchains. What if, instead of setting up another bunch of self-hosted instances, we'd run nodes connecting to a global blockchain as their common database backend?
+
+A blockchain governed by the consortium of communities? With a vested interest in the platform—the communities—who are themselves using it to organize their user groups and host events? A service that doesn't require the end-user to know about crypto, how to create private keys, run a local node or manage wallets and funds? But rather comes with the look and feel they expect from any Web2.0 Social Network: a clean and simple interface, with a single email and password sign up and login and being able to join a group and RSVP to any event with a click of a button.
+
+### Gather.wtf
+
+Providing a proof of concept for such a service was the general premise a few of us at Parity, and Ryan from [Protea](https://www.protea.io/), who have been building community event organization tools on the Ethereum blockchain, had when we [went to the Diffusion Hackathon last weekend](https://devpost.com/software/gather-nv7304).
+
+I am happy to report that, with [gather.wtf](https://gather.wtf/), we were able to prove it is possible. We've built a Substrate blockchain backend acting as a global registry of pseudonymous references to users with varying permission levels to manage and participate in communities, groups, and events, with all non-relational information (like description, avatar, and name) stored on IPFS or directly with a node you trust (like for [notification emails](https://github.com/gnunicorn/gather/blob/master/lib/emailer/src/lib.rs) in [offchain-worker](https://github.com/gnunicorn/gather/blob/42527db232affbe0381d0a04587926bfb328b878/runtime/src/gather.rs#L691-L715) local storage), topped with a React frontend as simple and intuitive as you'd expect from any modern web service.
+
+It has the same level of pseudonymity you know from Meetup.com, and no sensitive information shared on-chain, yet users can give their email address to trusted instances to be notified with interesting additions on that registry. It might be sending them a localized/community-branded email, but it contains all the events and groups of all communities they have subscribed to. And should the hoster ever take down that instance or mess up email notifications, their data is still there, shared on the global registry, so they can just move elsewhere to continue using the service. No single entity can take it down anymore.
+
+From a crypto economics and blockchain standpoint, it doesn't provide much as of yet, but it contains all the plumbing should a future consortium decide to introduce tokens or other mechanics to incentivize certain behaviors (like using kickback-schemes to improve show-up rates or for spam management). With the fork-less upgrade, Substrate offers a mechanism to allow for these things to evolve and adapt over time. Without many built-in incentives or ways to make money for validators, there is also only one key reason you'd join this network: because you are using it yourself. But rather than just hosting your own silo, you'd be become a consortium member, and with that a validator, in a greater, globally shared public registry, and thus offer your users—and yourself—the features of a global, market-leading platform that no one single entity could take down or has the power to overcharge you for. Ever.

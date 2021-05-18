@@ -1,0 +1,39 @@
+---
+title: index
+tags:
+- Releases
+- Parity Fether
+- Light.js
+- Parity Ethereum
+author: Thibaut Sardan
+blogTitle: 'Parity Fether alpha is here: a decentralised, light client-based wallet'
+slug: blog/parity-fether-alpha-is-here-a-decentralised-light-client-based-wallet/
+date_published: 2018-11-09T06:00:00+01:00
+image: "/images/parity-fether-blog-graphic-sm.png"
+
+---
+The alpha release of the Ethereum wallet [Parity Fether](https://github.com/paritytech/fether) is here. While most other wallets rely on a centralised node to access the blockchain, Fether uses the Parity Ethereum light client to access the blockchain in a fully decentralised manner. Simple to use yet powerful, this wallet allows you to create Ethereum accounts as well as receive and send Ether and ERC20 tokens in just a few clicks.
+
+![](/images/parity-signer-pasted-image-1.png)
+
+![](/images/parity-signer-pasted-image-0.png)
+
+Parity Fether paves the way for developers to embed light clients in their applications instead of relying on centralised nodes to access the Ethereum blockchain. Fether integrates the [Parity Ethereum](https://www.parity.io/ethereum/) light client and demonstrates that Dapps and wallets can have a good user experience while accessing the blockchain in a decentralised manner. Learn more about [what a light client is and why it’s important.](https://www.parity.io/what-is-a-light-client/)
+
+Fether wallet runs Parity Ethereum light client in the background if no other node is found running on the machine. Fether allows reaching the top of the blockchain in a matter of minutes, but that’s still slower than we’d like. We’re working hard to bring syncing down to a few seconds, which can be achieved in tandem with further light client updates to Parity Ethereum.
+
+## Alpha: for testnet use only
+
+Because the code has yet to be audited, we advise not to use Parity Fether on the Ethereum mainnet or use it for anything other than test usage. If you find a bug, please report it to in the [GitHub repo](https://github.com/paritytech/fether/issues/new). Kovan test network is the default and you can easily run Fether on the Ropsten test network if you prefer by launching it in the command line along with the flag `--chain ropsten`.
+
+## Built using Light.js, a light-client library for DApps.
+
+To lower the barrier to entry to developing with light clients, we have developed a high-level reactive javascript library called [Light.js](https://github.com/paritytech/js-libs/tree/master/packages/light.js), specifically created to easily develop front-end applications that interface with a light client. It abstracts specific aspects of the development to let developers concentrate on their application’s logic. While building applications relying on a light client is very similar those relying on a full node, light.js helps Dapp builders use the best development patterns.
+
+Our [dedicated light.js documentation](https://parity-js.github.io/light.js/) includes installation instructions, a tutorial and a knowledge base.
+
+## What’s next
+
+Upcoming releases of Fether will focus on stability and user experience improvements, including adding BIP39 seed phrase support and [Parity Signer](https://www.parity.io/signer/) integration.
+
+As with most of the projects we have at Parity Technologies, Parity Fether is open-source. View it on [GitHub](https://github.com/paritytech/fether) and feel free to contribute or ask us anything in the dedicated [Gitter channel](https://gitter.im/paritytech/fether).

@@ -1,0 +1,73 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Announcing Parity 1.2
+slug: blog/announcing-parity-1-2/
+date_published: 2016-06-24T06:00:00+02:00
+image: ''
+
+---
+It has been longer than expected in the coming, but I'm happy to announce at long last the third major release of Parity, codenamed "**Security**". This release is the culmination of 8 weeks of hard work including three Ethcore development retreats and has seen more people involved in Parity development then ever before.
+
+The major additions for the **Security** milestone are:
+
+* Windows build.
+* IPC/RPC support.
+* Signing UI.
+* Dapp-hosting.
+* Optimised mining support.
+* Transaction-tracing support.
+* DAO soft-fork support.
+
+Windows support is the most significant addition for many people; Parity is now 100% compatible with Windows and I can personally attest to the ease with which the **Security** codebase can be built under Windows.
+
+With the IPC/RPC support, the Foundation's Mist wallet can now use Parity as its blockchain client - simply have Parity running first with the --geth option and it will connect and use it normally.
+
+**MINING**
+
+Our mining engine has been heavily optimised; a special work queue structure ensures that submissions of old work-packages can still be used to submit valid blocks. This structure also allows us to take an aggressive approach to transaction inclusion meaning transactions can get into blocks with lower latency.
+
+Gas price deduction has been vastly improved, too. Rather than a fixed minimum gas price in Ether as with previous clients, Security accepts transactions according to a minimum USD gas price. When submitting transactions, Security takes a statistical analysis of recently processed transactions and uses an average price to ensure a just amount is paid.
+
+**TRACING**
+
+With the Security release, Parity now supports a new set of JSONRPC APIs for tracing transactions. This allows you to search and watch for transactions based on the source or destination accounts, robustly identifying such transactions even when the transfer is done using an internal CALL, such as from a wallet contract. Parity can even tell you how deep into the transaction the value transfer comes from and works even when a single transaction causes multiple destinations to receive funds.
+
+Because it uses Parity's advanced multi-level mip-map Bloom-filter tree, complex searches of the entire chain complete in milliseconds and watching new blocks takes almost no system resources.
+
+**SIGNING**
+
+Signing UI is the gem of **Security** - it's a fundamentally secure means of managing all transaction signing for your secret keys. Parity simply cannot sign any transaction except through the confirmation within a properly authenticated Signing UI.
+
+Signing UIs are applications which are set up with special privileges not available to other applications and Dapps. These privileges allow them to supply a user's password to Parity and confirm that a transaction should be signed. Each and every transaction that is eventually signed must go through a Signing UI and therefore by explicitly acknowledged by you.
+
+**Security** comes with two such Signing UIs: A Chrome Extension and a locally-hosted web-based page. As the Dapp-user, you only need to know that you should only ever type your password into the Signing UI. You never type it directly into the Dapp itself. Unlike with previous clients, a key is never **ever** unlocked globally or for a period of time. With **Security**, your Ether is safe from the [infamous attack](https://paritytech.io/blog/parity-stepping-up-the-security-model-1-a-modular-approach-to-transaction-signing/) using personal_unlockAccount, even if you happen to have the JSONRPC exposed or a malicious process watching for when you make a transaction. A rotating authentication token is used to ensure that no other process can silently steal the privileges of the Signing UI.
+
+The Signing UI gives a basic description of each transaction that is being sent but in coming releases we will be introducing NatSpec and StateDiff technologies in order to give you a very clear idea of what the transaction actually does. Whitelists, blacklists and signing-filters will allow you to ensure that you're not overly bothered by safe transactions and to make major transactions require additional attention before being signed.
+
+**DAPPING**
+
+**Security** is the first release to fully support Dapp hosting. The client comes with functionality for hosting Dapps on the local filesystem in $HOME/.parity/dapps which will then be displayed in the home.parity landing page. The Foundation's Mist Wallet has already been integrated into Parity; to get started, simply head to [http://127.0.0.1:8080/](http://127.0.0.1:8080/) with Parity running and explore!
+
+More information on how to get your Dapp integrated into Parity, using Parity's account management and transaction-signing system and distributing your Dapp will be given soon.
+
+**FORKING**
+
+In response to the DAO attack, a soft-fork was proposed as a temporary solution. The soft-fork basically blocks any transactions which attack any DAO (attempting to reduce its balance) except those to the curator's wallet and a specially made contract designed for a rescue attempt.
+
+**Security** supports the possibility of this soft-fork and allows the miner to vote either for (the default) or against it (with a CLI option). The client also supports ignoring the possibility of the fork altogether, however we don't recommend this option since it could result in mining income being lost due to short forks.
+
+Supporting the DAO-rescue soft-fork attempt **requires no additional work**. If you do not wish to support the soft-fork, run with --dont-assist-dao-rescue.
+
+**LOOKING FORWARD**
+
+Work on 1.3 (codenamed **Civility**) is already underway; planned features include our new Warp-sync protocol to deliver ridiculously fast syncing, further optimised disk usage, the actor-based process-isolated modular architecture for maximal resilience and extensibility, further expansion of the account management UI (address-book, watch-accounts, token-integration, offline-signing and a Parity-optimised wallet) and a wholly new developer tools UI which will help Dapp developers with technology like VM-tracing, transaction-tracing and state-differencing.
+
+We hope you enjoy using this release of Parity as much as we enjoyed coding it. We're always happy to accept contributions of all sorts, code, docs, tutorials, or just joining us in [Gitter](https://gitter.im/paritytech/parity) and pointing newcomers to the [FAQ](https://github.com/paritytech/parity)!
+
+Stay tuned!
+
+Gav & the rest of the Parity team.

@@ -1,0 +1,70 @@
+---
+title: index
+tags:
+- Company and Culture
+- Parity Ethereum
+- People of Parity
+author: Alexandra Heller
+blogTitle: 'People of Parity: Tomasz Drwięga'
+slug: blog/people-of-parity-tomasz-drwiega/
+date_published: 2019-03-07T06:00:00+01:00
+image: "/images/people-of-parity-tomasz-rust-developer.jpeg"
+
+---
+A Parity OG, core developer Tomasz Drwięga ([GitHub](https://github.com/tomusdrw), [Twitter](https://twitter.com/tomusdrw)) joined Parity as employee number seven (or _007_, as he points out) in January 2016 and watched the company quickly grow from four developers hacking in Airbnbs to the 78-person, multi-office company it is today.
+
+Tomasz initially worked on the EVM implementation and later focused on the JSON-RPC interface—in his words, "the part that glues together the core client and the dapps and external developers." He is also responsible for [Parity Ethereum](https://parity.io/ethereum)'s transaction pool and large parts of its block-producing code. He’s now currently mentoring new Parity Ethereum contributors and coding [Substrate](https://parity.io/substrate), including implementing RPCs, the transaction pool, and off-chain workers.
+
+Tomasz has always struck me as an exceptionally good-willed and helpful person, so I was happy to chat with him and learn more about his story.
+
+***
+
+**How did you end up joining Parity?**
+
+I met Marek Kotewicz in a Wrocław co-working space when a mutual friend introduced us both to Bitcoin. Marek asked me to join the initial dev team, which was Gav, Arkadiy and him. It was a perfect moment for me to make a change in my life and coding blockchains in Rust sounded like an amazing opportunity. We didn’t have an office, so the work happened in random cafes or during retreats, which was also a very new experience to me. It was fun times.
+
+**How has the company evolved?**
+
+It grew. A lot and pretty fast. From a team of four developers working in some random Airbnbs on the Ethereum client, we are now a 75-person company with amazing offices working on a multitude of blockchain projects. However (positively surprisingly for me, quite frankly) the culture stayed similar—we are still a bunch of hackers that are free to work in an unmanaged fashion on whatever sounds interesting. The quality and level of expertise of people that got attracted to the company is also something that I haven’t seen.
+
+**You use a Clint Eastwood photo as** [**your avatar**](https://github.com/tomusdrw)**. Any story to that?**
+
+Well, I like the trilogy and the actor. But also the character is aligned with my life philosophy. I don’t talk that much, prefer to take actions and I don’t have a big ego. I’m completely fine with being “The Man with No Name,” but still try to be “The Good” guy. :)
+
+**You learned** [**Rust**](https://www.parity.io/why-rust/) **at Parity after coming from a JavaScript background, right? What was the transition like?**
+
+Hard. Even though I had experience with other languages and paradigms (I did some Prolog and Erlang during my studies along with C++ and started my professional career as a Java developer), learning Rust was pretty tough. Initially my tasks didn’t require that many Rust-specific features, so I felt quite productive. However when I started working on some more technical issues that involved a lot of threading, I had my moment of crisis. I remember spending three weeks working on the first multi-threaded version of transaction pool for Parity Ethereum and having the Rust compiler teach me to code parallel programs. While it was extremely frustrating because I felt unproductive, it was a really good experience when put into perspective.
+
+**You discussed Parity Ethereum’s new transaction queue on** [**Zero Knowledge**](https://www.zeroknowledge.fm/44)**. Can you briefly explain how it works?**
+
+Sure, the transaction queue (or pool) was one of my first tasks in Parity Ethereum codebase and I was very surprised how complicated it is and how many dark edge cases need to be handled.
+
+Let’s define the problem first: we have a cloud of transactions that are floating in the network and a block with limited capacity. The task is to decide what transactions from the cloud should end up in the block, and in what order. That sounds pretty simple, but we also have additional objectives and constraints: we want to maximise the total fee of transactions in the block while preserving ordering of transactions from single sender (nonce) and avoiding DoS vectors. The professional term for such problem is “Multiple Constraint Knapsack Problem,” and it’s known to be hard to find an optimal solution. Luckily we are fine with some simplistic heuristics, but there are still many caveats.
+
+How it currently works in Parity Ethereum:
+
+1. We maintain a nonce-ordered list of pre-validated transactions per-sender (so we know the best and worst from each sender)
+2. We maintain a gas price-ordered list of best transactions from each sender.
+3. Every time we want to compute the ordering of transactions in a block, we construct it by taking the best transaction from the list (2) and adding a second-best transaction from the same sender to the list.
+
+This dynamic construction gives us a good trade-off between insertion time (pretty much constant) and pending set construction (logarithmic of number of senders).
+
+These new properties of the pool have become especially important given the growth of Ethereum network and the huge numbers of transactions that we’ve observed in the past.
+
+**What’s one thing you wish more people knew about Parity Ethereum?**
+
+I wish people knew which logging to enable to report with an issue :) Most of the time reproducing an issue is really hard and time consuming and bug reports with (at least partial) logs are a tremendous help to identify the problems. _(Logging guidelines are posted in the_ [_new issue template_](https://github.com/paritytech/parity-ethereum/issues/new)_.)_
+
+**What is it like working remotely at Parity?**
+
+Working remotely might be hard, especially if most of the team is in one place and you’re treated as a second-class citizen. Also, if the communication is poor, a remote worker can have a constant feeling of underachieving, which can be really frustrating and demotivating if sustained over a long period of time.
+
+That’s not the case for Parity, however. Since we have many people working remotely, remote work is basically the default. Even people in Berlin work from home or from cafes instead of going to the office if they like. I have everything I need to work at the tip of my fingers wherever I am: the Rust compiler, GitHub and Riot.
+
+**What is the remote culture like and how does communication work when you’re not in the office?**
+
+All communication at Parity happens either in the repositories (issues, pull requests) or on Riot (both on public and internal channels). For longer discussions we prefer an internal discussion forum, and sometimes we do short calls to quickly chat about some topics. I work from Wrocław and it’s pretty close to Berlin, so I also try to visit the office at least once a month for a few days. When I’m at the Berlin office I always have this feeling: “Oh, now I’m going to catch up with all the information that definitely people must be spreading in f2f conversations in the office,” but it always turns out that there is nothing more than what I already know. Actually sometimes I know even more than others because I’m more used to carefully reading the chats. It’s still nice to hang out with colleagues in person, though. :)
+
+**Anything else you want to share with people?**
+
+If you’re a developer—learn [Rust](https://www.parity.io/why-rust/). It’s going to make you a better programmer in every other language. If you are not a developer then Rust might be a hard but good start. :)

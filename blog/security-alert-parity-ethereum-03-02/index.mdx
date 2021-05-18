@@ -1,0 +1,32 @@
+---
+title: index
+tags:
+- Security
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: 'Security Alert: Update Parity Ethereum nodes ASAP; node attack vector
+  discovered'
+slug: blog/security-alert-parity-ethereum-03-02/
+date_published: 2019-02-03T06:00:00+01:00
+image: ''
+
+---
+On February 3rd, we received several reports that an attacker can send a specially-crafted RPC request to a public Parity Ethereum node (any version pre 2.2.9-stable and pre 2.3.2-beta) and that node will crash.
+
+## **Who’s affected?**
+
+Affected Parity Ethereum nodes are those that serve JSONRPC as a public service.
+
+## **Who’s not directly affected?**
+
+Parity Ethereum nodes who don’t serve JSONRPC to third parties on the internet—i.e., most nodes—should not be directly affected. The default mode is to not serve JSONRPC publicly.
+
+## **Fix available—update ASAP**
+
+Releases 2.2.9-stable and 2.3.2-beta **are now available** and fix this issue. [Download them here.](https://github.com/paritytech/parity-ethereum/releases)
+
+**Please update your nodes to the newest version ASAP**, especially if you’re running a publicly-facing JSONRPC endpoints. Nodes with \`--auto-update=all\` flag set will receive the updates automatically.
+
+## **Bug bounty program**
+
+Thanks to Kosala Hemachandra from MyEtherWallet for being the first to bring this to our attention. As always, we welcome and reward bug findings as per our [bug bounty program](https://www.parity.io/bug-bounty/).

@@ -1,0 +1,74 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+- Partnerships
+- Custom Solutions
+author: Phil Lucsok
+blogTitle: 'Private Transactions, WebAssembly, and Permissioning: New Features Supported
+  by Energy Web Foundation to Power a Blockchain for Energy'
+slug: blog/private-transactions-webassembly-and-permissioning-new-features-energy-web-foundation-blockchain-for-energy
+date_published: 2018-04-13T06:00:00+02:00
+image: ''
+
+---
+There’s been a lot of buzz about blockchain technology’s potential to revolutionize a wide range of industries, but most blockchains available to the public simply won't meet an industry's unique requirements right out-of-the-box. We've been hard at work developing next-generation blockchain features that will make it easier for different industries to innovate with blockchain technology.
+
+One industry that's ripe for innovation is the energy sector, where the process of decentralization is hindered by highly regulated and isolated markets. [Energy Web Foundation (EWF)](http://energyweb.org/), a nonprofit organization endorsed by leading energy corporations and ecosystem innovators, has tasked Parity Technologies with building core features of its blockchain that will enable improved energy market management.
+
+To date, the EWF has launched the [Tobalaba testnet](http://energyweb.org/network/) and supported Parity, among others, to create three advanced core blockchain features. These features build upon the [Parity Client](https://parity.io/) to meet the unique requirements of the energy sector. With these features in place, the energy sector will be able to begin improvements only possible with Web3 technology. The three features are:
+
+1. **Permissioning**
+2. **Private Transactions**
+3. **WebAssembly VM**
+
+## Permissioning: Who Can Do What?
+
+Permissionless blockchains allow anyone to participate. While this is ideal for open markets, some partnerships and networks function better by "permissioning" participants.
+
+Parity has developed the following permissioning functionalities:
+
+* [**Network**](https://wiki.parity.io/Permissioning#network): Allows a governing body to set any network configuration through an on-chain whitelist of nodes. This makes it possible to disallow external connections and define network boundaries.
+* [**Transaction Type**](https://wiki.parity.io/Permissioning.html#transaction-type): Allows control over which addresses in the network can:
+  * Deploy smart contracts
+  * Interact with smart contracts
+  * Transfer value/tokens
+* [**Validator Set**](https://wiki.parity.io/Validator-Set.html): Unlike proof-of-work, proof-of-authority has no mining process. Instead, blocks are created and validated by a list of authorities. The Validator Set allows modifications to this list of authorities under specified rules.
+
+## Private Transactions: Confidential But Verifiable
+
+Currently everything on public blockchains is, by default, readable by anyone.
+
+However, the Energy Web chain needs confidentiality to comply with various regulations. Private Transactions make it possible to deploy smart contracts that are both code **and** state-encrypted, allowing specific, authorized addresses to safely obtain keys to decrypt and operate on the contract.
+
+Let's take a look at how Private Transactions work:
+
+* A regular smart contract is deployed which contains encrypted state and code for the **Private Contract**, as well as a list of Validators.
+* A separate **Registry Contract** controls which users may obtain access to a set of encrypted **Private Contracts**. Any owner of a permissioned address can ask the [Secret Store](https://wiki.parity.io/Secret-Store.html) for key elements that will allow it to decrypt the code and state of the Private Contract.
+* Once decrypted, a **Private Transaction** can be sent as a message to the Validators, which can then execute it, produce the new, encrypted state, and sign it. If all Validators agree on the new state, a regular transaction can then be sent to update it on-chain.
+
+## WebAssembly: An Efficient Codebase from the Ground Up
+
+The final feature is WebAssembly (Wasm) Smart Contract support.
+
+Ethereum and all Ethereum-like chains execute smart contracts. These contracts are usually written in Solidity and compiled into Ethereum Virtual Machine (EVM) bytecode. As the smart contract ecosystem matures, it's become apparent that EVM lacks some desired functionality:
+
+* EVM doesn't support integers smaller than 256-bit. Using 64- and 32-bit integers is sufficient for most arithmetic problems, especially common ones like counting iterations in a loop. Any 256-bit operation has to be done by performing multiple 64 or 32-bit operations, which can be inefficient.
+* While the smart contract ecosystem is growing, there are not many people capable and available to expand on the EVM.
+
+So why choose WebAssembly as an alternative to EVM? WebAssembly is a standard designed to run in web browsers, and web browser requirements are close to those of a Smart Contract VM. Some benefits of WebAssembly:
+
+* Memory-safe, sandboxed, and platform-independent.
+* 64 and 32-bit integer operation support that maps one-to-one with CPU instructions, and is therefore more efficient than Solidity.
+* Expands the family of languages available to smart contract developers to include Rust, C, C++, and others.
+* Is continually developed by major companies like Google, Mozilla, Microsoft, and Apple.
+* Supported by 15 years of [LLVM](https://en.wikipedia.org/wiki/LLVM) compiler infrastructure development.
+
+Permissioning, Private Transactions, and the Wasm VM are features that work in tandem to help the Energy Web chain enable innovation in the energy sector. Notably, compared to the GPL copyleft license of public Ethereum, EWF affiliates will be able to build proprietary apps on EWF’s open-source blockchain. This crucial premise for launching commercialized applications will be enabled by a special, framework license agreement between EWF and Parity Technologies, world-leading core blockchain developer and EWF’s strategic technology partner.
+
+For more information about [Permissioning](https://wiki.parity.io/Permissioning.html), [Private Transactions](https://wiki.parity.io/Private-Transactions.html), and [Wasm Smart Contracts](https://wiki.parity.io/WebAssembly-Home.html), [visit our Wiki](https://wiki.parity.io/).
+
+Stay informed of future updates by [following us on Twitter](https://twitter.com/ParityTech).
+
+**In Berlin?** Energy Web Foundation chain's features will also be presented on April 17-19 at [EventHorizon 2018](https://eventhorizon2018.com/).

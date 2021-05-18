@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../../components/layouts/Layout';
 import TransparentButton from '../../components/TransparentButton';
 import FullScreenYouTube from '../../components/FullScreenYouTube';
+import FullWidthYouTube from '../../components/FullWidthYouTube';
 import Img from 'gatsby-image';
 import { useIntl } from 'react-intl';
 import substrateLogo from '../../images/substrate-logo-dark.svg';
@@ -26,16 +27,16 @@ export default function SubstratePage({ data }: SubstratePageProps) {
       <SEO title="Parity Substrate: Build Your Own Blockchain" />
       <section className="bg-hero-substrate bg-cover bg-center -mt-24 xl:-mt-32 md:-mb-12">
         <div className="md:h-screen">
-          <div className="container h-full max-w-4xl pt-36 md:pt-0 pb-16 px-2 flex flex-col justify-center items-center md:items-start md:w-2/3">
+          <div className="container h-full max-w-4xl pt-40 md:pt-0 pb-16 px-2 flex flex-col justify-center items-center md:items-start md:w-2/3">
             <img className="mx-auto md:mx-0 w-64 h-auto py-4" src={substrateLogo} alt="Polkadot Logo" />
-            <h3 className="text-white text-center md:text-left md:text-5xl lg:text-6xl py-4 max-w-2xl">
+            <h3 className="font-light text-white text-center md:text-left md:text-5xl lg:text-6xl py-4 max-w-2xl">
               {intl.formatMessage({ id: 'substrate-page-hero-title' })}
             </h3>
             <div className="flex flex-col md:flex-row items-center">
               <TransparentButton extraClass=" " link="https://www.substrate.io/">
                 {intl.formatMessage({ id: 'substrate-page-hero-cta-one' })}
               </TransparentButton>
-              <p className="text-white font-base py-6 md:pl-12 transition-transform transform hover:-translate-y-0.5">
+              <p className="text-lg text-white font-title font-semibold tracking-normal py-6 md:pl-12 md:mb-0 transition-transform transform hover:-translate-y-0.5">
                 <a className="no-underline" href="https://www.substrate.dev">
                   {intl.formatMessage({ id: 'substrate-page-hero-cta-two' })}
                 </a>
@@ -44,7 +45,7 @@ export default function SubstratePage({ data }: SubstratePageProps) {
           </div>
         </div>
       </section>
-      <section className="bg-parityBlack -mt-4">
+      <section className="bg-parityBlack -mt-4 border-t border-gray-800 md:border-parityBlack">
         <div className="flex flex-wrap justify-center">
           <a href="https://techcrunch.com/2018/10/23/parity-founder-demos-substrate-live-launches-a-blockchain-in-minutes-instead-of-days-or-weeks/">
             <Img
@@ -90,17 +91,24 @@ export default function SubstratePage({ data }: SubstratePageProps) {
               <img className="w-auto h-auto mx-auto " src={imageOne} alt="parity intro image" />
             </div>
             <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-              <h3 className="text-2xl md:text-3xl">{intl.formatMessage({ id: 'substrate-page-intro-one-title' })}</h3>
-              <p className="text-lg">{intl.formatMessage({ id: 'substrate-page-intro-one-description' })}</p>
+              <h3 className="text-2xl md:text-3xl font-normal mb-4 md:mb-8">
+                {intl.formatMessage({ id: 'substrate-page-intro-one-title' })}
+              </h3>
+              <p className="text-textDark text-base md:text-lg md:mb-0">
+                {intl.formatMessage({ id: 'substrate-page-intro-one-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <ul>
-                <li className="text-base md:text-xl font-light">
+              <ul className="list-none lsit-outside">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-one-bullet-one' })}
                 </li>
-                <li className="text-base md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-one-bullet-two' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-one-bullet-three' })}
                 </li>
               </ul>
@@ -111,23 +119,32 @@ export default function SubstratePage({ data }: SubstratePageProps) {
               <img className="w-auto h-auto mx-auto my-12" src={imageTwo} alt="parity intro image" />
             </div>
             <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-              <h3 className="text-2xl md:text-3xl">{intl.formatMessage({ id: 'substrate-page-intro-two-title' })}</h3>
-              <p className="text-lg">{intl.formatMessage({ id: 'substrate-page-intro-two-description' })}</p>
+              <h3 className="text-2xl md:text-3xl font-normal mb-4 md:mb-8">
+                {intl.formatMessage({ id: 'substrate-page-intro-two-title' })}
+              </h3>
+              <p className="text-textDark text-base md:text-lg md:mb-0">
+                {intl.formatMessage({ id: 'substrate-page-intro-two-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <ul>
-                <li className="text-base md:text-xl font-light">
+              <ul className="list-none lsit-outside">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-two-bullet-one' })}
                 </li>
-                <li className="text-base md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-two-bullet-two' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-two-bullet-three' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-two-bullet-four' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-two-bullet-five' })}
                 </li>
               </ul>
@@ -138,26 +155,36 @@ export default function SubstratePage({ data }: SubstratePageProps) {
               <img className="w-auto h-auto mx-auto " src={imageThree} alt="parity intro image" />
             </div>
             <div className="md:w-1/2 md:mx-4 md:flex md:flex-col md:justify-center">
-              <h3 className="text-2xl md:text-3xl">{intl.formatMessage({ id: 'substrate-page-intro-three-title' })}</h3>
-              <p className="text-lg">{intl.formatMessage({ id: 'substrate-page-intro-three-description' })}</p>
+              <h3 className="text-2xl md:text-3xl font-normal mb-4 md:mb-8">
+                {intl.formatMessage({ id: 'substrate-page-intro-three-title' })}
+              </h3>
+              <p className="text-textDark text-base md:text-lg md:mb-0">
+                {intl.formatMessage({ id: 'substrate-page-intro-three-description' })}
+              </p>
               <hr className="border-1 border-parityPink w-12" />
-              <ul>
-                <li className="text-base md:text-xl font-light">
+              <ul className="list-none lsit-outside">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-one' })}
                 </li>
-                <li className="text-base md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-two' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-three' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-four' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-five' })}
                 </li>
-                <li className="text-base  md:text-xl font-light">
+                <li className="text-textDark text-base md:text-lg md:mb-2">
+                  <span>&mdash; </span>
                   {intl.formatMessage({ id: 'substrate-page-intro-three-bullet-six' })}
                 </li>
               </ul>
@@ -167,75 +194,77 @@ export default function SubstratePage({ data }: SubstratePageProps) {
       </section>
       <section className="bg-parityGray md:bg-hero-pattern-dark bg-cover bg-center border">
         <div className="container py-16 md:py-32  md:max-w-5xl">
-          <div className="md:flex">
+          <div className="md:flex text-textDark mb-8">
             <div className="md:w-1/2">
-              <p className="mx-4 md:text-2xl">{intl.formatMessage({ id: 'substrate-page-table-one-title' })}</p>
+              <p className="font-title font-medium mx-4 md:text-2xl">
+                {intl.formatMessage({ id: 'substrate-page-table-one-title' })}
+              </p>
             </div>
             <div className="w-full md:w-1/2">
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-one-heading-one' })}
                 </div>
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-one-web-assembly' })}
                 </div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm">
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-one-heading-two' })}
                 </div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-one-rust' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-one-rust' })}</div>
               </div>
             </div>
           </div>
-          <div className="pt-12 md:flex">
+          <div className="pt-12 md:flex text-textDark">
             <div className="md:w-1/2">
               <p className="mx-4 md:text-2xl">{intl.formatMessage({ id: 'substrate-page-table-two-title' })}</p>
-              <p className="mx-4 text-sm text-textLight md:text-base">
+              <p className="mx-4 text-sm text-textDark md:text-base">
                 {intl.formatMessage({ id: 'substrate-page-table-two-description' })}
               </p>
             </div>
             <div className="w-full md:w-1/2">
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-two-networking' })}
                 </div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-libp2p' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-libp2p' })}</div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-two-algorithm' })}
                 </div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-hybrid' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-hybrid' })}</div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-beacon' })}</div>
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-beacon' })}</div>
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-two-coin-flipping' })}
                 </div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">
+                <div className="w-1/2 pl-4 py-4">
                   {intl.formatMessage({ id: 'substrate-page-table-two-authentication' })}
                 </div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-ed25519' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-ed25519' })}</div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm border-b">
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-hashing' })}</div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-blake2b' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-hashing' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-blake2b' })}</div>
               </div>
               <div className="flex items-center bg-white mx-4 text-sm">
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-address' })}</div>
-                <div className="w-1/2 pl-4 py-3">{intl.formatMessage({ id: 'substrate-page-table-two-base-58' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-address' })}</div>
+                <div className="w-1/2 pl-4 py-4">{intl.formatMessage({ id: 'substrate-page-table-two-base-58' })}</div>
               </div>
             </div>
           </div>
         </div>
       </section>
       <section className="bg-parityGray">
-        <div className="container flex flex-col justify-center py-8">
+        <div className="container flex flex-col justify-center py-12">
           <div className="text-textLight text-center">
-            <p className="md:text-lg">
+            <p className="md:text-xl text-textDark">
               {intl.formatMessage({ id: 'substrate-page-teams-heading' })}{' '}
               <a
                 className="no-underline text-parityPink hover:underline"
@@ -252,7 +281,7 @@ export default function SubstratePage({ data }: SubstratePageProps) {
                   {edge.node.name}
                 </span>
                 <Img
-                  className="h-auto w-20 my-3 opacity-60"
+                  className="h-auto w-16 my-3 opacity-60"
                   fluid={edge.node.childImageSharp.fluid}
                   alt={edge.node.name}
                 />
@@ -261,18 +290,20 @@ export default function SubstratePage({ data }: SubstratePageProps) {
           </div>
         </div>
       </section>
-      <section className="bg-textDark">
-        <div className="flex flex-col md:flex-row md:justify-center md:items-center py-12">
-          <div className="lg:w-1/2 max-w-md">
-            <FullScreenYouTube image={data.gavinWeb3.childImageSharp.fluid.src} link="none" videoId="0IoUZdDi5Is" />
-          </div>
-          <div className="text-gray-300 mx-4 -mt-6 lg:w-1/2 max-w-lg">
-            <h4 className="md:text-3xl">{intl.formatMessage({ id: 'substrate-page-launch-blockchain-title' })}</h4>
-            <p className="md:text-lg">{intl.formatMessage({ id: 'substrate-page-launch-blockchain-description' })}</p>
-          </div>
+      <section className="bg-textDark md:flex">
+        <div className="md:w-1/2">
+          <FullWidthYouTube image={data.gavinWeb3.childImageSharp.fluid.src} videoId="0IoUZdDi5Is" />
+        </div>
+        <div className="mx-4 py-10 md:w-1/2 md:py-0 md:flex md:flex-col md:justify-center xl:pl-20">
+          <h4 className="text-parityWhite font-normal max-w-md text-2xl md:text-3xl mb-8">
+            {intl.formatMessage({ id: 'substrate-page-launch-blockchain-title' })}
+          </h4>
+          <p className="text-parityWhite font-light text-base max-w-md md:text-lg md:mb-0">
+            {intl.formatMessage({ id: 'substrate-page-launch-blockchain-description' })}
+          </p>
         </div>
       </section>
-      <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray h-full">
+      <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray h-full py-6">
         <div className="container pb-16">
           <div className="flex flex-row justify-between items-center pt-20 mt-0 mx-4 md:mb-0">
             <h4 className="">{intl.formatMessage({ id: 'about-page-featured-video-title' })}</h4>
@@ -314,13 +345,17 @@ export default function SubstratePage({ data }: SubstratePageProps) {
       </section>
       <section className="h-full bg-textDark">
         <div className="container">
-          <div className="container py-16 max-w-2xl">
-            <div className="text-center text-white">
+          <div className="px-4 mx-auto md:px-0 py-16 max-w-4xl">
+            <div className="text-center text-parityWhite">
               <blockquote className="tracking-wider">
                 {`"${intl.formatMessage({ id: 'substrate-page-gave-quote' })}"`}
               </blockquote>
-              <p className="text-base mb-0 mt-8">{intl.formatMessage({ id: 'homepage-team-gavin' })}</p>
-              <p className="text-sm mt-0">{intl.formatMessage({ id: 'substrate-page-gave-quote-title' })}</p>
+              <p className="text-base md:text-lg font-normal mb-0 mt-8">
+                {intl.formatMessage({ id: 'homepage-team-gavin' })}
+              </p>
+              <p className="text-sm mt-0 font-normal">
+                {intl.formatMessage({ id: 'substrate-page-gave-quote-title' })}
+              </p>
             </div>
           </div>
         </div>

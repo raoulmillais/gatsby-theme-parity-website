@@ -1,0 +1,41 @@
+---
+title: index
+tags:
+- Parity Ethereum
+author: Afri Schoedon
+blogTitle: Restoring & blank seed phrase
+slug: blog/restoring-blank-seed-phrase
+date_published: 2017-05-17T06:00:00+02:00
+image: ''
+
+---
+It has come to our attention that a small minority of users have misunderstood a function within Parity Wallet, and in doing so have created insecure accounts. TL;DR: **Don't use the "RECOVERY PHRASE"/"IMPORT WALLET" function to generate a fresh account. That's not what it's for. If you see the word "import" or "recover" anywhere, then you're not generating anything fresh, you importing something that (is meant to) already exist.**
+
+When adding an account, Parity Wallet provides you with a number of different functions, depending on whether you want to restore a previous account, generate a new account or link an existing account managed by an external device.
+
+If you simply wish to generate a fresh, secure account, then the default option "NEW ACCOUNT" is for you. You can click through with the "NEXT" button and it'll take you through the remaining steps.
+
+The other (non-default) options allow you to add previously generated accounts, either importing from key files ("GETH KEYSTORE", "JSON FILE", "PRESALE WALLET") or importing from the private key directly ("RECOVERY PHRASE", "PRIVATE KEY").
+
+The "RECOVERY PHRASE" function is described on the page as:
+
+#### Recover using a previously stored recovery phrase and new password
+
+This means that you can import an previously generated account using its recovery phrase. A recovery phrase is a phrase which can be used to generate a specific private key; it's a piece of information that fundamentally unlocks a particular account. It is generally unencrypted and is the last best chance of saving an old account if you forget everything else about it. It's the sort of thing you write on a piece of paper and leave locked in a safe.
+
+As such any account generated from a recovery phrase is only as secure as its recovery phrase. Additional passwords don't help since anyone can use this recovery phrase function to recover the underlying private key - the key that always unlocked the account - anyway. Try it! Generate a "NEW ACCOUNT", copy the recovery phrase, delete it and that restore it using the "RECOVERY PHRASE" option. It will be the very same account address.
+
+Parity doesn't let you use the "NEW ACCOUNT" feature to author your own security phrase: humans are not very good at coming up with secure phrases when they generate accounts. Instead it gives you one that is designed to be completely secure (it has the same amount of entropy as an Ethereum address) and has you write that down.
+
+However, Parity does allow you to "IMPORT" a pre-existing account using its recovery phrase.
+
+The resultant account, of course, is only as secure as its recovery phrase. If the account you imported was the result of a simple (low-entropy) recovery phrase, then it will be accordingly insecure.
+
+The most insecure recovery phrase is the empty one. It's so insecure that it's used to place all of the Ether on the local development chain so that everyone can get access to it. Parity doesn't yet check that you don't use such an insecure phrase to import an account on the main net (mainly because accounts were shared between main net and development chains until a couple of releases ago). It will do soon.
+
+In the mean time:
+
+* **DO NOT USE THE "IMPORT WALLET"/"RECOVERY PHRASE" OPTION WHEN YOU WANT TO GENERATE A FRESH ACCOUNT.**
+* Use the "NEW ACCOUNT" option to generate a fresh, new account.
+
+We will be pushing out a swift patch release, making it substantially less easy to accidentally import an account from an insecure recovery phrase with Parity Wallet. We will also be revamping the dialog workflows to ensure import functionality is separated from account-generation functionality.

@@ -1,0 +1,107 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Polkadot
+author: Alexandra Heller
+blogTitle: Substrate has arrived
+slug: blog/substrate-has-arrived/
+date_published: 2018-12-18T06:00:00+01:00
+image: "/images/substrate-1-0-beta-release6.png"
+
+---
+Substrate 1.0 Beta is [out now](https://github.com/paritytech/substrate/releases), opening the door to a radical acceleration in blockchain and decentralised application development. [Substrate](https://www.parity.io/substrate) is an open-source technology stack that makes it easy to create a blockchain customised for a particular application.
+
+_“Substrate takes all of our lessons learned in building Ethereum and Polkadot and distills that down into a stack of tooling that allows you to get all of those same rewards… for free.”_ —Dr. Gavin Wood
+
+## Designed for maximum technical freedom and ease
+
+Substrate is architected to be as generic as possible in order to give you maximum technical freedom when designing your blockchain. It has a 100% abstract “execute block” function encoded in WebAssembly that can be targeted from any one of a number of languages, including C++ and Rust. The execute block function is hot-swappable, meaning you can upgrade your chain’s logic without a hard fork.
+
+Consensus is likewise generalised. The API provided lets you roll your own consensus mechanism if you want, and it can handle most consensus algorithms out there. Substrate 1.0 Beta provides a combined Aura/[GRANDPA](https://medium.com/polkadot-network/grandpa-block-finality-in-polkadot-an-introduction-part-1-d08a24a021b5) consensus, with more consensus algorithms to be provided in subsequent releases. Down the road, consensus will be hot-swappable, meaning you can start your blockchain with one consensus mechanism and switch to another down the line without a hard fork.
+
+Substrate integrates the best in cutting-edge blockchain technology. Out-of-the-box you get a [light client](https://www.parity.io/what-is-a-light-client/) so your blockchain can work natively on mobile devices, and pooled security and interoperability via integration with the [Polkadot](https://polkadot.network/) protocol. Substrate is authored [in Rust](https://www.parity.io/why-rust/), and there is also a [JavaScript implementation](https://github.com/polkadot-js/client) for a Substrate client that runs directly in the browser.
+
+Substrate allows you to easily configure your blockchain, but also take complete control over the code should you need to. This flexibility between ease and technical freedom is achieved through a modular design: Substrate is separated into **Substrate Core** and **Substrate Runtime Module Library (SRML)** and comes with a pre-assembled **Substrate Node** that is simple to configure.
+
+### Substrate Core
+
+**Substrate Core** is the minimal Substrate base for building blockchains. Substrate Core gives you a foundation that is far easier than building a blockchain from scratch, though you don't get a finished blockchain. It includes:
+
+* Block synchronisation
+* Extensible JSON-RPC API endpoints
+* Crypto primitives library
+* Pervasive and secure networking via libp2p
+* Storage
+* Telemetry
+* Light client
+* Chain specification and versioning
+* Pluggable consensus
+* Low-level JavaScript utils
+* Transaction queue and block production mechanism
+* Sandboxed WebAssembly interpreter
+* Interchain connectivity via the [Polkadot](https://polkadot.network/) protocol
+
+### Substrate Runtime Module Library (SRML)
+
+The core architecture of Substrate separates the basic functionality of a network blockchain node and the chain-specific implementations by executing the latter in a separate WebAssembly environment. You have absolute freedom to write the chain logic in any language that can compile down to WebAssembly (Rust, C/C++, C#, Go, etc). You can add modules from the **Substrate Runtime Module Library,** or **SRML.** With SRML, you can take off-the-shelf components, plug them together, and build a blockchain that does what you want it to do. Modules include:
+
+* **Accounts & Balances** - basic cryptocurrency, including account management and viewing
+* **Assets** - simple, secure additional on-chain fungible assets
+* **Consensus** - setting and modifying runtime code and storage (i.e. the set of authorities as a list of session keys on-chain), and reporting offline or misbehaving validators
+* **Contracts** - turbo-charged Wasm-based smart contracts
+* **Council** - council election and proposals
+* **Democracy** - public proposals and referendums
+* **Sessions** - key rotation for authorities
+* **Staking** - Proof-of-Stake logic, including both staking and nominating of validator accounts
+* **Timestamp** - have your chain know about time
+* **Treasury** - decentralised grants, similar to a DAO
+
+So for example, if you want to create a Proof-of-Stake smart contract blockchain, you would take Substrate Core and plug in the Accounts & Balances, Staking**,** and Contracts modules. Once Polkadot launches, you could also make it interoperable by plugging it into Polkadot.
+
+### Substrate Node
+
+Finally, **Substrate Node** allows you to deploy a blockchain with maximum ease. Soon you will be able to configure Substrate Node with a JSON file.
+
+### Peripheral support infrastructure
+
+**Peripheral support infrastructure** has been built by Parity and open-source contributors to provide additional functionality to Substrate and Polkadot. This infrastructure includes:
+
+* [Polkadot Telemetry Service](https://telemetry.polkadot.io/) - network information including what nodes are running the chain, what software versions they are running, and sync status.
+* [Jaco’s UI for Substrate and Polkadot](https://polkadot.js.org/apps/next/) - built with React.js and RxJS. [API docs and examples available](https://polkadot.js.org/api/).
+* [Substrate UI](https://github.com/paritytech/substrate-ui) - built with the [Bonds oo7 library](https://github.com/paritytech/oo7). [API Docs available](https://tomusdrw.github.io/oo7/).
+* [Polkadash](http://polkadash.io/) - validator monitor.
+* [Polkabot](https://medium.com/polkadot-network/polkabot-a3dba18c20c8) - network monitoring and reporting.
+* [Polkascan](https://polkascan.io/) - blockchain data explorer and analytics.
+
+## From GPLv3 to Apache 2.0
+
+Substrate 1.0-beta is currently licensed under GPLv3, but in keeping with the ideal that Substrate should allow for maximum developer freedom, the Substrate repo will transition to be licensed under Apache 2.0. The widely permissive nature of the open-source license allows for commercial use, distribution, modification, patent use, and private use and opens the door for Fortune 500 companies to adopt the technology. We offer [professional services](http://parity.io/solutions) to organisations looking to build with Substrate.
+
+## New: [**Substrate developer hub**](https://substrate.dev/)
+
+We’re hard at work making Substrate the most developer-friendly blockchain framework. We have started a developer hub where you can:
+
+* Get [an overview](https://substrate.dev/docs/en/getting-started/).
+* Learn [how to install Substrate](https://substrate.dev/docs/en/getting-started/installing-substrate).
+* Learn [how to create a custom Substrate chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain).
+
+As the developer hub is a work in progress, please feel free to ask questions [in the Substrate Technical chat.](https://matrix.to/#/#substrate-technical:matrix.org)
+
+## Start hacking on Substrate today
+
+_“I really hope that by pushing out Substrate, we can create a whole new class of sort of development teams and development applications that sit right in the sweet spot between the two where you don't have to know everything, you don't have to do everything to develop your whole new blockchain, but you can do just enough that you do have a domain-specific chain, that has its own parameterization, and its own features that allow you to get a particular job done, and done well, that wouldn't have been possible before because smart contracts are too bloaty, and writing your own chain is too much work.”_ —Dr. Gavin Wood
+
+Get started quickly by [downloading Substrate](https://github.com/paritytech/substrate/) and [build your own custom chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain).
+
+***
+
+## Further resources:
+
+* Watch [Dr. Gavin Wood demo Substrate at the Web3 Summit](https://youtu.be/0IoUZdDi5Is) ([transcript](https://medium.com/polkadot-network/a-tale-of-two-technologies-presentation-transcript-e7397c1c7a49)).
+* Read documentation at the [Substrate developer hub](https://substrate.dev/).
+* Check out a [simple example of a runtime module](https://github.com/paritytech/substrate/blob/master/srml/example/src/lib.rs) demonstrating concepts, APIs and structures common to most runtime modules.
+* Watch the [Substrate workshop](https://www.youtube.com/watch?v=26ucTSSaqog) at Dotcon.
+* [Join the Parity newsletter](https://www.parity.io/newsletter/) to stay informed of important Substrate developments.
+
+Have a question? [Join the Substrate chat](https://matrix.to/#/#substrate-technical:matrix.org).

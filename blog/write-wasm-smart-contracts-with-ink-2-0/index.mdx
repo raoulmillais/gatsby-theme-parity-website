@@ -1,0 +1,56 @@
+---
+title: index
+tags:
+- Parity Substrate
+- Ink!
+- Wasm
+author: Robin Freyler
+blogTitle: Write Wasm smart contracts with ink! 2.0
+slug: blog/write-wasm-smart-contracts-with-ink-2-0/
+date_published: 2020-03-02T01:00:00+01:00
+image: "/images/ink-2-0-webassembly-smart-contracts.png"
+
+---
+The next chapter of [ink!](https://github.com/paritytech/ink), our [Rust](https://www.rust-lang.org/)-based [eDSL](https://wiki.haskell.org/Embedded_domain_specific_language) for writing [Wasm](https://webassembly.org/) smart contracts, has arrived.
+
+ink! was first announced at [Sub0](https://sub0.parity.io/0), our first Substrate developer community conference. This was less than a year ago, but development never stops around here.
+
+Over this period, we have had a number of teams [build Wasm smart contracts using ink!](https://github.com/search?q=ink_lang&type=Code), provide [feedback about their experience](https://github.com/paritytech/ink/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aclosed), and even help contribute to the project itself.
+
+ink! is not quite at feature parity (hehe) with some other more mature smart contract languages, but is moving faster toward those goals than nearly any other language due to the fact that it is ultimately backed by the development of the Rust compiler and the growth of the [Rust community](https://stackoverflow.blog/2019/04/09/the-2019-stack-overflow-developer-survey-results-are-in/).
+
+This announcement is not about any specific set of features added to ink!, but to an ultimate shift in philosophy behind the development of the language.
+
+## TL;DR, ink! should just be Rust.
+
+ink! initially approached smart contract development by taking advantage of Rust’s macro system to generate custom syntax and style. This approach may be more familiar to current smart contract developers, but it veered away from the language that Rust developers knew and loved.
+
+ink! syntax 2.0 realigns itself with the pure Rust language without sacrificing ease of use or development. In fact, we believe that the average developer will actually be able to learn and use ink! more quickly as a result of these changes!
+
+We have a full set of [release notes](https://github.com/paritytech/ink/blob/master/RELEASES.md#version-20-syntax-2019-12-03) which discuss the changes to the ink! syntax, but the main takeaway should be that all structures and syntax in ink! are now **pure Rust**.
+
+ink! takes normal Rust code and simply adds some [attribute tags](https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros) in the form of #\[ink(...)\] to do the magic required to make it all work!
+
+Rust tools like rustfmt and rust-analyzer already work out of the box with ink!, and we expect other tools in this ecosystem to naturally support ink! as they mature.
+
+Furthermore, users need not solely depend on ink! documentation to develop their knowledge of the language. You only need to understand the fundamental structure of an ink! smart contract and how to apply these attributes to your code to make it work.
+
+ink! is still very much a language _in development_. But this should not be a deterrent for anyone reading this post. In fact, it should be the opposite. As we have shown here and will continue to show, ink! is a **community focused project**. We need a community of hackers, tinkerers, developers, innovators, and ultimately dreamers to give their input and to help us shape this language into one that satisfies the needs of our shared future.
+
+Over time, ink! will evolve to look and feel even more like Rust and will gain more and more features familiar to Rust programmers in order to further enhance their ability to write, update and reason about even complex smart contracts.
+
+ink! follows the zero-overhead principle:
+
+> “What you don’t use, you don’t pay for. And further: What you do use, you couldn’t hand code any better.” - [**_Bjarne Stroustrup_**](https://isocpp.org/wiki/faq/big-picture#zero-overhead-principle)
+
+If you ever find that ink! changes in a way that does not follow this principle, let us know because we consider this to be a priority issue!
+
+We are not the only people who [believe the future of smart contracts is one with Wasm](https://www.parity.io/wasm-smart-contract-development/), and ink! is our solution toward that better future. Along with Substrate, our next-generation blockchain development framework, we at Parity Technologies are sprinting towards the goal of a more open, borderless, and decentralized internet.
+
+So why wait?
+
+* Check out ink!: [https://github.com/paritytech/ink](https://github.com/paritytech/ink "https://github.com/paritytech/ink")
+* ink! readme (with links to reference): [https://paritytech.github.io/ink/](https://paritytech.github.io/ink/ "https://paritytech.github.io/ink/")
+* Follow our tutorial to build and deploy your first ink! smart contract:[ ](https://substrate.dev/substrate-contracts-workshop/#/)[https://substrate.dev/substrate-contracts-workshop/#/](https://substrate.dev/substrate-contracts-workshop/#/ "https://substrate.dev/substrate-contracts-workshop/#/")
+* Learn more about developing in the Substrate ecosystem:[ ](https://substrate.dev/)[https://substrate.dev/](https://substrate.dev/ "https://substrate.dev/")
+* Attend our next Sub0 community event: [https://sub0.parity.io/](https://sub0.parity.io/ "https://sub0.parity.io/")

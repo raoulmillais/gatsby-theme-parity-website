@@ -27,9 +27,9 @@ export default function ParityTech() {
   return (
     <section className="md:bg-hero-pattern-dark bg-cover bg-center bg-parityGray">
       <div className="container flex flex-col items-center text-center ">
-        <h4 className="px-8 mt-24 mb-16 font-light md:text-3xl md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <h2 className="text-2xl md:text-4xl font-normal px-8 mt-24 mb-16 md:w-3/4 lg:w-2/3">
           {intl.formatMessage({ id: 'homepage-parity-tech-section-title' })}
-        </h4>
+        </h2>
         <div className="md:flex">
           <TechCard
             title={intl.formatMessage({ id: 'homepage-parity-tech-section-substrate-title' })}

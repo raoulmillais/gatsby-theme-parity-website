@@ -1,0 +1,97 @@
+---
+title: index
+tags:
+- Releases
+- Parity Ethereum
+author: Parity Technologies
+blogTitle: Announcing Parity 1.5
+slug: blog/announcing-parity-1-5/
+date_published: 2017-01-25T06:00:00+01:00
+image: ''
+
+---
+Well, it's that time again, folks. You find me writing this on the train back from our ten day Yuletide retreat-sprint. Most of the team (pictured below) spent 10 days in lovely Lipia Góra. Lest you're not familiar with that place (it is kind of small), I can tell you it's barely a stone's throw away from the glittering lights of Majewo (an outpost sporting both a train station and a shop).
+
+![](/images/parityonefive.jpeg)
+
+Having sweated, bled and cried (mainly due to the questionable quality of our lodgings' carpentry) for over a week, we are proud to gift the Ethereum world a late Christmas present: Parity 1.5, seasonally named Nativity. I hope you'll agree we've got something for everyone's stocking here.
+
+### Grab that
+
+If you're just interested in getting hold of Parity right now, head to our Github releases page where you can find our (still experimental) installers and binaries. If you'd like to hear what the fuss is about, read on...
+
+### Cash with both hands
+
+First off, Parity Wallet has undergone a number of important improvements. It now supports the standard multi-signature **Ethereum wallet** contract, so it's super-easy to use that for managing your funds. If you're not familiar with the Ethereum Wallet, it means you can control your Ethereum accounts through requiring multiple signatures, generally with two from a number of possible identities.
+
+You can import existing wallets and create new ones and they'll appear right next to your normal accounts. You can tag them as usual and they're marked with account information like each of the currencies that they contain. You'll get information on which accounts can perform transactions on the wallet in the wallet management page as well as all of the transaction history. Transactions that are pending approval are also shown and can be confirmed with barely a single click.
+
+### I'm alright, Jack
+
+With Nativity, we're proud to debut our Parity Identity platform. There will be more comprehensive information about this platform over the coming weeks. For now, I'll keep it short and to the point.
+
+Parity Wallet in Nativity includes the ability to associate accounts with particular badges or non-transferable cryptographic certifications. These badges are displayed in the account view as a sort of general flair. You can see them on your own accounts (wallets or basic type) and other peoples accounts in your address book.
+
+So far there are two important badges you can get through Parity Wallet. Firstly, you can verify that you are a (vaguely) individual person through being able to receive an SMS over your phone number---**SMS verification**. Our oracle service ensures that the same phone number cannot be used multiple times. As someone with an SMS verified account you'll get a nice little badge next to your address and on-chain/off-chain services can tell that (Parity believes) you, the owner of this address, have a unique phone number.
+
+Secondly, we have an **e-mail verification** service. Like the phone number service, contracts can check whether your account has an associated, unique, e-mail address. Unlike the phone number service, this stores the hash of the e-mail address on-chain, meaning it also functions as a name-registry, allowing all and sundry to determine whatever Ethereum address your e-mail has been registered to. This can be used by you to receive funds without the tedium (and error potential) of distributing your hex address.
+
+Naturally, the badge API is open (find the code in our contracts repo) and there is a public, on-chain registry which Parity uses to find out what badges are currently available for display. You can create and issue your own badges as you desire.
+
+### Keep your hands off
+
+If you're like me, you've been missing a way to ensure hands are kept off your various main net accounts while using the test net. Well, miss no more. Parity now uses a revised path structure for storing its files, following XDG standards, and while we were doing this, we took the time to set aside multiple keys directories.
+
+Rather than having one big keys directory shared by the test net and the main net alike, there are now several sets of keys. When you're using the main net, you'll not see any of the keys you made on the test net, and vice versa. Though be warned, all of your keys will be lumped in to whichever network you use first once you upgrade to the Nativity release.
+
+### My stack
+
+Sometimes it's a real pain to work out WTF happened to a transaction you sent. Be it server-based payout batches or a single transaction made through Parity Wallet, if it goes missing it's very difficult to debug and usually ends in restarting the client. Until now.
+
+In Nativity, Parity Wallet comes with a new built-in Dapp, Transaction Queue Viewer. This lets you see all of the transactions currently queued up for mining (or sealing, if you're using a different consensus engine).Yours are set apart (it recognizes them as using keys from your accounts), and if you want to resubmit because you worry they didn't make it out onto the network, there's a link right there. You'll find the status of each (pending/mined &c.) and how many peers have been told about it on the display.
+
+### It's a gas
+
+Following on from this, you can now alter the amount of gas (and its price) given to contracts when making calls through our contract development interface. Forget to alter it before hitting "Execute"? No problemo---you can also edit these details of any transaction once it hits the signer where you type in your password. Neat, huh?
+
+In fact, you can also state a **minimum block** only after which the transaction will be submitted for mining. Sort of like an alarm clock for your transaction.
+
+### Share it fairly
+
+We're proud to announce the first beta release of not one but two brand new Proof-of-Authority consensus engines! Both are high performance consensus engines eminently suitable for running private and consortium chains. Neither use the wasteful proof-of-work and so don't need mining.
+
+The first, simpler, protocol is called **Authority Round**. It has been used substantially and is considered beta quality. It's a basic round-robin system allowing a number of named validators to take turns authoring blocks. It shares some of the same characteristics as proof-of-work, being tolerant of up to 50% of malicious authority nodes, though like other proof-of authority schemes it also able to give near-instant finality. We recommend this for general development, prototyping and proof-of-concept work.
+
+The second, more complex, protocol is named **Tendermint**. Perhaps unsurprisingly, it's actually a clean and optimized implementation of Tendermint BFT. It is tolerant up to 33% of validators with Byzantine faults and, being based on PBFT, is well understood to be secure. As such it is suitable for use even within relatively untrusted contexts, providing sufficient actions are taken to mitigate the likelihood of more than a third of the validators going malicious. While it has many tests written, it has nonetheless had less use than Authority Round, so it should be considered experimental for now.
+
+Check [the wiki](https://github.com/paritytech/parity) for instructions on getting started.
+
+### Don't eat a slice of my pie
+
+Next up we have the **Fat Database**; this is a new option for when doing a full sync and allows you to enumerate the accounts on the chain (rather than merely their hashes, which is what you would otherwise get). It also lets you enumerate all the storage keys used in contract accounts.
+
+This can be accessed through our parity_ RPC, but can also be used with our new state exporter (parity export state), which allows you to get a JSON dump of the entire chain's state for any block.
+
+### The root of all evil today
+
+If Solidity (as it stands) is your thing, you're also in for a treat: our contract development interface now includes a **Solidity editor and compiler**. With this, you can author your contracts, build them, deploy and play with them all without having to leave Parity Wallet. It works with all the various versions of Solidity (including the latest one with no known bugs) and integrates tightly into our contract execution/inspection experience.
+
+You can load and save your contracts (it uses the browser's local storage), import any existing contracts and export them to your local system easily. In the fullness of time, we hope to support Serpent and Viper natively, too.
+
+### New car
+
+And finally, we have **automatic updating**. This actually deserves a blog post all of its own, being as it's the first fully blockchain-based consensus-protocol updating system and quite possibly the most secure software auto-update system ever deployed. For now I'll just give a summary.
+
+Deployed on the chain is a contract Operations. If you're interested you can go view it in our [contracts repo](https://github.com/paritytech/contracts). This acts as an oracle, tracking a number of important aspects about the Ethereum blockchain and the Parity client (though it's written to work with each of the other implementations should their authors so desire). It includes information about all hard and soft forks, which client releases support which fork, what release track (stable, beta) each of the releases are on, and what the client binaries are for each platform, even which client development teams would vote for which fork. Basically, everything you might want to know about a multi-stakeholder consensus-protocol.
+
+Using this information, Parity can now do three important new things completely automatically:
+
+* avoid continuing to sync a chain after a fork when it knows that its own logic doesn't support the new protocol;
+* automatically download the most recent release in the background;
+* seamlessly upgrade itself to a new release in situ, either automatically or via a button in Parity Wallet.
+
+It's on the experimental side of beta at this stage, so the full automation is off by default. If you want to enable it, run Parity with --auto-update=all or --auto-update=critical. It will still monitor the release track for you, download any updates and let you install them with barely three clicks.
+
+### And I think I need a Lear jet
+
+So that's most of the major stuff for 1.5, though there's plenty more hiding under the covers---head to the release notes for more information. For our next release we'll be unveiling our initial light-client implementation and have some more very significant steps in Parity Wallet including some first applications of the e-mail and SMS verification!

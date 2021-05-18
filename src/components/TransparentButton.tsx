@@ -7,8 +7,7 @@ interface TransparentButtonProps {
   extraClass: string;
 }
 
-const buttonStyles =
-  'bg-transparent border font-title text-lg text-white opacity-90 tracking-widest  px-12 py-2 focus:outline-none uppercase';
+const buttonStyles = 'bg-transparent border font-title text-lg text-white  px-12 py-2 rounded-sm uppercase focus:outline-none';
 const hoverStyles = 'transition-transform transform hover:-translate-y-0.5';
 
 export default function TransparentButton(props: TransparentButtonProps) {

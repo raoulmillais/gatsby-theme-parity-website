@@ -1,0 +1,34 @@
+---
+title: index
+tags:
+- Parity Ethereum
+- Releases
+author: Parity Technologies
+blogTitle: 'Release: Parity Ethereum goes to Istanbul'
+slug: blog/release-parity-ethereum-goes-to-istanbul/
+date_published: 2019-11-13T01:00:00+01:00
+image: "/images/istanbul-parity-ethereum-blog-graphic-01.png"
+
+---
+## UPDATE (December 5th, 2019): Please download the latest releases, Parity Ethereum [**v2.5.11-stable**](https://github.com/paritytech/parity-ethereum/releases/tag/v2.5.11) and [**v2.6.6-beta**](https://github.com/paritytech/parity-ethereum/releases/tag/v2.6.6) to make sure you're ready for the Istanbul hard fork on December 7th, 2019.
+
+* [Download v2.5.11-stable here](https://github.com/paritytech/parity-ethereum/releases/tag/v2.5.11)
+* [Download v2.6.6-beta here](https://github.com/paritytech/parity-ethereum/releases/tag/v2.6.6)
+
+Alternatively, you can just [download the updated chainspec](https://github.com/paritytech/parity-ethereum/raw/master/ethcore/res/ethereum/foundation.json) and run your client as `parity --chain foundation.json`
+
+### v2.5.10-stable and v.2.6.5-beta released
+
+We are pleased to announce the release of [Parity Ethereum](https://www.parity.io/ethereum/) v2.5.10-stable and v.2.6.5-beta, which include all Istanbul hard fork EIPs and the block height for enacting the highly anticipated upgrade for all supported networks. All node operators are highly recommended to update their nodes at their earliest convenience.
+
+All the EIPs that have been selected and finalized for Istanbul have been included, along with the mainnet hard fork block height of 9,069,000, which should occur around December 7th, 2019. Istanbul will include upgrades to Ethereum that will allow efficient interoperability between Ethereum and Zcash ([EIP-152](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-152.md)), improve performance of SNARK and STARK-based layer 2 solutions ([EIP-1108](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1108.md)), along with several other improvements.
+
+For more detailed information about Istanbul and its EIPs, head over to [eth.wiki](https://eth.wiki/en/roadmap/istanbul).
+
+For v2.6.5-beta, this latest update also brings improvements to Parity Ethereum warp sync for more reliable syncing and validation. The way warp sync snapshots are produced, selected and distributed by clients has been overhauled, allowing more abundant snapshots for reliable synchronization.
+
+This release also removes legacy aliases for the mainnet. If you specify `--chain homestead`, `--chain frontier` or `--chain byzantium`, this will need to be changed to one of: `--chain eth`, `--chain ethereum`, `--chain foundation` or `--chain mainnet`.
+
+Read the entire changelog [here](https://github.com/paritytech/parity-ethereum/blob/beta/CHANGELOG.md).
+
+Download the latest version of Parity Ethereum stable and beta [here](https://github.com/paritytech/parity-ethereum/releases).

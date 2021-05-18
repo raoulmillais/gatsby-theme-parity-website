@@ -1,0 +1,47 @@
+---
+title: index
+tags:
+- Releases
+- Parity Substrate
+author: Parity Technologies
+blogTitle: Substrate 2.0.0 Release Deep-Dive
+slug: blog/substrate-2-0-release-deep-dive/
+date_published: 2020-10-01T00:00:00+02:00
+image: "/images/substrate-release-deep-dive_blog.png"
+
+---
+_Substrate Release Deep-Dive is a new series of posts highlighting notable updates to the Substrate and FRAME codebases. In each edition, we’ll guide you through some of the most recent pull requests and look at new features and capabilities introduced since the previous release._
+
+Substrate has come a long way since Parity co-founder Dr. Gavin Wood [first demonstrated](https://youtu.be/0IoUZdDi5Is) its capabilities in 2018 with Substrate v1.0. After a series of release candidates in recent months, Substrate 2.0 has officially been released, marking a major milestone for the blockchain framework. In this post we’ll take an in-depth look at some of the most impactful pull requests introduced in recent release candidates and included as part of the current version of Substrate 2.0. These features are just a few of the most recent highlights; for an overview of the functionality introduced from v1.0 to v2.0, check out our [Substrate 2.0 announcement post](https://www.parity.io/substrate-2-0-is-here/).
+
+### Bounty protocol for the Treasury pallet
+
+The [FRAME Treasury pallet](https://substrate.dev/rustdocs/v2.0.0/pallet_treasury/index.html) defines an account that may be used by an on-chain governance body to manage network funds. One of the most exciting capabilities [released as part of v2.0.0](https://github.com/paritytech/substrate/pull/5715) is a [bounty protocol](https://substrate.dev/rustdocs/v2.0.0/pallet_treasury/index.html#bounty) that enables this account to create and fund sets of objectives. The protocol was defined and implemented by seasoned Substrate contributor [Bryan Chen](https://twitter.com/xiliangchen), better known as [xlc on GitHub](http://github.com/xlc/). The Treasury pallet is used on both Kusama and [Polkadot](https://polkadot.network/writing-history-the-first-teams-submit-their-proposal-to-the-polkadot-treasury-2/), and the new bounty capabilities will unlock some exciting funding opportunities for the Substrate developer community.
+
+### Time-delayed proxies
+
+A proxy is a mechanism that allows an account to delegate the ability to perform actions on its behalf. [Dr. Gavin Wood](https://github.com/gavofyork), the creator of Substrate, [authored a PR](https://github.com/paritytech/substrate/pull/6770) that introduced a powerful new risk management feature to the [Proxy pallet](https://substrate.dev/rustdocs/v2.0.0/pallet_proxy/index.html): time-delayed proxies, which [announce](https://substrate.dev/rustdocs/v2.0.0/pallet_proxy/enum.RawEvent.html#variant.Announced) their intent to perform a delegated action and provide a time window during which time they may be [cancelled](https://substrate.dev/rustdocs/v2.0.0/pallet_proxy/enum.Call.html#variant.reject_announcement). If you’d like to learn more about proxies, including the access control capabilities of [anonymous proxies](https://www.youtube.com/watch?v=iWq53zXo7dw&list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&index=28), there [are three videos about proxies](https://www.youtube.com/watch?v=q5qLFhG4SDw&list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8&index=27) in the [Technical Explainers playlist](https://www.youtube.com/playlist?list=PLOyWqupZ-WGuAuS00rK-pebTMAOxW41W8) on the Polkadot YouTube channel.
+
+### GRANDPA finality subscription RPC
+
+A new RPC (remote procedure call) [subscription endpoint](https://github.com/paritytech/substrate/pull/5732) has been added to Substrate’s implementation of the [GRANDPA finality gadget](https://substrate.dev/rustdocs/v2.0.0-rc6/sc_finality_grandpa/index.html) for deterministic consensus. This new feature was co-written by Jon Häggblad ([@octol on GitHub](https://github.com/octol)) and [Hernando Castano](https://github.com/HCastano), and is part of a [larger effort](https://github.com/paritytech/substrate/issues/6066) to support Substrate’s bridge library for cross-chain interoperability. Jon authored [a follow-up PR](https://github.com/paritytech/substrate/pull/6215) to add an RPC endpoint that can be used to “catch up” with finality justifications in the event that the connection to the subscription endpoint is lost. Learn more about bridges by reading about the [Rialto bridge test network](https://github.com/paritytech/parity-bridges-common/tree/master/deployments) and [watching a demonstration](https://www.crowdcast.io/e/substrate-seminar/12) of it in action.
+
+### Feeless runtime upgrades
+
+One of the defining features of Substrate is its support for [forkless runtime upgrades](https://substrate.dev/docs/en/tutorials/upgrade-a-chain/), which require an updated runtime to be submitted to the chain in the form of a transaction. In order to make it easier to participate in the governance of Substrate-based chains, Substrate core developer [Shawn Tabrizi](https://github.com/shawntabrizi/) recently introduced a new feature that allows runtime engineers to define [transactions that may be feeless upon success](https://github.com/paritytech/substrate/pull/6749). Shawn followed up with [an additional enhancement](https://github.com/paritytech/substrate/pull/6793) that applied this feature to [the function](https://substrate.dev/rustdocs/v2.0.0/pallet_democracy/enum.Call.html#variant.note_imminent_preimage) used to submit updated runtimes.
+
+### Precompiles for the EVM pallet
+
+The FRAME EVM pallet now supports the four basic [built-in smart contracts](https://github.com/openethereum/openethereum/blob/v3.0.1/ethcore/builtin/src/lib.rs#L304) known as “precompiles”: [ecrecover](https://github.com/openethereum/openethereum/blob/v3.0.1/ethcore/builtin/src/lib.rs#L404), [identity](https://github.com/openethereum/openethereum/blob/v3.0.1/ethcore/builtin/src/lib.rs#L397), [ripemd160](https://github.com/openethereum/openethereum/blob/v3.0.1/ethcore/builtin/src/lib.rs#L502) and [sha256](https://github.com/openethereum/openethereum/blob/v3.0.1/ethcore/builtin/src/lib.rs#L440). This enhancement was written by the lead developer of the EVM pallet, [Wei Tang](https://twitter.com/sorpaas) ([@sorpaas on GitHub](https://github.com/sorpaas)), who has also made major contributions to the [Rust EVM implementation](https://github.com/rust-blockchain/evm) and the [OpenEthereum client](https://github.com/openethereum/openethereum).
+
+### Enhanced logging
+
+[Wei authored another PR](https://github.com/paritytech/substrate/pull/6825) that introduced the [tracing](https://docs.rs/tracing/0.1.21/tracing/) and [tracing-subscriber](https://docs.rs/tracing-subscriber/0.2.12/tracing_subscriber/index.html) libraries to the Substrate codebase. The improved logging capabilities were consumed in a follow-up PR by [Benjamin Kampmann](https://www.parity.io/people-of-parity-benjamin-kampmann/) ([@GNUnicorn on GitHub](https://github.com/gnunicorn)) that implemented [improved logging and tracing capabilities](https://github.com/paritytech/substrate/pull/6825) for Substrate Wasm runtimes. Both of these changes will contribute to [end-to-end state tracing](https://github.com/paritytech/substrate/issues/6572) that will make it easy to associate a transaction with the storage changes it caused.
+
+### Request/response networking protocols
+
+Substrate developers working at the networking layer now have access to [dependable request/response](https://github.com/libp2p/rust-libp2p/issues/1562) networking protocols. This [enhancement ](https://github.com/paritytech/substrate/pull/6634)was authored by Substrate core developer Pierre Krieger (aka [@tomaka](https://github.com/tomaka) on Github), long-time contributor to the Rust implementation of the [libp2p library](https://docs.rs/libp2p/0.28.1/libp2p/request_response/index.html) that Substrate’s networking capabilities are built upon. Another long-awaited improvement made by Pierre is the removal of the dependency on [legacy substreams](https://github.com/paritytech/substrate/pull/7075), which is part of a [larger strategy](https://github.com/paritytech/substrate/issues/5670) around the deprecation of these substreams.
+
+### Learn more
+
+Learn more about the powerful features and capabilities of Substrate 2.0 on **October 15th at** [**Sub0 Online**](https://sub0.parity.io/?utm_source=parityio&utm_medium=referral&utm_campaign=sub0&utm_term=parity), the Substrate developer community conference. The multi-track program features talks and workshops by Substrate and Polkadot developers and ecosystem builders for all levels of experience, from Substrate beginner to Substrate pro. You can also get in touch with Substrate core developers on the [Substrate Technical Element channel](https://matrix.to/#/!HzySYSaIhtyWrwiwEV:matrix.org?via=matrix.parity.io&via=matrix.org&via=web3.foundation).

@@ -1,0 +1,62 @@
+---
+title: index
+tags:
+- Community
+- Company and Culture
+- Parity Substrate
+- People of Parity
+author: Alexandra Heller
+blogTitle: 'People of Parity: Benjamin Kampmann'
+slug: blog/people-of-parity-benjamin-kampmann/
+date_published: 2019-10-17T01:00:00+02:00
+image: "/images/people-of-parity-ben.jpeg"
+
+---
+Benjamin Kampmann, aka GNUnicorn ([GitHub](https://github.com/gnunicorn/), [Twitter](https://twitter.com/gnunicornBen/)), first got into development when he built a Geocities website with a group of friends. At that point he realized the potential of building IT and communications tech: a vast impact on a huge number of people. But all technology, Ben believes, is supposed to be for the betterment of humankind and society as a whole.
+
+This values-first approach is clearly visible in Ben’s career. He co-founded [Open Tech School](http://www.opentechschool.org/), a non-profit for coding and tech learning events, as well as [Hackership](http://www.hackership.org/), a self-directed learning retreat for developers. A lifelong community organizer, Ben helped organize the first and second [RustFest](https://rustfest.eu/).
+
+Ben was one of the first developers to directly dive into Substrate, so I was curious to talk to him to learn what it’s been like developing Substrate as well as his perspective from hacking on other decentralized tech like IPFS, SAFE, and Scuttlebutt.
+
+**From the arc of your work history, it seems like you didn’t arrive at Parity by accident.**  
+The longer I’ve been in software development, the stronger my values have gotten in terms of what I work on. At the beginning, it was core open-source work. It has evolved more towards decentralization. Generally the crypto sphere, not blockchain-specific, but encryption for privacy and the issues we have there. Fixing the internet.
+
+Previously, for example, I worked on the [SAFE Network](https://safenetwork.org/), an open-source project building a fully autonomous privacy-first peer-to-peer network to replace servers altogether. And while I love thinking about the challenges of building these infrastructures, I am very interested in what developers can then solve that they were not able to before. Parity offers exactly this mix I am most interested in: building cutting-edge Web3 technologies with the app developers and their needs in mind.
+
+**At one point you began writing a** [**DApp book**](https://gnunicorn.gitbooks.io/dapp-book/content/).  
+I was writing about developing a simple collaborative to-do DApp on [Scuttlebutt](https://www.scuttlebutt.nz/), [IPFS](https://ipfs.io/), and SAFE network respectively. I stopped because the technology failed me. Even very simple things I know from the web development world were not possible. IPFS is super-easy to write to once, but if you want a blog, you want to add new content or accept comments. And that is still not really supported. You can, but you have a new hash, so you somehow need a distribution system. This is a solved problem in the blockchain world, though.
+
+Another key issue is multi-user. For Scuttlebutt and IPFS, to allow someone else to write to a file, you’d need to share the private key. So you can’t do a simple to-do list where you and I can share a to-do list and you can write something and I can write something. And here, similarly, the R&D regarding cryptography-based access control mechanisms is just much further in the blockchain systems.
+
+So the DApp is not done, but I’d like to revisit that when that’s actually possible.
+
+**What’s it like developing Substrate?**  
+Challenging—in a good way. A strong part of Parity is not accepting the status quo but experimenting and pushing things forward. We’re pretty sure the things we want to do are not impossible, but no one has tried yet. There is no whitepaper, we can’t look something up.
+
+**What do you think people don’t immediately understand about Substrate?**  
+Substrate is not just a new blockchain development kit, it brings with it a shift in mindset and power, which can transform the entire web development industry: it considers the _chain over time_. It assumes that the business logic must adapt to unforeseen challenges and bugs. From a developer perspective, of course I want to upgrade things. What I build might be good today but in two years there’s going to be changes needed.
+
+Consider how powerful swappable consensus is: you can, for example, start with a small validator set to ensure a reliable start and then switch to PoW to be permissionless. Whitepapers reflect a static mechanism, but even with Bitcoin and Ethereum we’ve seen these networks _evolve over time_. They have different challenges now than when they started and they require different solutions.
+
+Substrate’s ability to evolve is made possible because Substrate separates the runtime, what we call the state transition function or “business logic,” from the basic infrastructure all chains need (consensus, database, networking layer). However, this breaks how people think about blockchains—they’re used to thinking about every transaction from a consensus perspective, all economic incentives need to be built in and the validators need to be rewarded. But in architecting the Substrate runtime, you don’t have to care about Patricia tries and everything you’ve learned about blockchain, you just care about your particular business logic and economic incentives.
+
+**What can you do with Substrate that you couldn’t do before?**  
+Substrate’s architecture is new to people, but it allows for some powerful new patterns. For example, you could have your chain subsidize certain activities because they create value—such as creating a new account and posting for the first time. You might want this to be a free action at first. And then over time, when you have thousands of users, spam might become an issue so you want to change it to only have invited users be able to create accounts for free. With Substrate, you can do this. You can change the way this is handled through an on-chain update. And, depending on your governance mechanism, you can do this pretty quickly—like have it rolled out instantaneously rather than through months or year. That is what I mean by considering a chain as something that evolves over time, just like any web or mobile app out there does.
+
+This is similar to the evolution from licensed desktop software to cloud-driven web apps. Before, you had to convince every single user to upgrade their locally installed version, which could take months or years depending on the project, and you had to deliver costly support and maintenance for that. When web apps came around, if the developers deployed a new version, everyone had it, immediately and without hassle. Substrate offers the same for the blockchain ecosystem. But with Substrate, no one is gate-keeping your data in a data center and forcing the update on you—a shared governance mechanism decides upon updates.
+
+Depending on how you set this up, this allows for a more open and community-involved app development process. It allows open-sourcing not only the source code but the community and its running network as a whole. Just imagine a Facebook that would need 51% of its users to sign off on new updates. Would it do the evil that it currently does? For sure not!
+
+**So you’re organizing Parity’s Hacktoberfest. How can people get involved?**  
+[Hacktoberfest](https://substrate.dev/hacktoberfest/) is an amazing effort by Digital Ocean to get more people involved in open-source by asking everyone to submit four pull requests tagged hacktoberfest before Nov 1st.
+
+We decided to not only brush up and clean up older [tickets that we consider doable for external contribution](https://github.com/search?q=user%3Aparitytech+label%3Ahacktoberfest+state%3Aopen&type=Issues), we also wrote down some of the [project ideas and bigger visions](https://github.com/substrate-developer-hub/hacktoberfest/issues) we have in the wider Substrate ecosystem: [integrations](https://github.com/substrate-developer-hub/hacktoberfest/issues?q=is%3Aissue+is%3Aopen+label%3Ax-integration), [tooling](https://github.com/substrate-developer-hub/hacktoberfest/issues?q=is%3Aissue+is%3Aopen+label%3Ax-tooling), [proof of concepts](https://github.com/substrate-developer-hub/hacktoberfest/issues?q=is%3Aopen+is%3Aissue+label%3At-proof-of-concept) and the like. People often ask, “How can I contribute/help? Substrate moves so fast and the newcomer issues are gone so quickly.” So we took this opportunity to share some of the larger ideas and projects we’d encourage people to hack on to contribute.
+
+Additionally, this month we’re having a bunch of online and offline events to help people contribute to Substrate. This ranges from in-person workshops at hackathons and conferences to the [Substrate ’n chill in our Berlin community space](https://www.meetup.com/parity/), to the [online co-learning video hangout sessions](https://calendar.google.com/calendar/r/eventedit/aTI4MDRrZ2FpcGpzb2NmMmo4cGJqNXMyc2dfMjAxOTA4MjZUMTYwMDAwWiBwYXJpdHkuaW9fMzkzNzkzNDNoMDczdjA2cWh0MXZwcWNlZmNAZw?cid=cGFyaXR5LmlvXzM5Mzc5MzQzaDA3M3YwNnFodDF2cHFjZWZjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20).
+
+Oh, and there will be limited Hacktoberfest-edition swag to show our appreciation if you make significant contributions to the Substrate ecosystem.
+
+Learn more about Hacktoberfest and how to sign up at [substrate.dev/hacktoberfest](https://substrate.dev/hacktoberfest/) .
+
+**How do you see Parity’s vision as a company?**  
+Blockchain isn’t the big vision, it’s Web3. We could build a decentralized Facebook, so why aren’t we building it? Because we think that we are missing major parts of the underlying infrastructure for it to work in the long-term. So we need to build this first. That makes it clear to me why Polkadot is our current priority, even if that is neither my background nor necessarily what excites me the most about the Web3 vision. The timeframe to Web 2.0. took a decade. Web3 will take time, too. That’s ok. And it will take a lot more players than just us.
